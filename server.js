@@ -3,6 +3,15 @@ try { require('dotenv').config(); } catch (e) { /* opcional */ }
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const { Pool } = require('pg');
+
+// 🐛 ERROR INTENCIONAL PARA BUGBOT: Variable no declarada
+undeclaredVariable = "¡Bugbot debería detectar esto!";
+console.log(undeclaredVariable);
+
+// 🐛 ERROR INTENCIONAL: Comparación débil 
+if (process.env.NODE_ENV == 'production') { // Debería usar ===
+    console.log("Modo producción detectado incorrectamente");
+}
 const path = require('path');
 const multer = require('multer');
 
