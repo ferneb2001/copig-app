@@ -1,1 +1,114 @@
-node_modules
+# ===================================
+# GITIGNORE OPTIMIZADO SISTEMA COPIG
+# Solo subir código esencial del sistema
+# ===================================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# ===================================
+# BACKUPS MASIVOS (NO SUBIR)
+# ===================================
+BACKUP/
+backup_*/
+backups/
+backup*.json
+backup*.sql
+*_backup_*
+*_BACKUP_*
+backup_corrupted_state_before_restore/
+
+# ===================================
+# DATOS DBF MASIVOS (NO SUBIR) 
+# ===================================
+CoPIG_CSV_Nuevos/
+COPIG NUEVOS DBF PEÑALOZA Y DOC/
+adminsp/
+TABLAS Y TXT PEÑALOZA/
+profesionales de la web/
+pdfs_oficiales/
+*.DBF
+*.dbf
+*.CDX
+*.cdx
+*.IDX
+*.idx
+
+# ===================================
+# ARCHIVOS TEMPORALES Y LOGS
+# ===================================
+server.log
+server_test.log
+*.log
+temp/
+C:copig-apptemp/
+verificar_temp.js
+detailed_cookies.txt
+test_cookies.txt
+nul
+
+# ===================================
+# SCRIPTS DE PRUEBA Y ANÁLISIS
+# ===================================
+test_*.js
+testing_*.js
+testing_*.json
+analyze_*.js
+analizar_*.js
+debug_*.js
+check_*.js
+verificar_*.js
+investigate_*.js
+investigar_*.js
+fix_*.js
+corregir_*.js
+stress_test_results.json
+system_health_report_*.json
+
+# ===================================
+# BACKUPS DE CÓDIGO (VERSIONES ANTIGUAS)
+# ===================================
+*_backup.html
+*_ANTES_CORRECCION_*.html
+*_CORRUPTO_*.html
+*-backup.html
+*-broken.html
+*-old.html
+*-pre-*.html
+server_*.js
+server-*.js
+admin_*.html
+
+# ===================================
+# SCRIPTS DE IMPORTACIÓN/MIGRACIÓN
+# ===================================
+import_*.js
+importar_*.js
+migrar_*.js
+crear_*.js
+execute_*.js
+ejecutar_*.js
+implement_*.js
+implementar_*.js
+
+# ===================================
+# DOCUMENTOS Y ARCHIVOS OFFICE
+# ===================================
+*.docx
+*.xlsx
+*.pdf
+canvas CLAUDE.txt
+
+# ===================================
+# MANTENER SOLO LO ESENCIAL
+# ===================================
+# Código principal: server.js, *.html, config.json, package.json
+# Documentación: CLAUDE.md, maximas.md, *.md principales
+# Assets pequeños: logo-copig.png, assets/
