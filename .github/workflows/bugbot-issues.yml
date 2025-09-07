@@ -1,0 +1,160 @@
+name: 🤖 Bugbot Issues - Respuesta automática a reportes
+
+on:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  analyze-issue:
+    runs-on: ubuntu-latest
+    name: 🔍 Análisis automático de issues
+    
+    steps:
+    - name: 📥 Checkout código
+      uses: actions/checkout@v4
+      
+    - name: 🤖 Analizar contenido del issue
+      uses: actions/github-script@v7
+      with:
+        script: |
+          console.log('🤖 BUGBOT: Analizando issue...');
+          
+          const issue = context.payload.issue;
+          const body = issue.body || '';
+          const title = issue.title || '';
+          
+          let response = "## 🤖 Bugbot - Análisis automático\n\n";
+          let labels = [];
+          
+          // Detectar tipo de issue
+          if (title.toLowerCase().includes('bug') || body.toLowerCase().includes('error')) {
+            labels.push('bug');
+            response += "🐛 **Tipo detectado:** Bug/Error\n\n";
+            
+            // Sugerencias para bugs
+            response += "### 🔍 Información necesaria para resolver:\n";
+            response += "- [ ] Pasos para reproducir el error\n";
+            response += "- [ ] Comportamiento esperado vs actual\n";
+            response += "- [ ] Versión del software\n";
+            response += "- [ ] Logs o mensajes de error\n";
+            response += "- [ ] Entorno (browser, OS, etc.)\n\n";
+            
+          } else if (title.toLowerCase().includes('feature') || body.toLowerCase().includes('nueva funcionalidad')) {
+            labels.push('enhancement');
+            response += "✨ **Tipo detectado:** Nueva funcionalidad\n\n";
+            
+            response += "### 📋 Información para implementar:\n";
+            response += "- [ ] Descripción detallada de la funcionalidad\n";
+            response += "- [ ] Casos de uso específicos\n";
+            response += "- [ ] Mockups o wireframes (si aplica)\n";
+            response += "- [ ] Prioridad (alta/media/baja)\n\n";
+            
+          } else if (body.toLowerCase().includes('pregunta') || title.includes('?')) {
+            labels.push('question');
+            response += "❓ **Tipo detectado:** Consulta\n\n";
+          }
+          
+          // Detectar prioridad
+          if (body.toLowerCase().includes('crítico') || body.toLowerCase().includes('urgente')) {
+            labels.push('priority:high');
+            response += "🚨 **Prioridad detectada:** Alta\n\n";
+          }
+          
+          // Detectar componentes afectados
+          const components = [];
+          if (body.includes('login') || body.includes('autenticación')) {
+            components.push('auth');
+          }
+          if (body.includes('base de datos') || body.includes('postgresql')) {
+            components.push('database');
+          }
+          if (body.includes('frontend') || body.includes('html')) {
+            components.push('frontend');
+          }
+          if (body.includes('backend') || body.includes('server')) {
+            components.push('backend');
+          }
+          
+          if (components.length > 0) {
+            response += `🎯 **Componentes detectados:** ${components.join(', ')}\n\n`;
+            labels.push(...components);
+          }
+          
+          // Detectar archivos mencionados
+          const fileMatches = body.match(/[a-zA-Z0-9_-]+\.(js|html|css|json|md|sql)/g);
+          if (fileMatches) {
+            response += `📁 **Archivos mencionados:** ${fileMatches.slice(0, 5).join(', ')}\n\n`;
+          }
+          
+          response += "---\n";
+          response += "*🤖 Análisis automático por Bugbot. Si la categorización es incorrecta, puedes cambiar las etiquetas manualmente.*\n\n";
+          response += "**Próximos pasos sugeridos:**\n";
+          response += "1. Revisar la información proporcionada\n";
+          response += "2. Asignar a desarrollador apropiado\n";
+          response += "3. Establecer milestone si corresponde\n";
+          
+          // Crear comentario
+          await github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: response
+          });
+          
+          // Agregar labels si se detectaron
+          if (labels.length > 0) {
+            try {
+              await github.rest.issues.addLabels({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: labels
+              });
+              console.log('✅ Labels agregadas:', labels.join(', '));
+            } catch (error) {
+              console.log('⚠️ No se pudieron agregar labels (pueden no existir):', error.message);
+            }
+          }
+          
+          console.log('🤖 BUGBOT: Análisis completado');
+          
+  auto-assign:
+    runs-on: ubuntu-latest
+    name: 🎯 Auto-asignación
+    needs: analyze-issue
+    
+    steps:
+    - name: 🤖 Asignar automáticamente
+      uses: actions/github-script@v7  
+      with:
+        script: |
+          const issue = context.payload.issue;
+          const body = issue.body || '';
+          
+          // Lógica de auto-asignación basada en contenido
+          let assignee = null;
+          
+          if (body.includes('database') || body.includes('postgresql') || body.includes('sql')) {
+            assignee = 'ferneb2001'; // Usuario principal para DB
+          } else if (body.includes('frontend') || body.includes('html') || body.includes('css')) {
+            assignee = 'ferneb2001'; // Usuario principal para frontend
+          } else if (body.includes('critical') || body.includes('crítico')) {
+            assignee = 'ferneb2001'; // Usuario principal para críticos
+          }
+          
+          if (assignee) {
+            try {
+              await github.rest.issues.addAssignees({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                assignees: [assignee]
+              });
+              console.log(`✅ Issue asignado automáticamente a: ${assignee}`);
+            } catch (error) {
+              console.log('⚠️ No se pudo auto-asignar:', error.message);
+            }
+          }

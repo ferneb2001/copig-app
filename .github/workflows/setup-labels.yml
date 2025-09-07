@@ -1,0 +1,65 @@
+name: 🏷️ Setup Labels - Configuración inicial de etiquetas
+
+on:
+  workflow_dispatch: # Solo ejecución manual
+  
+jobs:
+  setup-labels:
+    runs-on: ubuntu-latest
+    name: 🏷️ Crear etiquetas para bugbot
+    
+    steps:
+    - name: 🤖 Crear etiquetas necesarias
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const labels = [
+            { name: 'bug', color: 'FF0000', description: '🐛 Error en el código' },
+            { name: 'enhancement', color: '00FF00', description: '✨ Nueva funcionalidad' },
+            { name: 'question', color: '0000FF', description: '❓ Consulta o duda' },
+            { name: 'priority:high', color: 'FF6600', description: '🚨 Alta prioridad' },
+            { name: 'priority:medium', color: 'FFCC00', description: '⚠️ Prioridad media' },
+            { name: 'priority:low', color: '00CCFF', description: '💡 Prioridad baja' },
+            { name: 'auth', color: '9932CC', description: '🔐 Sistema de autenticación' },
+            { name: 'database', color: '006600', description: '💾 Base de datos' },
+            { name: 'frontend', color: 'FF69B4', description: '🎨 Interfaz de usuario' },
+            { name: 'backend', color: '8B4513', description: '⚙️ Lógica de servidor' },
+            { name: 'bugbot', color: '808080', description: '🤖 Issues analizados por bugbot' },
+            { name: 'auto-detected', color: 'C0C0C0', description: '🔍 Detectado automáticamente' }
+          ];
+          
+          console.log('🏷️ Creando etiquetas para bugbot...');
+          
+          for (const label of labels) {
+            try {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: label.name,
+                color: label.color,
+                description: label.description
+              });
+              console.log(`✅ Creada: ${label.name}`);
+            } catch (error) {
+              if (error.status === 422) {
+                console.log(`⚠️ Ya existe: ${label.name}`);
+                // Intentar actualizar
+                try {
+                  await github.rest.issues.updateLabel({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    name: label.name,
+                    color: label.color,
+                    description: label.description
+                  });
+                  console.log(`🔄 Actualizada: ${label.name}`);
+                } catch (updateError) {
+                  console.log(`❌ Error actualizando ${label.name}:`, updateError.message);
+                }
+              } else {
+                console.log(`❌ Error creando ${label.name}:`, error.message);
+              }
+            }
+          }
+          
+          console.log('🏷️ Configuración de etiquetas completada');
