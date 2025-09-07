@@ -1,8 +1,0 @@
-SELECT Hstbase.hstapell, Hstbase.hsttdocu, Hstbase.hstdocum,;
-  Hstbase.hsttitu1, Hstbase.hsttitu2, Hstbase.hstente, Hstbase.hstmatri,;
-  Hstbase.hstcateg;
- FROM Hstbase;
- ORDER BY Hstbase.hstapell;
- INTO CURSOR Query
-CREATE REPORT hstgen.frx FROM Query WIDTH 800 COLUMN NOOVERWRITE
-REPORT FORM hstgen.frx TO PRINTER NOCONSOLE NOEJECT

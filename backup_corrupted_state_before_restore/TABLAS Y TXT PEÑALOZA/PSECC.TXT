@@ -1,8 +1,0 @@
-
-Structure for database: Z:\ADMINSP\FOXPRO2\CONSEJO\PSECC.DBF
-Number of data records:      39
-Date of last update   : 03/02/22
-Field  Field Name  Type       Width    Dec    Index
-    1  SECC        Numeric        2            Asc
-    2  NOM         Character     25            
-** Total **                      28

@@ -1,6 +1,0 @@
-TIPOCODIGO,TIPORUBRO,TIPOABREV,TIPODESCR,TIPOIVA,TIPOCOND,TIPOAPLICA,TIPORIGEN,TIPOIMPR
-1,H,Fact.,Compra,True,True,False,False,
-2,H,N/D.,N/D.Proveed.,True,True,False,False,
-11,D,Rec.,Orden Pago,False,False,False,False,
-12,D,Devol,N/C.Devoluc.,True,False,False,False,
-13,D,N/C.,N/C.Vs.Prov.,False,False,False,False,

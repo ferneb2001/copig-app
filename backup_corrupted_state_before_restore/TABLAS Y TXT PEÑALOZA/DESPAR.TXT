@@ -1,9 +1,0 @@
-
-Structure for database: Z:\ADMINSP\FOXPRO2\CONSEJO\DESPAR21.DBF
-Number of data records:       1
-Date of last update   : 01/13/21
-Field  Field Name  Type       Width    Dec    Index
-    1  J           Numeric        4            
-    2  EXPTES      Numeric        5            
-    3  RTTES       Numeric        3            
-** Total **                      13

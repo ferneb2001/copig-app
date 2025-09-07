@@ -1,9 +1,0 @@
-
-Structure for database: Z:\ADMINSP\FOXPRO2\CONSEJO\SPENTE.DBF
-Number of data records:      98
-Date of last update   : 05/15/25
-Field  Field Name  Type       Width    Dec    Index
-    1  CODIGO      Character      4            Asc   codigo de entidad 
-    2  NOMBRE      Character     30            Asc   Nombre entidad educativa qur otorga título
-    3  UNIVER      Numeric        3            Asc   Nivel 1-universitario, 2-tecnico o pregrado
-** Total **                      38
