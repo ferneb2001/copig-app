@@ -55,7 +55,7 @@ test_cookies.txt
 nul
 
 # ===================================
-# SCRIPTS DE PRUEBA Y ANÁLISIS
+# SCRIPTS DE PRUEBA Y ANÁLISIS (MÁS ESTRICTO)
 # ===================================
 test_*.js
 testing_*.js
@@ -71,6 +71,46 @@ fix_*.js
 corregir_*.js
 stress_test_results.json
 system_health_report_*.json
+
+# Scripts específicos de desarrollo temporal
+actualizar_*.js
+agregar_*.js
+asignar_*.js
+buscar_*.js
+cambiar_*.js
+comparar_*.js
+completar_*.js
+configurar_*.js
+crear_*.js
+descargar_*.js
+diagnosticar_*.js
+eliminar_*.js
+force_*.js
+generate_*.js
+herramienta_*.js
+limpiar_*.js
+liberar_*.js
+manual_*.js
+mejoras_*.js
+modulo_*.js
+nuclear_*.js
+probar_*.js
+quick_*.js
+recreate_*.js
+repair_*.js
+reparar_*.js
+restaurar_*.js
+revisar_*.js
+robust_*.js
+safe_*.js
+search_*.js
+setup_*.js
+simple_*.js
+sincronizar_*.js
+unblock_*.js
+update_*.js
+upgrade_*.js
+validate_*.js
 
 # ===================================
 # BACKUPS DE CÓDIGO (VERSIONES ANTIGUAS)
@@ -105,6 +145,59 @@ implementar_*.js
 *.xlsx
 *.pdf
 canvas CLAUDE.txt
+
+# ===================================
+# ARCHIVOS TEMPORALES Y DE DESARROLLO
+# ===================================
+*.txt
+!README.txt
+*.json
+!config.json
+!package.json
+!package-lock.json
+*.sql
+*.py
+*.bat
+*.sh
+*.pif
+*.lnk
+*.xls
+*.exe
+*.ovl
+*.lib
+*.esl
+*.eso
+*.err
+*.pjt
+*.pjx
+*.fxp
+*.prg
+*.bak
+*.fpt
+listar_archivos_esenciales.js
+
+# ===================================
+# ARCHIVOS DE CONFIGURACIÓN DE DESARROLLO
+# ===================================
+copig-app.code-workspace
+.vscode/
+eng.traineddata
+spa.traineddata
+
+# ===================================
+# EXCLUIR ADMINSP COMPLETO
+# ===================================
+adminsp/
+
+# ===================================
+# SOLO MANTENER ARCHIVOS ESENCIALES
+# ===================================
+# server.js - Backend principal
+# *.html principales (no backups)
+# config.json, package.json
+# maximas.md, CLAUDE.md
+# logo-copig.png
+# assets/ básicos
 
 # ===================================
 # MANTENER SOLO LO ESENCIAL
