@@ -1,0 +1,18 @@
+{
+  "fecha_backup": "2025-09-04T22:26:19.890Z",
+  "motivo": "BACKUP INMEDIATO - Error imperdonable: modificaciones sin backup previo",
+  "archivos_respaldados": 10,
+  "base_datos": "COMPLETA",
+  "carpetas": [
+    "uploads"
+  ],
+  "servidor_funcional": "SÍ - versión básica restaurada",
+  "credenciales_fernando": {
+    "dni": "20562024",
+    "password": "ansiktet1969",
+    "rol": "superadmin"
+  },
+  "estado_sistema": "OPERATIVO BÁSICO",
+  "endpoints_chp": "BÁSICO FUNCIONAL",
+  "flujo_chp": "PARCIALMENTE IMPLEMENTADO"
+}

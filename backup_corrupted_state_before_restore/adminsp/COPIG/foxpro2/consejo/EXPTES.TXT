@@ -1,0 +1,22 @@
+
+Structure for database: Z:\ADMINSP\FOXPRO2\CONSEJO\EXPTES.DBF
+Number of data records:    5435
+Date of last update   : 02/13/25
+Field  Field Name  Type       Width    Dec    Index
+    1  COD         Character      1            
+    2  NRO         Numeric        5            
+    3  ANO         Numeric        4            
+    4  RECEP       Date           8            
+    5  MATRI       Numeric        5            
+    6  CAT         Character      2            
+    7  RTTE        Character     40            Asc
+    8  RTTE2       Character     40            
+    9  DEST        Character     30            
+   10  CPTO        Character     75            
+   11  CPTO2       Character     75            
+   12  CPTO3       Character     75            
+   13  CPTO4       Character     75            
+   14  CLASE       Numeric        3            
+   15  INOMB       Character     30            Asc
+   16  EXCUIT      Character     11            Asc
+** Total **                     480

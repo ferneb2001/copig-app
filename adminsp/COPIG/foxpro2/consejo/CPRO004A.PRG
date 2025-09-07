@@ -1,0 +1,169 @@
+procedure cpro004a
+*listado de padrones (Un solo padron)
+set talk off
+set printer off
+set device to screen
+@04,01 clear to 23,78
+@04,28 say 'LISTADO DE PADRONES     '
+close all
+*select 2
+*use PADRON
+*SORT to padrons on padcod, padtitu, padseti, padayn
+do imprime
+@04,01 clear to 23,78
+close all
+return
+
+procedure imprime
+wop=1
+@23,01 clear to 23,78
+@15,23 say 'Verifique estado de la impresora  '
+@23,34 get wop pict '@*H LP\<1;LP\<2;\<Salir'
+read
+if wop<>3
+   @15,23 say '     En proceso de impresi¢n    '   
+   @23,01 clear to 23,78
+   wpad=0
+   wpadro=space(1)
+   @15,3 say 'Indique padr¢n a imprimir: 1-Ing.Civ 2-Ing.Esp 3-Ing.Agron'
+   @15,61 say '4-Geolog. 5-Tecn. 6-Constr.'
+   @16,50 get wpad pict '9'
+   read
+   if wpad = 1
+      wpadro='1'
+   else
+      if wpad = 2
+         wpadro= '2'
+      else
+         if wpad = 3
+            wpadro = '3'
+         else
+            if wpad = 4
+               wpadro = '5'
+            else
+               if wpad = 5
+                  wpadro = '7'
+               else
+                  if wpad = 9
+                     wpadro='9'
+                  else
+                     wpadro = ' '
+                  endif
+               endif
+            endif
+         endif
+      endif
+   endif                              
+   select 1
+   use padrons
+   go top
+   set console off
+   set printer on
+   set device to printer
+   if wop=1
+      set printer to 'LPT1'
+   else
+      set printer to 'LPT2'
+   endif      
+   ???chr(27)+chr(67)+chr(72)
+   wlin=0
+   whoja=0
+   wfecha='15 de Julio de 2002.-'
+   correl=0
+   wpaso=0
+   wpadcod=space(1)
+   wpadayn=space(35)  
+   wtituac=space(35)
+   wtitupr=space(35)
+   do while .not. eof()
+      if padcod = wpadro
+        if padseti = 1
+          if wpadcod <> padcod
+            wpadcod= padcod
+            correl=0
+            whoja=0
+            wpadayn=space(35)
+            if wpaso = 1
+               ?
+               ? wfecha at 50
+               wlin = 70
+               do titulos
+            else
+               wlin = 70   
+               do titulos
+               wpaso = 1
+            endif
+         endif
+         ?
+         ? padayn at 24
+         wpadayn=padayn
+         ?
+         wlin = wlin + 3
+      else
+         if wlin > 66
+            do titulos
+         endif
+         correl = correl+1
+         ? correl pict '9999'  at 13
+         ?? padmatri pict '99999'  at 22
+         ?? padse1  at 29
+         ?? padse2  at 30
+         ?? padse3  at 31
+         ?? padse4  at 32
+         ?? padse5  at 33
+         ?? padayn  at 48
+         wlin = wlin+3
+*         wlin=wlin+1
+         ? '............' AT 35
+         ?
+        endif
+      endif
+      skip
+   enddo
+   ?
+   ? wfecha at 50
+    ???chr(27)+chr(50)
+    ???chr(27)+chr(80)
+   eject
+   set printer off
+   set device to screen
+   set safety on
+endif   
+@04,01 clear to 23,78
+return
+
+procedure titulos
+if wlin > 66
+   eject
+   whoja=whoja+1
+endif
+? 'CONSEJO PROFESIONAL DE INGENIEROS  Y GEOLOGOS - MENDOZA' 
+? 'Decreto Ley 3485/63   -   Ley 5908/92   -   Ley 6936/01'
+?
+do case
+	case padcod = '1'
+	    wtitupr = '    PADRON DE INGENIERIA CIVIL    '
+	case padcod = '2'
+	    wtitupr = 'PADRON DE INGENIERIA ESPECIALIZADA'
+	case padcod = '3'
+	    wtitupr = ' PADRON DE INGENIERIA AGRONOMICA  '
+	case padcod = '5'
+	    wtitupr = '        PADRON DE GEOLOGIA        '
+	case padcod = '7'
+	    wtitupr = ' PADRON DE TECNICOS INDUSTRIALES  '
+	case padcod = '9'
+	    wtitupr = '     PADRON DE CONSTRUCTORES      '
+endcase
+???CHR(27)+CHR(87)+CHR(1)
+? wtitupr  at 1
+???chr(27)+chr(87)+chr(0)	                       
+*??'Hoja Nro.:' at 66
+*?? whoja pict '999'
+? '('+alltrim(wpadayn)+')' at 30
+??'Hoja Nro.:' at 66
+?? whoja pict '999'
+? '        Nro.Orden  MATRIC.                     Apellido y Nombre'
+?
+wlin = 7
+return
+

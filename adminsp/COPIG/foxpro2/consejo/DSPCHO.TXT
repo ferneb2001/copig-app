@@ -1,0 +1,19 @@
+
+Structure for database: Z:\ADMINSP\FOXPRO2\CONSEJO\DSPCHO.DBF
+Number of data records:     312
+Date of last update   : 05/21/25
+Field  Field Name  Type       Width    Dec    Index
+    1  DSPCOD      Character      1            
+    2  DSPNRO      Numeric        5            
+    3  DSPANO      Numeric        4            
+    4  DSPRECEP    Date           8            
+    5  DSPMATRI    Numeric        5            
+    6  DSPCAT      Character      2            
+    7  DSPRTTE     Character     40            Asc
+    8  DSPRTTE2    Character     40            
+    9  DSPDEST     Character     30            
+   10  DSPCPTO     Character     75            
+   11  DSPCPTO2    Character     75            
+   12  DSPCPTO3    Character     75            
+   13  DSPCPTO4    Character     75            
+** Total **                     436

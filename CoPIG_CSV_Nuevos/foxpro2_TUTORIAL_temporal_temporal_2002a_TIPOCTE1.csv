@@ -1,0 +1,6 @@
+TIPOCODIGO,TIPORUBRO,TIPOABREV,TIPODESCR,TIPOIVA,TIPOCOND,TIPOCOMIS,TIPOAPLICA,TIPORIGEN,TIPOIMPR
+1,D,Fact.,Factura,True,True,False,False,False,
+2,D,N/D.,Nota Dbito,False,False,False,False,False,
+11,H,Rec.,Recibo,False,False,False,False,False,HAHB
+12,H,Devol,Nota Crdito,True,True,False,False,False,
+13,H,N/C.,Nota Crdito,False,False,False,False,False,

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard COPIG - Sistema de Gestión</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-section svg {
+            margin-right: 15px;
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid #3498db;
+            transition: transform 0.2s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .stat-card.success {
+            border-left-color: #27ae60;
+        }
+        
+        .stat-card.warning {
+            border-left-color: #f39c12;
+        }
+        
+        .stat-card.danger {
+            border-left-color: #e74c3c;
+        }
+        
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-title {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .stat-subtitle {
+            font-size: 0.85rem;
+            color: #95a5a6;
+            margin-top: 0.5rem;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .main-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .side-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .panel-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .action-btn {
+            background: white;
+            border: 2px solid #3498db;
+            color: #3498db;
+            padding: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .action-btn:hover {
+            background: #3498db;
+            color: white;
+        }
+        
+        .recent-activity {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .activity-icon.payment {
+            background: #e8f5e8;
+            color: #27ae60;
+        }
+        
+        .activity-icon.professional {
+            background: #e3f2fd;
+            color: #2196f3;
+        }
+        
+        .activity-icon.company {
+            background: #fff3e0;
+            color: #ff9800;
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+        
+        .activity-time {
+            font-size: 0.8rem;
+            color: #95a5a6;
+        }
+        
+        .external-links {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .external-link {
+            display: block;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            text-decoration: none;
+            color: #495057;
+            transition: all 0.2s;
+        }
+        
+        .external-link:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .external-link:last-child {
+            margin-bottom: 0;
+        }
+        
+        .link-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .link-description {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .chart-container {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 8px;
+            color: #6c757d;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <svg width="45" height="35" viewBox="0 0 90 70" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <rect x="20" y="18" width="30" height="25" fill="#ffffff"/>
+                        <polygon points="50,18 68,18 50,30" fill="#e53e3e"/>
+                        <path d="M 20 43 Q 35 32 50 43 L 50 30 Q 35 19 20 30 Z" fill="#dddddd"/>
+                    </g>
+                </svg>
+                <h1>COPIG - Sistema de Gestión</h1>
+            </div>
+            <div class="user-info">
+                <span>Panel Administrativo</span>
+                <button class="action-btn" onclick="window.open('/portal', '_blank')" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Portal Profesional</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Métricas principales -->
+        <div class="stats-grid">
+            <div class="stat-card success">
+                <div class="stat-header">
+                    <div class="stat-title">Profesionales Activos</div>
+                    <span style="font-size: 1.5rem;">👥</span>
+                </div>
+                <div class="stat-value">4,127</div>
+                <div class="stat-subtitle">Matriculados en el sistema</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-title">Empresas Habilitadas</div>
+                    <span style="font-size: 1.5rem;">🏢</span>
+                </div>
+                <div class="stat-value">309</div>
+                <div class="stat-subtitle">Según listado oficial 31/07/2025</div>
+            </div>
+            
+            <div class="stat-card warning">
+                <div class="stat-header">
+                    <div class="stat-title">Pagos Históricos</div>
+                    <span style="font-size: 1.5rem;">💰</span>
+                </div>
+                <div class="stat-value">123,854</div>
+                <div class="stat-subtitle">Registros desde 1970</div>
+            </div>
+            
+            <div class="stat-card danger">
+                <div class="stat-header">
+                    <div class="stat-title">Sanciones Activas</div>
+                    <span style="font-size: 1.5rem;">⚠️</span>
+                </div>
+                <div class="stat-value">165</div>
+                <div class="stat-subtitle">De 435 sanciones totales</div>
+            </div>
+        </div>
+
+        <!-- Acciones rápidas -->
+        <div class="quick-actions">
+            <a href="#" class="action-btn" onclick="buscarProfesional()">Buscar Profesional</a>
+            <a href="#" class="action-btn" onclick="nuevaMatricula()">Nueva Matrícula</a>
+            <a href="#" class="action-btn" onclick="generarCHP()">Generar CHP</a>
+            <a href="#" class="action-btn" onclick="gestionPagos()">Gestión Pagos</a>
+            <a href="#" class="action-btn" onclick="reportesMensuales()">Reportes</a>
+            <a href="#" class="action-btn" onclick="administrarEmpresas()">Empresas</a>
+        </div>
+
+        <!-- Panel principal -->
+        <div class="dashboard-grid">
+            <div class="main-panel">
+                <h2 class="panel-title">Estadísticas del Sistema</h2>
+                <div class="chart-container">
+                    <div style="text-align: center;">
+                        <h3>Gráficos de Gestión</h3>
+                        <p>Evolución de matrículas, pagos y empresas</p>
+                        <small>Próximamente: gráficos interactivos con Chart.js</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-panel">
+                <!-- Actividad reciente -->
+                <div class="recent-activity">
+                    <h2 class="panel-title">Actividad Reciente</h2>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon payment">💳</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Pago procesado</div>
+                            <div class="activity-time">Matrícula 8144 - hace 2 horas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon professional">👤</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Nueva solicitud CHP</div>
+                            <div class="activity-time">Ing. MOLINA, RICARDO - hace 5 horas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon company">🏗️</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Empresa habilitada</div>
+                            <div class="activity-time">CONSTRUCTORA ABC - ayer</div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon payment">💰</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Plan de pago aprobado</div>
+                            <div class="activity-time">3 profesionales - hace 2 días</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enlaces externos -->
+                <div class="external-links">
+                    <h2 class="panel-title">Consultas Públicas</h2>
+                    
+                    <a href="https://www.copigmza.org.ar/lista-de-profesionales/" target="_blank" class="external-link">
+                        <div class="link-title">Profesionales Matriculados</div>
+                        <div class="link-description">Consulta pública oficial del COPIG</div>
+                    </a>
+                    
+                    <a href="https://www.copigmza.org.ar/" target="_blank" class="external-link">
+                        <div class="link-title">Empresas Habilitadas</div>
+                        <div class="link-description">Listado oficial actualizado</div>
+                    </a>
+                    
+                    <a href="https://www.copigmza.org.ar/matriculacion/" target="_blank" class="external-link">
+                        <div class="link-title">Información de Matriculación</div>
+                        <div class="link-description">Requisitos y procedimientos</div>
+                    </a>
+                    
+                    <a href="https://www.copigmza.org.ar/honorarios-profesionales/" target="_blank" class="external-link">
+                        <div class="link-title">Aranceles Vigentes</div>
+                        <div class="link-description">Tabla de honorarios profesionales</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funciones para acciones rápidas
+        function buscarProfesional() {
+            const numero = prompt("Ingrese número de matrícula o documento:");
+            if (numero) {
+                alert(`Buscando profesional: ${numero}\n(Funcionalidad en desarrollo)`);
+            }
+        }
+
+        function nuevaMatricula() {
+            alert("Módulo de nueva matriculación\n(Funcionalidad en desarrollo)");
+        }
+
+        function generarCHP() {
+            alert("Generador de Certificados de Habilitación Profesional\n(Funcionalidad en desarrollo)");
+        }
+
+        function gestionPagos() {
+            alert("Sistema de gestión de pagos\n(Funcionalidad en desarrollo)");
+        }
+
+        function reportesMensuales() {
+            alert("Generador de reportes mensuales\n(Funcionalidad en desarrollo)");
+        }
+
+        function administrarEmpresas() {
+            alert("Administración de empresas habilitadas\n(Funcionalidad en desarrollo)");
+        }
+
+        // Actualizar estadísticas cada 30 segundos (simulado)
+        function actualizarEstadisticas() {
+            // En una implementación real, esto haría llamadas AJAX al backend
+            console.log("Actualizando estadísticas...");
+        }
+
+        // Simular actividad en tiempo real
+        setInterval(actualizarEstadisticas, 30000);
+
+        // Mensaje de bienvenida
+        console.log("Dashboard COPIG cargado. Sistema de gestión integral para el Consejo Profesional de Ingenieros y Geólogos de Mendoza.");
+    </script>
+</body>
+</html>

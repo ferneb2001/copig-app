@@ -1,0 +1,74 @@
+procedure asis 
+* Planilla de asistencia
+set talk off
+clear
+set printer to
+set console on
+set device to screen
+wop=0
+@ 3,20 say 'PLANILLA DE ASISTENCIA'
+@ 5,15 SAY 'Indique copias'
+@ 10,50 get wop pict "9"
+read
+*if lastkey()<>27
+*   do case
+*      case wop = 0
+*         use splocal order cod
+*      case wop = 1
+*         use splocal order nombre
+*   endcase
+*else
+*   wsigue="n"
+*endif               
+   set printer to lpt1
+   set console off
+   set printer on
+   set device to printer
+   fila = 1
+   whoja= 0
+   do cabeza
+   do while .not. whoja = wop
+      if fila = 66 
+         eject
+         whoja = whoja + 1
+         do cabeza
+         fila = 1
+         loop
+      endif
+      ? chr(218) at 3
+      ?? replicate(chr(196),75)
+      ?? chr(191)
+      for RENGLON = 1 to 30
+          ? chr(179) at 3
+          ?? chr(179) at 79
+          ? chr(179) at 3
+          ?? replicate(chr(196),75)
+          ?? chr(179)
+*   ?? cpost  at 30
+*   ?? dpto at 43
+*   skip
+      endfor
+      ? chr(179) at 3
+      ?? chr(179) at 79
+      ? chr(192) at 3
+      ?? replicate(chr(196),75)
+      ?? chr(217)
+      eject
+      whoja = whoja + 1
+   enddo
+*   eject
+   set device to screen
+   set printer to
+close all
+
+procedure cabeza
+*? chr(27)+chr(14)
+? ' ASISTENCIA DE ASOCIADOS' AT 21
+? ' -----------------------' AT 21
+? ' '
+*? CHR(27)+CHR(20)
+? 'Fecha:  .../.../...' at 60
+? ' Apellido  Nombres ' AT 3
+?? 'Firma             Observaciones' AT 43
+   
+   

@@ -1,0 +1,30 @@
+
+BACKUP INFORMACIÓN ADICIONAL - 2025-09-05T02:04:21.671Z
+================================================================
+
+PROPÓSITO: Backup antes de migrar información adicional desde JSON FoxPro
+
+UBICACIÓN: C:\copig-app\backup_migracion_info_adicional_2025-09-05T02-04-21-183Z\backup_completo.json
+TAMAÑO: 23.63 MB
+
+TABLAS RESPALDADAS:
+- profesionales: 5764 registros
+- matriculas: 5769 registros
+- foxpro_matricula_profesional_map: 5377 registros
+- titulos_profesionales: 9 registros
+- vista_profesionales_estados: 5770 registros
+
+METADATOS:
+- Total profesionales: 5764
+- Total matrículas: 5769  
+- Total registros FoxPro: 5377
+
+VERIFICACIÓN:
+✅ Backup completado exitosamente
+✅ Archivo verificado: 23.63 MB
+✅ Listo para proceder con migración
+
+================================================================
+PARA RESTAURAR (si necesario):
+node restaurar_backup_informacion_adicional.js "C:\copig-app\backup_migracion_info_adicional_2025-09-05T02-04-21-183Z\backup_completo.json"
+        

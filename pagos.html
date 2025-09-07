@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pagos - COPIG</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #333;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-header {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-header:hover {
+            background: #0056b3;
+        }
+
+        .btn-header.export {
+            background: #28a745;
+        }
+
+        .btn-header.export:hover {
+            background: #218838;
+        }
+
+        .container {
+            background: white;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            min-height: 80vh;
+            padding: 0;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .stat-card.green {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+
+        .stat-card.orange {
+            background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+        }
+
+        .stat-card.red {
+            background: linear-gradient(135deg, #dc3545 0%, #e83e8c 100%);
+        }
+
+        .filters {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .filters select, .filters input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .filters button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            height: fit-content;
+        }
+
+        .filters button:hover {
+            background: #218838;
+        }
+
+        .filters button.secondary {
+            background: #6c757d;
+            margin-left: 10px;
+        }
+
+        .filters button.secondary:hover {
+            background: #5a6268;
+        }
+
+        .content-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+        }
+
+        .tab.active {
+            border-bottom-color: #007bff;
+            color: #007bff;
+        }
+
+        .tab:hover {
+            background: #f8f9fa;
+        }
+
+        .tab-content {
+            padding: 20px;
+            min-height: 400px;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .pagos-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .pagos-table th,
+        .pagos-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .pagos-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        .pagos-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .estado-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .estado-pagado { background: #d4edda; color: #155724; }
+        .estado-pendiente { background: #fff3cd; color: #856404; }
+        .estado-vencido { background: #f8d7da; color: #721c24; }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .pagination button {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            background: #f8f9fa;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination .current {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .page-selector {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        .page-selector input {
+            width: 80px;
+            padding: 4px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .page-info {
+            font-size: 13px;
+            color: #666;
+            margin-left: 15px;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .chart-container {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .export-options {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 10px;
+            right: 0;
+            top: 100%;
+            z-index: 1000;
+            min-width: 150px;
+        }
+
+        .export-option {
+            display: block;
+            padding: 8px 12px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 3px;
+            margin: 2px 0;
+        }
+
+        .export-option:hover {
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .filters {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .content-tabs {
+                overflow-x: auto;
+            }
+            
+            .tab {
+                white-space: nowrap;
+            }
+            
+            .pagos-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Gestión de Pagos</h1>
+        <div class="header-buttons">
+            <div style="position: relative;">
+                <button class="btn-header export" onclick="toggleExportOptions()">
+                    📊 Exportar
+                </button>
+                <div id="exportOptions" class="export-options">
+                    <a href="#" class="export-option" onclick="exportarDatos('excel')">📈 Excel (.xlsx)</a>
+                    <a href="#" class="export-option" onclick="exportarDatos('csv')">📄 CSV</a>
+                    <a href="#" class="export-option" onclick="exportarDatos('pdf')">📋 PDF</a>
+                </div>
+            </div>
+            <a href="/admin" class="btn-header">← Volver al Panel</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Estadísticas generales -->
+        <div class="stats-row">
+            <div class="stat-card green">
+                <h3 id="totalRecaudado">$0</h3>
+                <p>Total Recaudado</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalPagos">0</h3>
+                <p>Total Pagos</p>
+            </div>
+            <div class="stat-card orange">
+                <h3 id="pagosPendientes">0</h3>
+                <p>Pagos Pendientes</p>
+            </div>
+            <div class="stat-card red">
+                <h3 id="pagosVencidos">0</h3>
+                <p>Pagos Vencidos</p>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters">
+            <div class="filter-group">
+                <label for="filtroMatricula">Matrícula</label>
+                <input type="text" id="filtroMatricula" placeholder="Buscar por matrícula...">
+            </div>
+            <div class="filter-group">
+                <label for="filtroFechaDesde">Desde</label>
+                <input type="date" id="filtroFechaDesde">
+            </div>
+            <div class="filter-group">
+                <label for="filtroFechaHasta">Hasta</label>
+                <input type="date" id="filtroFechaHasta">
+            </div>
+            <div class="filter-group">
+                <label for="filtroEstado">Estado</label>
+                <select id="filtroEstado">
+                    <option value="">Todos los estados</option>
+                    <option value="Pagado">Pagado</option>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Vencido">Vencido</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <button onclick="aplicarFiltros()">Filtrar</button>
+                <button class="secondary" onclick="limpiarFiltros()">Limpiar</button>
+            </div>
+        </div>
+
+        <!-- Pestañas -->
+        <div class="content-tabs">
+            <div class="tab active" onclick="cambiarTab('pagos')">Historial de Pagos</div>
+            <div class="tab" onclick="cambiarTab('matriculas')">Por Matrícula</div>
+            <div class="tab" onclick="cambiarTab('reportes')">Reportes</div>
+            <div class="tab" onclick="cambiarTab('estadisticas')">Estadísticas</div>
+        </div>
+
+        <!-- Contenido de pestañas -->
+        <div class="tab-content">
+            <!-- Historial de Pagos -->
+            <div id="tabPagos" class="tab-pane active">
+                <div id="loadingPagos" class="loading">
+                    <div class="spinner"></div>
+                    <p>Cargando historial de pagos...</p>
+                </div>
+                
+                <div id="pagosList"></div>
+                
+                <div id="paginationPagos" class="pagination" style="display: none;">
+                    <button id="btnFirstPagos" onclick="irAPaginaPagos(1)">Primera</button>
+                    <button id="btnPrevPagos" onclick="cambiarPaginaPagos(-1)">Anterior</button>
+                    <div class="page-selector">
+                        <span>Página</span>
+                        <input type="number" id="pageInputPagos" min="1" value="1" onchange="irAPaginaPagos(parseInt(this.value))">
+                        <span id="pageOfPagos">de 1</span>
+                    </div>
+                    <button id="btnNextPagos" onclick="cambiarPaginaPagos(1)">Siguiente</button>
+                    <button id="btnLastPagos" onclick="irAPaginaPagos(0)">Última</button>
+                    <span id="pageInfoPagos" class="page-info">Mostrando 1-50 de 0 registros</span>
+                </div>
+            </div>
+
+            <!-- Por Matrícula -->
+            <div id="tabMatriculas" class="tab-pane">
+                <div id="loadingMatriculas" class="loading">
+                    <div class="spinner"></div>
+                    <p>Cargando datos por matrícula...</p>
+                </div>
+                
+                <div id="matriculasList"></div>
+                
+                <div id="paginationMatriculas" class="pagination" style="display: none;">
+                    <button id="btnPrevMatriculas" onclick="cambiarPaginaMatriculas(-1)">Anterior</button>
+                    <span id="pageInfoMatriculas">Página 1 de 1</span>
+                    <button id="btnNextMatriculas" onclick="cambiarPaginaMatriculas(1)">Siguiente</button>
+                </div>
+            </div>
+
+            <!-- Reportes -->
+            <div id="tabReportes" class="tab-pane">
+                <div class="chart-container">
+                    <h3 style="text-align: center; margin-bottom: 20px;">📊 Evolución de Pagos por Mes</h3>
+                    <canvas id="paymentsEvolutionChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3 style="text-align: center; margin-bottom: 20px;">📈 Distribución por Concepto de Pago</h3>
+                    <canvas id="conceptDistributionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Estadísticas -->
+            <div id="tabEstadisticas" class="tab-pane">
+                <div id="loadingEstadisticas" class="loading">
+                    <div class="spinner"></div>
+                    <p>Calculando estadísticas...</p>
+                </div>
+                
+                <div id="estadisticasContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let pagosData = [];
+        let matriculasData = [];
+        let paginaActualPagos = 1;
+        let paginaActualMatriculas = 1;
+        let totalPaginasPagos = 1;
+        let totalPaginasMatriculas = 1;
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarEstadisticasGenerales();
+            cargarPagos();
+            
+            // Configurar fechas por defecto (últimos 30 días)
+            const fechaHasta = new Date();
+            const fechaDesde = new Date();
+            fechaDesde.setMonth(fechaDesde.getMonth() - 1);
+            
+            document.getElementById('filtroFechaDesde').value = fechaDesde.toISOString().split('T')[0];
+            document.getElementById('filtroFechaHasta').value = fechaHasta.toISOString().split('T')[0];
+        });
+
+        // Gestión de pestañas
+        function cambiarTab(tabName) {
+            // Desactivar todas las pestañas
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+            
+            // Activar pestaña seleccionada
+            event.target.classList.add('active');
+            document.getElementById(`tab${tabName.charAt(0).toUpperCase() + tabName.slice(1)}`).classList.add('active');
+            
+            // Cargar contenido según la pestaña
+            switch(tabName) {
+                case 'pagos':
+                    if (pagosData.length === 0) cargarPagos();
+                    break;
+                case 'matriculas':
+                    cargarMatriculas();
+                    break;
+                case 'reportes':
+                    cargarReportes();
+                    break;
+                case 'estadisticas':
+                    cargarEstadisticas();
+                    break;
+            }
+        }
+
+        // Cargar estadísticas generales
+        async function cargarEstadisticasGenerales() {
+            try {
+                const response = await fetch('/api/pagos/estadisticas-generales');
+                const stats = await response.json();
+                
+                document.getElementById('totalRecaudado').textContent = `$${stats.totalRecaudado.toLocaleString()}`;
+                document.getElementById('totalPagos').textContent = stats.totalPagos.toLocaleString();
+                document.getElementById('pagosPendientes').textContent = stats.pagosPendientes.toLocaleString();
+                document.getElementById('pagosVencidos').textContent = stats.pagosVencidos.toLocaleString();
+                
+            } catch (error) {
+                console.error('Error cargando estadísticas generales:', error);
+            }
+        }
+
+        // Cargar historial de pagos
+        async function cargarPagos(pagina = 1) {
+            const loading = document.getElementById('loadingPagos');
+            const container = document.getElementById('pagosList');
+            const pagination = document.getElementById('paginationPagos');
+            
+            loading.style.display = 'block';
+            container.innerHTML = '';
+            pagination.style.display = 'none';
+            
+            try {
+                const filtros = obtenerFiltros();
+                const params = new URLSearchParams({
+                    page: pagina,
+                    limit: 50,
+                    ...filtros
+                });
+                
+                const response = await fetch(`/api/pagos/historial?${params}`);
+                const data = await response.json();
+                
+                pagosData = data.pagos;
+                paginaActualPagos = data.pagination.currentPage;
+                totalPaginasPagos = data.pagination.totalPages;
+                
+                loading.style.display = 'none';
+                mostrarPagos();
+                mostrarPaginacionPagos(data.pagination);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                loading.style.display = 'none';
+                container.innerHTML = '<div class="no-data">Error al cargar el historial de pagos</div>';
+            }
+        }
+
+        // Mostrar pagos en tabla
+        function mostrarPagos() {
+            const container = document.getElementById('pagosList');
+            
+            if (pagosData.length === 0) {
+                container.innerHTML = '<div class="no-data">No se encontraron pagos con los filtros aplicados</div>';
+                return;
+            }
+            
+            const tabla = `
+                <table class="pagos-table">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Matrícula</th>
+                            <th>Profesional</th>
+                            <th>Concepto</th>
+                            <th>Importe</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${pagosData.map(pago => {
+                            const fecha = new Date(pago.fecha_pago).toLocaleDateString();
+                            const estadoClass = `estado-${pago.estado.toLowerCase()}`;
+                            return `
+                                <tr>
+                                    <td>${fecha}</td>
+                                    <td>${pago.matricula}</td>
+                                    <td>${pago.profesional_nombre || 'Sin nombre'}</td>
+                                    <td>${pago.concepto}</td>
+                                    <td>$${pago.importe.toLocaleString()}</td>
+                                    <td><span class="estado-badge ${estadoClass}">${pago.estado}</span></td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = tabla;
+        }
+
+        // Cargar datos por matrícula
+        async function cargarMatriculas(pagina = 1) {
+            const loading = document.getElementById('loadingMatriculas');
+            const container = document.getElementById('matriculasList');
+            const pagination = document.getElementById('paginationMatriculas');
+            
+            loading.style.display = 'block';
+            container.innerHTML = '';
+            pagination.style.display = 'none';
+            
+            try {
+                const filtros = obtenerFiltros();
+                const params = new URLSearchParams({
+                    page: pagina,
+                    limit: 25,
+                    ...filtros
+                });
+                
+                const response = await fetch(`/api/pagos/por-matricula?${params}`);
+                const data = await response.json();
+                
+                matriculasData = data.matriculas;
+                paginaActualMatriculas = data.pagination.currentPage;
+                totalPaginasMatriculas = data.pagination.totalPages;
+                
+                loading.style.display = 'none';
+                mostrarMatriculas();
+                mostrarPaginacionMatriculas(data.pagination);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                loading.style.display = 'none';
+                container.innerHTML = '<div class="no-data">Error al cargar datos por matrícula</div>';
+            }
+        }
+
+        // Mostrar datos por matrícula
+        function mostrarMatriculas() {
+            const container = document.getElementById('matriculasList');
+            
+            if (matriculasData.length === 0) {
+                container.innerHTML = '<div class="no-data">No se encontraron matrículas con los filtros aplicados</div>';
+                return;
+            }
+            
+            const tabla = `
+                <table class="pagos-table">
+                    <thead>
+                        <tr>
+                            <th>Matrícula</th>
+                            <th>Profesional</th>
+                            <th>Total Pagos</th>
+                            <th>Total Importe</th>
+                            <th>Último Pago</th>
+                            <th>Pendientes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${matriculasData.map(matricula => {
+                            const ultimoPago = matricula.ultimo_pago ? new Date(matricula.ultimo_pago).toLocaleDateString() : 'Nunca';
+                            return `
+                                <tr>
+                                    <td>${matricula.matricula}</td>
+                                    <td>${matricula.profesional_nombre || 'Sin nombre'}</td>
+                                    <td>${matricula.total_pagos}</td>
+                                    <td>$${matricula.total_importe.toLocaleString()}</td>
+                                    <td>${ultimoPago}</td>
+                                    <td>${matricula.pagos_pendientes}</td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            container.innerHTML = tabla;
+        }
+
+        // Cargar estadísticas detalladas
+        async function cargarEstadisticas() {
+            const loading = document.getElementById('loadingEstadisticas');
+            const container = document.getElementById('estadisticasContent');
+            
+            loading.style.display = 'block';
+            container.innerHTML = '';
+            
+            try {
+                const filtros = obtenerFiltros();
+                const params = new URLSearchParams(filtros);
+                
+                const response = await fetch(`/api/pagos/estadisticas?${params}`);
+                const stats = await response.json();
+                
+                loading.style.display = 'none';
+                mostrarEstadisticas(stats);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                loading.style.display = 'none';
+                container.innerHTML = '<div class="no-data">Error al cargar estadísticas</div>';
+            }
+        }
+
+        // Mostrar estadísticas detalladas
+        function mostrarEstadisticas(stats) {
+            const container = document.getElementById('estadisticasContent');
+            
+            const html = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                        <h3>Resumen del Período</h3>
+                        <p><strong>Pagos realizados:</strong> ${stats.pagosPeriodo}</p>
+                        <p><strong>Importe total:</strong> $${stats.importePeriodo.toLocaleString()}</p>
+                        <p><strong>Promedio por pago:</strong> $${stats.promedioImporte.toLocaleString()}</p>
+                        <p><strong>Matrícula más activa:</strong> ${stats.matriculaMasActiva || 'N/A'}</p>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                        <h3>Por Concepto</h3>
+                        ${stats.porConcepto.map(concepto => `
+                            <p><strong>${concepto.concepto}:</strong> ${concepto.cantidad} pagos ($${concepto.total.toLocaleString()})</p>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                        <h3>Tendencia Mensual</h3>
+                        ${stats.porMes.map(mes => `
+                            <p><strong>${mes.mes}:</strong> ${mes.cantidad} pagos ($${mes.total.toLocaleString()})</p>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                        <h3>Indicadores</h3>
+                        <p><strong>Tasa de cobranza:</strong> ${stats.tasaCobranza.toFixed(1)}%</p>
+                        <p><strong>Días prom. vencimiento:</strong> ${stats.diasPromedioVencimiento}</p>
+                        <p><strong>Recaudación vs. objetivo:</strong> ${stats.cumplimientoObjetivo.toFixed(1)}%</p>
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // Obtener filtros aplicados
+        function obtenerFiltros() {
+            return {
+                matricula: document.getElementById('filtroMatricula').value,
+                fechaDesde: document.getElementById('filtroFechaDesde').value,
+                fechaHasta: document.getElementById('filtroFechaHasta').value,
+                estado: document.getElementById('filtroEstado').value
+            };
+        }
+
+        // Aplicar filtros
+        function aplicarFiltros() {
+            const tabActiva = document.querySelector('.tab.active').textContent.toLowerCase();
+            
+            switch(tabActiva) {
+                case 'historial de pagos':
+                    cargarPagos(1);
+                    break;
+                case 'por matrícula':
+                    cargarMatriculas(1);
+                    break;
+                case 'estadísticas':
+                    cargarEstadisticas();
+                    break;
+            }
+            
+            cargarEstadisticasGenerales();
+        }
+
+        // Limpiar filtros
+        function limpiarFiltros() {
+            document.getElementById('filtroMatricula').value = '';
+            document.getElementById('filtroEstado').value = '';
+            
+            const fechaHasta = new Date();
+            const fechaDesde = new Date();
+            fechaDesde.setMonth(fechaDesde.getMonth() - 1);
+            
+            document.getElementById('filtroFechaDesde').value = fechaDesde.toISOString().split('T')[0];
+            document.getElementById('filtroFechaHasta').value = fechaHasta.toISOString().split('T')[0];
+            
+            aplicarFiltros();
+        }
+
+        // Paginación para pagos
+        function mostrarPaginacionPagos(pagination) {
+            const paginationDiv = document.getElementById('paginationPagos');
+            const pageInfo = document.getElementById('pageInfoPagos');
+            const btnFirst = document.getElementById('btnFirstPagos');
+            const btnPrev = document.getElementById('btnPrevPagos');
+            const btnNext = document.getElementById('btnNextPagos');
+            const btnLast = document.getElementById('btnLastPagos');
+            const pageInput = document.getElementById('pageInputPagos');
+            const pageOf = document.getElementById('pageOfPagos');
+            
+            const currentPage = pagination.currentPage || paginaActualPagos;
+            const totalPages = pagination.totalPages || totalPaginasPagos;
+            const totalRecords = pagination.totalRecords || 0;
+            const startRecord = pagination.startRecord || 1;
+            const endRecord = pagination.endRecord || 0;
+            
+            // Update pagination info
+            pageInfo.textContent = `Mostrando ${startRecord}-${endRecord} de ${totalRecords.toLocaleString()} registros`;
+            pageInput.value = currentPage;
+            pageInput.max = totalPages;
+            pageOf.textContent = `de ${totalPages.toLocaleString()}`;
+            
+            // Update button states
+            btnFirst.disabled = !pagination.hasPrev;
+            btnPrev.disabled = !pagination.hasPrev;
+            btnNext.disabled = !pagination.hasNext;
+            btnLast.disabled = !pagination.hasNext;
+            
+            // Update global variables
+            paginaActualPagos = currentPage;
+            totalPaginasPagos = totalPages;
+            
+            paginationDiv.style.display = 'flex';
+        }
+
+        function cambiarPaginaPagos(direccion) {
+            const nuevaPagina = paginaActualPagos + direccion;
+            if (nuevaPagina >= 1 && nuevaPagina <= totalPaginasPagos) {
+                cargarPagos(nuevaPagina);
+            }
+        }
+
+        function irAPaginaPagos(pagina) {
+            // Handle "Last" button (pagina = 0)
+            if (pagina === 0) {
+                pagina = totalPaginasPagos;
+            }
+            
+            if (pagina >= 1 && pagina <= totalPaginasPagos) {
+                cargarPagos(pagina);
+            } else {
+                // Reset input to current page if invalid
+                document.getElementById('pageInputPagos').value = paginaActualPagos;
+            }
+        }
+
+        // Paginación para matrículas
+        function mostrarPaginacionMatriculas(pagination) {
+            const paginationDiv = document.getElementById('paginationMatriculas');
+            const pageInfo = document.getElementById('pageInfoMatriculas');
+            const btnPrev = document.getElementById('btnPrevMatriculas');
+            const btnNext = document.getElementById('btnNextMatriculas');
+            
+            const currentPage = pagination.currentPage || paginaActualMatriculas;
+            const totalPages = pagination.totalPages || totalPaginasMatriculas;
+            const totalRecords = pagination.totalRecords || 0;
+            const startRecord = pagination.startRecord || 1;
+            const endRecord = pagination.endRecord || 0;
+            
+            pageInfo.textContent = `Mostrando ${startRecord}-${endRecord} de ${totalRecords.toLocaleString()} matrículas`;
+            btnPrev.disabled = !pagination.hasPrev;
+            btnNext.disabled = !pagination.hasNext;
+            
+            // Update global variables
+            paginaActualMatriculas = currentPage;
+            totalPaginasMatriculas = totalPages;
+            
+            paginationDiv.style.display = 'flex';
+        }
+
+        function cambiarPaginaMatriculas(direccion) {
+            const nuevaPagina = paginaActualMatriculas + direccion;
+            if (nuevaPagina >= 1 && nuevaPagina <= totalPaginasMatriculas) {
+                cargarMatriculas(nuevaPagina);
+            }
+        }
+
+        // Funciones de exportación
+        function toggleExportOptions() {
+            const options = document.getElementById('exportOptions');
+            options.style.display = options.style.display === 'block' ? 'none' : 'block';
+        }
+
+        async function exportarDatos(formato) {
+            try {
+                const filtros = obtenerFiltros();
+                const params = new URLSearchParams({
+                    formato: formato,
+                    ...filtros
+                });
+                
+                const response = await fetch(`/api/pagos/exportar?${params}`);
+                
+                if (!response.ok) {
+                    throw new Error('Error en la exportación');
+                }
+                
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                
+                const fecha = new Date().toISOString().split('T')[0];
+                a.download = `pagos_copig_${fecha}.${formato === 'excel' ? 'xlsx' : formato}`;
+                
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+                
+                document.getElementById('exportOptions').style.display = 'none';
+                
+            } catch (error) {
+                console.error('Error exportando:', error);
+                alert('Error al exportar los datos. Inténtelo nuevamente.');
+            }
+        }
+
+        // Variables globales para los gráficos
+        let paymentsChart = null;
+        let conceptChart = null;
+
+        // Cargar reportes con gráficos
+        async function cargarReportes() {
+            try {
+                const filtros = obtenerFiltros();
+                const params = new URLSearchParams(filtros);
+                
+                const response = await fetch(`/api/pagos/estadisticas?${params}`);
+                const stats = await response.json();
+                
+                if (stats.success) {
+                    crearGraficoEvolucion(stats.porMes);
+                    crearGraficoConceptos(stats.porConcepto);
+                }
+                
+            } catch (error) {
+                console.error('Error cargando reportes:', error);
+            }
+        }
+
+        // Crear gráfico de evolución de pagos por mes
+        function crearGraficoEvolucion(datosEvolucion) {
+            const ctx = document.getElementById('paymentsEvolutionChart').getContext('2d');
+            
+            // Destruir gráfico anterior si existe
+            if (paymentsChart) {
+                paymentsChart.destroy();
+            }
+            
+            // Preparar datos - ordenar por mes
+            const datosOrdenados = datosEvolucion.slice().reverse();
+            const labels = datosOrdenados.map(item => item.mes);
+            const cantidades = datosOrdenados.map(item => item.cantidad);
+            const importes = datosOrdenados.map(item => item.total);
+            
+            paymentsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Cantidad de Pagos',
+                        data: cantidades,
+                        borderColor: '#007bff',
+                        backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                        tension: 0.4,
+                        yAxisID: 'y'
+                    }, {
+                        label: 'Importe Total ($)',
+                        data: importes,
+                        borderColor: '#28a745',
+                        backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                        tension: 0.4,
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Mes'
+                            }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Cantidad de Pagos'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Importe Total ($)'
+                            },
+                            grid: {
+                                drawOnChartArea: false,
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Crear gráfico de distribución por concepto
+        function crearGraficoConceptos(datosConceptos) {
+            const ctx = document.getElementById('conceptDistributionChart').getContext('2d');
+            
+            // Destruir gráfico anterior si existe
+            if (conceptChart) {
+                conceptChart.destroy();
+            }
+            
+            // Preparar datos - tomar los top 8 conceptos
+            const topConceptos = datosConceptos.slice(0, 8);
+            const labels = topConceptos.map(item => item.concepto);
+            const totales = topConceptos.map(item => item.total);
+            
+            // Colores para el gráfico de dona
+            const colors = [
+                '#007bff', '#28a745', '#ffc107', '#dc3545',
+                '#6f42c1', '#fd7e14', '#20c997', '#6c757d'
+            ];
+            
+            conceptChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: totales,
+                        backgroundColor: colors,
+                        borderColor: colors.map(color => color + 'CC'),
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const percentage = ((value / totales.reduce((a, b) => a + b, 0)) * 100).toFixed(1);
+                                    return `${label}: $${value.toLocaleString()} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Cerrar dropdown de exportación al hacer clic fuera
+        document.addEventListener('click', function(event) {
+            const exportButton = event.target.closest('.export');
+            const exportOptions = document.getElementById('exportOptions');
+            
+            if (!exportButton && !exportOptions.contains(event.target)) {
+                exportOptions.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

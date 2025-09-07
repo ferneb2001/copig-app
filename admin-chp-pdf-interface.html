@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COPIG - Gestión CHP según PDF</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* BANDEJA DE ENTRADA */
+        .inbox-section {
+            padding: 20px 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .inbox-title {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .inbox-title i {
+            margin-right: 10px;
+            font-size: 20px;
+            color: #3498db;
+        }
+
+        .solicitudes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .solicitud-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .solicitud-card:hover {
+            border-color: #3498db;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .solicitud-numero {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+
+        .solicitud-cliente {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .solicitud-estado {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        .estado-PENDIENTE { background: #ffeb3b; color: #f57f17; }
+        .estado-EN_REVISION { background: #2196f3; color: white; }
+        .estado-ESPERANDO_PAGO { background: #ff9800; color: white; }
+        .estado-COMPROBANTE_CARGADO { background: #9c27b0; color: white; }
+        .estado-LISTA_PARA_EMITIR { background: #4caf50; color: white; }
+        .estado-EMITIDO { background: #795548; color: white; }
+
+        /* MODAL DE REVISIÓN - 3 SECCIONES DEL PDF */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 95%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .close:hover { opacity: 1; }
+
+        /* LAS 3 SECCIONES DEL PDF */
+        .three-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            min-height: 500px;
+        }
+
+        .section {
+            padding: 25px;
+            border-right: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-right: none;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            font-size: 18px;
+            color: #3498db;
+        }
+
+        /* SECCIÓN 1: REVISAR Y CORREGIR */
+        .section1 {
+            background: #f8f9fa;
+        }
+
+        .datos-obra {
+            margin-bottom: 20px;
+        }
+
+        .campo {
+            margin-bottom: 15px;
+        }
+
+        .campo label {
+            display: block;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .campo input, .campo textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .campo textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .editable {
+            border: 2px solid #3498db !important;
+            background: white !important;
+        }
+
+        .readonly {
+            background: #f5f5f5;
+            cursor: not-allowed;
+        }
+
+        /* SECCIÓN 2: DOCUMENTOS */
+        .section2 {
+            background: #fff;
+        }
+
+        .documentos-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .documento-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            background: #f8f9fa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .documento-item:hover {
+            border-color: #3498db;
+            background: #e3f2fd;
+        }
+
+        .documento-icon {
+            font-size: 32px;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .documento-nombre {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .documento-estado {
+            font-size: 12px;
+            color: #7f8c8d;
+        }
+
+        /* SECCIÓN 3: ARANCEL Y FACTURA */
+        .section3 {
+            background: #f0f8ff;
+        }
+
+        .arancel-form {
+            margin-bottom: 20px;
+        }
+
+        .precio-input {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .precio-input:focus {
+            border-color: #27ae60;
+            box-shadow: 0 0 10px rgba(39, 174, 96, 0.3);
+        }
+
+        .boton-principal {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .boton-principal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+        }
+
+        .boton-secundario {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .boton-secundario:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(52, 152, 219, 0.4);
+        }
+
+        .boton-peligro {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .boton-peligro:hover {
+            box-shadow: 0 3px 10px rgba(231, 76, 60, 0.4);
+        }
+
+        /* ESTADOS DE LA SOLICITUD */
+        .estado-info {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .estado-PENDIENTE-info { background: #fff3cd; border: 1px solid #ffeaa7; }
+        .estado-EN_REVISION-info { background: #cce5ff; border: 1px solid #74b9ff; }
+        .estado-ESPERANDO_PAGO-info { background: #ffe0b2; border: 1px solid #ffab40; }
+
+        /* RESPONSIVOS */
+        @media (max-width: 1024px) {
+            .three-sections {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .section {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+        }
+
+        /* ICONOS */
+        .fa { 
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+
+        /* Loader */
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .volver-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(52, 152, 219, 0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .volver-btn:hover {
+            background: rgba(41, 128, 185, 1);
+            transform: scale(1.05);
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <a href="/admin" class="volver-btn">
+        <i class="fas fa-arrow-left"></i> Volver al Admin
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <h1>Gestión CHP - Flujo PDF</h1>
+            <div class="subtitle">Panel de revisión, corrección y facturación según propuesta de flujo</div>
+        </div>
+
+        <!-- BANDEJA DE ENTRADA -->
+        <div class="inbox-section">
+            <div class="inbox-title">
+                <i class="fas fa-inbox"></i>
+                Bandeja de Entrada - Solicitudes CHP
+            </div>
+            <div id="solicitudesContainer" class="loading">
+                <div class="spinner"></div>
+                <p>Cargando solicitudes...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE REVISIÓN (3 SECCIONES DEL PDF) -->
+    <div id="revisionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Revisión de Solicitud CHP</h2>
+                <span class="close" onclick="cerrarModal()">&times;</span>
+            </div>
+
+            <div class="three-sections">
+                <!-- SECCIÓN 1: REVISAR Y CORREGIR DATOS -->
+                <div class="section section1">
+                    <div class="section-title">
+                        <i class="fas fa-edit"></i>
+                        1. Revisar y Corregir Datos de la Encomienda
+                    </div>
+
+                    <div id="estadoActual" class="estado-info">
+                        <strong>Estado actual: PENDIENTE</strong>
+                    </div>
+
+                    <div class="datos-obra">
+                        <div class="campo">
+                            <label>Comitente:</label>
+                            <input type="text" id="comitenteField" class="readonly" readonly>
+                        </div>
+
+                        <div class="campo">
+                            <label>CUIT Comitente:</label>
+                            <input type="text" id="cuitField" class="readonly" readonly>
+                        </div>
+
+                        <div class="campo">
+                            <label>Proyecto:</label>
+                            <input type="text" id="proyectoField" class="readonly" readonly>
+                        </div>
+
+                        <div class="campo">
+                            <label>Ubicación de Obra:</label>
+                            <input type="text" id="ubicacionField" class="readonly" readonly>
+                        </div>
+
+                        <div class="campo">
+                            <label><strong>Descripción de la Tarea Profesional (EDITABLE):</strong></label>
+                            <textarea id="descripcionField" class="editable" 
+                                placeholder="Edite la descripción si detecta errores o inconsistencias según los protocolos del COPIG..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 2: VERIFICAR DOCUMENTACIÓN -->
+                <div class="section section2">
+                    <div class="section-title">
+                        <i class="fas fa-file-pdf"></i>
+                        2. Verificar Documentación Adjunta
+                    </div>
+
+                    <div class="documentos-grid" id="documentosGrid">
+                        <div class="documento-item" onclick="abrirDocumento('rotulo')">
+                            <div class="documento-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="documento-nombre">Rótulo</div>
+                            <div class="documento-estado">PDF disponible</div>
+                        </div>
+
+                        <div class="documento-item" onclick="abrirDocumento('comprobante_caja')">
+                            <div class="documento-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="documento-nombre">Comprobante Caja</div>
+                            <div class="documento-estado">PDF disponible</div>
+                        </div>
+
+                        <div class="documento-item" onclick="abrirDocumento('pago_matricula')">
+                            <div class="documento-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="documento-nombre">Pago Matrícula</div>
+                            <div class="documento-estado">PDF disponible</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px; padding: 15px; background: #e8f5e8; border-radius: 8px;">
+                        <i class="fas fa-info-circle" style="color: #27ae60;"></i>
+                        <strong>Instrucciones:</strong> Haga clic en cada documento para verificar su contenido antes de proceder.
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 3: ESTABLECER ARANCEL Y GENERAR FACTURA -->
+                <div class="section section3">
+                    <div class="section-title">
+                        <i class="fas fa-dollar-sign"></i>
+                        3. Establecer Arancel y Generar Factura
+                    </div>
+
+                    <div class="arancel-form">
+                        <div class="campo">
+                            <label><strong>Importe a Facturar (ARS):</strong></label>
+                            <input type="number" id="arancelInput" class="precio-input" 
+                                placeholder="0.00" step="0.01" min="0">
+                        </div>
+
+                        <div class="campo">
+                            <label>Basado en:</label>
+                            <textarea id="justificacionArancel" rows="3" 
+                                placeholder="Descripción de la tarea corregida y criterios aplicados para el arancel..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- BOTONES DE ACCIÓN SEGÚN ESTADO -->
+                    <div id="botonesAccion">
+                        <button class="boton-principal" id="btnGenerarFactura" onclick="generarFacturaYNotificar()" style="display:none;">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            Generar Factura y Notificar
+                        </button>
+
+                        <button class="boton-principal" id="btnVerificarPago" onclick="verificarPago()" style="display:none;">
+                            <i class="fas fa-check-circle"></i>
+                            Verificar Pago
+                        </button>
+
+                        <button class="boton-principal" id="btnEmitirCHP" onclick="emitirCHP()" style="display:none;">
+                            <i class="fas fa-certificate"></i>
+                            Aprobar y Emitir CHP
+                        </button>
+
+                        <button class="boton-secundario" onclick="guardarCambios()">
+                            <i class="fas fa-save"></i>
+                            Guardar Cambios
+                        </button>
+
+                        <button class="boton-secundario boton-peligro" onclick="rechazarSolicitud()">
+                            <i class="fas fa-times-circle"></i>
+                            Rechazar Solicitud
+                        </button>
+                    </div>
+
+                    <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px; font-size: 13px;">
+                        <i class="fas fa-lightbulb" style="color: #f39c12;"></i>
+                        <strong>Flujo:</strong> Una vez establecido el arancel, el botón "Generar Factura y Notificar" enviará la factura al profesional y cambiará el estado a "ESPERANDO_PAGO".
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let solicitudActual = null;
+
+        // Cargar solicitudes al inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarSolicitudes();
+        });
+
+        async function cargarSolicitudes() {
+            try {
+                const response = await fetch('/api/admin/solicitudes-chp');
+                const data = await response.json();
+                
+                if (data.success && data.solicitudes) {
+                    mostrarSolicitudes(data.solicitudes);
+                } else {
+                    throw new Error('Error al cargar solicitudes');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('solicitudesContainer').innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #e74c3c;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 48px; margin-bottom: 20px;"></i>
+                        <h3>Error al cargar solicitudes</h3>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function mostrarSolicitudes(solicitudes) {
+            const container = document.getElementById('solicitudesContainer');
+            
+            if (solicitudes.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #7f8c8d;">
+                        <i class="fas fa-inbox" style="font-size: 48px; margin-bottom: 20px;"></i>
+                        <h3>No hay solicitudes CHP</h3>
+                        <p>Todas las solicitudes han sido procesadas.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const solicitudesPendientes = solicitudes.filter(s => 
+                ['PENDIENTE', 'EN_REVISION', 'ESPERANDO_PAGO', 'COMPROBANTE_CARGADO', 'LISTA_PARA_EMITIR'].includes(s.estado)
+            );
+
+            container.innerHTML = `
+                <div class="solicitudes-grid">
+                    ${solicitudesPendientes.map(sol => `
+                        <div class="solicitud-card" onclick="abrirRevision(${sol.id})">
+                            <div class="solicitud-numero">${sol.numero_solicitud}</div>
+                            <div class="solicitud-cliente">Comitente: ${sol.comitente}</div>
+                            <div class="solicitud-cliente">Proyecto: ${sol.proyecto}</div>
+                            <div class="solicitud-cliente">Profesional: Mat. ${sol.matricula || 'N/A'}</div>
+                            <div class="solicitud-estado estado-${sol.estado}">${sol.estado.replace('_', ' ')}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        async function abrirRevision(solicitudId) {
+            try {
+                const response = await fetch(`/api/admin/solicitud-chp/${solicitudId}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    solicitudActual = data.solicitud;
+                    mostrarModalRevision(data.solicitud);
+                } else {
+                    throw new Error(data.message || 'Error al cargar solicitud');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al cargar la solicitud: ' + error.message);
+            }
+        }
+
+        function mostrarModalRevision(solicitud) {
+            // Llenar datos del modal
+            document.getElementById('modalTitle').textContent = `${solicitud.numero_solicitud} - ${solicitud.comitente}`;
+            document.getElementById('comitenteField').value = solicitud.comitente || '';
+            document.getElementById('cuitField').value = solicitud.cuit_cliente || '';
+            document.getElementById('proyectoField').value = solicitud.proyecto || '';
+            document.getElementById('ubicacionField').value = solicitud.ubicacion_obra || '';
+            document.getElementById('descripcionField').value = solicitud.descripcion_corregida || solicitud.descripcion || '';
+            document.getElementById('arancelInput').value = solicitud.arancel_establecido || '';
+            document.getElementById('justificacionArancel').value = solicitud.justificacion_arancel || '';
+
+            // Actualizar estado visual
+            actualizarEstadoModal(solicitud.estado);
+
+            // Mostrar modal
+            document.getElementById('revisionModal').style.display = 'block';
+        }
+
+        function actualizarEstadoModal(estado) {
+            const estadoDiv = document.getElementById('estadoActual');
+            const btnGenerar = document.getElementById('btnGenerarFactura');
+            const btnVerificar = document.getElementById('btnVerificarPago');
+            const btnEmitir = document.getElementById('btnEmitirCHP');
+
+            estadoDiv.className = `estado-info estado-${estado}-info`;
+            estadoDiv.innerHTML = `<strong>Estado actual: ${estado.replace('_', ' ')}</strong>`;
+
+            // Ocultar todos los botones
+            btnGenerar.style.display = 'none';
+            btnVerificar.style.display = 'none';
+            btnEmitir.style.display = 'none';
+
+            // Mostrar botón según estado
+            switch(estado) {
+                case 'PENDIENTE':
+                case 'EN_REVISION':
+                    btnGenerar.style.display = 'block';
+                    break;
+                case 'COMPROBANTE_CARGADO':
+                    btnVerificar.style.display = 'block';
+                    break;
+                case 'LISTA_PARA_EMITIR':
+                    btnEmitir.style.display = 'block';
+                    break;
+            }
+        }
+
+        function cerrarModal() {
+            document.getElementById('revisionModal').style.display = 'none';
+            solicitudActual = null;
+        }
+
+        async function guardarCambios() {
+            if (!solicitudActual) return;
+
+            const datos = {
+                descripcion_corregida: document.getElementById('descripcionField').value,
+                arancel_establecido: parseFloat(document.getElementById('arancelInput').value) || null,
+                justificacion_arancel: document.getElementById('justificacionArancel').value
+            };
+
+            try {
+                const response = await fetch(`/api/admin/solicitud-chp/${solicitudActual.id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(datos)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert('Cambios guardados exitosamente');
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al guardar cambios: ' + error.message);
+            }
+        }
+
+        async function generarFacturaYNotificar() {
+            if (!solicitudActual) return;
+
+            const arancel = parseFloat(document.getElementById('arancelInput').value);
+            if (!arancel || arancel <= 0) {
+                alert('Por favor, establezca un importe válido para el arancel.');
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/admin/chp/generar-factura`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        solicitud_id: solicitudActual.id,
+                        arancel: arancel,
+                        descripcion_corregida: document.getElementById('descripcionField').value
+                    })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert('Factura generada y notificación enviada al profesional');
+                    cerrarModal();
+                    cargarSolicitudes();
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al generar factura: ' + error.message);
+            }
+        }
+
+        async function verificarPago() {
+            if (!solicitudActual) return;
+
+            const confirmacion = confirm('¿Confirma que el pago ha sido verificado correctamente?');
+            if (!confirmacion) return;
+
+            try {
+                const response = await fetch(`/api/admin/chp/verificar-pago`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        solicitud_id: solicitudActual.id
+                    })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert('Pago verificado. La solicitud está lista para emitir.');
+                    cerrarModal();
+                    cargarSolicitudes();
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al verificar pago: ' + error.message);
+            }
+        }
+
+        async function emitirCHP() {
+            if (!solicitudActual) return;
+
+            const confirmacion = confirm('¿Proceder con la emisión final del CHP?');
+            if (!confirmacion) return;
+
+            try {
+                const response = await fetch(`/api/admin/chp/emitir`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        solicitud_id: solicitudActual.id
+                    })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert('CHP emitido exitosamente y disponible para el profesional');
+                    cerrarModal();
+                    cargarSolicitudes();
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al emitir CHP: ' + error.message);
+            }
+        }
+
+        async function rechazarSolicitud() {
+            if (!solicitudActual) return;
+
+            const motivo = prompt('Ingrese el motivo del rechazo:');
+            if (!motivo) return;
+
+            try {
+                const response = await fetch(`/api/admin/chp/rechazar`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        solicitud_id: solicitudActual.id,
+                        motivo_rechazo: motivo
+                    })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert('Solicitud rechazada');
+                    cerrarModal();
+                    cargarSolicitudes();
+                } else {
+                    throw new Error(result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al rechazar solicitud: ' + error.message);
+            }
+        }
+
+        function abrirDocumento(tipo) {
+            alert(`Funcionalidad de visor de documentos en desarrollo.\nTipo: ${tipo}\nEn la implementación final, aquí se abrirá el PDF correspondiente.`);
+        }
+
+        // Cerrar modal con ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                cerrarModal();
+            }
+        });
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('revisionModal');
+            if (event.target == modal) {
+                cerrarModal();
+            }
+        }
+    </script>
+</body>
+</html>

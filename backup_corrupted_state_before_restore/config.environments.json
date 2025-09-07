@@ -1,0 +1,50 @@
+{
+  "development": {
+    "database": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "copig_dev",
+      "user": "postgres",
+      "password": "ansiktet1969"
+    },
+    "web": {
+      "port": 3030,
+      "host": "localhost"
+    },
+    "environment": "development",
+    "debug": true,
+    "allowDangerousOperations": true
+  },
+  "production": {
+    "database": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "copig_moderno",
+      "user": "postgres",
+      "password": "ansiktet1969"
+    },
+    "web": {
+      "port": 8080,
+      "host": "0.0.0.0"
+    },
+    "environment": "production",
+    "debug": false,
+    "allowDangerousOperations": false
+  },
+  "staging": {
+    "database": {
+      "host": "localhost",
+      "port": 5432,
+      "database": "copig_staging",
+      "user": "postgres",
+      "password": "ansiktet1969"
+    },
+    "web": {
+      "port": 4040,
+      "host": "localhost"
+    },
+    "environment": "staging",
+    "debug": true,
+    "allowDangerousOperations": false
+  }
+}

@@ -1,0 +1,11 @@
+
+Structure for database: Z:\ADMINSP\FOXPRO2\CONSEJO\SPTITU.DBF
+Number of data records:     250
+Date of last update   : 07/11/25
+Field  Field Name  Type       Width    Dec    Index
+    1  TITULO      Character      3            Asc    codigo de título 
+    2  TITDESC     Character     60            Asc    nombre título singular 
+    3  TITPLUR     Character     70                   nombre título plural 
+    4  TIPADRON    Character      1                   padrón correspondiente al título (1-civil, 2-especializada, 3-agronómica, 5.geología) 
+    5  TIESPEC     Numeric        2                   especailidad (no se usa) 
+** Total **                     137

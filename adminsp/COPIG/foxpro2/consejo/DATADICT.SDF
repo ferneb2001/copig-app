@@ -1,0 +1,28 @@
+ENTIDADES.DBENTCOD      C  4  0                              
+ENTIDADES.DBENTDIR1     C 30  0                              
+ENTIDADES.DBENTDIR2     C 30  0                              
+ENTIDADES.DBENTNOMB2    C 30  0                              
+ENTIDADES.DBENTNOMB3    C 30  0                              
+ENTIDADES.DBENTNOMBRE   C 30  0                              
+ENTIDADES.DBENTNRO      N  5  0                              
+ENTIDADES.DBENTPAIS     C 10  0                              
+ENTIDADES.DBENTPCIA     C 10  0                              
+ENTIDADES.DBENTRESTO    C 20  0                              
+ENTIDTMS.DBFENTTMDI1    C 30  0                              
+ENTIDTM.DBF ENTTMDI1    C 30  0                              
+ENTIDTM.DBF ENTTMDI2    C 30  0                              
+ENTIDTMS.DBFENTTMDI2    C 30  0                              
+ENTIDTM.DBF ENTTMN02    C 30  0                              
+ENTIDTMS.DBFENTTMN02    C 30  0                              
+ENTIDTM.DBF ENTTMN03    C 30  0                              
+ENTIDTMS.DBFENTTMN03    C 30  0                              
+ENTIDTM.DBF ENTTMNO1    C 30  0                              
+ENTIDTMS.DBFENTTMNO1    C 30  0                              
+ENTIDTM.DBF ENTTMNUM    N  5  0                              
+ENTIDTMS.DBFENTTMNUM    N  5  0                              
+ENTIDTM.DBF ENTTMPAI    C 10  0                              
+ENTIDTMS.DBFENTTMPAI    C 10  0                              
+ENTIDTMS.DBFENTTMPCI    C 10  0                              
+ENTIDTM.DBF ENTTMPCI    C 10  0                              
+ENTIDTM.DBF ENTTMRES    C 20  0                              
+ENTIDTMS.DBFENTTMRES    C 20  0                              

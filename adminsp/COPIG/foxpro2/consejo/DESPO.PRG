@@ -1,0 +1,102 @@
+procedure despo
+*modificacion de despachos
+hide menu pant01d
+@03,02 clear to 23,78
+@03,24 say 'MODIFICACION DE DESPACHOS' color n/w 
+@04,02 clear to 23,78
+@05,03 say 'Nro.Nota  de fecha  recibida  Remitente' color n/w
+wsigue='S'
+wnro=0
+wletra=space(1)
+wano=0
+wop=0
+wrecep={  /  /  }
+wrtte1=space(40)
+wrtte2=space(40)
+wdest=space(30)
+wcpto1=space(75)
+wcpto2=space(75)
+wcpto3=space(75)
+wcpto4=space(75)
+wmatri=0
+wcateg=space(1)
+do while wsigue='S'
+   @22,11 clear to 22,72
+   @21,10 say 'Indique el nro.de Desp. a consultar o <ESC> para salir';
+          color n/w
+   @07,02 get wletra pict '!'
+   @07,04 get wnro pict '99999'
+   @07,10 get wano pict '9999'
+   read
+   @21,02 clear to 21,78
+   if lastkey()<>27
+*      wano=wano+1900
+      wkey=wletra+str(wnro,5)+str(wano,4)
+      select 1
+      use dspcho index dspchoi
+      seek(wkey)
+      if found()
+         @07,23 say dsprecep color n/w
+         @07,33 say rtrim(dsprtte) color n/w
+         @08,33 say rtrim(dsprtte2) color n/w
+         @09,35 say 'Concepto' color n/w
+         @10,03 say dspcpto color n/w
+         @11,03 say dspcpto2 color n/w
+         @12,03 say dspcpto3 color n/w
+         @13,03 say dspcpto4 color n/w
+         @15,03 say 'Matricula:        Categor¡a'
+         @15,14 say dspmatri pict '99999'
+         @15,31 say dspcat pict '!'
+         @23,28 get wop picture '@*H \<Modifica;\<Salir';
+               size 1,1 color scheme 4
+         read
+         if wop=2
+            wsigue='N'
+         else
+            do modifica
+         endif   
+      else
+         @07,11 say 'error'
+      endif
+   else
+      wsigue='N'
+   endif
+enddo               
+@03,02 clear to 23,78
+close all
+do pied
+return
+
+procedure modifica
+wrecep=dsprecep
+wrtte1=dsprtte
+wrtte2=dsprtte2
+wdest=space(30)
+wcpto1=dspcpto
+wcpto2=dspcpto2
+wcpto3=dspcpto3
+wcpto4=dspcpto4
+wmatri=0
+wcateg=dspcat
+@07,23 get wrecep color n/w
+@07,33 get wrtte1 color n/w pict '@!'
+@08,33 get wrtte2 color n/w pict '@!'
+@09,35 say 'Concepto' color n/w
+@10,03 get wcpto1 color n/w pict '@!'
+@11,03 get wcpto2 color n/w pict '@!'
+@12,03 get wcpto3 color n/w pict '@!'
+@13,03 get wcpto4 color n/w pict '@!'
+@15,03 say 'Matricula:        Categor¡a'
+@15,14 get wmatri pict '99999'
+@15,31 get wcateg pict '!'
+read
+replace dsprecep with wrecep
+replace dsprtte  with wrtte1
+replace dsprtte2 with wrtte2
+replace dspcpto  with wcpto1
+replace dspcpto2 with wcpto2
+replace dspcpto3 with wcpto3
+replace dspcpto4 with wcpto4
+replace dspmatri with wmatri
+replace dspcat   with wcateg
+return

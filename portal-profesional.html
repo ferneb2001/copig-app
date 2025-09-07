@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Profesional - COPIG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-section h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .logo-section span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            background: white;
+            border-bottom: 2px solid #e8ecf0;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .nav-tab.active {
+            color: #3498db;
+            border-bottom-color: #3498db;
+            background: #f8f9ff;
+        }
+
+        .nav-tab:hover {
+            color: #3498db;
+            background: #f8f9ff;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e8ecf0;
+            background: #f8f9fa;
+        }
+
+        .card-header h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e8ecf0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
+
+        /* Document Tabs */
+        .doc-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e8ecf0;
+        }
+
+        .doc-tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            flex: 1;
+            text-align: center;
+        }
+
+        .doc-tab.active {
+            color: #3498db;
+            border-bottom-color: #3498db;
+            background: #f8f9ff;
+        }
+
+        .doc-tab:hover {
+            color: #3498db;
+            background: #f8f9ff;
+        }
+
+        .doc-content {
+            display: none;
+        }
+
+        .doc-content.active {
+            display: block;
+        }
+
+        /* Upload area */
+        .upload-area {
+            border: 2px dashed #bdc3c7;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: #3498db;
+            background: #f0f8ff;
+        }
+
+        .upload-area.dragover {
+            border-color: #3498db;
+            background: #f0f8ff;
+        }
+
+        /* File list */
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border: 1px solid #e8ecf0;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            background: white;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: #7f8c8d;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e8ecf0;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Empty states */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Grid layout */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* Status badges */
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-pendiente {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-aprobado {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-enviado {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        /* Success message */
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c !important;
+            color: white !important;
+            border: 1px solid #c0392b !important;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b !important;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div>
+                    <h1>Portal Profesional</h1>
+                    <span>Consejo Profesional de Ingenieros y Geólogos de Mendoza</span>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">P</div>
+                <div>
+                    <div id="userName">Cargando...</div>
+                    <small id="userDni" style="opacity: 0.8;"></small>
+                </div>
+                <button class="logout-btn" onclick="logout()">Salir</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+        <div class="nav-tab active" onclick="showSection('mis-solicitudes')">📋 Mis Solicitudes</div>
+        <div class="nav-tab" onclick="showSection('nueva-solicitud')">➕ Nueva Solicitud Completa</div>
+        <div class="nav-tab" onclick="showSection('pagos')">💳 Pagos</div>
+        <div class="nav-tab" onclick="showSection('certificados')">🎓 Certificados</div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Mis Solicitudes -->
+        <section id="mis-solicitudes" class="section active">
+            <div class="card">
+                <div class="card-header">
+                    <h3>📋 Mis Solicitudes CHP</h3>
+                </div>
+                <div class="card-body">
+                    <div id="solicitudesList" class="loading">
+                        <div class="spinner"></div>
+                        Cargando solicitudes...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nueva Solicitud Completa -->
+        <section id="nueva-solicitud" class="section">
+            <form id="solicitudCompletaForm">
+                <!-- Datos de la Solicitud -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📋 Datos de la Solicitud CHP</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label>Comitente</label>
+                                <input type="text" name="comitente" required placeholder="Nombre del comitente">
+                            </div>
+                            <div class="form-group">
+                                <label>Proyecto</label>
+                                <input type="text" name="proyecto" required placeholder="Nombre del proyecto">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción del Proyecto</label>
+                            <textarea name="descripcion" required placeholder="Describe detalladamente el proyecto a certificar"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Ubicación de la Obra</label>
+                            <input type="text" name="ubicacion_obra" placeholder="Dirección completa de la obra">
+                        </div>
+                        <div class="form-group">
+                            <label>Monto Estimado de la Obra (Opcional)</label>
+                            <div style="position: relative;">
+                                <input type="number" name="monto_obra_estimado" 
+                                       placeholder="Ej: 5000000" 
+                                       step="0.01" min="0" 
+                                       style="padding-left: 25px;">
+                                <span style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); color: #666;">$</span>
+                            </div>
+                            <small style="color: #666; font-size: 0.9em; margin-top: 5px; display: block;">
+                                💡 Este valor ayuda al staff a calcular el arancel correspondiente
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentación CHP -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>📁 Documentación CHP</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Tabs de documentos -->
+                        <div class="doc-tabs">
+                            <div class="doc-tab active" onclick="showDocTab('caja_matricula')">💳 Caja/Matrícula</div>
+                            <div class="doc-tab" onclick="showDocTab('rotulo')">📐 Rótulo</div>
+                            <div class="doc-tab" onclick="showDocTab('memoria')">📄 Memoria</div>
+                            <div class="doc-tab" onclick="showDocTab('planos')">🗺️ Planos</div>
+                        </div>
+
+                        <!-- Contenido de cada tab -->
+                        <div id="doc-caja_matricula" class="doc-content active">
+                            <div class="upload-area" onclick="selectFiles('caja_matricula')">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">💳</div>
+                                <p><strong>Comprobante Caja de Previsión y Matrícula</strong></p>
+                                <p style="color: #666; font-size: 0.9rem;">Comprobante de estar al día con cuotas</p>
+                                <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">Haz clic para seleccionar archivos PDF</p>
+                            </div>
+                            <input type="file" id="file-caja_matricula" multiple accept=".pdf" style="display: none;">
+                            <div id="files-caja_matricula" class="uploaded-files"></div>
+                        </div>
+
+                        <div id="doc-rotulo" class="doc-content">
+                            <div class="upload-area" onclick="selectFiles('rotulo')">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">📐</div>
+                                <p><strong>Rótulo Profesional</strong></p>
+                                <p style="color: #666; font-size: 0.9rem;">Rótulo firmado y sellado</p>
+                                <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">Haz clic para seleccionar archivos PDF</p>
+                            </div>
+                            <input type="file" id="file-rotulo" multiple accept=".pdf" style="display: none;">
+                            <div id="files-rotulo" class="uploaded-files"></div>
+                        </div>
+
+                        <div id="doc-memoria" class="doc-content">
+                            <div class="upload-area" onclick="selectFiles('memoria')">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">📄</div>
+                                <p><strong>Memoria Técnica</strong></p>
+                                <p style="color: #666; font-size: 0.9rem;">Documentación técnica y cálculos</p>
+                                <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">Haz clic para seleccionar archivos PDF</p>
+                            </div>
+                            <input type="file" id="file-memoria" multiple accept=".pdf" style="display: none;">
+                            <div id="files-memoria" class="uploaded-files"></div>
+                        </div>
+
+                        <div id="doc-planos" class="doc-content">
+                            <div class="upload-area" onclick="selectFiles('planos')">
+                                <div style="font-size: 2rem; margin-bottom: 1rem;">🗺️</div>
+                                <p><strong>Planos de Ubicación</strong></p>
+                                <p style="color: #666; font-size: 0.9rem;">Planos técnicos y de ubicación</p>
+                                <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">Haz clic para seleccionar archivos PDF</p>
+                            </div>
+                            <input type="file" id="file-planos" multiple accept=".pdf" style="display: none;">
+                            <div id="files-planos" class="uploaded-files"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mensaje de éxito -->
+                <div id="successMessage" class="success-message">
+                    ✅ <strong>Solicitud enviada correctamente</strong><br>
+                    <span id="successDetails"></span>
+                </div>
+
+                <!-- Botón de envío -->
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button type="submit" class="btn btn-success" style="padding: 15px 40px; font-size: 1.2rem;">
+                        📤 Enviar Solicitud Completa al Staff de COPIG
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Pagos -->
+        <section id="pagos" class="section">
+            <!-- Facturas Pendientes -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>📄 Facturas Pendientes de Pago</h3>
+                    <p style="color: #666; margin: 0;">Solicitudes CHP facturadas que requieren pago</p>
+                </div>
+                <div class="card-body">
+                    <div id="facturasPendientes" class="loading">
+                        Cargando facturas pendientes...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Métodos de Pago -->
+            <div class="card" style="margin-top: 20px;">
+                <div class="card-header">
+                    <h3>💳 Métodos de Pago Disponibles</h3>
+                </div>
+                <div class="card-body">
+                    <div class="payment-methods-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                        
+                        <!-- Transferencia Bancaria -->
+                        <div class="payment-method" style="border: 2px solid #e2e8f0; border-radius: 12px; padding: 20px; text-align: center;">
+                            <div style="font-size: 48px; margin-bottom: 10px;">🏦</div>
+                            <h4 style="color: #1e293b; margin-bottom: 10px;">Transferencia Bancaria</h4>
+                            <div class="bank-details" style="background: #f8fafc; padding: 15px; border-radius: 8px; text-align: left; font-family: monospace;">
+                                <strong>Banco Nación</strong><br>
+                                <strong>CBU:</strong> 0110599520000012345678<br>
+                                <strong>Alias:</strong> COPIG.MENDOZA<br>
+                                <strong>CUIT:</strong> 30-12345678-9<br>
+                                <strong>Titular:</strong> COPIG
+                            </div>
+                            <small style="color: #666; display: block; margin-top: 10px;">
+                                Enviar comprobante por email o subir aquí
+                            </small>
+                        </div>
+
+                        <!-- Tarjeta -->
+                        <div class="payment-method" style="border: 2px solid #e2e8f0; border-radius: 12px; padding: 20px; text-align: center;">
+                            <div style="font-size: 48px; margin-bottom: 10px;">💳</div>
+                            <h4 style="color: #1e293b; margin-bottom: 10px;">Tarjeta Débito/Crédito</h4>
+                            <p style="color: #666; margin-bottom: 15px;">
+                                Pago seguro con tarjeta de débito o crédito
+                            </p>
+                            <button class="btn-primary" onclick="alert('Función en desarrollo')" style="width: 100%;">
+                                Pagar con Tarjeta
+                            </button>
+                        </div>
+
+                        <!-- MercadoPago -->
+                        <div class="payment-method" style="border: 2px solid #e2e8f0; border-radius: 12px; padding: 20px; text-align: center;">
+                            <div style="font-size: 48px; margin-bottom: 10px;">📱</div>
+                            <h4 style="color: #1e293b; margin-bottom: 10px;">MercadoPago</h4>
+                            <p style="color: #666; margin-bottom: 15px;">
+                                Pago con billetera virtual o transferencia
+                            </p>
+                            <button class="btn-primary" onclick="alert('Función en desarrollo')" style="width: 100%;">
+                                Pagar con MP
+                            </button>
+                        </div>
+
+                        <!-- Efectivo -->
+                        <div class="payment-method" style="border: 2px solid #e2e8f0; border-radius: 12px; padding: 20px; text-align: center;">
+                            <div style="font-size: 48px; margin-bottom: 10px;">💵</div>
+                            <h4 style="color: #1e293b; margin-bottom: 10px;">Efectivo</h4>
+                            <div style="background: #f8fafc; padding: 15px; border-radius: 8px; text-align: left;">
+                                <strong>Oficina COPIG:</strong><br>
+                                San Martín 123, Mendoza<br>
+                                <strong>Horarios:</strong> Lunes a Viernes<br>
+                                9:00 - 17:00 hs
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historial de Pagos -->
+            <div class="card" style="margin-top: 20px;">
+                <div class="card-header">
+                    <h3>📊 Historial de Pagos</h3>
+                </div>
+                <div class="card-body">
+                    <div id="historialPagos" class="loading">
+                        Cargando historial de pagos...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subir Comprobante -->
+            <div class="card" style="margin-top: 20px;">
+                <div class="card-header">
+                    <h3>📤 Subir Comprobante de Pago</h3>
+                </div>
+                <div class="card-body">
+                    <form id="comprobanteForm" onsubmit="subirComprobante(event)">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label>Solicitud CHP</label>
+                                <select id="chpSelect" required>
+                                    <option value="">Seleccione una solicitud...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Método de Pago</label>
+                                <select id="metodoPago" required>
+                                    <option value="">Seleccione método...</option>
+                                    <option value="transferencia">Transferencia Bancaria</option>
+                                    <option value="tarjeta">Tarjeta Débito/Crédito</option>
+                                    <option value="mercadopago">MercadoPago</option>
+                                    <option value="efectivo">Efectivo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Número de Operación/Referencia</label>
+                            <input type="text" id="numeroOperacion" placeholder="Ej: TRF12345 o REF67890" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Comprobante (PDF/Imagen)</label>
+                            <input type="file" id="archivoComprobante" accept=".pdf,.jpg,.jpeg,.png" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Observaciones (opcional)</label>
+                            <textarea id="observacionesPago" placeholder="Comentarios adicionales sobre el pago..." rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn-success">
+                            📤 Enviar Comprobante
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificados -->
+        <section id="certificados" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h3>🎓 Certificados</h3>
+                </div>
+                <div class="card-body">
+                    <div id="certificadosList" class="loading">
+                        <div class="spinner"></div>
+                        Cargando certificados...
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para Modificar Solicitud -->
+    <div id="modalModificar" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; border-radius: 15px; padding: 30px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3>✏️ Modificar Solicitud CHP</h3>
+                <button onclick="cerrarModalModificar()" style="background: none; border: none; font-size: 24px; cursor: pointer;">✕</button>
+            </div>
+            
+            <form id="formModificar">
+                <div class="form-group">
+                    <label for="modComitente">Comitente</label>
+                    <input type="text" id="modComitente" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="modProyecto">Proyecto</label>
+                    <input type="text" id="modProyecto" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="modDescripcion">Descripción del Proyecto</label>
+                    <textarea id="modDescripcion" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="modUbicacion">Ubicación de la Obra</label>
+                    <input type="text" id="modUbicacion">
+                </div>
+                
+                <div class="form-group">
+                    <label for="modMonto">Monto Estimado de la Obra (Opcional)</label>
+                    <div style="position: relative;">
+                        <input type="number" id="modMonto" step="0.01" min="0" style="padding-left: 25px;">
+                        <span style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); color: #666;">$</span>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 30px; display: flex; gap: 10px; justify-content: center;">
+                    <button type="button" onclick="cerrarModalModificar()" class="btn" style="background: #6c757d; color: white; padding: 12px 24px;">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary" style="padding: 12px 24px;">
+                        ✅ Guardar Cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales
+        let currentUser = null;
+        let uploadedDocuments = {
+            caja_matricula: [],
+            rotulo: [],
+            memoria: [],
+            planos: []
+        };
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePortal();
+            setupEventListeners();
+        });
+
+        async function initializePortal() {
+            try {
+                // Verificar autenticación
+                const authResponse = await fetch('/api/admin/auth/status');
+                const authData = await authResponse.json();
+                
+                if (!authData.authenticated || authData.user.role !== 'profesional') {
+                    window.location.href = '/';
+                    return;
+                }
+
+                currentUser = authData.user;
+                updateUserInfo();
+                loadSolicitudes();
+                loadFacturas();
+                loadCertificados();
+                
+            } catch (error) {
+                console.error('Error initializing portal:', error);
+                window.location.href = '/';
+            }
+        }
+
+        function setupEventListeners() {
+            // Formulario solicitud completa
+            document.getElementById('solicitudCompletaForm').addEventListener('submit', handleSolicitudCompleta);
+            
+            // Event listeners para archivos
+            ['caja_matricula', 'rotulo', 'memoria', 'planos'].forEach(category => {
+                document.getElementById(`file-${category}`).addEventListener('change', (e) => handleFileUpload(e, category));
+            });
+        }
+
+        function updateUserInfo() {
+            if (currentUser) {
+                document.getElementById('userName').textContent = currentUser.username;
+                document.getElementById('userDni').textContent = `DNI: ${currentUser.dni}`;
+                document.getElementById('userAvatar').textContent = currentUser.username.charAt(0).toUpperCase();
+            }
+        }
+
+        // Navegación
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Cargar datos específicos según la sección
+            if (sectionId === 'pagos') {
+                cargarDatosPagos();
+            }
+        }
+
+        function showDocTab(category) {
+            document.querySelectorAll('.doc-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.doc-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            document.getElementById(`doc-${category}`).classList.add('active');
+        }
+
+        // Archivos
+        function selectFiles(category) {
+            document.getElementById(`file-${category}`).click();
+        }
+
+        function handleFileUpload(event, category) {
+            const files = Array.from(event.target.files);
+            const pdfFiles = files.filter(file => file.type === 'application/pdf');
+            
+            if (pdfFiles.length === 0) {
+                alert('⚠️ Solo se permiten archivos PDF');
+                return;
+            }
+
+            const oversizedFiles = pdfFiles.filter(file => file.size > 10 * 1024 * 1024);
+            if (oversizedFiles.length > 0) {
+                alert(`⚠️ Archivos muy grandes (máximo 10MB): ${oversizedFiles.map(f => f.name).join(', ')}`);
+                return;
+            }
+
+            pdfFiles.forEach(file => {
+                uploadedDocuments[category].push({
+                    name: file.name,
+                    size: formatFileSize(file.size),
+                    uploadDate: new Date()
+                });
+            });
+
+            renderFiles(category);
+            event.target.value = '';
+        }
+
+        function renderFiles(category) {
+            const container = document.getElementById(`files-${category}`);
+            const files = uploadedDocuments[category];
+            
+            if (files.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let html = '<div style="margin-top: 1rem;">';
+            files.forEach((file, index) => {
+                html += `
+                    <div class="file-item">
+                        <div class="file-info">
+                            <span style="color: #e74c3c; font-size: 1.2rem;">📄</span>
+                            <div>
+                                <div style="font-weight: 500;">${file.name}</div>
+                                <div style="font-size: 0.9rem; color: #7f8c8d;">${file.size}</div>
+                            </div>
+                        </div>
+                        <button type="button" onclick="removeFile('${category}', ${index})" style="background: #e74c3c; color: white; border: none; border-radius: 4px; padding: 6px 12px; cursor: pointer;">
+                            Eliminar
+                        </button>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            
+            container.innerHTML = html;
+        }
+
+        function removeFile(category, index) {
+            if (confirm('¿Eliminar este archivo?')) {
+                uploadedDocuments[category].splice(index, 1);
+                renderFiles(category);
+            }
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Solicitud completa
+        async function handleSolicitudCompleta(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const totalFiles = Object.values(uploadedDocuments).reduce((total, files) => total + files.length, 0);
+            
+            const solicitudData = {
+                comitente: formData.get('comitente'),
+                proyecto: formData.get('proyecto'),
+                descripcion: formData.get('descripcion'),
+                ubicacion_obra: formData.get('ubicacion_obra'),
+                monto_obra_estimado: formData.get('monto_obra_estimado') || null,
+                documentos: uploadedDocuments,
+                totalDocumentos: totalFiles
+            };
+
+            try {
+                const response = await fetch('/api/chp/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(solicitudData),
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    const numeroSolicitud = result.numeroSolicitud || `CHP-2025-${Date.now()}`;
+                    
+                    document.getElementById('successDetails').innerHTML = `
+                        <strong>Número de Solicitud:</strong> ${numeroSolicitud}<br>
+                        <strong>Documentos incluidos:</strong> ${totalFiles} archivo(s)<br>
+                        <strong>Estado:</strong> En revisión por el staff de COPIG
+                    `;
+                    
+                    document.getElementById('successMessage').style.display = 'block';
+                    
+                    // Resetear formulario
+                    event.target.reset();
+                    uploadedDocuments = {
+                        caja_matricula: [],
+                        rotulo: [],
+                        memoria: [],
+                        planos: []
+                    };
+                    
+                    ['caja_matricula', 'rotulo', 'memoria', 'planos'].forEach(category => {
+                        renderFiles(category);
+                    });
+                    
+                    // Scroll al mensaje de éxito
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Recargar lista de solicitudes para mostrar la nueva
+                    await loadSolicitudes();
+                    
+                    console.log('✅ Solicitud completa enviada:', solicitudData);
+                } else {
+                    alert('❌ Error al enviar la solicitud: ' + (result.message || 'Error desconocido'));
+                }
+                
+            } catch (error) {
+                console.error('Error sending solicitud:', error);
+                alert('❌ Error de conexión. La solicitud se guardó como borrador.');
+            }
+        }
+
+        // Cargar solicitudes
+        async function loadSolicitudes() {
+            try {
+                const response = await fetch('/api/profesional/solicitudes-chp', {
+                    credentials: 'include'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.success && data.solicitudes) {
+                        const solicitudes = data.solicitudes.map(s => ({
+                            id: s.id,
+                            comitente: s.comitente,
+                            proyecto: s.proyecto,
+                            fecha: s.fecha_solicitud ? s.fecha_solicitud.split('T')[0] : '',
+                            estado: s.estado ? s.estado.toLowerCase() : 'pendiente',
+                            numero_solicitud: s.numero_solicitud
+                        }));
+                        renderSolicitudes(solicitudes);
+                    } else {
+                        renderSolicitudes([]);
+                    }
+                } else {
+                    renderSolicitudes([]);
+                }
+            } catch (error) {
+                console.error('Error loading solicitudes:', error);
+                document.getElementById('solicitudesList').innerHTML = '<div class="empty-state">Error al cargar las solicitudes</div>';
+            }
+        }
+
+        function renderSolicitudes(solicitudes) {
+            const container = document.getElementById('solicitudesList');
+            
+            if (solicitudes.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📋</div>
+                        <h3>No tienes solicitudes CHP</h3>
+                        <p>Crea tu primera solicitud en "Nueva Solicitud Completa"</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const html = `
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 12px; text-align: left;">N° Solicitud</th>
+                                <th style="padding: 12px; text-align: left;">Cliente</th>
+                                <th style="padding: 12px; text-align: left;">Proyecto</th>
+                                <th style="padding: 12px; text-align: left;">Fecha</th>
+                                <th style="padding: 12px; text-align: left;">Estado</th>
+                                <th style="padding: 12px; text-align: left;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${solicitudes.map(solicitud => `
+                                <tr style="border-bottom: 1px solid #e8ecf0;">
+                                    <td style="padding: 12px; font-weight: 600;">${solicitud.numero_solicitud || solicitud.id}</td>
+                                    <td style="padding: 12px;">${solicitud.comitente}</td>
+                                    <td style="padding: 12px;">${solicitud.proyecto}</td>
+                                    <td style="padding: 12px;">${new Date(solicitud.fecha).toLocaleDateString('es-ES')}</td>
+                                    <td style="padding: 12px;">
+                                        <span class="status-badge status-${solicitud.estado}">
+                                            ${solicitud.estado.toUpperCase()}
+                                        </span>
+                                    </td>
+                                    <td style="padding: 12px;">
+                                        ${solicitud.estado === 'pendiente' ? 
+                                            `<div style="display: flex; gap: 5px;">
+                                                <button class="btn btn-primary" onclick="modificarSolicitud(${solicitud.id})" style="padding: 6px 12px; font-size: 0.85rem;">✏️ Modificar</button>
+                                                <button class="btn btn-danger" onclick="eliminarSolicitud(${solicitud.id}, '${solicitud.numero_solicitud}', '${solicitud.comitente}')" style="padding: 6px 12px; font-size: 0.85rem;">🗑️ Eliminar</button>
+                                            </div>` 
+                                            : '<span style="color: #999; font-size: 0.85rem;">No disponible</span>'}
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // Cargar facturas
+        async function loadFacturas() {
+            try {
+                const response = await fetch('/api/profesional/facturas');
+                
+                if (!response.ok) {
+                    throw new Error(`Error ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.success && data.facturas) {
+                    renderFacturas(data.facturas);
+                } else {
+                    renderFacturas([]);
+                }
+            } catch (error) {
+                console.error('Error loading facturas:', error);
+                document.getElementById('pagosList').innerHTML = '<div class="empty-state">Error al cargar las facturas</div>';
+            }
+        }
+
+        function renderFacturas(facturas) {
+            const container = document.getElementById('pagosList');
+            
+            if (facturas.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">💳</div>
+                        <h3>No hay facturas registradas</h3>
+                        <p>Las facturas aparecerán aquí una vez generadas por el staff</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const html = `
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 12px; text-align: left;">Número</th>
+                                <th style="padding: 12px; text-align: left;">Cliente</th>
+                                <th style="padding: 12px; text-align: left;">Monto</th>
+                                <th style="padding: 12px; text-align: left;">Vencimiento</th>
+                                <th style="padding: 12px; text-align: left;">Estado</th>
+                                <th style="padding: 12px; text-align: left;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${facturas.map(factura => `
+                                <tr style="border-bottom: 1px solid #e8ecf0;">
+                                    <td style="padding: 12px; font-weight: bold;">${factura.numero_factura}</td>
+                                    <td style="padding: 12px;">${factura.comitente}</td>
+                                    <td style="padding: 12px; font-weight: bold;">$${Number(factura.monto).toLocaleString('es-AR')}</td>
+                                    <td style="padding: 12px;">${new Date(factura.fecha_vencimiento).toLocaleDateString('es-AR')}</td>
+                                    <td style="padding: 12px;">
+                                        <span class="status-badge ${getFacturaStatusClass(factura.estado)}">${factura.estado}</span>
+                                    </td>
+                                    <td style="padding: 12px;">
+                                        ${factura.estado === 'PENDIENTE' ? 
+                                            `<button onclick="pagarFactura(${factura.id})" class="btn btn-primary btn-small">💳 Pagar</button>` : 
+                                            `<button onclick="verDetalle(${factura.id})" class="btn btn-secondary btn-small">👁️ Ver</button>`
+                                        }
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+        
+        function getFacturaStatusClass(estado) {
+            switch(estado) {
+                case 'PENDIENTE': return 'status-pendiente';
+                case 'PAGADA': return 'status-completado';
+                case 'VENCIDA': return 'status-rechazado';
+                default: return 'status-pendiente';
+            }
+        }
+        
+        // Funciones para gestionar facturas
+        async function pagarFactura(facturaId) {
+            if (confirm('¿Desea proceder con el pago de esta factura?')) {
+                try {
+                    const response = await fetch('/api/profesional/pago', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            factura_id: facturaId,
+                            metodo_pago: 'transferencia_bancaria',
+                            numero_transaccion: `TRX-${Date.now()}`,
+                            datos_pago_extra: {
+                                banco: 'Banco seleccionado por el usuario',
+                                fecha_operacion: new Date().toISOString()
+                            }
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        showToast('Pago registrado exitosamente. Será verificado por el staff.', 'success');
+                        loadFacturas(); // Recargar facturas
+                    } else {
+                        showToast('Error al registrar el pago: ' + data.message, 'error');
+                    }
+                } catch (error) {
+                    console.error('Error al registrar pago:', error);
+                    showToast('Error al procesar el pago. Intente nuevamente.', 'error');
+                }
+            }
+        }
+        
+        async function verDetalle(facturaId) {
+            try {
+                const response = await fetch(`/api/profesional/factura/${facturaId}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    const factura = data.factura;
+                    alert(`DETALLE DE FACTURA
+                    
+Número: ${factura.numero_factura}
+Profesional: ${factura.profesional_nombre} (Mat: ${factura.numero_matricula})
+Proyecto: ${factura.proyecto}
+Ubicación: ${factura.ubicacion_obra}
+Monto: $${Number(factura.monto).toLocaleString('es-AR')}
+Estado: ${factura.estado}
+Pagos registrados: ${factura.pagos?.length || 0}`);
+                } else {
+                    showToast('Error al cargar detalle de factura', 'error');
+                }
+            } catch (error) {
+                console.error('Error al cargar detalle:', error);
+                showToast('Error al cargar detalle de factura', 'error');
+            }
+        }
+        
+        // Función auxiliar para mostrar notificaciones
+        function showToast(message, type = 'info') {
+            // Si existe el sistema de toast lo usa, sino usa alert
+            if (typeof Toast !== 'undefined') {
+                Toast.show(message, type);
+            } else {
+                alert(message);
+            }
+        }
+
+        // Cargar certificados
+        async function loadCertificados() {
+            try {
+                const mockCertificados = [];
+                renderCertificados(mockCertificados);
+            } catch (error) {
+                console.error('Error loading certificados:', error);
+                document.getElementById('certificadosList').innerHTML = '<div class="empty-state">Error al cargar certificados</div>';
+            }
+        }
+
+        function renderCertificados(certificados) {
+            const container = document.getElementById('certificadosList');
+            
+            container.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">🎓</div>
+                    <h3>No hay certificados emitidos</h3>
+                    <p>Los certificados aparecerán aquí una vez aprobados</p>
+                </div>
+            `;
+        }
+
+        // FUNCIONES DE PAGOS
+        async function cargarDatosPagos() {
+            try {
+                // Cargar facturas pendientes
+                await cargarFacturasPendientes();
+                
+                // Cargar historial de pagos
+                await cargarHistorialPagos();
+                
+                // Cargar CHPs facturados para el selector
+                await cargarCHPsParaPago();
+                
+            } catch (error) {
+                console.error('Error cargando datos de pagos:', error);
+            }
+        }
+        
+        async function cargarFacturasPendientes() {
+            const container = document.getElementById('facturasPendientes');
+            container.innerHTML = 'Cargando facturas pendientes...';
+            
+            try {
+                const response = await fetch('/api/profesional/solicitudes-chp', { credentials: 'include' });
+                const data = await response.json();
+                
+                if (data.success && data.solicitudes) {
+                    // Filtrar solo CHPs facturados pendientes de pago
+                    const facturasPendientes = data.solicitudes.filter(s => s.estado === 'FACTURADO');
+                    
+                    if (facturasPendientes.length === 0) {
+                        container.innerHTML = `
+                            <div class="empty-state">
+                                <div class="empty-state-icon">📄</div>
+                                <h4>No hay facturas pendientes</h4>
+                                <p>Las facturas aparecerán aquí cuando sean generadas por el staff</p>
+                            </div>
+                        `;
+                    } else {
+                        let html = '<div class="facturas-grid">';
+                        facturasPendientes.forEach(f => {
+                            const monto = f.arancel_final ? `$${Number(f.arancel_final).toLocaleString('es-AR')}` : 'Monto no definido';
+                            html += `
+                                <div class="factura-card" style="border: 2px solid #f59e0b; border-radius: 12px; padding: 20px; margin-bottom: 15px; background: #fffbeb;">
+                                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                                        <div>
+                                            <h4 style="margin: 0; color: #92400e;">CHP ${f.numero_solicitud}</h4>
+                                            <p style="margin: 5px 0; color: #78716c;">${f.comitente || 'Sin comitente'}</p>
+                                            <p style="margin: 5px 0; color: #78716c;">${f.proyecto || 'Sin proyecto'}</p>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <div style="font-size: 24px; font-weight: bold; color: #92400e;">${monto}</div>
+                                            <div style="font-size: 12px; color: #78716c;">Factura: ${f.numero_factura || 'N/A'}</div>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 10px;">
+                                        <button class="btn-success" onclick="seleccionarFactura('${f.id}', '${f.numero_solicitud}', '${monto}')" style="flex: 1;">
+                                            💳 Pagar Ahora
+                                        </button>
+                                        <button class="btn-outline" onclick="mostrarDetallesFactura('${f.id}')" style="flex: 1;">
+                                            📋 Ver Detalles
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        html += '</div>';
+                        container.innerHTML = html;
+                    }
+                } else {
+                    container.innerHTML = '<div class="empty-state">Error al cargar facturas</div>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                container.innerHTML = '<div class="empty-state">Error de conexión</div>';
+            }
+        }
+        
+        async function cargarHistorialPagos() {
+            const container = document.getElementById('historialPagos');
+            container.innerHTML = 'Cargando historial...';
+            
+            try {
+                const response = await fetch('/api/profesional/pagos-realizados', { credentials: 'include' });
+                const data = await response.json();
+                
+                if (data.success && data.pagos && data.pagos.length > 0) {
+                    let html = '<div class="pagos-timeline">';
+                    data.pagos.forEach(p => {
+                        html += `
+                            <div class="pago-item" style="border-left: 4px solid #059669; padding-left: 15px; margin-bottom: 15px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <div>
+                                        <h5 style="margin: 0; color: #1e293b;">${p.chp_numero}</h5>
+                                        <p style="margin: 5px 0; color: #64748b;">${p.metodo_pago} - ${p.numero_operacion}</p>
+                                        <p style="margin: 0; font-size: 12px; color: #94a3b8;">${new Date(p.fecha_pago).toLocaleDateString()}</p>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-weight: bold; color: #059669;">$${Number(p.monto).toLocaleString('es-AR')}</div>
+                                        <div style="font-size: 12px; color: ${p.estado === 'VERIFICADO' ? '#059669' : '#f59e0b'};">
+                                            ${p.estado === 'VERIFICADO' ? '✅ Verificado' : '⏳ Pendiente'}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                    container.innerHTML = html;
+                } else {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📊</div>
+                            <h4>Sin pagos realizados</h4>
+                            <p>Tu historial de pagos aparecerá aquí</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                container.innerHTML = '<div class="empty-state">Error cargando historial</div>';
+            }
+        }
+        
+        async function cargarCHPsParaPago() {
+            const select = document.getElementById('chpSelect');
+            
+            try {
+                const response = await fetch('/api/profesional/solicitudes-chp', { credentials: 'include' });
+                const data = await response.json();
+                
+                if (data.success && data.solicitudes) {
+                    const facturados = data.solicitudes.filter(s => s.estado === 'FACTURADO');
+                    
+                    select.innerHTML = '<option value="">Seleccione una solicitud...</option>';
+                    facturados.forEach(f => {
+                        const monto = f.arancel_final ? `$${Number(f.arancel_final).toLocaleString('es-AR')}` : 'S/M';
+                        select.innerHTML += `<option value="${f.id}">${f.numero_solicitud} - ${f.comitente || 'Sin comitente'} (${monto})</option>`;
+                    });
+                }
+            } catch (error) {
+                console.error('Error cargando CHPs:', error);
+            }
+        }
+        
+        function seleccionarFactura(facturaId, numeroSolicitud, monto) {
+            // Llenar el formulario de comprobante con la factura seleccionada
+            document.getElementById('chpSelect').value = facturaId;
+            
+            // Scroll al formulario de subir comprobante
+            document.querySelector('#comprobanteForm').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        async function subirComprobante(event) {
+            event.preventDefault();
+            
+            const formData = new FormData();
+            const chpId = document.getElementById('chpSelect').value;
+            const metodoPago = document.getElementById('metodoPago').value;
+            const numeroOperacion = document.getElementById('numeroOperacion').value;
+            const observaciones = document.getElementById('observacionesPago').value;
+            const archivo = document.getElementById('archivoComprobante').files[0];
+            
+            if (!chpId || !metodoPago || !numeroOperacion || !archivo) {
+                alert('⚠️ Por favor complete todos los campos obligatorios');
+                return;
+            }
+            
+            formData.append('chpId', chpId);
+            formData.append('metodoPago', metodoPago);
+            formData.append('numeroOperacion', numeroOperacion);
+            formData.append('observaciones', observaciones);
+            formData.append('comprobante', archivo);
+            
+            try {
+                const response = await fetch('/api/profesional/subir-comprobante', {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('✅ Comprobante enviado exitosamente. El staff lo revisará pronto.');
+                    event.target.reset();
+                    cargarDatosPagos(); // Recargar datos
+                } else {
+                    alert(`❌ Error: ${result.message}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('❌ Error enviando comprobante');
+            }
+        }
+
+        async function logout() {
+            try {
+                await fetch('/api/admin/logout', { method: 'POST' });
+                window.location.href = '/';
+            } catch (error) {
+                console.error('Error during logout:', error);
+                window.location.href = '/';
+            }
+        }
+
+        // ✏️ Función para modificar solicitud CHP
+        let solicitudEnEdicion = null;
+        
+        async function modificarSolicitud(id) {
+            try {
+                // Obtener datos de la solicitud
+                const response = await fetch(`/api/profesional/solicitud-chp/${id}`, {
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success && result.solicitud) {
+                    const solicitud = result.solicitud;
+                    solicitudEnEdicion = solicitud;
+                    
+                    // Llenar el formulario con los datos actuales
+                    document.getElementById('modComitente').value = solicitud.comitente || '';
+                    document.getElementById('modProyecto').value = solicitud.proyecto || '';
+                    document.getElementById('modDescripcion').value = solicitud.descripcion || '';
+                    document.getElementById('modUbicacion').value = solicitud.ubicacion_obra || '';
+                    document.getElementById('modMonto').value = solicitud.monto_obra_estimado || '';
+                    
+                    // Mostrar el modal
+                    document.getElementById('modalModificar').style.display = 'block';
+                } else {
+                    alert('❌ Error al cargar los datos de la solicitud');
+                }
+            } catch (error) {
+                console.error('Error cargando solicitud:', error);
+                alert('❌ Error de conexión al cargar la solicitud');
+            }
+        }
+        
+        function cerrarModalModificar() {
+            document.getElementById('modalModificar').style.display = 'none';
+            solicitudEnEdicion = null;
+        }
+        
+        // Manejar envío del formulario de modificación
+        document.getElementById('formModificar').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!solicitudEnEdicion) {
+                alert('❌ Error: No hay solicitud seleccionada');
+                return;
+            }
+            
+            const datosModificados = {
+                comitente: document.getElementById('modComitente').value,
+                proyecto: document.getElementById('modProyecto').value,
+                descripcion: document.getElementById('modDescripcion').value,
+                ubicacion_obra: document.getElementById('modUbicacion').value,
+                monto_obra_estimado: document.getElementById('modMonto').value || null
+            };
+            
+            try {
+                const response = await fetch(`/api/profesional/solicitud-chp/${solicitudEnEdicion.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(datosModificados),
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('✅ Solicitud modificada exitosamente');
+                    cerrarModalModificar();
+                    loadSolicitudes(); // Recargar la lista
+                } else {
+                    alert('❌ Error al modificar: ' + (result.message || 'Error desconocido'));
+                }
+            } catch (error) {
+                console.error('Error modificando solicitud:', error);
+                alert('❌ Error de conexión al modificar la solicitud');
+            }
+        });
+
+        // 🗑️ Función para eliminar solicitud CHP
+        async function eliminarSolicitud(id, numeroSolicitud, comitente) {
+            if (!confirm(`¿Está seguro que desea eliminar la solicitud ${numeroSolicitud}?\n\nComitente: ${comitente}\n\nEsta acción NO se puede deshacer.`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/profesional/solicitud-chp/${id}`, {
+                    method: 'DELETE',
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert(`✅ ${result.message}`);
+                    // Recargar la lista de solicitudes
+                    loadSolicitudes();
+                } else {
+                    alert(`❌ Error: ${result.message}`);
+                }
+            } catch (error) {
+                console.error('Error eliminando solicitud:', error);
+                alert('❌ Error eliminando la solicitud. Intente nuevamente.');
+            }
+        }
+    </script>
+</body>
+</html>

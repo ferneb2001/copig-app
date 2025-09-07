@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes CHP - Portal Profesional COPIG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            background: transparent;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: #3498db;
+            border-bottom-color: #3498db;
+        }
+
+        .tab:hover {
+            background: #f8f9fa;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 2px solid #e9ecef;
+        }
+
+        .form-section h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-group small {
+            color: #6c757d;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .solicitudes-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .solicitudes-table th, .solicitudes-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .solicitudes-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .solicitudes-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-pendiente {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-en_proceso {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-aprobada {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-rechazada {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-entregada {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .file-upload {
+            border: 2px dashed #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: #3498db;
+        }
+
+        .file-upload.dragover {
+            border-color: #3498db;
+            background: #f8f9fa;
+        }
+
+        .file-list {
+            margin-top: 15px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .file-item .file-name {
+            font-weight: 600;
+        }
+
+        .file-item .file-size {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .actions-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: #e8f4f8;
+            border: 1px solid #bee5eb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .info-card h4 {
+            color: #0c5460;
+            margin-bottom: 10px;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card li {
+            color: #155724;
+            padding: 3px 0;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .progress-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .progress-step::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background: #e9ecef;
+            z-index: -1;
+        }
+
+        .progress-step:first-child::before {
+            display: none;
+        }
+
+        .progress-step.completed::before {
+            background: #28a745;
+        }
+
+        .progress-step .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 50%;
+            background: #e9ecef;
+            color: #6c757d;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .progress-step.completed .step-number {
+            background: #28a745;
+            color: white;
+        }
+
+        .progress-step.active .step-number {
+            background: #3498db;
+            color: white;
+        }
+
+        .progress-step .step-title {
+            display: block;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .progress-step.completed .step-title,
+        .progress-step.active .step-title {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .actions-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .progress-steps {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .progress-step::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📄 Solicitudes CHP</h1>
+            <div class="subtitle">Certificados de Habilitación Profesional - Portal COPIG</div>
+        </div>
+
+        <div class="content">
+            <div class="message" id="messageDiv"></div>
+
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('nueva-solicitud')">➕ Nueva Solicitud</button>
+                <button class="tab" onclick="showTab('mis-solicitudes')">📋 Mis Solicitudes</button>
+                <button class="tab" onclick="showTab('informacion')">ℹ️ Información</button>
+            </div>
+
+            <!-- Tab: Nueva Solicitud -->
+            <div id="nueva-solicitud" class="tab-content active">
+                <div class="form-section">
+                    <h3>📄 Solicitar Certificado de Habilitación Profesional</h3>
+                    
+                    <div class="info-card">
+                        <h4>ℹ️ Información sobre CHP</h4>
+                        <ul>
+                            <li>✅ Certificado requerido para ejercicio profesional</li>
+                            <li>✅ Válido por tiempo determinado según normativa</li>
+                            <li>✅ Debe renovarse antes del vencimiento</li>
+                            <li>✅ Costo variable según tipo de solicitud</li>
+                        </ul>
+                    </div>
+
+                    <form id="chpForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="tipoSolicitud">Tipo de Solicitud</label>
+                                <select id="tipoSolicitud" name="tipoSolicitud" required>
+                                    <option value="">Seleccionar tipo</option>
+                                    <option value="PRIMERA_VEZ">Primera vez</option>
+                                    <option value="RENOVACION">Renovación</option>
+                                    <option value="DUPLICADO">Duplicado por pérdida</option>
+                                </select>
+                                <small>Seleccione el tipo de solicitud CHP que necesita</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="motivoSolicitud">Motivo de la Solicitud</label>
+                                <textarea id="motivoSolicitud" name="motivoSolicitud" required 
+                                          placeholder="Describa el motivo de su solicitud..."></textarea>
+                                <small>Explique brevemente por qué necesita este certificado</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Documentos Requeridos</label>
+                            <div class="file-upload" id="fileUploadArea">
+                                <p>📁 Arrastre archivos aquí o haga clic para seleccionar</p>
+                                <p><small>Formatos permitidos: PDF, JPG, PNG (máximo 5MB por archivo)</small></p>
+                                <input type="file" id="fileInput" multiple accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                            </div>
+                            <div class="file-list" id="fileList"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="observaciones">Observaciones Adicionales</label>
+                            <textarea id="observaciones" name="observaciones" 
+                                      placeholder="Información adicional que considere relevante..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            📄 Enviar Solicitud CHP
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tab: Mis Solicitudes -->
+            <div id="mis-solicitudes" class="tab-content">
+                <div class="form-section">
+                    <h3>📋 Historial de Solicitudes CHP</h3>
+                    <button onclick="cargarSolicitudes()" class="btn btn-secondary">🔄 Actualizar</button>
+                    
+                    <div class="loading" id="solicitudesLoading" style="display: none;">
+                        <div class="spinner"></div>
+                        <div>Cargando solicitudes...</div>
+                    </div>
+
+                    <table class="solicitudes-table" id="solicitudesTable" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>Número</th>
+                                <th>Tipo</th>
+                                <th>Fecha Solicitud</th>
+                                <th>Estado</th>
+                                <th>Costo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="solicitudesTableBody">
+                        </tbody>
+                    </table>
+
+                    <div id="noSolicitudes" style="display: none; text-align: center; padding: 40px;">
+                        <h3>📄 No tienes solicitudes CHP</h3>
+                        <p>Cuando realices tu primera solicitud, aparecerá aquí.</p>
+                        <button onclick="showTab('nueva-solicitud')" class="btn btn-primary">
+                            ➕ Crear Primera Solicitud
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Información -->
+            <div id="informacion" class="tab-content">
+                <div class="form-section">
+                    <h3>ℹ️ Información sobre Certificados CHP</h3>
+                    
+                    <div class="info-card">
+                        <h4>📋 Proceso de Solicitud</h4>
+                        <ol class="progress-steps">
+                            <li class="progress-step completed">
+                                <span class="step-number">1</span>
+                                <span class="step-title">Envío de Solicitud</span>
+                            </li>
+                            <li class="progress-step active">
+                                <span class="step-number">2</span>
+                                <span class="step-title">Revisión COPIG</span>
+                            </li>
+                            <li class="progress-step">
+                                <span class="step-number">3</span>
+                                <span class="step-title">Aprobación</span>
+                            </li>
+                            <li class="progress-step">
+                                <span class="step-number">4</span>
+                                <span class="step-title">Emisión CHP</span>
+                            </li>
+                            <li class="progress-step">
+                                <span class="step-number">5</span>
+                                <span class="step-title">Entrega</span>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="info-card">
+                            <h4>📄 Primera Vez</h4>
+                            <p><strong>Costo:</strong> $5,000</p>
+                            <p><strong>Documentos:</strong></p>
+                            <ul>
+                                <li>• Título profesional</li>
+                                <li>• DNI (frente y dorso)</li>
+                                <li>• Constancia de matriculación</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>🔄 Renovación</h4>
+                            <p><strong>Costo:</strong> $3,000</p>
+                            <p><strong>Documentos:</strong></p>
+                            <ul>
+                                <li>• CHP anterior</li>
+                                <li>• Constancia de actualización</li>
+                                <li>• Comprobante de pago</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>📋 Duplicado</h4>
+                            <p><strong>Costo:</strong> $2,000</p>
+                            <p><strong>Documentos:</strong></p>
+                            <ul>
+                                <li>• Denuncia policial (si corresponde)</li>
+                                <li>• Declaración jurada</li>
+                                <li>• DNI actualizado</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>📞 Contacto COPIG</h4>
+                        <p><strong>Teléfono:</strong> (261) 429-8500</p>
+                        <p><strong>Email:</strong> certificados@copig.org.ar</p>
+                        <p><strong>Horarios:</strong> Lunes a Viernes de 8:00 a 16:00hs</p>
+                        <p><strong>Dirección:</strong> Av. España 1065, Mendoza</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions-bar">
+                <a href="/profesional-dashboard" class="btn btn-secondary">← Volver al Dashboard</a>
+                <a href="/portal" class="btn btn-secondary">🏠 Portal Principal</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedFiles = [];
+
+        // Gestión de tabs
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            if (tabName === 'mis-solicitudes') {
+                cargarSolicitudes();
+            }
+        }
+
+        // Gestión de archivos
+        const fileUploadArea = document.getElementById('fileUploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+
+        fileUploadArea.addEventListener('click', () => fileInput.click());
+
+        fileUploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.add('dragover');
+        });
+
+        fileUploadArea.addEventListener('dragleave', () => {
+            fileUploadArea.classList.remove('dragover');
+        });
+
+        fileUploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUploadArea.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                if (file.size > 5 * 1024 * 1024) { // 5MB
+                    showMessage('❌ El archivo ' + file.name + ' excede el límite de 5MB', 'error');
+                    return;
+                }
+
+                if (!file.type.match(/^(application\/pdf|image\/(jpeg|jpg|png))$/)) {
+                    showMessage('❌ El archivo ' + file.name + ' no es un formato válido', 'error');
+                    return;
+                }
+
+                selectedFiles.push(file);
+                addFileToList(file);
+            });
+        }
+
+        function addFileToList(file) {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            fileItem.innerHTML = `
+                <div>
+                    <div class="file-name">${file.name}</div>
+                    <div class="file-size">${formatFileSize(file.size)}</div>
+                </div>
+                <button type="button" onclick="removeFile('${file.name}')" class="btn btn-danger" style="font-size: 0.8rem; padding: 6px 12px;">Eliminar</button>
+            `;
+            fileList.appendChild(fileItem);
+        }
+
+        function removeFile(fileName) {
+            selectedFiles = selectedFiles.filter(file => file.name !== fileName);
+            const fileItems = fileList.querySelectorAll('.file-item');
+            fileItems.forEach(item => {
+                if (item.querySelector('.file-name').textContent === fileName) {
+                    item.remove();
+                }
+            });
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // Mostrar mensajes
+        function showMessage(message, type = 'success') {
+            const messageDiv = document.getElementById('messageDiv');
+            messageDiv.textContent = message;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // Enviar solicitud CHP
+        document.getElementById('chpForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            
+            // Agregar archivos
+            selectedFiles.forEach((file, index) => {
+                formData.append(`documentos`, file);
+            });
+
+            try {
+                const response = await fetch('/api/profesional/solicitud-chp', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showMessage('✅ Solicitud CHP enviada exitosamente. Número: ' + result.numeroSolicitud, 'success');
+                    e.target.reset();
+                    selectedFiles = [];
+                    fileList.innerHTML = '';
+                    showTab('mis-solicitudes');
+                } else {
+                    showMessage('❌ Error: ' + result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('❌ Error de conexión al enviar solicitud', 'error');
+            }
+        });
+
+        // Cargar solicitudes del profesional
+        async function cargarSolicitudes() {
+            const loading = document.getElementById('solicitudesLoading');
+            const table = document.getElementById('solicitudesTable');
+            const noSolicitudes = document.getElementById('noSolicitudes');
+            const tbody = document.getElementById('solicitudesTableBody');
+            
+            loading.style.display = 'block';
+            table.style.display = 'none';
+            noSolicitudes.style.display = 'none';
+            
+            try {
+                const response = await fetch('/api/profesional/solicitudes-chp');
+                const result = await response.json();
+                
+                if (result.success) {
+                    tbody.innerHTML = '';
+                    
+                    if (result.solicitudes.length === 0) {
+                        noSolicitudes.style.display = 'block';
+                    } else {
+                        result.solicitudes.forEach(solicitud => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td><strong>${solicitud.numero_solicitud}</strong></td>
+                                <td>${formatTipoSolicitud(solicitud.tipo_solicitud)}</td>
+                                <td>${new Date(solicitud.fecha_solicitud).toLocaleDateString()}</td>
+                                <td>
+                                    <span class="status-badge status-${solicitud.estado.toLowerCase()}">
+                                        ${formatEstado(solicitud.estado)}
+                                    </span>
+                                </td>
+                                <td>$${parseFloat(solicitud.costo || 0).toFixed(2)}</td>
+                                <td>
+                                    <button onclick="verDetalleSolicitud(${solicitud.id})" 
+                                            class="btn btn-primary" 
+                                            style="font-size: 0.8rem; padding: 6px 12px;">
+                                        Ver Detalle
+                                    </button>
+                                </td>
+                            `;
+                            tbody.appendChild(row);
+                        });
+                        
+                        table.style.display = 'table';
+                    }
+                } else {
+                    showMessage('❌ Error: ' + result.message, 'error');
+                }
+            } catch (error) {
+                showMessage('❌ Error cargando solicitudes', 'error');
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        function formatTipoSolicitud(tipo) {
+            const tipos = {
+                'PRIMERA_VEZ': 'Primera vez',
+                'RENOVACION': 'Renovación',
+                'DUPLICADO': 'Duplicado'
+            };
+            return tipos[tipo] || tipo;
+        }
+
+        function formatEstado(estado) {
+            const estados = {
+                'PENDIENTE': 'Pendiente',
+                'EN_PROCESO': 'En Proceso',
+                'APROBADA': 'Aprobada',
+                'RECHAZADA': 'Rechazada',
+                'ENTREGADA': 'Entregada'
+            };
+            return estados[estado] || estado;
+        }
+
+        function verDetalleSolicitud(id) {
+            // Implementar modal o página de detalle
+            showMessage('ℹ️ Función de detalle en desarrollo', 'info');
+        }
+
+        // Cargar datos iniciales
+        window.addEventListener('load', function() {
+            console.log('📄 Portal de Solicitudes CHP cargado');
+        });
+    </script>
+</body>
+</html>

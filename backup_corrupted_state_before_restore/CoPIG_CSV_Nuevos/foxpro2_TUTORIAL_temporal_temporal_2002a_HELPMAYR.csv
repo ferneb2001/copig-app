@@ -1,0 +1,167 @@
+UNICO
+0            1
+1            ACTIVO
+11           CAJA Y BANCOS
+1101         Fondo Fijo Mendoza
+1102         Fondo Fijo San Rafael
+1103         Fondo fijo Asesoria Letrada
+1104         Fondos a Depositar
+1105         Moneda Extranjera
+1106         Valores en Cartera
+1107         Bco. Mza.Cta.Cte.(033-00201/7)
+1108         Bco. Mza.Cta.Cte.(033-09003/8)
+1109         Bco.Mza.Dec.Ley 3485/6 (1544/5
+1110         Bco.Mza.Caja de Ahorro (74000/0)
+1111         B.U.C.I.Caja de Ahorro (1972/9)
+1112         B.U.C.I.Caja de Ahorro (25969/3)
+1113         B.U.C.I.F.Reserva Mon.Ext.(194/2)
+1114         Bco. Mendoza Plazo Fijo
+1115         B.U.C.I.Cta.Cte.9637/3
+12           CUENTAS POR COBRAR
+1201         Condminos Edificio
+1202         Deudores Comunes
+1203         Documentos a Cobrar
+1204         Intereses  a Cobrar
+1205         Tarjetas de Crdito
+13           BIENES DE CAMBIO
+1301         Impresos (Papalera de Reventa)
+1302         Software (p/Ing.y Constr.)
+14           INVERSIONES
+1401         Bonex Serie 1.989
+1402
+15           BIENES DE USO
+1501         Inmuebles-terreno
+1502         Inmuebles-Construcciones
+1503         Menos: Deprec.Acumulada Inmuebles
+1504         Muebles y Utiles
+1505         Menos: Deprec.Acumulada M.y Utiles
+1506         Equipo de Mecanizacin
+1507         Menos: Deprec.Ac.Equipos de Mecan.
+1508         Equipo de Computacin
+1509         Menos: Deprec.Ac.Equipo de Comput.
+1510         Instalaciones
+1511         Menos: Deprec.Acumulada Instalac.
+2            PASIVO
+21           CUENTAS POR PAGAR
+2101         Honorarios Pendientes de Liquidar
+2102         Honorarios a Pagar
+2103         Compensacin Consejeros a Pagar
+2104         C.I.A.A.
+2105         A.T.I.M.
+2106         Prst.Pers.Bco.de Mza.a Depositar
+2107         Prst.Pers.Bco.de Prev.Social a Dep.
+2108         Honorarios Mensuales Fijos a Pagar
+2109         Gastos a Pagar
+2110         Ret.Impuesto a las Ganancias a Depositar
+2111         Prestamo Bco.BUCI a pagar
+2112         Prst.Corp Banca c/Gtia Hip.a Pagar
+2113         Alquileres de 3 a Pagar
+2114         Convenio c/Colegio Arquit.a realizar
+2115         Prest.Bco.Mza.a Pagar
+22           REMUNERACIONES Y CARGAS SOCIALES
+2201         Remuneraciones a Pagar
+2202         A.N.S.E.S.
+2203         Obra Social
+2204         U.T.E.D.Y.C. a Pagar
+23           PREVISIONES
+2301         Previsin para Despidos
+3            PATRIMONIO NETO
+30           4
+31           CAPITAL
+3101         Capital
+3102         Ajustes al Capital
+32           GANANCIAS RESERVADAS
+3201         Reserva Facultativa
+33           RESULTADOS ACUMULADOS
+3301         Res.Ejercicios Anteriores
+3302         Res.del Ejercicio
+4            INGRESOS
+41           RECURSOS ORDINARIOS
+4101         Cert.Habil.Prof. Ley 5.908
+4102         Alquileres Banco de Mendoza
+4103         Alquileres Fundacin Post Grado
+4104         Ventas de Papelera
+4105         5% Honorarios Profesionales
+4106         Matrculas Profesionales
+4107         Matrculas Empresas
+"4108         Multas, Recargos y Varios"
+4199         Menos:Costo Ventas Papelera
+42           OTROS INGRESOS
+4201         Intereses Cajas Ahorros-Mendoza
+4202         Intereses Cajas Ahorros-BUCI
+4203         Intereses C.Ahorro Mon.Extr.
+4204         Otros Intereses
+4205         Ingresos Varios
+4206         Int. Plazo Fijo Banco Mendoza
+4207         Recupero Comisiones Tarjetas
+4208         Venta Software-(p/Ing. y Const.)
+4209         Ingresos Com.Rel.Inst.(Cursos-Sem.-etc)
+4210         Ing.p/alquiler terraza Edificio
+4299         Costo de Venta Software p/Ing.y Constr.
+5            EGRESOS
+51           GASTOS DE FUNCIONAMIENTO
+5101         Papeleria y Utiles de Oficina
+"5102         Agua, Gas, Luz y Telfono"
+5103         Franqueos
+5104         Servicio de Mensajera
+5105         Mantenimiento de Mquinas
+5106         Reparaciones Generales
+5107         Servicio de Refrigerio
+5108         Movilidad Tramitador
+5109         Notificaciones
+5110         Gastos Matrcula Anual Profes.
+"5111         Gastos Varios, Imprev.o Eventuales"
+5112         Alquileres Pagados
+5113         Servicio de Limpieza
+5114         Gastos Edificio Consorcio
+5115         Publicidad y Propaganda
+5116         Gastos de Juicios
+5117         Seguros
+5118         Gastos y Comisiones Bancarias
+5119         Gastos Asist.Congresos/Reun.
+5120         Diferencias de Cambio
+5121         Depreciaciones
+5122         Servicios y mantenimiento Edificio
+5123         Gastos Elecciones
+5124         Impuestos y Tasas(Munic.-Inmobil.-Sell.
+5125         Gastos Revista Informativa
+5126         Prdida Bienes de Uso
+5127         UCIM e IDEMA
+5128         Donaciones y Contribuciones
+5129         Gastos Com.Rel.Inst.(Cursos-Sem.-Vs-)
+5130         A.S.S.I.B.
+5131         Gastos Terraza Edificio-
+5133         Expensas Consorcio Mitre 617
+5134         Intereses Bancarios
+5135         Comisiones Tarjetas de Crdito
+5198         Perdida Extraordinaria
+5199         Res.por Expos.a la Inflacin
+52           REMUNERACIONES Y CARGAS SOCIALES
+5201         Remuneracin Bsica
+5202         Sueldo Anual Complementario
+5203         Bonificacin por Antigedad
+5204         Bonificacin por Ttulo
+5205         Bonificacin por Presentismo
+5206         Adicional por Licencias
+5207         A.N.S.E.S.
+5208         Obra Social
+5209         Indemnizacin por Despidos
+5210         Compensaciones por Fallas de Caja
+5211         Horas Suplementarias
+5212         Bonificacin por Operador de Cmputos
+5213         Bonificacin Trimes.p/Asist.y Punt.
+53           HONORARIOS Y COMPENSACIONES
+5301         Honorarios Mensuales Fijos
+5302         Gastos Representacin Presidente
+5303         Gastos Representacin Vice-Presidente
+5304         Gastos Representacin Secretario
+5305         Compensacin Consejeros
+5306         Honorarios por Servicios de Terceros
+5307         Honorarios Insp. Obras y Municipios
+5308         Honorarios por Reg. de Juicios
+5309         Subsidio por Fallecimiento
+56           30
+6            CUENTAS DE ORDEN
+61           Cuentas de Movimiento
+6101         Valores pendientes
+6102         Cuenta puente

@@ -1,0 +1,30 @@
+
+Structure for database: Z:\ADMINSP\FOXPRO2\CONSEJO\SPMATRI.DBF
+Number of data records:    5380
+Date of last update   : 07/13/25
+Field  Field Name  Type       Width    Dec    Index
+    1  NUMERO      Numeric        5            Asc    matrícula
+    2  CATEGO      Character      2                   categoría
+    3  DCTIPO      Numeric        1                   tipo docum ((clave 1 para encadenar spprof)
+    4  DCNRO       Numeric        8            Asc    nro-doc     (clave 2 para encadenar spprof) 
+    5  TITULO      Character      3                   Título  (ver tabla sptitu)
+    6  OTORGA      Character      4                   Entidad que otorga el título (ver tabla spente)
+    7  INSCR       Date           8                   Fecha de inscripción
+    8  FECTIT      Date           8                   Fecha de título 
+    9  FECHAB      Date           8                   Fecha de habilitación
+   10  FECCERT     Date           8                   Fecha certificado
+   11  PAGO        Date           8                   fecha de pago der-inscripción 
+   12  RECIBO      Numeric        7                   número de recibo 
+   13  HABILI      Numeric        4                   Año habilitación (el último pagado) 
+   14  AFILIA      Numeric        1                   Numero de afiliado (no se usa) 
+   15  CONDIC      Character      1                   Condición (1-Activo, 3-fallecido, 4 y 5 baja, 2 y 6 inacividad)   
+   16  VTOHAB      Date           8                   Vencimiento de la hablitación (anual 31/12, si paga en cuotas de habilita por un mes
+   17  R92INIC     Date           8                   Resol. 92/04 fecha inicio 
+   18  R92FACT     Date           8                   Resol. 92/04 fecha de actualización 
+   19  R92AUT      Numeric        4                   Resol  92/04 año habilitado 
+   20  R92VTO      Date           8                   resol. 92/04 fecha vencimiento 
+   21  INACINI     Date           8                   Inactividad  fecha inicio 
+   22  INACTUA     Date           8                   Inactividad  fecha de actualización  
+   23  INACANO     Numeric        4                   inactividad año  
+   24  INACVTO     Date           8                   Inactividad vencimiento.
+** Total **                     141

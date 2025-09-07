@@ -1,0 +1,898 @@
+[
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "column_default": "nextval('copig.aranceles_chp_id_seq'::regclass)"
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "segmento",
+    "data_type": "character varying",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "nombre_segmento",
+    "data_type": "character varying",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "monto_desde",
+    "data_type": "numeric",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "monto_hasta",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "arancel",
+    "data_type": "numeric",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "fecha_vigencia_desde",
+    "data_type": "date",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "fecha_vigencia_hasta",
+    "data_type": "date",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "activo",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "column_default": "true"
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "observaciones",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "porcentaje_fijo",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "usar_porcentaje_fijo",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "column_default": "false"
+  },
+  {
+    "table_name": "aranceles_chp",
+    "column_name": "porcentaje_sugerido",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "column_default": "26.33"
+  },
+  {
+    "table_name": "certificados_chp",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "column_default": "nextval('copig.certificados_chp_id_seq'::regclass)"
+  },
+  {
+    "table_name": "certificados_chp",
+    "column_name": "solicitud_chp_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "certificados_chp",
+    "column_name": "numero_certificado",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "certificados_chp",
+    "column_name": "fecha_emision",
+    "data_type": "date",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "certificados_chp",
+    "column_name": "estado",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "certificados_chp",
+    "column_name": "archivo_pdf",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "certificados_chp",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "chp_documentos",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "column_default": "nextval('copig.chp_documentos_id_seq'::regclass)"
+  },
+  {
+    "table_name": "chp_documentos",
+    "column_name": "solicitud_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_documentos",
+    "column_name": "nombre_archivo",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_documentos",
+    "column_name": "ruta_archivo",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_documentos",
+    "column_name": "tipo_documento",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_documentos",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "chp_documentos",
+    "column_name": "fecha_subida",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "column_default": "nextval('copig.chp_solicitudes_id_seq'::regclass)"
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "numero_solicitud",
+    "data_type": "character varying",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "profesional_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "matricula_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "comitente",
+    "data_type": "character varying",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "obra_descripcion",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "descripcion_tarea_profesional",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "estado",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": "'PENDIENTE'::character varying"
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "fecha_solicitud",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "fecha_revision",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "fecha_pago",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "fecha_emision",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "oficina_origen",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": "1"
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "importe_arancel",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "numero_factura",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "observaciones_revision",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "observaciones_administrativas",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "fecha_creacion",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "fecha_actualizacion",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "CURRENT_TIMESTAMP"
+  },
+  {
+    "table_name": "chp_solicitudes",
+    "column_name": "observaciones",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "documentos_chp",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "column_default": "nextval('copig.documentos_chp_id_seq'::regclass)"
+  },
+  {
+    "table_name": "documentos_chp",
+    "column_name": "solicitud_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "documentos_chp",
+    "column_name": "tipo_documento",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "documentos_chp",
+    "column_name": "nombre_archivo",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "documentos_chp",
+    "column_name": "ruta_archivo",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "documentos_chp",
+    "column_name": "fecha_carga",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "column_default": "nextval('copig.facturas_chp_id_seq'::regclass)"
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "solicitud_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "numero_factura",
+    "data_type": "character varying",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "monto",
+    "data_type": "numeric",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "fecha_emision",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "fecha_vencimiento",
+    "data_type": "date",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "estado",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": "'PENDIENTE'::character varying"
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "descripcion",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "creado_por",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "archivo_pdf",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "cae",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "fecha_vencimiento_cae",
+    "data_type": "date",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "punto_venta",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": "1"
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "tipo_comprobante",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": "11"
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "factura_oficial",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "column_default": "false"
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "error_arca",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "facturas_chp",
+    "column_name": "datos_arca",
+    "data_type": "jsonb",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "notificaciones_chp",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "column_default": "nextval('copig.notificaciones_chp_id_seq'::regclass)"
+  },
+  {
+    "table_name": "notificaciones_chp",
+    "column_name": "solicitud_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "notificaciones_chp",
+    "column_name": "profesional_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "notificaciones_chp",
+    "column_name": "tipo",
+    "data_type": "character varying",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "notificaciones_chp",
+    "column_name": "titulo",
+    "data_type": "character varying",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "notificaciones_chp",
+    "column_name": "mensaje",
+    "data_type": "text",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "notificaciones_chp",
+    "column_name": "leida",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "column_default": "false"
+  },
+  {
+    "table_name": "notificaciones_chp",
+    "column_name": "fecha_envio",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "notificaciones_chp",
+    "column_name": "datos_adicionales",
+    "data_type": "jsonb",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "column_default": "nextval('copig.solicitudes_chp_id_seq'::regclass)"
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "profesional_id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "tipo_solicitud",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": "'CERTIFICADO'::character varying"
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "numero_solicitud",
+    "data_type": "character varying",
+    "is_nullable": "NO",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "fecha_solicitud",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "estado",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": "'PENDIENTE'::character varying"
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "motivo_solicitud",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "documentos_adjuntos",
+    "data_type": "jsonb",
+    "is_nullable": "YES",
+    "column_default": "'[]'::jsonb"
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "observaciones",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "fecha_aprobacion",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "fecha_rechazo",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "motivo_rechazo",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "admin_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "numero_chp",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "fecha_vencimiento_chp",
+    "data_type": "date",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "costo",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "column_default": "0"
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "pagado",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "column_default": "false"
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "fecha_pago",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "metodo_pago",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "updated_at",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "cliente",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "proyecto",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "descripcion",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "ubicacion_obra",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "tipo_obra",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "fecha_actualizacion",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": "now()"
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "aprobado_por",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "monto_honorarios",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "numero_factura",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "fecha_factura",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "arancel_final",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "comprobante_pago_path",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "revisado_por",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "fecha_revision",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "requiere_factura_oficial",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "column_default": "true"
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "observaciones_arca",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "porcentaje_chp",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "descripcion_corregida",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "arancel_establecido",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "comprobante_pago_archivo",
+    "data_type": "character varying",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "fecha_carga_comprobante",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "verificado_por",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "fecha_verificacion_pago",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "column_default": null
+  },
+  {
+    "table_name": "solicitudes_chp",
+    "column_name": "medios_pago_disponibles",
+    "data_type": "jsonb",
+    "is_nullable": "YES",
+    "column_default": "'[\"tarjeta_credito\", \"tarjeta_debito\", \"transferencia\", \"efectivo\"]'::jsonb"
+  }
+]

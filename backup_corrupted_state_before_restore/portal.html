@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COPIG - Portal Principal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portal-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            width: 100%;
+            max-width: 900px;
+            margin: 20px;
+        }
+
+        .portal-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .portal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+
+        .portal-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .portal-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .portal-options {
+            padding: 50px 30px;
+        }
+
+        .options-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .option-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 30px 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .option-card:hover::before {
+            left: 100%;
+        }
+
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: #3498db;
+        }
+
+        .admin-card:hover {
+            border-color: #e74c3c;
+        }
+
+        .professional-card:hover {
+            border-color: #27ae60;
+        }
+
+        .payment-card:hover {
+            border-color: #f39c12;
+        }
+
+        .option-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .admin-card .option-icon {
+            color: #e74c3c;
+        }
+
+        .professional-card .option-icon {
+            color: #27ae60;
+        }
+
+        .payment-card .option-icon {
+            color: #f39c12;
+        }
+
+        .option-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .option-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .option-button {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .admin-card .option-button {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .professional-card .option-button {
+            background: linear-gradient(135deg, #27ae60 0%, #219a52 100%);
+        }
+
+        .payment-card .option-button {
+            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+        }
+
+        .option-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .portal-footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            border-top: 1px solid #e9ecef;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .portal-header h1 {
+                font-size: 2rem;
+            }
+            
+            .portal-header .subtitle {
+                font-size: 1rem;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .portal-options {
+                padding: 30px 20px;
+            }
+        }
+
+        .access-hint {
+            background: #e8f4f8;
+            border: 1px solid #b8daff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .access-hint h3 {
+            color: #0c5460;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .access-hint p {
+            color: #155724;
+            margin: 5px 0;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="portal-container">
+        <div class="portal-header">
+            <h1>COPIG</h1>
+            <div class="subtitle">Colegio de Profesionales de la Ingeniería y Geociencias</div>
+        </div>
+
+        <div class="portal-options">
+            <div class="options-title">Seleccione su portal de acceso</div>
+            
+            <div class="options-grid">
+                <div class="option-card admin-card" onclick="redirectToAdmin()">
+                    <div class="option-icon">🛡️</div>
+                    <div class="option-title">Personal Administrativo</div>
+                    <div class="option-description">
+                        Acceso exclusivo para personal administrativo del COPIG. 
+                        Gestión interna, reportes y administración del sistema.
+                    </div>
+                    <button class="option-button">Acceder</button>
+                </div>
+
+                <div class="option-card professional-card" onclick="redirectToProfessional()">
+                    <div class="option-icon">👨‍💼</div>
+                    <div class="option-title">Portal Profesional</div>
+                    <div class="option-description">
+                        Portal principal para profesionales colegiados. 
+                        Consulta de estado, trámites y servicios profesionales.
+                    </div>
+                    <button class="option-button">Acceder</button>
+                </div>
+
+                <div class="option-card payment-card" onclick="redirectToPayments()">
+                    <div class="option-icon">💳</div>
+                    <div class="option-title">Sistema de Pagos</div>
+                    <div class="option-description">
+                        Portal especializado para pagos de matrículas anuales. 
+                        Múltiples métodos de pago y planes de cuotas.
+                    </div>
+                    <button class="option-button">Acceder</button>
+                </div>
+            </div>
+
+            <div class="access-hint">
+                <h3>💡 Información de Acceso</h3>
+                <p><strong>Personal Administrativo:</strong> Requiere credenciales de administrador</p>
+                <p><strong>Portal Profesional:</strong> Acceso general para profesionales</p>
+                <p><strong>Sistema de Pagos:</strong> Matrícula + Documento + Contraseña</p>
+            </div>
+        </div>
+
+        <div class="portal-footer">
+            <p>&copy; 2024 COPIG - Colegio de Profesionales de la Ingeniería y Geociencias</p>
+            <p>Sistema de Portales Integrados v2.0</p>
+        </div>
+    </div>
+
+    <script>
+        function redirectToAdmin() {
+            console.log('Redirigiendo a Portal Administrativo...');
+            window.location.href = '/admin/login';
+        }
+
+        function redirectToProfessional() {
+            console.log('Redirigiendo a Portal Profesional...');
+            window.location.href = '/';
+        }
+
+        function redirectToPayments() {
+            console.log('Redirigiendo a Sistema de Pagos...');
+            window.location.href = '/pago-matricula';
+        }
+
+        // Efecto de entrada
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.option-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+
+        // Efectos de teclado
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case '1':
+                    redirectToAdmin();
+                    break;
+                case '2':
+                    redirectToProfessional();
+                    break;
+                case '3':
+                    redirectToPayments();
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

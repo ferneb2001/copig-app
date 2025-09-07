@@ -1,0 +1,158 @@
+{
+  "timestamp": "2025-09-04T20:17:34.473Z",
+  "proposito": "Testing exhaustivo COPIG Mendoza",
+  "tablas": {
+    "profesionales": {
+      "registros": 5764,
+      "archivo": "profesionales.json",
+      "timestamp": "2025-09-04T20:17:34.535Z"
+    },
+    "matriculas": {
+      "registros": 5769,
+      "archivo": "matriculas.json",
+      "timestamp": "2025-09-04T20:17:34.582Z"
+    },
+    "empresas": {
+      "registros": 1504,
+      "archivo": "empresas.json",
+      "timestamp": "2025-09-04T20:17:34.606Z"
+    },
+    "representantes_tecnicos": {
+      "registros": 2343,
+      "archivo": "representantes_tecnicos.json",
+      "timestamp": "2025-09-04T20:17:34.620Z"
+    },
+    "admin_users": {
+      "registros": 2,
+      "archivo": "admin_users.json",
+      "timestamp": "2025-09-04T20:17:34.625Z"
+    },
+    "profesionales_auth": {
+      "registros": 10,
+      "archivo": "profesionales_auth.json",
+      "timestamp": "2025-09-04T20:17:34.627Z"
+    },
+    "user_roles": {
+      "registros": 0,
+      "archivo": "user_roles.json",
+      "timestamp": "2025-09-04T20:17:34.629Z"
+    },
+    "solicitudes_chp": {
+      "registros": 10,
+      "archivo": "solicitudes_chp.json",
+      "timestamp": "2025-09-04T20:17:34.633Z"
+    },
+    "pagos_historicos": {
+      "registros": 124180,
+      "archivo": "pagos_historicos.json",
+      "timestamp": "2025-09-04T20:17:35.515Z"
+    },
+    "restricciones_deudas": {
+      "registros": 2,
+      "archivo": "restricciones_deudas.json",
+      "timestamp": "2025-09-04T20:17:35.518Z"
+    },
+    "sanciones_aplicadas": {
+      "registros": 644,
+      "archivo": "sanciones_aplicadas.json",
+      "timestamp": "2025-09-04T20:17:35.527Z"
+    },
+    "comprobantes_pago": {
+      "registros": 0,
+      "archivo": "comprobantes_pago.json",
+      "timestamp": "2025-09-04T20:17:35.530Z"
+    },
+    "cuenta_corriente": {
+      "registros": 0,
+      "archivo": "cuenta_corriente.json",
+      "timestamp": "2025-09-04T20:17:35.533Z"
+    },
+    "facturas_chp": {
+      "registros": 1,
+      "archivo": "facturas_chp.json",
+      "timestamp": "2025-09-04T20:17:35.536Z"
+    },
+    "configuracion_arca": {
+      "registros": 1,
+      "archivo": "configuracion_arca.json",
+      "timestamp": "2025-09-04T20:17:35.538Z"
+    },
+    "tipos_comprobante_arca": {
+      "registros": 4,
+      "archivo": "tipos_comprobante_arca.json",
+      "timestamp": "2025-09-04T20:17:35.541Z"
+    }
+  },
+  "integridad": {
+    "server.js": {
+      "tamaño": 159896,
+      "respaldado": true
+    },
+    "admin.html": {
+      "tamaño": 53142,
+      "respaldado": true
+    },
+    "portal-profesional.html": {
+      "tamaño": 79811,
+      "respaldado": true
+    },
+    "empresas.html": {
+      "tamaño": 58216,
+      "respaldado": true
+    },
+    "solicitudes-chp-mejorado.html": {
+      "tamaño": 54621,
+      "respaldado": true
+    },
+    "admin-chp.html": {
+      "tamaño": 59022,
+      "respaldado": true
+    },
+    "user-management.html": {
+      "tamaño": 27625,
+      "respaldado": true
+    },
+    "config.json": {
+      "tamaño": 801,
+      "respaldado": true
+    },
+    "package.json": {
+      "tamaño": 944,
+      "respaldado": true
+    },
+    "CLAUDE.md": {
+      "tamaño": 39935,
+      "respaldado": true
+    },
+    "maximas.md": {
+      "tamaño": 4947,
+      "respaldado": true
+    }
+  },
+  "estadisticas": {
+    "profesionales": 5764,
+    "staff_admin": 1,
+    "empresas_activas": 1322,
+    "matriculas_vigentes": 5769,
+    "representantes_tecnicos": 2343,
+    "actividad_reciente": [
+      {
+        "fecha": "2025-09-04T03:00:00.000Z",
+        "solicitudes_chp": "5"
+      },
+      {
+        "fecha": "2025-09-03T03:00:00.000Z",
+        "solicitudes_chp": "4"
+      },
+      {
+        "fecha": "2025-08-30T03:00:00.000Z",
+        "solicitudes_chp": "1"
+      }
+    ],
+    "salud_financiera": {
+      "total_pagos": "21280",
+      "monto_total": "970620166.20",
+      "profesionales_con_pagos": "4204"
+    }
+  }
+}

@@ -1,0 +1,121 @@
+===============================================
+== 1. TABLAS MAESTRAS CLAVE (SUGERIDAS) ==
+===============================================
+
+* PROFESIONALES:
+  - Archivo recomendado: MODIPROF.csv
+  - Filas: 23600
+  - Columnas: DCTIPO, DCNRO, NOMBRE, DOMICI, PROVIN...
+  - Posibles duplicados o versiones a revisar:
+    - foxpro2_archpadron21_SPPROF.csv (4794 filas)
+    - foxpro2_archpadron21_SPPROFE.csv (1325 filas)
+    - foxpro2_consejo_julio_SPPROF.csv (5364 filas)
+    - foxpro2_consejo_julio_SPPROFB.csv (101 filas)
+    - foxpro2_consejo_julio_SPPROFE.csv (1483 filas)
+    - foxpro2_consejo_julio_SPPROFEV.csv (0 filas)
+    - foxpro2_consejo_julio_SPPROFV.csv (9342 filas)
+    - foxpro2_consejo_MODIPROF.csv (22047 filas)
+    - foxpro2_consejo_SPPROF.csv (5377 filas)
+    - foxpro2_consejo_SPPROFB.csv (101 filas)
+    - foxpro2_consejo_SPPROFE.csv (1491 filas)
+    - foxpro2_consejo_SPPROFEV.csv (0 filas)
+    - foxpro2_consejo_SPPROFV.csv (9342 filas)
+    - foxpro2_ez-20250710_SPPROF.csv (5369 filas)
+    - foxpro2_ez-20250710_SPPROFE.csv (1483 filas)
+    - foxpro2_MODIPROF.csv (19787 filas)
+    - SPPROF.csv (5378 filas)
+    - SPPROFB.csv (101 filas)
+    - SPPROFE.csv (1491 filas)
+    - SPPROFEV.csv (0 filas)
+    - SPPROFV.csv (9342 filas)
+
+* MATRICULAS:
+  - Archivo recomendado: MODIMATR.csv
+  - Filas: 115297
+  - Columnas: NUMERO, CATEGO, DCTIPO, DCNRO, TITULO...
+  - Posibles duplicados o versiones a revisar:
+    - foxpro2_archpadron21_SPMATRI.csv (4793 filas)
+    - foxpro2_archpadron21_SPMATRIE.csv (1331 filas)
+    - foxpro2_consejo_julio_SPMATRI.csv (5368 filas)
+    - foxpro2_consejo_julio_SPMATRIE.csv (1487 filas)
+    - foxpro2_consejo_MODIMATR.csv (108210 filas)
+    - foxpro2_consejo_SPMATRI - copia.csv (5242 filas)
+    - foxpro2_consejo_SPMATRI.csv (5381 filas)
+    - foxpro2_consejo_SPMATRIE - copia.csv (1462 filas)
+    - foxpro2_consejo_SPMATRIE.csv (1495 filas)
+    - foxpro2_ez-20250710_SPMATRI.csv (5373 filas)
+    - foxpro2_ez-20250710_SPMATRIE.csv (1487 filas)
+    - foxpro2_MODIMATR.csv (96055 filas)
+    - SPMATRI.csv (5382 filas)
+    - SPMATRIE.csv (1495 filas)
+
+* EMPRESAS:
+  - Archivo recomendado: foxpro2_consejo_EMPSDF.csv
+  - Filas: 1488
+  - Columnas: NUMERO, CATEGO, TITULO, HABILI, CONDIC...
+  - Posibles duplicados o versiones a revisar:
+    - EMPSDF.csv (302 filas)
+    - EMPSDFV.csv (1029 filas)
+    - foxpro2_archpadron21_EMPSDF.csv (277 filas)
+
+* REPRESENTANTES:
+  - Archivo recomendado: foxpro2_consejo_EMPRTCO.csv
+  - Filas: 3970
+  - Columnas: NUMERO, CATEGO, REGORD, PRFNUM, PRFCAT...
+  - Posibles duplicados o versiones a revisar:
+    - EMPRTCO.csv (3201 filas)
+    - EMPRTCO1.csv (23 filas)
+    - foxpro2_ez-20250710_EMPRTCO.csv (3201 filas)
+
+===============================================
+== 2. TABLAS DE MOVIMIENTOS (SUGERIDAS) ==
+===============================================
+* CERT2004.csv (3732 filas)
+* CERTMZA1.csv (3050 filas)
+* CERTMZA2.csv (3050 filas)
+* DSPMOV.csv (775 filas)
+* EXPMOV.csv (90034 filas)
+* EXPTES.csv (5524 filas)
+* MOVMAIL.csv (48898 filas)
+* PAGO2201.csv (71 filas)
+* PAGO2306.csv (24969 filas)
+* SANCION.csv (589 filas)
+* SPPAGOS.csv (124163 filas)
+* foxpro2_EXPMOV.csv (81280 filas)
+* foxpro2_EXPTES.csv (4975 filas)
+* foxpro2_SAMPLE_DBFS_FACTORS.csv (373 filas)
+* foxpro2_TUTORIAL_temporal_temporal_2002a_CAJMOVIM.csv (0 filas)
+* foxpro2_TUTORIAL_temporal_temporal_2002a_CLMOVIM.csv (0 filas)
+* foxpro2_TUTORIAL_temporal_temporal_2002a_FACTAUTO.csv (0 filas)
+* foxpro2_TUTORIAL_temporal_temporal_2002a_FACTBAND.csv (2 filas)
+* foxpro2_TUTORIAL_temporal_temporal_2002a_FACTURAS.csv (0 filas)
+* foxpro2_TUTORIAL_temporal_temporal_2002a_MAYMOVIM.csv (2334 filas)
+* foxpro2_TUTORIAL_temporal_temporal_2002a_PEDMOVIM.csv (0 filas)
+* foxpro2_TUTORIAL_temporal_temporal_2002a_PRMOVIM.csv (0 filas)
+* foxpro2_TUTORIAL_temporal_temporal_2002a_STKMOVIM.csv (0 filas)
+* foxpro2_archpadron21_PAGO2106.csv (16603 filas)
+* foxpro2_archpadron21_SPPAGOS.csv (110966 filas)
+* foxpro2_consejo_DSPMOV.csv (775 filas)
+* foxpro2_consejo_EXPMOV.csv (89168 filas)
+* foxpro2_consejo_EXPTES.csv (5431 filas)
+* foxpro2_consejo_MOVMAIL.csv (48286 filas)
+* foxpro2_consejo_PAGO0328.csv (8358 filas)
+* foxpro2_consejo_PAGO1012.csv (1676 filas)
+* foxpro2_consejo_PAGO1999.csv (67587 filas)
+* foxpro2_consejo_PAGO2010.csv (6150 filas)
+* foxpro2_consejo_PAGO2025.csv (56147 filas)
+* foxpro2_consejo_PAGO2104.csv (8450 filas)
+* foxpro2_consejo_PAGO2106.csv (16603 filas)
+* foxpro2_consejo_PAGO2201.csv (71 filas)
+* foxpro2_consejo_PAGO2224.csv (33299 filas)
+* foxpro2_consejo_PAGO2324.csv (3515 filas)
+* foxpro2_consejo_PAGO2504.csv (5842 filas)
+* foxpro2_consejo_SANCION.csv (571 filas)
+* foxpro2_consejo_SPPAGOS.csv (124158 filas)
+* foxpro2_consejo_julio_SPPAGOS.csv (123984 filas)
+* foxpro2_ez-20250710_DSPMOV.csv (775 filas)
+* foxpro2_ez-20250710_EXPMOV.csv (89836 filas)
+* foxpro2_ez-20250710_EXPTES.csv (5521 filas)
+* foxpro2_ez-20250710_MOVMAIL.csv (48866 filas)
+* foxpro2_ez-20250710_SANCION.csv (589 filas)
+* foxpro2_ez-20250710_SPPAGOS.csv (124002 filas)

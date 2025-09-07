@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Profesional - COPIG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-section h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .logo-section span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            background: white;
+            border-bottom: 2px solid #e8ecf0;
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .nav-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .nav-tab.active {
+            color: #3498db;
+            border-bottom-color: #3498db;
+            background: #f8f9ff;
+        }
+
+        .nav-tab:hover {
+            color: #3498db;
+            background: #f8f9ff;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e8ecf0;
+            background: #f8f9fa;
+        }
+
+        .card-header h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Tables */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid #e8ecf0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e8ecf0;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        tbody tr:hover {
+            background: #f8f9ff;
+        }
+
+        /* Forms */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e8ecf0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2980b9, #1f5f8b);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #229954;
+        }
+
+        /* Status badges */
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .status-pendiente {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-aprobado {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-rechazado {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-completado {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        /* Upload area */
+        .upload-area {
+            border: 2px dashed #bdc3c7;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .upload-area.dragover {
+            border-color: #3498db;
+            background: #f0f8ff;
+        }
+
+        .upload-area:hover {
+            border-color: #3498db;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: #bdc3c7;
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+        }
+
+        .upload-button {
+            margin-top: 1rem;
+        }
+
+        /* File categories */
+        .category-selector {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .category-option {
+            padding: 1rem;
+            border: 2px solid #e8ecf0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .category-option.selected {
+            border-color: #3498db;
+            background: #f0f8ff;
+        }
+
+        .category-option:hover {
+            border-color: #3498db;
+        }
+
+        /* Uploaded files */
+        .uploaded-files {
+            margin-top: 1.5rem;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border: 1px solid #e8ecf0;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            background: white;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .file-icon {
+            color: #e74c3c;
+            font-size: 1.2rem;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-tabs {
+                padding: 0 1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem;
+                margin: 1rem auto;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-selector {
+                grid-template-columns: 1fr;
+            }
+
+            .user-info {
+                order: -1;
+            }
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: #7f8c8d;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e8ecf0;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Empty states */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+    </style>
+    <script src="toast-notifications.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="/assets/images/logo-copig.png" alt="COPIG Logo" style="height: 45px; width: auto;" />
+                <div style="margin-left: 15px;">
+                    <h1>Portal Profesional</h1>
+                    <span>Consejo Profesional de Ingenieros y Geólogos de Mendoza</span>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">P</div>
+                <div>
+                    <div id="userName">Cargando...</div>
+                    <small id="userDni" style="opacity: 0.8;"></small>
+                </div>
+                <button class="logout-btn" onclick="logout()">Salir</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-tabs">
+        <div class="nav-tab active" onclick="showSection('mis-solicitudes')">📋 Mis Solicitudes CHP</div>
+        <div class="nav-tab" onclick="showSection('nueva-solicitud')">➕ Nueva Solicitud</div>
+        <div class="nav-tab" onclick="showSection('documentos')">📁 Documentos</div>
+        <div class="nav-tab" onclick="showSection('pagos')">💳 Estado de Pagos</div>
+        <div class="nav-tab" onclick="showSection('certificados')">🎓 Certificados</div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Mis Solicitudes CHP -->
+        <section id="mis-solicitudes" class="section active">
+            <div class="card">
+                <div class="card-header">
+                    <h3>📋 Mis Solicitudes CHP</h3>
+                </div>
+                <div class="card-body">
+                    <div id="solicitudesList" class="loading">
+                        <div class="spinner"></div>
+                        Cargando solicitudes...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nueva Solicitud CHP -->
+        <section id="nueva-solicitud" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h3>➕ Nueva Solicitud CHP</h3>
+                </div>
+                <div class="card-body">
+                    <form id="nuevaSolicitudForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="cliente">Cliente</label>
+                                <input type="text" id="cliente" name="cliente" required placeholder="Nombre del cliente">
+                            </div>
+                            <div class="form-group">
+                                <label for="proyecto">Proyecto</label>
+                                <input type="text" id="proyecto" name="proyecto" required placeholder="Nombre del proyecto">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción del Proyecto</label>
+                            <textarea id="descripcion" name="descripcion" required placeholder="Describe detalladamente el proyecto a certificar"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="monto_honorarios">Monto de Honorarios Profesionales ($)</label>
+                            <input type="number" id="monto_honorarios" name="monto_honorarios" required 
+                                   min="0" step="0.01" placeholder="Ingresa el monto de tus honorarios"
+                                   onchange="calcularArancel()">
+                        </div>
+                        <div class="form-group" id="arancel-info" style="display: none;">
+                            <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; border-left: 4px solid #27ae60;">
+                                <h4 style="margin: 0 0 10px 0; color: #27ae60;">💰 Arancel a Pagar</h4>
+                                <div id="arancel-detalle"></div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            📤 Enviar Solicitud
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upload de Documentos -->
+        <section id="documentos" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h3>📁 Gestión de Documentos</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Selector de categoría -->
+                    <h4 style="margin-bottom: 1rem;">Seleccione la categoría del documento:</h4>
+                    <div class="category-selector">
+                        <div class="category-option" data-category="comprobante_pago">
+                            <div>💳</div>
+                            <strong>Comprobante de Pago</strong>
+                            <p>Recibos, facturas, transferencias</p>
+                        </div>
+                        <div class="category-option" data-category="planos">
+                            <div>📐</div>
+                            <strong>Planos</strong>
+                            <p>Planos técnicos, esquemas</p>
+                        </div>
+                        <div class="category-option" data-category="documentacion_tecnica">
+                            <div>📋</div>
+                            <strong>Documentación Técnica</strong>
+                            <p>Informes, especificaciones</p>
+                        </div>
+                        <div class="category-option" data-category="otros">
+                            <div>📄</div>
+                            <strong>Otros</strong>
+                            <p>Documentos varios</p>
+                        </div>
+                    </div>
+
+                    <!-- Área de upload -->
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📁</div>
+                        <div class="upload-text">
+                            <strong>Selecciona una categoría y arrastra archivos aquí</strong>
+                            <p>o haz clic para seleccionar archivos</p>
+                            <p><small>Solo archivos PDF • Máximo 10MB por archivo</small></p>
+                        </div>
+                        <input type="file" id="fileInput" multiple accept=".pdf" style="display: none;">
+                        <button type="button" class="btn btn-secondary upload-button" onclick="document.getElementById('fileInput').click()">
+                            Seleccionar Archivos
+                        </button>
+                    </div>
+
+                    <!-- Lista de archivos subidos -->
+                    <div class="uploaded-files" id="uploadedFiles"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estado de Pagos -->
+        <section id="pagos" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h3>💳 Estado de Pagos</h3>
+                </div>
+                <div class="card-body">
+                    <div id="pagosList" class="loading">
+                        <div class="spinner"></div>
+                        Cargando información de pagos...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificados Emitidos -->
+        <section id="certificados" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h3>🎓 Certificados Emitidos</h3>
+                </div>
+                <div class="card-body">
+                    <div id="certificadosList" class="loading">
+                        <div class="spinner"></div>
+                        Cargando certificados...
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Variables globales
+        let currentUser = null;
+        let currentSection = 'mis-solicitudes';
+        let selectedCategory = null;
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePortal();
+            setupEventListeners();
+        });
+
+        async function initializePortal() {
+            try {
+                // Verificar autenticación
+                const authResponse = await fetch('/api/admin/auth/status');
+                const authData = await authResponse.json();
+                
+                if (!authData.authenticated || authData.user.role !== 'profesional') {
+                    window.location.href = '/';
+                    return;
+                }
+
+                currentUser = authData.user;
+                updateUserInfo();
+                await cargarAranceles(); // Cargar aranceles dinámicos
+                loadSolicitudes();
+                loadPagos();
+                loadCertificados();
+                
+            } catch (error) {
+                console.error('Error initializing portal:', error);
+                window.location.href = '/';
+            }
+        }
+
+        function updateUserInfo() {
+            if (currentUser) {
+                document.getElementById('userName').textContent = currentUser.username;
+                document.getElementById('userDni').textContent = `DNI: ${currentUser.dni}`;
+                document.getElementById('userAvatar').textContent = currentUser.username.charAt(0).toUpperCase();
+            }
+        }
+
+        function setupEventListeners() {
+            // Formulario nueva solicitud
+            document.getElementById('nuevaSolicitudForm').addEventListener('submit', handleNuevaSolicitud);
+            
+            // Selección de categoría para upload
+            document.querySelectorAll('.category-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.category-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedCategory = this.dataset.category;
+                    updateUploadArea();
+                });
+            });
+
+            // File input
+            document.getElementById('fileInput').addEventListener('change', handleFileSelect);
+            
+            // Drag and drop
+            const uploadArea = document.getElementById('uploadArea');
+            uploadArea.addEventListener('dragover', handleDragOver);
+            uploadArea.addEventListener('dragleave', handleDragLeave);
+            uploadArea.addEventListener('drop', handleDrop);
+        }
+
+        // Navegación entre secciones
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Actualizar tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            currentSection = sectionId;
+        }
+
+        // Cargar solicitudes CHP
+        async function loadSolicitudes() {
+            try {
+                // Cargar solicitudes desde el servidor
+                const response = await fetch('/api/profesional/solicitudes-chp', {
+                    credentials: 'include'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.success && data.solicitudes) {
+                        // Formatear las solicitudes para renderizado
+                        const solicitudes = data.solicitudes.map(s => ({
+                            id: s.id,
+                            cliente: s.cliente,
+                            proyecto: s.proyecto,
+                            fecha: s.fecha_solicitud ? s.fecha_solicitud.split('T')[0] : '',
+                            estado: s.estado ? s.estado.toLowerCase() : 'pendiente',
+                            numero_solicitud: s.numero_solicitud
+                        }));
+                        renderSolicitudes(solicitudes);
+                    } else {
+                        renderSolicitudes([]);
+                    }
+                } else {
+                    // Si no está autenticado o hay error, mostrar vacío
+                    renderSolicitudes([]);
+                }
+            } catch (error) {
+                console.error('Error loading solicitudes:', error);
+                document.getElementById('solicitudesList').innerHTML = '<div class="empty-state">Error al cargar las solicitudes</div>';
+            }
+        }
+
+        function renderSolicitudes(solicitudes) {
+            const container = document.getElementById('solicitudesList');
+            
+            if (solicitudes.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📋</div>
+                        <h3>No tienes solicitudes CHP</h3>
+                        <p>Crear tu primera solicitud en la pestaña "Nueva Solicitud"</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const html = `
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Proyecto</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${solicitudes.map(solicitud => `
+                                <tr>
+                                    <td>${solicitud.cliente}</td>
+                                    <td>${solicitud.proyecto}</td>
+                                    <td>${new Date(solicitud.fecha).toLocaleDateString('es-ES')}</td>
+                                    <td><span class="status-badge status-${solicitud.estado}">${solicitud.estado}</span></td>
+                                    <td>
+                                        <button class="btn btn-secondary btn-small" onclick="verDetalle(${solicitud.id})">Ver</button>
+                                        ${solicitud.estado === 'PENDIENTE' || solicitud.estado === 'OBSERVADO' ? 
+                                            `<button class="btn btn-warning btn-small" onclick="modificarSolicitud(${solicitud.id})" title="Modificar solicitud">Modificar</button>` 
+                                            : ''}
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // Variable global para aranceles
+        let arancelesVigentes = [];
+        
+        // Cargar aranceles vigentes al inicio
+        async function cargarAranceles() {
+            try {
+                const response = await fetch('/api/aranceles-chp');
+                const result = await response.json();
+                if (result.success) {
+                    arancelesVigentes = result.aranceles;
+                }
+            } catch (error) {
+                console.error('Error cargando aranceles:', error);
+            }
+        }
+        
+        // Calcular arancel según monto de honorarios (dinámico)
+        function calcularArancel() {
+            const montoHonorarios = parseFloat(document.getElementById('monto_honorarios').value);
+            const infoDiv = document.getElementById('arancel-info');
+            const detalleDiv = document.getElementById('arancel-detalle');
+            
+            if (!montoHonorarios || montoHonorarios <= 0) {
+                infoDiv.style.display = 'none';
+                return;
+            }
+            
+            // Buscar arancel correspondiente
+            let arancelAplicable = null;
+            for (let arancel of arancelesVigentes) {
+                if (montoHonorarios >= arancel.monto_desde && 
+                    (arancel.monto_hasta === null || montoHonorarios <= arancel.monto_hasta)) {
+                    arancelAplicable = arancel;
+                    break;
+                }
+            }
+            
+            if (!arancelAplicable) {
+                infoDiv.style.display = 'none';
+                return;
+            }
+            
+            // Usar porcentaje configurado o calcularlo
+            const porcentaje = arancelAplicable.usar_porcentaje_fijo && arancelAplicable.porcentaje_fijo
+                ? arancelAplicable.porcentaje_fijo
+                : ((arancelAplicable.arancel / montoHonorarios) * 100).toFixed(2);
+                
+            const fechaVigencia = arancelAplicable.fecha_vigencia_hasta 
+                ? `Vigente hasta: ${new Date(arancelAplicable.fecha_vigencia_hasta).toLocaleDateString('es-ES')}`
+                : 'Vigencia: Sin vencimiento';
+            
+            const porcentajeTipo = arancelAplicable.usar_porcentaje_fijo 
+                ? '(configurado)' 
+                : '(calculado)';
+            
+            detalleDiv.innerHTML = `
+                <p><strong>${arancelAplicable.nombre_segmento}:</strong> $${montoHonorarios.toLocaleString('es-AR')}</p>
+                <p><strong>Arancel CHP:</strong> $${parseFloat(arancelAplicable.arancel).toLocaleString('es-AR')}</p>
+                <p><strong>Porcentaje:</strong> ${parseFloat(porcentaje).toFixed(2)}% de los honorarios ${porcentajeTipo}</p>
+                <small style="color: #7f8c8d;">${fechaVigencia}</small>
+            `;
+            
+            infoDiv.style.display = 'block';
+        }
+
+        // Manejar nueva solicitud
+        async function handleNuevaSolicitud(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const montoHonorarios = parseFloat(formData.get('monto_honorarios'));
+            
+            const solicitudData = {
+                cliente: formData.get('cliente'),
+                proyecto: formData.get('proyecto'),
+                descripcion: formData.get('descripcion'),
+                monto_honorarios: montoHonorarios
+                // El costo se calcula dinámicamente en el backend
+            };
+
+            try {
+                // Enviar al servidor
+                const response = await fetch('/api/chp/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(solicitudData),
+                    credentials: 'include'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    const mensaje = result.costo > 0 
+                        ? `✅ Solicitud enviada correctamente\n\nNúmero: ${result.numeroSolicitud}\n💰 Costo: $${result.costo.toLocaleString('es-AR')}\n\n⚠️ Estado: ${result.estado}\nDebes realizar el pago para continuar con el trámite.`
+                        : `✅ Solicitud enviada correctamente\n\nNúmero: ${result.numeroSolicitud}`;
+                    
+                    alert(mensaje);
+                    e.target.reset();
+                    document.getElementById('arancel-info').style.display = 'none';
+                    showSection('mis-solicitudes');
+                    loadSolicitudes();
+                } else {
+                    alert('❌ ' + (result.message || 'Error al enviar la solicitud'));
+                }
+                
+            } catch (error) {
+                console.error('Error sending solicitud:', error);
+                alert('❌ Error al enviar la solicitud');
+            }
+        }
+
+        // Upload de archivos
+        function updateUploadArea() {
+            const uploadArea = document.getElementById('uploadArea');
+            if (selectedCategory) {
+                uploadArea.classList.add('active');
+                uploadArea.querySelector('.upload-text strong').textContent = 'Arrastra archivos PDF aquí';
+            }
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('dragover');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('dragover');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('dragover');
+            
+            if (!selectedCategory) {
+                alert('Primero selecciona una categoría');
+                return;
+            }
+
+            const files = Array.from(e.dataTransfer.files).filter(file => file.type === 'application/pdf');
+            processFiles(files);
+        }
+
+        function handleFileSelect(e) {
+            if (!selectedCategory) {
+                alert('Primero selecciona una categoría');
+                return;
+            }
+
+            const files = Array.from(e.target.files);
+            processFiles(files);
+        }
+
+        function processFiles(files) {
+            files.forEach(file => {
+                if (file.size > 10 * 1024 * 1024) { // 10MB
+                    alert(`El archivo ${file.name} es muy grande. Máximo 10MB.`);
+                    return;
+                }
+
+                // Simular upload
+                uploadFile(file);
+            });
+        }
+
+        async function uploadFile(file) {
+            const container = document.getElementById('uploadedFiles');
+            const fileId = Date.now() + Math.random();
+            
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            fileItem.innerHTML = `
+                <div class="file-info">
+                    <span class="file-icon">📄</span>
+                    <div>
+                        <strong>${file.name}</strong>
+                        <div><small>Categoría: ${selectedCategory}</small></div>
+                    </div>
+                </div>
+                <div class="file-actions">
+                    <button class="btn btn-secondary btn-small" onclick="downloadFile(${fileId})">Descargar</button>
+                    <button class="btn btn-secondary btn-small" onclick="deleteFile(${fileId})">Eliminar</button>
+                </div>
+            `;
+            
+            container.appendChild(fileItem);
+            
+            // Simular progreso de upload
+            console.log('Uploading file:', file.name, 'Category:', selectedCategory);
+        }
+
+        // Cargar pagos
+        async function loadPagos() {
+            try {
+                // Simulación de datos - reemplazar con llamada real a API
+                const mockPagos = [
+                    {
+                        fecha: '2024-01-15',
+                        concepto: 'Matrícula Anual 2024',
+                        importe: 15000,
+                        estado: 'pagado',
+                        comprobante: 'REC-2024-001'
+                    },
+                    {
+                        fecha: '2023-12-10',
+                        concepto: 'Certificación CHP #001',
+                        importe: 8000,
+                        estado: 'pagado',
+                        comprobante: 'REC-2023-089'
+                    }
+                ];
+
+                renderPagos(mockPagos);
+            } catch (error) {
+                console.error('Error loading pagos:', error);
+                document.getElementById('pagosList').innerHTML = '<div class="empty-state">Error al cargar los pagos</div>';
+            }
+        }
+
+        function renderPagos(pagos) {
+            const container = document.getElementById('pagosList');
+            
+            if (pagos.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">💳</div>
+                        <h3>No hay pagos registrados</h3>
+                        <p>Los pagos aparecerán aquí una vez que sean procesados por el staff</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const html = `
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Concepto</th>
+                                <th>Importe</th>
+                                <th>Estado</th>
+                                <th>Comprobante</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${pagos.map(pago => `
+                                <tr>
+                                    <td>${new Date(pago.fecha).toLocaleDateString('es-ES')}</td>
+                                    <td>${pago.concepto}</td>
+                                    <td>$${pago.importe.toLocaleString('es-AR')}</td>
+                                    <td><span class="status-badge status-${pago.estado}">${pago.estado}</span></td>
+                                    <td>${pago.comprobante || '-'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // Cargar certificados
+        async function loadCertificados() {
+            try {
+                // Simulación de datos - reemplazar con llamada real a API
+                const mockCertificados = [
+                    {
+                        id: 1,
+                        proyecto: 'Sistema de Gestión Comercial',
+                        cliente: 'Empresa ABC S.A.',
+                        fechaEmision: '2024-01-20',
+                        numero: 'CHP-2024-001'
+                    }
+                ];
+
+                renderCertificados(mockCertificados);
+            } catch (error) {
+                console.error('Error loading certificados:', error);
+                document.getElementById('certificadosList').innerHTML = '<div class="empty-state">Error al cargar los certificados</div>';
+            }
+        }
+
+        function renderCertificados(certificados) {
+            const container = document.getElementById('certificadosList');
+            
+            if (certificados.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🎓</div>
+                        <h3>No hay certificados emitidos</h3>
+                        <p>Los certificados aparecerán aquí una vez que sean aprobados y emitidos</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const html = `
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Número</th>
+                                <th>Proyecto</th>
+                                <th>Cliente</th>
+                                <th>Fecha Emisión</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${certificados.map(cert => `
+                                <tr>
+                                    <td><strong>${cert.numero}</strong></td>
+                                    <td>${cert.proyecto}</td>
+                                    <td>${cert.cliente}</td>
+                                    <td>${new Date(cert.fechaEmision).toLocaleDateString('es-ES')}</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-small" onclick="downloadCertificado(${cert.id})">
+                                            📥 Descargar PDF
+                                        </button>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // Funciones auxiliares
+        async function verDetalle(solicitudId) {
+            try {
+                // Obtener detalles de la solicitud
+                const response = await fetch(`/api/profesional/solicitud-chp/${solicitudId}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    mostrarModalDetalle(result.solicitud);
+                } else {
+                    toast.error('Error al cargar detalles: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                toast.error('Error de conexión al cargar detalles');
+            }
+        }
+
+        function mostrarModalDetalle(solicitud) {
+            const fechaSolicitud = new Date(solicitud.fecha_solicitud).toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            const montoHonorarios = solicitud.monto_honorarios 
+                ? `$${parseFloat(solicitud.monto_honorarios).toLocaleString('es-AR')}`
+                : 'No especificado';
+                
+            const costo = solicitud.costo 
+                ? `$${parseFloat(solicitud.costo).toLocaleString('es-AR')}`
+                : 'Sin costo';
+
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                background: rgba(0,0,0,0.5); z-index: 1000; display: flex;
+                align-items: center; justify-content: center;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: white; border-radius: 15px; padding: 30px; max-width: 600px; 
+                           width: 90%; max-height: 90%; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                        <h3 style="color: #2c3e50; margin: 0;">📋 Detalle de Solicitud CHP</h3>
+                        <button onclick="cerrarModal()" 
+                                style="background: #e74c3c; color: white; border: none; border-radius: 50%; 
+                                       width: 30px; height: 30px; cursor: pointer; font-size: 16px;">×</button>
+                    </div>
+                    
+                    <div style="display: grid; gap: 15px;">
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #3498db;">
+                            <strong style="color: #2c3e50;">Número de Solicitud:</strong><br>
+                            <span style="font-size: 1.2em; color: #3498db; font-weight: 600;">${solicitud.numero_solicitud}</span>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div>
+                                <strong style="color: #2c3e50;">Cliente:</strong><br>
+                                <span>${solicitud.cliente || 'No especificado'}</span>
+                            </div>
+                            <div>
+                                <strong style="color: #2c3e50;">Proyecto:</strong><br>
+                                <span>${solicitud.proyecto || 'No especificado'}</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <strong style="color: #2c3e50;">Descripción del Proyecto:</strong><br>
+                            <div style="background: #fff; border: 1px solid #e8ecf0; border-radius: 8px; padding: 15px; margin-top: 8px;">
+                                ${solicitud.descripcion || 'Sin descripción'}
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div>
+                                <strong style="color: #2c3e50;">Monto de Honorarios:</strong><br>
+                                <span style="font-size: 1.1em; color: #27ae60; font-weight: 600;">${montoHonorarios}</span>
+                            </div>
+                            <div>
+                                <strong style="color: #2c3e50;">Arancel CHP:</strong><br>
+                                <span style="font-size: 1.1em; color: #e67e22; font-weight: 600;">${costo}</span>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div>
+                                <strong style="color: #2c3e50;">Estado:</strong><br>
+                                <span class="status-badge status-${solicitud.estado ? solicitud.estado.toLowerCase() : 'pendiente'}" 
+                                      style="display: inline-block; margin-top: 5px;">
+                                    ${solicitud.estado || 'PENDIENTE'}
+                                </span>
+                            </div>
+                            <div>
+                                <strong style="color: #2c3e50;">Fecha de Solicitud:</strong><br>
+                                <span>${fechaSolicitud}</span>
+                            </div>
+                        </div>
+                        
+                        ${solicitud.observaciones ? `
+                        <div>
+                            <strong style="color: #2c3e50;">Observaciones:</strong><br>
+                            <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 15px; margin-top: 8px;">
+                                ${solicitud.observaciones}
+                            </div>
+                        </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div style="display: flex; justify-content: flex-end; margin-top: 30px; gap: 10px;">
+                        <button onclick="cerrarModal()" 
+                                style="background: #6c757d; color: white; border: none; border-radius: 8px; 
+                                       padding: 10px 20px; cursor: pointer; font-weight: 600;">
+                            Cerrar
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Agregar función para cerrar modal globalmente
+            window.cerrarModal = function() {
+                modal.remove();
+                delete window.cerrarModal;
+            };
+            
+            // Cerrar modal al hacer clic fuera
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    window.cerrarModal();
+                }
+            });
+        }
+
+        function downloadFile(fileId) {
+            alert(`Descargar archivo ${fileId}`);
+            // Implementar descarga real
+        }
+
+        function deleteFile(fileId) {
+            if (confirm('¿Estás seguro de que quieres eliminar este archivo?')) {
+                document.querySelector(`[onclick="deleteFile(${fileId})"]`).closest('.file-item').remove();
+            }
+        }
+
+        function downloadCertificado(certId) {
+            alert(`Descargando certificado ${certId}`);
+            // Implementar descarga real del PDF
+        }
+
+        async function logout() {
+            try {
+                await fetch('/api/admin/logout', { method: 'POST' });
+                window.location.href = '/';
+            } catch (error) {
+                console.error('Error during logout:', error);
+                window.location.href = '/';
+            }
+        }
+
+        // Funciones para modificar solicitud CHP
+        async function modificarSolicitud(solicitudId) {
+            try {
+                // Obtener datos actuales de la solicitud
+                const response = await fetch(`/api/profesional/solicitud-chp/${solicitudId}`, {
+                    credentials: 'include'
+                });
+                const result = await response.json();
+                
+                if (result.success) {
+                    const solicitud = result.solicitud;
+                    
+                    // Llenar el formulario con los datos actuales
+                    document.getElementById('edit_solicitud_id').value = solicitudId;
+                    document.getElementById('edit_cliente').value = solicitud.cliente || '';
+                    document.getElementById('edit_proyecto').value = solicitud.proyecto || '';
+                    document.getElementById('edit_descripcion').value = solicitud.descripcion || '';
+                    document.getElementById('edit_monto_honorarios').value = solicitud.monto_honorarios || '';
+                    
+                    // Calcular arancel inicial
+                    calcularArancelEditar();
+                    
+                    // Mostrar modal
+                    document.getElementById('modalEditarCHP').style.display = 'block';
+                } else {
+                    alert('Error al cargar los datos de la solicitud: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al cargar los datos de la solicitud');
+            }
+        }
+
+        function cerrarModalEditar() {
+            document.getElementById('modalEditarCHP').style.display = 'none';
+            document.getElementById('formEditarCHP').reset();
+        }
+
+        function calcularArancelEditar() {
+            const montoHonorarios = parseFloat(document.getElementById('edit_monto_honorarios').value);
+            const infoDiv = document.getElementById('arancel-info-editar');
+            const detalleDiv = document.getElementById('arancel-detalle-editar');
+            
+            if (!montoHonorarios || montoHonorarios <= 0) {
+                infoDiv.style.display = 'none';
+                return;
+            }
+            
+            // Buscar arancel correspondiente
+            let arancelAplicable = null;
+            for (let arancel of arancelesVigentes) {
+                if (montoHonorarios >= arancel.monto_desde && 
+                    (arancel.monto_hasta === null || montoHonorarios <= arancel.monto_hasta)) {
+                    arancelAplicable = arancel;
+                    break;
+                }
+            }
+            
+            if (!arancelAplicable) {
+                infoDiv.style.display = 'none';
+                return;
+            }
+            
+            const porcentaje = arancelAplicable.usar_porcentaje_fijo && arancelAplicable.porcentaje_fijo
+                ? arancelAplicable.porcentaje_fijo
+                : ((arancelAplicable.arancel / montoHonorarios) * 100).toFixed(2);
+                
+            const fechaVigencia = arancelAplicable.fecha_vigencia_hasta 
+                ? `Vigente hasta: ${new Date(arancelAplicable.fecha_vigencia_hasta).toLocaleDateString('es-ES')}`
+                : 'Vigencia: Sin vencimiento';
+            
+            const porcentajeTipo = arancelAplicable.usar_porcentaje_fijo ? '(configurado)' : '(calculado)';
+            
+            detalleDiv.innerHTML = `
+                <p><strong>${arancelAplicable.nombre_segmento}:</strong> $${montoHonorarios.toLocaleString('es-AR')}</p>
+                <p><strong>Arancel CHP:</strong> $${parseFloat(arancelAplicable.arancel).toLocaleString('es-AR')}</p>
+                <p><strong>Porcentaje:</strong> ${parseFloat(porcentaje).toFixed(2)}% de los honorarios ${porcentajeTipo}</p>
+                <small style="color: #7f8c8d;">${fechaVigencia}</small>
+            `;
+            
+            infoDiv.style.display = 'block';
+        }
+
+        async function guardarCambios(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const solicitudId = document.getElementById('edit_solicitud_id').value;
+            const montoHonorarios = parseFloat(formData.get('monto_honorarios'));
+            
+            const solicitudData = {
+                cliente: formData.get('cliente'),
+                proyecto: formData.get('proyecto'),
+                descripcion: formData.get('descripcion'),
+                monto_honorarios: montoHonorarios
+            };
+
+            try {
+                const response = await fetch(`/api/profesional/solicitud-chp/${solicitudId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify(solicitudData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('✅ Solicitud modificada exitosamente');
+                    cerrarModalEditar();
+                    
+                    // Recargar la lista de solicitudes
+                    if (typeof loadSolicitudes === 'function') {
+                        loadSolicitudes();
+                    } else {
+                        location.reload(); // Fallback
+                    }
+                } else {
+                    alert('❌ Error: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('❌ Error al guardar los cambios');
+            }
+        }
+    </script>
+
+    <!-- Modal de Edición de Solicitud CHP -->
+    <div id="modalEditarCHP" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                                   background: rgba(0,0,0,0.7); z-index: 1000; padding: 20px; box-sizing: border-box;"
+         onclick="if(event.target === this) cerrarModalEditar()">
+        <div style="background: white; max-width: 800px; margin: 50px auto; border-radius: 20px; 
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto;">
+            
+            <div style="background: linear-gradient(135deg, #f39c12, #e67e22); color: white; padding: 25px; 
+                       border-radius: 20px 20px 0 0; display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="margin: 0; font-size: 1.5em;">✏️ Modificar Solicitud CHP</h2>
+                <button onclick="cerrarModalEditar()" 
+                        style="background: none; border: none; color: white; font-size: 24px; 
+                               width: 30px; height: 30px; cursor: pointer; font-weight: bold;">×</button>
+            </div>
+            
+            <form id="formEditarCHP" onsubmit="guardarCambios(event)" style="padding: 30px;">
+                <input type="hidden" id="edit_solicitud_id">
+                
+                <div style="display: grid; gap: 20px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #2c3e50;">
+                                📋 Cliente / Comitente:
+                            </label>
+                            <input type="text" id="edit_cliente" name="cliente" required
+                                   style="width: 100%; padding: 12px; border: 2px solid #e8ecf0; border-radius: 8px; font-size: 1rem;">
+                        </div>
+                        
+                        <div>
+                            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #2c3e50;">
+                                🏗️ Proyecto:
+                            </label>
+                            <input type="text" id="edit_proyecto" name="proyecto" required
+                                   style="width: 100%; padding: 12px; border: 2px solid #e8ecf0; border-radius: 8px; font-size: 1rem;">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #2c3e50;">
+                            📝 Descripción del Trabajo:
+                        </label>
+                        <textarea id="edit_descripcion" name="descripcion" rows="4" required
+                                  style="width: 100%; padding: 12px; border: 2px solid #e8ecf0; border-radius: 8px; font-size: 1rem; resize: vertical;"
+                                  placeholder="Describa detalladamente el trabajo a realizar..."></textarea>
+                    </div>
+                    
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #2c3e50;">
+                            💰 Monto de Honorarios (ARS):
+                        </label>
+                        <input type="number" id="edit_monto_honorarios" name="monto_honorarios" required min="1" step="0.01"
+                               style="width: 100%; padding: 12px; border: 2px solid #e8ecf0; border-radius: 8px; font-size: 1rem;"
+                               oninput="calcularArancelEditar()">
+                    </div>
+                    
+                    <!-- Información del Arancel (calculado automáticamente) -->
+                    <div id="arancel-info-editar" style="display: none; background: #f8f9fa; padding: 20px; border-radius: 12px; border-left: 4px solid #3498db;">
+                        <h4 style="color: #2c3e50; margin: 0 0 15px 0;">💵 Cálculo del Arancel CHP</h4>
+                        <div id="arancel-detalle-editar"></div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; 
+                           padding-top: 20px; border-top: 2px solid #e8ecf0;">
+                    <button type="button" onclick="cerrarModalEditar()" 
+                            style="background: #95a5a6; color: white; border: none; padding: 12px 25px; 
+                                   border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600;">
+                        Cancelar
+                    </button>
+                    <button type="submit" 
+                            style="background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; border: none; 
+                                   padding: 12px 25px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: 600;">
+                        💾 Guardar Cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

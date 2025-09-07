@@ -1,0 +1,24 @@
+{
+  "fecha": "2025-09-03T01:54:15.043Z",
+  "timestamp": "20250903_225414",
+  "motivo": "Backup antes de importación masiva desde emp-rtcos-20250831.xlsx",
+  "tablas": {
+    "empresas": {
+      "nombre_backup": "empresas_backup_20250903_225414",
+      "registros": 1476
+    },
+    "representantes_tecnicos": {
+      "nombre_backup": "representantes_tecnicos_backup_20250903_225414",
+      "registros": 665
+    },
+    "profesionales": {
+      "nombre_backup": "profesionales_backup_20250903_225414",
+      "registros": 5373
+    },
+    "matriculas": {
+      "nombre_backup": "matriculas_backup_20250903_225414",
+      "registros": 5378
+    }
+  },
+  "comando_restauracion": "\n-- Para restaurar desde este backup:\nDROP TABLE IF EXISTS copig.empresas;\nCREATE TABLE copig.empresas AS SELECT * FROM copig.empresas_backup_20250903_225414;\n\nDROP TABLE IF EXISTS copig.representantes_tecnicos;\nCREATE TABLE copig.representantes_tecnicos AS SELECT * FROM copig.representantes_tecnicos_backup_20250903_225414;\n\nDROP TABLE IF EXISTS copig.profesionales;\nCREATE TABLE copig.profesionales AS SELECT * FROM copig.profesionales_backup_20250903_225414;\n\nDROP TABLE IF EXISTS copig.matriculas;\nCREATE TABLE copig.matriculas AS SELECT * FROM copig.matriculas_backup_20250903_225414;\n            "
+}

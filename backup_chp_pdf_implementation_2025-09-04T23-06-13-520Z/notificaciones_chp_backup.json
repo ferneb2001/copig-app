@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "solicitud_id": 5,
+    "profesional_id": 10752,
+    "tipo": "FACTURA_GENERADA",
+    "titulo": "Factura CHP Generada - Prueba",
+    "mensaje": "Su solicitud CHP ha sido revisada. Factura FACT-CHP-TEST-1756959328120 por $15.000 generada para prueba del flujo.",
+    "leida": false,
+    "fecha_envio": "2025-09-04T04:15:28.150Z",
+    "datos_adicionales": null
+  }
+]

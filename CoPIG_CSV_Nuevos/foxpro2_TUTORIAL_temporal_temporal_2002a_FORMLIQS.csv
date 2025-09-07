@@ -1,0 +1,6 @@
+FORMALIQ,NOMBRE,QUINCENA,TIPOLIQ,FACTOR
+1,Mensual,2,M,1
+2,Quincenal,,H,1
+3,Obrero Mensualizado,2,H,1
+4,Mensual Medio Da,2,M,2
+5,Quincenal Medio Da,,H,2

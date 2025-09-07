@@ -1,0 +1,115 @@
+{
+  "timestamp": "2025-09-05T22:04:30.527Z",
+  "descripcion": "Backup previo a separación de profesionales externos",
+  "estadisticas": {
+    "profesionales": 5764,
+    "matriculas": 5769,
+    "pagos_historicos": 124180,
+    "empresas": 1504,
+    "representantes_tecnicos": 2343,
+    "profesionales_por_provincia": [
+      {
+        "provincia": "Mendoza",
+        "cantidad": "4947"
+      },
+      {
+        "provincia": null,
+        "cantidad": "408"
+      },
+      {
+        "provincia": "San Luis",
+        "cantidad": "105"
+      },
+      {
+        "provincia": "Santa Fe",
+        "cantidad": "80"
+      },
+      {
+        "provincia": "Chubut",
+        "cantidad": "51"
+      },
+      {
+        "provincia": "San Juan",
+        "cantidad": "44"
+      },
+      {
+        "provincia": "Buenos Aires",
+        "cantidad": "42"
+      },
+      {
+        "provincia": "Salta",
+        "cantidad": "23"
+      },
+      {
+        "provincia": "Córdoba",
+        "cantidad": "23"
+      },
+      {
+        "provincia": "Formosa",
+        "cantidad": "14"
+      },
+      {
+        "provincia": "Santa Cruz",
+        "cantidad": "6"
+      },
+      {
+        "provincia": "Santiago del Estero",
+        "cantidad": "4"
+      },
+      {
+        "provincia": "Catamarca",
+        "cantidad": "3"
+      },
+      {
+        "provincia": "Corrientes",
+        "cantidad": "3"
+      },
+      {
+        "provincia": "Jujuy",
+        "cantidad": "2"
+      },
+      {
+        "provincia": "Entre Ríos",
+        "cantidad": "2"
+      },
+      {
+        "provincia": "CABA",
+        "cantidad": "2"
+      },
+      {
+        "provincia": "Tierra del Fuego",
+        "cantidad": "2"
+      },
+      {
+        "provincia": "La Rioja",
+        "cantidad": "1"
+      },
+      {
+        "provincia": "La Pampa",
+        "cantidad": "1"
+      },
+      {
+        "provincia": "Neuquén",
+        "cantidad": "1"
+      }
+    ],
+    "estados_financieros": [
+      {
+        "estado": "MOROSO",
+        "cantidad": "4191"
+      },
+      {
+        "estado": "EN_PROCESO",
+        "cantidad": "147"
+      },
+      {
+        "estado": "SUSPENDIDO",
+        "cantidad": "213"
+      },
+      {
+        "estado": "AL_DIA",
+        "cantidad": "1219"
+      }
+    ]
+  }
+}

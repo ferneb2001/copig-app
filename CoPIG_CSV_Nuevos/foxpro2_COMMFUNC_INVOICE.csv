@@ -1,0 +1,55 @@
+INVOICE,INV_DATE,CUST_ID,CONTACT,COMPANY,ADDRESS1,CITY,STATE,ZIP,S_CONTACT,S_COMPANY,S_ADDRESS1,S_CITY,S_STATE,S_ZIP,SOLDBY,PO,SHIPVIA,TAXRATE
+1,1989-09-01,000024,"Kev B. Goode, Pres.",AAAA International,10 Ludwig St.,Pittsburgh,PA,15204,"Kev B. Goode, Pres.",AAAA International,10 Ludwig St.,Pittsburgh,PA,15204,APS,A1A-00024-1,FEDEX,6.23
+2,1989-09-01,000034,Al Gordon,Al's Liquor Emporium,80 George Washington Blvd.,Napperville,IL,60565,Al Gordon,Al's Liquor Emporium,80 George Washington Blvd.,Napperville,IL,60565,DFM,A1A-00034-2,UPS,5.8
+3,1989-09-01,000026,D. Dutra,Alternatives Inc.,Freeway 101,Oxford,OH,45056,D. Dutra,Alternatives Inc.,1434 WEST 87 ST,Oxford,CA,900041,RTF,A1A-00026-3,PICK-UP,5.32
+4,1989-09-01,000027,Rev. Scott Defrock,Church of Hope,9 Reed Avenue,Danville,OH,43014,Rev. Scott Defrock,Church of Hope,9 Reed Avenue,Danville,OH,43014,APS,A1A-000027-4,WILL CALL,5.45
+5,1989-09-01,000020,Sharon Pinkham,Art Associates,8 Pepper Drive,Bowling Green,OH,43402,Sharon Pinkham,Art Associates,8 Pepper Drive,Bowling Green,OH,43402,PDA,A1A-00020-5,WAREHOUSE,5.69
+6,1989-09-01,000013,S. Anderson,Anderson Counseling Svc,Bender Shopping Plaza,Oxford,OH,45056,S. Anderson,Anderson Svc,Bender Plaza,Milford,UT,45056,HLN,A1A-000013-6,UPS,6.3
+7,1989-09-01,000008,Elizabeth  Culver,Ashe Aircraft,3443 Emerson Ave.,Marietta,OH,45750,Josie Trinidad,Ashe Aircraft,3443 Emerson,Marietta,OH,45750,FLR,A1A-000008-7,FEDEX,5.72
+8,1989-09-01,000028,Jon Juan,Athletique Inc.,22 Gannon Dr.,Cleveland,OH,44140,Jon Juan,Athletique Inc.,22 Gannon Dr.,Cleveland,OH,44140,OPA,A1A-000028-8,UPS,5.77
+9,1989-09-01,000039,James Dyer,Beach Street Mortuary,1010 Beach St.,Whitehouse,OH,43571,James Dyer,Beach Street Mortuary,1010 Beach St.,Whitehouse,OH,43571,TSV,A1A-000039-9,WAREHOUSE,5.29
+10,1989-09-01,000029,David Rovere,Yellow Spring Bottling Co.,345 Lakeview Pk.,Sandusky,OH,44870,David Rovere,Yellow Spring Bottling Co.,345 Lakeview Pk.,Sandusky,OH,44870,BTH,A1A-000029-10,PICK-UP,6.2
+11,1989-09-01,000030,Melissa Thompson,Beta Technologies,67 Reading Rd.,Bloomville,OH,44818,Melissa Thompson,Beta Technologies,67 Reading Rd.,Bloomville,OH,44818,TRK,A1A-000030-11,UPS,5.78
+12,1989-09-01,000023,Mike Tine,Clemente Music Co.,09 Darlan St.,Cleveland,OH,44195,Mike Tine,Clemente Music Co.,09 Darlan St.,Cleveland,OH,44195,PDA,A1A-000023-12,WAREHOUSE,5.11
+13,1989-09-01,000000,N. Baker,DataTech Inc.,480 Village St.,Bowling Green,OH,43402,N. Baker,DataTech Inc.,480 Village St.,Bowling Green,OH,43402,DFM,A1A-000000-13,WAREHOUSE,5.0
+14,1989-09-01,000041,Joyce Loden,Blenders R Us,645 Market St.,Defiance,OH,43512,Joyce Loden,Blenders R Us,645 Market St.,Defiance,OH,43512,PDA,A1A-000041-14,MAILED,6.24
+15,1989-09-01,000012,"S. Bolge, Owner",Bolge Realty,300 FeeGi St.,Chicago,IL,60626,"S. Bolge, Owner",Bolge Realty,300 FeeGi St.,Chicago,IL,60626,HLN,A1A-000012-15,WAREHOUSE,5.98
+16,1989-09-01,000015,Jeff Stanton,Cerkin Engineering,23 College Station,Cincinnatti,OH,45235,Jeff Stanton,Cerkin Engineering,23 College Station,Cincinnatti,OH,45235,TSV,A1A-000015-16,FEDEX,5.27
+17,1989-09-01,000027,Rev. Scott Defrock,Church of Hope,9 Reed Avenue,Danville,OH,43014,Rev. Scott Defrock,Church of Hope,9 Reed Avenue,Danville,OH,43014,BTH,A1A-000027-17,UPS,5.45
+18,1989-09-01,000014,Van M. Sarenson,Colby Pre-School,7 Lincoln Plaza,Granville,OH,43032,Van M. Sarenson,Colby Pre-School,7 Lincoln Plaza,Granville,OH,43032,RTF,A1A-000014-18,PICK-UP,6.5
+19,1989-09-01,000031,Ned Beatty,Country Corner General Store,8 Prairie Tr.,Findlay,OH,45839,Ned Beatty,Country Corner General Store,15328 Bellota St.,Paramount,CA,45839,DFM,A1A-000031-19,MAILED,6.1
+20,1989-09-01,000009,Suzanne B. Symmes,Daffodils Incorporated,102 Attic St.,Chappaqua,NY,10514,Guadalupe Ceja,Daffodils Incorporated,102 Attic St.,Odgen,UT,10514,OPA,A1A-000009-20,FEDEX,5.3
+21,1989-09-01,000021,Attn: E. Shell,"Dawe & Son, co.",88 Valley Street,Maumee,OH,43537,Attn: E. Shell,"Dawe & Son, co.",88 Valley Street,Maumee,OH,43537,HLN,A1A-000021-21,UPS,5.34
+22,1989-09-01,000011,E. Rens,Elizabethan Design Co.,19 Boston Ave.,Perrysburg,OH,43551,E. Rens,Elizabethan Design Co.,19 Boston Ave.,Perrysburg,OH,43551,PDA,A1A-000011-22,WAREHOUSE,5.1
+23,1989-09-09,000016,Dr. Kim,Falk & Stein Pharmaceutical,341 E. Hall Junction,Dayton,OH,45435,Dr. Kim,Falk & Stein Pharmaceutical,341 E. Hall Junction,Dayton,OH,45435,,,,6.34
+24,1989-09-01,000003,"Mark Davidson, Owner",Film Co.,13 King Circle,Perrysburg,OH,43551,"Mark Davidson, Owner",Film Co.,13 King Circle,Perrysburg,OH,43551,HLN,A1A-000003-24,FEDEX,5.0
+25,1989-09-01,000042,Joan Matter,Forest Dry Cleaning,342 Hamilton Blvd.,Columbus,OH,43270,Joan Matter,Forest Dry Cleaning,342 Hamilton Blvd.,Columbus,OH,43270,OPA,A1A-000042-25,WAREHOUSE,6.13
+26,1989-09-01,000047,Betty Smith,Forester Schools,213 Wintergarden St.,Toledo,OH,43617,Betty Smith,Forester Schools,213 Wintergarden St.,Toledo,OH,43617,APS,A1A-000047-26,PICK-UP,5.67
+27,1989-09-01,000022,Alex Bryandar,High-Tech,123 Peabody Way,Fremont,OH,43420,Alex Bryandar,High-Tech,123 Peabody Way,Fremont,OH,43420,PDA,A1A-000022-27,UPS,6.24
+28,1989-09-01,000033,Merridith Jones,Jeannie Phone Co.,515 Laurence Ave.,Haskins,OH,43525,Merridith Jones,Jeannie Phone Co.,515 Laurence Ave.,Haskins,OH,43525,APS,A1A-000033-28,UPS,5.3
+29,1989-09-01,000048,Lisa Deander,Jorden Books,119 BattleCreek Blvd.,Portage,OH,43451,Lisa Deander,Jorden Books,119 BattleCreek Blvd.,Portage,OH,43451,HLN,A1A-00048-29,UPS,5.6
+30,1989-09-01,000035,C. Worster,KKT,24 Packard Ave.,Bedford,MI,49020,C. Worster,KKT,24 Packard Ave.,Bedford,MI,49020,PDA,A1A-000035-30,WAREHOUSE,5.54
+31,1989-09-01,000001,"Shelby T. Chapman, President",L.H.H.F. of America,3222 Dodds Avenue,Dayton,OH,45435,"Shelby T. Chapman, P",L.H.H.F. of America,3222 Dodds Avenue,Dayton,OH,45435,TRK,A1A-000001-31,UPS,5.46
+32,1989-09-01,000006,J. Smith,"Lost Horizons, inc.",1/2 Los Serados Drive,Oxford,OH,45056,J. Smith,"Lost Horizons, inc.",1/2 Los Serados Drive,Oxford,OH,45056,DFM,A1A-000006-32,FEDEX,6.23
+33,1989-09-01,000044,John Feeder,Logan Saw Mill,617 Plaicence Ave.,Eaton,OH,45320,John Feeder,Logan Saw Mill,617 Plaicence Ave.,Eaton,OH,45320,APS,A1A-000044-33,UPS,5.45
+34,1989-09-01,000024,"Kev B. Goode, Pres.",AAAA International,10 Ludwig St.,Pittsburgh,PA,15204,"Kev B. Goode, Pres.",AAAA International,10 Ludwig St.,Pittsburgh,PA,15204,BTH,A1A-000024-34,PICK-UP,6.23
+35,1989-09-01,000017,T. Maloney,Maloney Theatrical Co.,100 Thesbian Blvd.,Englewood,OH,45322,T. Maloney,Maloney Theatrical Co.,100 Thesbian Blvd.,Englewood,OH,45322,DFM,A1A-000017-35,PICK-UP,5.22
+36,1989-09-01,000017,T. Maloney,Maloney Theatrical Co.,100 Thesbian Blvd.,Englewood,OH,45322,T. Maloney,Maloney Theatrical Co.,100 Thesbian Blvd.,Englewood,OH,45322,TSV,A1A-000017-36,WAREHOUSE,5.22
+37,1989-09-01,000046,Chris Brown,Mercury Repairs,909 Thurston St.,Bedford,MI,49020,Chris Brown,Mercury Repairs,909 Thurston St.,Bedford,MI,49020,OPA,A1A-000046-37,FEDEX,6.34
+38,1989-09-01,000010,Eric D'Enfant,Miakonda Industries,1 1/2 Toyas Ln.,Sylvania,OH,43560,Eric D'Enfant,Miakonda Industries,1 1/2 Toyas Ln.,Sylvania,OH,43560,TRK,A1A-000010-38,WILL CALL,6.4
+39,1989-09-01,000032,George Mills,MidWest Insurance,20 Center Plaza,Columbus,OH,43229,George Mills,MidWest Insurance,20 Center Plaza,Columbus,OH,43229,BTH,A1A-000032-39,WILL CALL,6.17
+40,1989-09-01,000040,George Myer,Myer Co.,2343 Alexandar Plaza,Preble,OH,45660,George Myer,Myer Co.,2343 Alexandar Plaza,Preble,OH,45660,PDA,A1A-000040-40,WILL CALL,5.68
+41,1989-09-01,000049,Tom Warder,Newton Apple Farm,762 Treeble Dr.,Lorain,OH,44055,Tom Warder,Newton Apple Farm,762 Treeble Dr.,Lorain,OH,44055,HLN,A1A-000049-41,FEDEX,5.23
+42,1989-09-01,000018,Anne Vivey,O. Industries,11 Jefguy Drive,Worthington,OH,44691,Anne Vivey,O. Industries,11 Jefguy Drive,Worthington,OH,44691,RTF,A1A-000018-42,UPS,5.65
+43,1989-09-01,000019,Janie Dicks,PL&HC,1 Hyzz Way,Perrysburg,OH,43551,Janie Dicks,PL&HC,1 Hyzz Way,Perrysburg,OH,43551,BTH,A1A-000019-43,WILL CALL,6.32
+44,1989-09-01,000005,Rick D. Bruther,Pirate Software,3 High-Ho Blvd.,Sylvania,OH,43560,Rick D. Bruther,Pirate Software,3 High-Ho Blvd.,Sylvania,OH,43560,OPA,A1A-000005-44,WAREHOUSE,6.5
+45,1989-09-01,000050,"Hal Redding, pres.",Redding Auto Service,32 Clough St.,Fayette,OH,43521,"Hal Redding, pres.",Redding Auto Service,32 Clough St.,Fayette,OH,43521,PDA,A1A-000050-45,WILL CALL,6.0
+46,1989-09-01,000004,D. Wilson,Stylistic Inc.,36 Park Avenue,Carmel,IN,46032,D. Wilson,Stylistic Inc.,36 Park Avenue,Carmel,IN,46032,PDA,A1A-000004-46,WILL CALL,5.87
+47,1989-09-01,000045,H. Wiley,TRANCO,43 Upton St.,Ann Arbor,MI,48103,H. Wiley,TRANCO,43 Upton St.,Ann Arbor,MI,48103,HLN,A1A-000045-47,PICK-UP,5.43
+48,1989-09-01,000007,J. Curry,Thurston & Parry Assoc.,13 Fencing Blvd.,Youngstown,OH,44501,J. Curry,Thurston & Parry Assoc.,13 Fencing Blvd.,Youngstown,OH,44501,TSV,A1A-000007-48,PICK UP,5.14
+49,1989-09-01,000036,Ted Foster,Trade Wares Inc.,10 Gettysburg Ln.,Powell,OH,43065,Ted Foster,Trade Wares Inc.,10 Gettysburg Ln.,Powell,OH,43065,RTF,A1A-000036-49,FEDEX,6.21
+50,1989-09-01,000002,Helen Smith,Traditional Craft,18B Sewing Circle,McClure,OH,43523,Helen Smith,Traditional Craft,18B Sewing Circle,McClure,OH,43523,TRK,A1A-000002-50,UPS,6.03
+51,1989-09-01,000043,Laurence Japetto,Traditional Toys,5 Wood Lane,Cincinnatti,OH,45235,Laurence Japetto,Traditional Toys,5 Wood Lane,Cincinnatti,OH,45235,BTH,A1A-000043-51,WILL CALL,5.0
+52,1989-09-01,000038,Roger Haubert,"Turner, Palmer & Grey Assoc.",87 Trudeux Circle,Maumee,OH,43537,Roger Haubert,"Turner, Palmer & Grey Assoc.",87 Trudeux Circle,Maumee,OH,43537,OPA,A1A-000038-52,WAREHOUSE,5.55
+53,1989-09-01,000037,Morton Placada,UNITAB,7 Porter St.,Findlay,OH,45839,Morton Placada,UNITAB,7 Porter St.,Findlay,OH,45839,APS,A1A-000037-53,WILL CALL,5.67
+54,1989-09-01,000025,Morris Johnson,University of Yewe,Dept of Infantile Psychology,Indianapolis,IN,46283,Morris Johnson,University of Yewe,Dept of Infantile Psychology,Indianapolis,IN,46283,OPA,A1A-000025-54,FEDEX,5.5

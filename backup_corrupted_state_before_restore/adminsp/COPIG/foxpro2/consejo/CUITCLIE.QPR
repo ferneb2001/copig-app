@@ -1,0 +1,6 @@
+SELECT Matricul.letra, Matricul.matricula, Clientes.nombre,;
+  Clientes.cuit, Clientes.posiciva, Matricul.cuenta;
+ FROM Clientes, Matricul;
+ WHERE Matricul.cuenta = Clientes.cuenta;
+   AND Matricul.letra = "A ";
+ ORDER BY Matricul.matricula

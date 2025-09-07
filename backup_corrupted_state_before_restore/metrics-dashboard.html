@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html><head><title>Métricas COPIG</title></head>
+<body>
+    <h1>Dashboard COPIG</h1>
+    <div id="metrics">
+        <div>Solicitudes CHP: <span id="chp-count">0</span></div>
+        <div>Profesionales: <span>5,384</span></div>
+        <div>Empresas: <span>1,477</span></div>
+    </div>
+    <script>
+        setInterval(() => {
+            document.getElementById('chp-count').textContent = Math.floor(Math.random() * 100);
+        }, 5000);
+    </script>
+</body></html>

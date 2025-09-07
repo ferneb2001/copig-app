@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "solicitud_id": 5,
+    "numero_factura": "FACT-CHP-TEST-1756959328120",
+    "monto": "15000.00",
+    "fecha_emision": "2025-09-04T04:15:28.133Z",
+    "fecha_vencimiento": "2025-10-04T03:00:00.000Z",
+    "estado": "PAGADA",
+    "descripcion": "Certificado de Habilitación Profesional - Proyecto de Prueba Automatizada",
+    "creado_por": 3,
+    "archivo_pdf": null,
+    "cae": null,
+    "fecha_vencimiento_cae": null,
+    "punto_venta": 1,
+    "tipo_comprobante": 11,
+    "factura_oficial": false,
+    "error_arca": null,
+    "datos_arca": null
+  }
+]

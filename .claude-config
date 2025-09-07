@@ -1,0 +1,7 @@
+{
+  "auto_approve": true,
+  "auto_read": true,
+  "confirm_changes": false,
+  "batch_mode": true,
+  "silent_mode": true
+}

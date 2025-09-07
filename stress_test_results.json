@@ -1,0 +1,63 @@
+{
+  "usuarios_conectados": 2,
+  "requests_exitosos": 2,
+  "requests_fallidos": 18,
+  "tiempo_promedio_respuesta": 271.84,
+  "errores_por_tipo": {
+    "401": 18
+  },
+  "carga_database": {
+    "consultas_simultaneas": 30,
+    "consultas_exitosas": 30,
+    "consultas_fallidas": 0,
+    "tiempo_total": 81,
+    "tiempo_respuesta_db": [
+      68,
+      67,
+      68,
+      67,
+      68,
+      71,
+      80,
+      79,
+      82,
+      82,
+      68,
+      68,
+      69,
+      70,
+      70,
+      72,
+      70,
+      71,
+      73,
+      71,
+      75,
+      74,
+      75,
+      73,
+      75,
+      74,
+      78,
+      77,
+      77,
+      76
+    ]
+  },
+  "stress_scenarios": {
+    "busqueda_profesionales": {
+      "total": 5,
+      "exitosos": 5,
+      "fallidos": 0,
+      "tiempo_total": 39,
+      "tiempo_promedio": 34
+    },
+    "solicitudes_chp": {
+      "total": 1,
+      "exitosos": 1,
+      "fallidos": 0,
+      "tiempo_total": 9,
+      "tiempo_promedio": 9
+    }
+  }
+}

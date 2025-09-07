@@ -1,0 +1,202 @@
+procedure spalrcte
+*listado de empresas  errores
+@04,01 clear to 23,78
+@04,28 say 'LISTADO DE EMPRESAS '
+select 2
+use spmatrie index spmatdoe
+*use spprofe index spprofe
+select 3
+set exclusive on
+set safety off
+wfecha=date()
+use emtempo
+zap
+set exclusive off
+select 4
+use sptitu order titulo
+whabi=' '
+   @23,01 clear to 23,78
+   wop=1
+   @23,30 get wop pict '@*H \<Salir;\<Imprimir'
+   read
+   if wop=2                   
+      select 1
+       use spprofe index spprofe
+*      use spmatrie index spmatrie
+      go top
+      set clock on
+      @14,21 to 16,57
+      @15,23 say 'Aguarde..,estoy armando un archivo' color n/w*
+      do while .not. eof()
+         @10,02 say  dcnro
+         @10,10 say dctipo
+         @10,15 say nombre
+         do arma
+         select 1
+         skip
+      enddo
+      *@12,01 clear to 12,78       
+      @15,23 say '     Aguarde..,voy a ordenarlo   ' color n/w*
+      select 3
+         sort to emtempos on dctipo, dcnro  
+         do imprime
+  endif   
+@04,01 clear to 23,78
+close all
+return
+
+procedure imprime
+wop=1
+@23,01 clear to 23,78
+@15,23 say 'Verifique estado de la impresora  '
+@23,34 get wop pict '@*H LP\<1;LP\<2;\<Salir'
+read
+if wop<>3
+   @15,23 say '     En proceso de impresi¢n    '   
+   select 1
+   use emtempos
+   go top
+   set console off
+   set printer on
+   set device to printer
+   if wop=1
+      set printer to 'LPT1'
+   else
+      set printer to 'LPT2'
+   endif      
+   ???chr(27)+chr(67)+chr(72)
+   ???chr(27)+chr(48)
+   ???chr(27)+chr(15)
+   wlin=0
+   whoja=0
+   wcatego='  '
+   wtotit=0
+   wtcant=0
+   wcateg=catego
+   wtitu=SPACE(3)
+   wkey=wcatego+wtitu
+   do while .not. eof()
+*      if catego+titulo<>wkey
+*         if titulo<>wtitulo
+*            if wtotit<>0
+*               do titulosc
+*               wtotit=0
+*            endif
+*            wtitulo=titulo
+*               wnomtit=space(30)
+*            select 1      
+*         endif
+*         if catego<>wcatego
+*            wcatego=catego
+*            wcateg=catego
+*            wlin=96
+*         endif
+*         wkey=wcatego+wtitulo      
+*         if wlin > 85
+*            do titulos
+*            do titulosb
+*         else
+*            do titulosb   
+*         endif   
+*      endif   
+*         wnomlocali=space(15)
+*         enomdpto=space(15)
+*      wprovc=space(15)
+*            wprovc=space(15)
+*         select 1  
+	  ?nombre at 1
+      ??dcnro  pict '99999999' at 54
+      ??dctipo at 63 
+*      ??nombre  at 15
+      wtcant=wtcant+1
+      wtotit=wtotit+1
+      wlin=wlin+1
+*      if wlin > 85
+*         do titulos
+*         do titulosb
+*      endif
+   skip
+   enddo
+   ?
+   ?'total prof/titulo: ' at 20
+   ?? wtotit  at 45 pict '99999'
+   ?
+   ?'total profesionales: ' at 20
+   ?? wtcant at 45 pict '99999'
+   ?
+*   ???chr(27)+chr(18)
+    ???chr(27)+chr(50)
+    ???chr(27)+chr(80)
+   eject
+   set printer off
+   set device to screen
+   set safety on
+endif   
+@04,01 clear to 23,78
+return
+
+procedure titulos
+if wlin > 85
+   eject
+   whoja=whoja+1
+endif
+? 'CONSEJO PROFESIONAL DE INGENIEROS Y GEOLOGOS - MENDOZA' 
+?
+?'LISTADO DE EMPRESAS                ' AT 20
+*?? wcateg at 57
+if whabi='S'
+   ??' (habilitadas)' at 61
+else
+   if whabi='N'
+      ??' (no habilitadas)' at 61
+   endif      
+endif
+??'Fecha: ' at 80
+?? wfecha  at 87 
+??'HOJA NRO. ' at 110
+??whoja pict '999'
+?
+? 'MATRIC. CAT.   NOMBRE'
+?? ' DOMICILIO' AT 47
+?? ' TELEFONO ' AT 78
+wlin = 5
+return
+
+procedure titulosb
+?
+?wnomtit AT 55
+?
+*?'MATRIC. CAT.   NOMBRE'
+*??'DOMICILIO' at 47
+*?
+wlin=wlin+3
+return
+
+procedure titulosc
+?
+?'total prof./t¡tulo: ' at 20
+?? wtotit
+?
+return
+
+procedure arma
+   select 2
+   seek(str(a.dcnro,8))
+   if not  found()
+         select 3
+         append blank
+*         replace numero with a.numero
+*         replace catego with a.catego
+*         replace titulo with a.titulo
+*         replace habili with a.habili
+*         replace condic with a.condic
+         replace dctipo with a.dctipo
+         replace dcnro  with a.dcnro
+         replace nombre with a.nombre
+         replace domici with a.domici
+         replace provin with a.provin
+         replace dpto   with a.dpto
+         replace locali with a.locali
+         replace telef  with ltrim(a.telef)
+   endif
+return

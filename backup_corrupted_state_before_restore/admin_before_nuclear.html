@@ -1,0 +1,3935 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo - COPIG</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f6fa;
+            color: #2c3e50;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.collapsed {
+            transform: translateX(-280px);
+        }
+
+        .sidebar-header {
+            padding: 30px 20px;
+            background: rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .sidebar-header h1 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-header p {
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 20px 0;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 25px;
+            color: #ecf0f1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            text-decoration: none;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-left-color: #e74c3c;
+            padding-left: 30px;
+        }
+
+        .nav-item.active {
+            background: rgba(255,255,255,0.15);
+            border-left-color: #f1c40f;
+            color: #f1c40f;
+        }
+
+        .nav-item i {
+            font-size: 1.2rem;
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.expanded {
+            margin-left: 0;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #7f8c8d;
+            margin-right: 20px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: #ecf0f1;
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-1px);
+        }
+
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #229954;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .admin-user-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #34495e;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* USER MANAGEMENT STYLES */
+        .permissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .checkbox-label:hover {
+            background-color: rgba(52, 73, 94, 0.05);
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            margin: 0;
+            transform: scale(1.1);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th,
+        .data-table td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .data-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .data-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .user-role {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .role-super_admin {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .role-admin {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .role-operator {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            color: white;
+        }
+
+        .user-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background: #d5e8d4;
+            color: #27ae60;
+        }
+
+        .status-inactive {
+            background: #fadbd8;
+            color: #e74c3c;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-small {
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+
+        /* CONTENT AREA */
+        .content {
+            flex: 1;
+            padding: 30px;
+            background: #f5f6fa;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CARDS */
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: #f8f9fa;
+            padding: 20px 25px;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card.success {
+            border-left-color: #27ae60;
+        }
+
+        .stat-card.warning {
+            border-left-color: #f39c12;
+        }
+
+        .stat-card.danger {
+            border-left-color: #e74c3c;
+        }
+
+        .stat-card.info {
+            border-left-color: #8e44ad;
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            opacity: 0.8;
+        }
+
+        .stat-info h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-info p {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+
+        .stat-info small {
+            color: #95a5a6;
+            font-size: 0.8rem;
+        }
+
+        /* TABLE STYLES */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin: 0;
+        }
+
+        .table th,
+        .table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+            border-top: none;
+        }
+
+        .table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* FILTERS */
+        .filters {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .filter-group input,
+        .filter-group select {
+            padding: 12px;
+            border: 2px solid #ecf0f1;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-group input:focus,
+        .filter-group select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .search-message {
+            display: block;
+            margin-top: 4px;
+            font-size: 12px;
+            font-style: italic;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .search-message.error {
+            color: #e74c3c !important;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 0.8; transform: translateY(0); }
+        }
+
+        /* LOADING */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+
+        .spinner {
+            border: 4px solid #ecf0f1;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* CHART CONTAINER */
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .chart-canvas {
+            flex: 1;
+            position: relative;
+        }
+
+        /* BADGES */
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.success { background: #d4edda; color: #155724; }
+        .badge.warning { background: #fff3cd; color: #856404; }
+        .badge.danger { background: #f8d7da; color: #721c24; }
+        .badge.info { background: #d1ecf1; color: #0c5460; }
+
+        /* MODAL STYLES */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #95a5a6;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            background: #ecf0f1;
+            color: #e74c3c;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-280px);
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .card-body {
+                padding: 20px;
+            }
+        }
+
+        /* FORM STYLES */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ecf0f1;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        /* PAGINATION STYLES */
+        .pagination-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .pagination-info {
+            color: #6c757d;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .pagination-buttons {
+            display: flex;
+            gap: 3px;
+            margin-left: auto;
+        }
+
+        .pagination-buttons .btn {
+            min-width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+        }
+
+        .pagination-buttons .btn:disabled {
+            background: #3498db;
+            border-color: #3498db;
+            color: white;
+            cursor: default;
+        }
+
+        .pagination-buttons span {
+            padding: 8px 12px;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .pagination-controls {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .pagination-buttons {
+                margin-left: 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* ICONS (Using text alternatives for now) */
+        .icon-dashboard::before { content: "📊"; }
+        .icon-users::before { content: "👥"; }
+        .icon-file::before { content: "📋"; }
+        .icon-chart::before { content: "📈"; }
+        .icon-settings::before { content: "⚙️"; }
+        .icon-menu::before { content: "☰"; }
+        .icon-search::before { content: "🔍"; }
+        .icon-filter::before { content: "🔽"; }
+        .icon-export::before { content: "📤"; }
+        .icon-edit::before { content: "✏️"; }
+        .icon-delete::before { content: "🗑️"; }
+        .icon-view::before { content: "👁️"; }
+        .icon-plus::before { content: "➕"; }
+    </style>
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h1>COPIG</h1>
+            <p>Panel Administrativo</p>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="dashboard">
+                <i class="icon-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-section="profesionales">
+                <i class="icon-users"></i>
+                <span>Gestión de Profesionales</span>
+            </a>
+            <a href="#" class="nav-item" data-section="chp">
+                <i class="icon-file"></i>
+                <span>Solicitudes CHP</span>
+            </a>
+            <a href="#" class="nav-item" data-section="reportes">
+                <i class="icon-chart"></i>
+                <span>Reportes</span>
+            </a>
+            <a href="/gestion-financiera" class="nav-item" onclick="window.location.href='/gestion-financiera'; return false;">
+                <i class="icon-dollar"></i>
+                <span>Gestión Financiera</span>
+            </a>
+            <a href="/pagos" class="nav-item" onclick="window.location.href='/pagos'; return false;">
+                <i class="icon-credit-card"></i>
+                <span>Pagos</span>
+            </a>
+            <a href="/database-enrichment-panel" class="nav-item" target="_blank">
+                <i class="fas fa-database"></i>
+                <span>Enriquecimiento de Datos</span>
+            </a>
+            <a href="#" class="nav-item" data-section="usuarios" data-permission="user_management">
+                <i class="icon-users"></i>
+                <span>Gestión de Usuarios</span>
+            </a>
+            <a href="#" class="nav-item" data-section="configuracion">
+                <i class="icon-settings"></i>
+                <span>Configuración</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content" id="mainContent">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="icon-menu"></i>
+                </button>
+                <img src="/assets/images/logo-copig.png" alt="COPIG Logo" style="height: 45px; width: auto;" />
+                <h1 class="page-title" id="pageTitle">Dashboard</h1>
+            </div>
+            <div class="header-buttons">
+                <span class="admin-user-info" id="adminUserInfo">
+                    <i class="icon-user"></i>
+                    <span id="adminUserName">Cargando...</span>
+                </span>
+                <a href="/empresas" class="btn btn-secondary">
+                    <i class="icon-users"></i>
+                    Gestión de Empresas
+                </a>
+                <a href="/" class="btn btn-primary">
+                    <i class="icon-view"></i>
+                    Portal Profesional
+                </a>
+                <button class="btn btn-danger" onclick="logout()">
+                    <i class="icon-logout"></i>
+                    Cerrar Sesión
+                </a>
+            </div>
+        </header>
+
+        <!-- CONTENT -->
+        <main class="content">
+            <!-- DASHBOARD SECTION -->
+            <section id="dashboard" class="section active">
+                <div class="stats-grid">
+                    <div class="stat-card success">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <h3 id="statProfesionales">-</h3>
+                            <p>Profesionales Activos</p>
+                            <small>Total matriculados</small>
+                        </div>
+                    </div>
+                    <div class="stat-card info">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-info">
+                            <h3 id="statSolicitudes">-</h3>
+                            <p>Solicitudes CHP</p>
+                            <small>Este mes</small>
+                        </div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-info">
+                            <h3 id="statPendientes">-</h3>
+                            <p>Pendientes</p>
+                            <small>Requieren atención</small>
+                        </div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <h3 id="statRecaudacion">-</h3>
+                            <p>Recaudación</p>
+                            <small>Este mes</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="icon-chart"></i>
+                            Actividad Reciente
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <div class="chart-title">Solicitudes CHP - Últimos 30 días</div>
+                            <div class="chart-canvas">
+                                <canvas id="activityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="icon-file"></i>
+                            Últimas Solicitudes
+                        </h3>
+                        <button class="btn btn-primary btn-sm" onclick="changeSection('solicitudes')">
+                            Ver Todas
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div id="recentSolicitudes">
+                            <div class="loading">
+                                <div class="spinner"></div>
+                                <p>Cargando solicitudes...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROFESIONALES SECTION -->
+            <section id="profesionales" class="section">
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Buscar Profesional</label>
+                        <input type="text" id="buscarProfesional" placeholder="Nombre, matrícula o documento..." oninput="debounceSearch()">
+                        <small id="mensajeBusqueda" class="search-message" style="display: none; color: #666; font-size: 12px; margin-top: 4px;">
+                            Ingrese al menos 3 caracteres para buscar
+                        </small>
+                    </div>
+                    <div class="filter-group">
+                        <label>Estado</label>
+                        <select id="filtroEstadoProfesional">
+                            <option value="">Todos</option>
+                            <option value="activo">Activos</option>
+                            <option value="inactivo">Inactivos</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <button class="btn btn-success" onclick="buscarProfesionales()">
+                            <i class="icon-search"></i>
+                            Buscar
+                        </button>
+                    </div>
+                    <div class="filter-group">
+                        <button class="btn btn-primary" onclick="showCreateProfesionalModal()">
+                            <i class="icon-plus"></i>
+                            Crear Profesional
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="icon-users"></i>
+                            Lista de Profesionales
+                            <span id="pageIndicator" style="font-size: 0.8em; color: #6c757d; margin-left: 15px; font-weight: normal;">
+                                Cargando...
+                            </span>
+                        </h3>
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-primary" onclick="exportarProfesionales()">
+                                <i class="icon-export"></i>
+                                Exportar
+                            </button>
+                            <button class="btn btn-success" onclick="descargarExpedientesCSV()">
+                                📄 Descargar Expedientes CSV
+                            </button>
+                            <button class="btn btn-secondary" onclick="testDatabaseConnection()">
+                                🔧 Test BD
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="profesionalesList">
+                            <div class="loading">
+                                <div class="spinner"></div>
+                                <p>Cargando profesionales...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SOLICITUDES SECTION -->
+            <section id="solicitudes" class="section">
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Estado</label>
+                        <select id="filtroEstado">
+                            <option value="">Todos los estados</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Esperando Pago">Esperando Pago</option>
+                            <option value="Pagado">Pagado</option>
+                            <option value="Aprobado">Aprobado</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Buscar</label>
+                        <input type="text" id="busqueda" placeholder="Profesional, comitente o número...">
+                    </div>
+                    <div class="filter-group">
+                        <button class="btn btn-success" onclick="aplicarFiltros()">
+                            <i class="icon-filter"></i>
+                            Filtrar
+                        </button>
+                        <button class="btn btn-secondary" onclick="cargarSolicitudes()">
+                            🔄 Actualizar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="icon-file"></i>
+                            Solicitudes CHP
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="loadingSolicitudes" class="loading">
+                            <div class="spinner"></div>
+                            <p>Cargando solicitudes...</p>
+                        </div>
+                        <div id="solicitudesContainer"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- REPORTES SECTION -->
+            <section id="reportes" class="section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <h3>Reportes</h3>
+                            <p>Estadísticas del Sistema</p>
+                            <small>Análisis completo</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="icon-chart"></i>
+                            Centro de Reportes
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Sistema de reportes en desarrollo. Próximamente incluirá:</p>
+                        <ul style="margin: 20px 0; padding-left: 20px;">
+                            <li>Reportes de actividad mensual</li>
+                            <li>Estadísticas de profesionales</li>
+                            <li>Análisis de solicitudes CHP</li>
+                            <li>Reportes financieros</li>
+                        </ul>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button class="btn btn-primary">
+                                <i class="icon-export"></i>
+                                Generar Reporte Mensual
+                            </button>
+                            <button class="btn btn-success">
+                                <i class="icon-chart"></i>
+                                Ver Estadísticas
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONFIGURACION SECTION -->
+            <section id="configuracion" class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="icon-settings"></i>
+                            Configuración del Sistema
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                            <div>
+                                <h4 style="color: #2c3e50; margin-bottom: 15px;">Configuración General</h4>
+                                <div class="form-group">
+                                    <label>Nombre de la Institución</label>
+                                    <input type="text" value="COPIG - Consejo Profesional de Ingenieros y Geólogos">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email de Contacto</label>
+                                    <input type="email" value="admin@copig.org.ar">
+                                </div>
+                            </div>
+                            <div>
+                                <h4 style="color: #2c3e50; margin-bottom: 15px;">Configuración CHP</h4>
+                                <div class="form-group">
+                                    <label>Arancel Base CHP ($)</label>
+                                    <input type="number" value="5000" step="100">
+                                </div>
+                                <div class="form-group">
+                                    <label>Días para Vencimiento</label>
+                                    <input type="number" value="30">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ecf0f1;">
+                            <button class="btn btn-success">
+                                💾 Guardar Configuración
+                            </button>
+                            <button class="btn btn-secondary" style="margin-left: 10px;">
+                                🔄 Restablecer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- USUARIOS SECTION -->
+            <section id="usuarios" class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="icon-users"></i>
+                            Gestión de Usuarios Administrativos
+                        </h3>
+                        <div class="card-actions">
+                            <button class="btn btn-success" onclick="showCreateUserModal()">
+                                <i class="icon-plus"></i>
+                                Nuevo Usuario
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Usuario</th>
+                                        <th>Email</th>
+                                        <th>Nombre Completo</th>
+                                        <th>Rol</th>
+                                        <th>Estado</th>
+                                        <th>Último Login</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTableBody">
+                                    <tr>
+                                        <td colspan="7" style="text-align: center; padding: 40px;">
+                                            <div class="loading">Cargando usuarios...</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL PARA CREAR USUARIO UNIFICADO (SUPER PANEL DE FERNANDO) -->
+    <div class="modal" id="userModal">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 id="userModalTitle">🚀 Crear Nuevo Usuario - Panel Super Admin</h3>
+                <button class="modal-close" onclick="closeUserModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <input type="hidden" id="userId">
+                    
+                    <!-- SELECTOR DE TIPO DE USUARIO -->
+                    <div class="form-group" style="background: #f0f4f8; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                        <label style="font-weight: bold; color: #2c3e50; margin-bottom: 10px; display: block;">
+                            🎯 Tipo de Usuario*
+                        </label>
+                        <select id="userType" required style="width: 100%; padding: 12px; font-size: 16px; border: 2px solid #3498db;" onchange="updateFormForUserType()">
+                            <option value="">-- Seleccionar Tipo --</option>
+                            <option value="profesional">👨‍🎓 Profesional (Ingeniero/Geólogo)</option>
+                            <option value="staff">👥 Staff COPIG (Empleado interno)</option>
+                            <option value="admin">🛡️ Administrador del Sistema</option>
+                        </select>
+                    </div>
+
+                    <!-- CAMPOS COMUNES -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label for="userFullName">Nombre Completo*</label>
+                            <input type="text" id="userFullName" required placeholder="APELLIDO, Nombre">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userDNI">DNI*</label>
+                            <input type="text" id="userDNI" required placeholder="12345678" maxlength="20">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userEmail">Email*</label>
+                            <input type="email" id="userEmail" required placeholder="usuario@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userPhone">Teléfono</label>
+                            <input type="text" id="userPhone" placeholder="261-1234567">
+                        </div>
+
+                        <!-- CAMPOS ESPECÍFICOS DE PROFESIONAL -->
+                        <div class="form-group profesional-only" style="display: none;">
+                            <label for="userMatricula">Número de Matrícula*</label>
+                            <input type="text" id="userMatricula" placeholder="1234">
+                        </div>
+
+                        <div class="form-group profesional-only" style="display: none;">
+                            <label for="userCategoria">Categoría*</label>
+                            <select id="userCategoria">
+                                <option value="A">A - Ingeniero</option>
+                                <option value="B">B - Geólogo</option>
+                                <option value="C">C - Técnico</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group profesional-only" style="display: none;">
+                            <label for="userTitulo">Título Profesional*</label>
+                            <input type="text" id="userTitulo" placeholder="Ingeniero Civil">
+                        </div>
+
+                        <div class="form-group profesional-only" style="display: none;">
+                            <label for="userDomicilio">Domicilio</label>
+                            <input type="text" id="userDomicilio" placeholder="Calle 123">
+                        </div>
+
+                        <!-- CAMPOS ESPECÍFICOS DE STAFF -->
+                        <div class="form-group staff-only" style="display: none;">
+                            <label for="userDepartamento">Departamento*</label>
+                            <select id="userDepartamento">
+                                <option value="">Seleccionar...</option>
+                                <option value="Administración">Administración</option>
+                                <option value="Tesorería">Tesorería</option>
+                                <option value="Secretaría">Secretaría</option>
+                                <option value="Matrículas">Matrículas</option>
+                                <option value="Sistemas">Sistemas</option>
+                                <option value="Legal">Legal</option>
+                            </select>
+                        </div>
+
+                        <!-- CAMPOS ESPECÍFICOS DE ADMIN -->
+                        <div class="form-group admin-only" style="display: none;">
+                            <label for="userAdminLevel">Nivel de Administrador*</label>
+                            <select id="userAdminLevel">
+                                <option value="admin">Administrador Regular</option>
+                                <option value="super_admin">Super Administrador</option>
+                            </select>
+                        </div>
+
+                        <!-- CONTRASEÑA -->
+                        <div class="form-group">
+                            <label for="userPassword">Contraseña Inicial*</label>
+                            <input type="password" id="userPassword" required minlength="6" placeholder="Mínimo 6 caracteres">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userPasswordConfirm">Confirmar Contraseña*</label>
+                            <input type="password" id="userPasswordConfirm" required minlength="6" placeholder="Repetir contraseña">
+                        </div>
+                    </div>
+
+                    <!-- ESTADO -->
+                    <div class="form-group" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; border: 2px solid #e9ecef;">
+                        <label style="display: flex; align-items: center; cursor: pointer; font-weight: 600;">
+                            <input type="checkbox" id="userActive" checked style="width: 20px; height: 20px; margin-right: 12px; cursor: pointer;">
+                            <span style="font-size: 16px; color: #2c3e50;">
+                                ✅ Crear usuario como ACTIVO
+                            </span>
+                        </label>
+                        <small style="display: block; margin-top: 8px; margin-left: 32px; color: #6c757d;">
+                            Si está marcado, el usuario podrá acceder inmediatamente al sistema
+                        </small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeUserModal()">Cancelar</button>
+                <button class="btn btn-success" onclick="confirmAndSaveUser()">
+                    💾 Crear Usuario
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA CAMBIAR CONTRASEÑA -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Cambiar Contraseña</h3>
+                <button class="modal-close" onclick="closePasswordModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="passwordForm">
+                    <input type="hidden" id="passwordUserId">
+                    <div class="form-group">
+                        <label for="newPassword">Nueva Contraseña*</label>
+                        <input type="password" id="newPassword" required minlength="6">
+                        <small>Mínimo 6 caracteres</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Contraseña*</label>
+                        <input type="password" id="confirmPassword" required minlength="6">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closePasswordModal()">Cancelar</button>
+                <button class="btn btn-success" onclick="changePassword()">Cambiar Contraseña</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALS (keeping existing ones) -->
+    <div id="modalRevisar" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Revisar Solicitud CHP</h2>
+                <button class="close" onclick="cerrarModal('modalRevisar')">&times;</button>
+            </div>
+            <div id="modalBody">
+                <!-- Contenido dinámico -->
+            </div>
+        </div>
+    </div>
+
+    <div id="modalFactura" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Generar Factura</h2>
+                <button class="close" onclick="cerrarModalFactura()">&times;</button>
+            </div>
+            <form id="formFactura">
+                <input type="hidden" id="solicitudIdFactura">
+                <div class="form-group">
+                    <label>Descripción de Tarea Profesional (Corregida):</label>
+                    <textarea id="descripcionCorregida" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Arancel CHP ($):</label>
+                    <input type="number" id="importeArancel" step="0.01" required>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button type="submit" class="btn btn-success">Generar Factura</button>
+                    <button type="button" class="btn btn-secondary" onclick="cerrarModalFactura()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL EXPEDIENTE -->
+    <div id="modalExpediente" class="modal">
+        <div class="modal-content" style="max-width: 900px; width: 90vw;">
+            <div class="modal-header">
+                <h2 class="modal-title">📋 Expediente del Profesional</h2>
+                <button class="close" onclick="cerrarModal('modalExpediente')">&times;</button>
+            </div>
+            <div id="expedienteContent" style="max-height: 70vh; overflow-y: auto; padding: 20px;">
+                <div class="loading" style="padding: 40px; text-align: center;">
+                    <div class="spinner"></div>
+                    <p>Cargando datos...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CREAR PROFESIONAL -->
+    <div id="modalCrearProfesional" class="modal">
+        <div class="modal-content" style="max-width: 700px; width: 90vw;">
+            <div class="modal-header">
+                <h2 class="modal-title">➕ Crear Nuevo Profesional</h2>
+                <button class="close" onclick="cerrarModal('modalCrearProfesional')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formCrearProfesional" style="display: grid; gap: 15px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label for="createNombre" style="display: block; margin-bottom: 5px; font-weight: bold;">Nombre Completo *</label>
+                            <input type="text" id="createNombre" required maxlength="60" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="APELLIDO, NOMBRE">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="createDocumento" style="display: block; margin-bottom: 5px; font-weight: bold;">DNI *</label>
+                            <input type="text" id="createDocumento" required maxlength="20" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="12345678">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="createTipoDocumento" style="display: block; margin-bottom: 5px; font-weight: bold;">Tipo Documento *</label>
+                            <select id="createTipoDocumento" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                <option value="DNI">DNI</option>
+                                <option value="LE">LE</option>
+                                <option value="LC">LC</option>
+                                <option value="PASAPORTE">Pasaporte</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="createMatricula" style="display: block; margin-bottom: 5px; font-weight: bold;">Número de Matrícula *</label>
+                            <input type="text" id="createMatricula" required maxlength="20" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="1234">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="createCategoria" style="display: block; margin-bottom: 5px; font-weight: bold;">Categoría *</label>
+                            <select id="createCategoria" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                <option value="A">A - Ingeniero</option>
+                                <option value="B">B - Geólogo</option>
+                                <option value="C">C - Técnico</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="createTitulo" style="display: block; margin-bottom: 5px; font-weight: bold;">Título *</label>
+                            <input type="text" id="createTitulo" required maxlength="100" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Ingeniero Civil">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="createEmail" style="display: block; margin-bottom: 5px; font-weight: bold;">Email *</label>
+                            <input type="email" id="createEmail" required maxlength="255" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="profesional@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="createTelefono" style="display: block; margin-bottom: 5px; font-weight: bold;">Teléfono</label>
+                            <input type="text" id="createTelefono" maxlength="50" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="261-1234567">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="createDomicilio" style="display: block; margin-bottom: 5px; font-weight: bold;">Domicilio</label>
+                            <input type="text" id="createDomicilio" maxlength="255" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Calle 123">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="createNacionalidad" style="display: block; margin-bottom: 5px; font-weight: bold;">Nacionalidad</label>
+                            <input type="text" id="createNacionalidad" maxlength="50" value="Argentina" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="createPassword" style="display: block; margin-bottom: 5px; font-weight: bold;">Contraseña Inicial *</label>
+                            <input type="password" id="createPassword" required minlength="6" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="Mínimo 6 caracteres">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="createActivo" style="display: block; margin-bottom: 5px; font-weight: bold;">Estado</label>
+                            <select id="createActivo" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions" style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+                        <button type="button" class="btn btn-secondary" onclick="cerrarModal('modalCrearProfesional')">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            ➕ Crear Profesional
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDITAR PROFESIONAL -->
+    <div id="modalEditarProfesional" class="modal">
+        <div class="modal-content" style="max-width: 600px; width: 90vw;">
+            <div class="modal-header">
+                <h2 class="modal-title">✏️ Editar Profesional</h2>
+                <button class="close" onclick="cerrarModal('modalEditarProfesional')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formEditarProfesional" style="display: grid; gap: 15px;">
+                    <input type="hidden" id="editProfId">
+                    
+                    <div class="form-group">
+                        <label for="editNombre" style="display: block; margin-bottom: 5px; font-weight: bold;">Nombre Completo *</label>
+                        <input type="text" id="editNombre" required maxlength="60" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editDocumento" style="display: block; margin-bottom: 5px; font-weight: bold;">Número de Documento *</label>
+                        <input type="text" id="editDocumento" required maxlength="20" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editEmail" style="display: block; margin-bottom: 5px; font-weight: bold;">Email</label>
+                        <input type="email" id="editEmail" maxlength="60" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label for="editTelefono" style="display: block; margin-bottom: 5px; font-weight: bold;">Teléfono</label>
+                            <input type="text" id="editTelefono" maxlength="20" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="editCelular" style="display: block; margin-bottom: 5px; font-weight: bold;">Celular</label>
+                            <input type="text" id="editCelular" maxlength="20" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editDomicilio" style="display: block; margin-bottom: 5px; font-weight: bold;">Domicilio</label>
+                        <input type="text" id="editDomicilio" maxlength="80" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label for="editLocalidad" style="display: block; margin-bottom: 5px; font-weight: bold;">Localidad</label>
+                            <input type="text" id="editLocalidad" maxlength="50" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="editProvincia" style="display: block; margin-bottom: 5px; font-weight: bold;">Provincia</label>
+                            <input type="text" id="editProvincia" maxlength="50" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="editNacionalidad" style="display: block; margin-bottom: 5px; font-weight: bold;">Nacionalidad</label>
+                            <input type="text" id="editNacionalidad" maxlength="30" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <div class="form-actions" style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee;">
+                        <button type="button" class="btn btn-secondary" onclick="cerrarModal('modalEditarProfesional')">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-success">
+                            💾 Guardar Cambios
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función helper para valores seguros
+        function safeValue(value, defaultValue = 0) {
+            if (value === null || value === undefined || isNaN(value)) {
+                return defaultValue;
+            }
+            return value;
+        }
+        
+        // Función helper para formatear números de forma segura
+        function safeLocaleString(value, locale = 'es-AR') {
+            const safeVal = safeValue(value, 0);
+            return safeVal.toLocaleString(locale);
+        }
+        
+        // Función helper para valores seguros
+        function safeValue(value, defaultValue = 0) {
+            if (value === null || value === undefined || isNaN(value)) {
+                return defaultValue;
+            }
+            return value;
+        }
+        
+        // VARIABLES GLOBALES
+        let solicitudes = [];
+        let solicitudesFiltradas = [];
+        let currentSection = 'dashboard';
+        let activityChart = null;
+        let currentExpedienteId = null;
+
+        // INICIALIZACIÓN
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApp();
+        });
+
+        async function initializeApp() {
+            // Verificar autenticación antes de inicializar
+            const authStatus = await checkAuthStatus();
+            if (!authStatus.authenticated) {
+                window.location.href = '/admin/login';
+                return;
+            }
+            
+            // Mostrar información del usuario
+            updateUserInfo(authStatus.user);
+            
+            setupEventListeners();
+            changeSection('dashboard');
+            loadDashboardData();
+        }
+
+        async function checkAuthStatus() {
+            try {
+                const response = await fetch('/api/admin/auth/status');
+                return await response.json();
+            } catch (error) {
+                console.error('Error verificando autenticación:', error);
+                return { authenticated: false };
+            }
+        }
+
+        function updateUserInfo(user) {
+            const userNameElement = document.getElementById('adminUserName');
+            if (userNameElement && user) {
+                userNameElement.textContent = user.fullName || user.username;
+            }
+        }
+
+        async function logout() {
+            if (confirm('¿Está seguro que desea cerrar sesión?')) {
+                try {
+                    await fetch('/api/admin/logout', { method: 'POST' });
+                    window.location.href = '/admin/login';
+                } catch (error) {
+                    console.error('Error al cerrar sesión:', error);
+                    window.location.href = '/admin/login';
+                }
+            }
+        }
+
+        function setupEventListeners() {
+            // Menu toggle
+            document.getElementById('menuToggle').addEventListener('click', toggleSidebar);
+            
+            // Navigation items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const section = e.target.closest('.nav-item').dataset.section;
+                    changeSection(section);
+                });
+            });
+
+            // Form submissions
+            if (document.getElementById('formFactura')) {
+                document.getElementById('formFactura').addEventListener('submit', handleFacturaSubmit);
+            }
+
+            // Click outside modals to close
+            window.addEventListener('click', (event) => {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            });
+
+            // Keyboard navigation for pagination
+            document.addEventListener('keydown', (event) => {
+                // Only work on professionals section and when no input is focused
+                if (currentSection !== 'profesionales' || 
+                    document.activeElement.tagName === 'INPUT' || 
+                    document.activeElement.tagName === 'TEXTAREA') {
+                    return;
+                }
+
+                if (event.key === 'ArrowLeft') {
+                    event.preventDefault();
+                    navigateToPreviousPage();
+                } else if (event.key === 'ArrowRight') {
+                    event.preventDefault();
+                    navigateToNextPage();
+                }
+            });
+        }
+
+        // NAVIGATION
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('show');
+            } else {
+                sidebar.classList.toggle('collapsed');
+                mainContent.classList.toggle('expanded');
+            }
+        }
+
+        function changeSection(sectionName) {
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-section="${sectionName}"]`).classList.add('active');
+
+            // Update active section
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionName).classList.add('active');
+
+            // Update page title
+            const titles = {
+                dashboard: 'Dashboard',
+                profesionales: 'Gestión de Profesionales', 
+                chp: 'Solicitudes CHP',
+                reportes: 'Reportes',
+                configuracion: 'Configuración'
+            };
+            document.getElementById('pageTitle').textContent = titles[sectionName] || sectionName;
+
+            currentSection = sectionName;
+
+            // Load section-specific data
+            loadSectionData(sectionName);
+
+            // Close sidebar on mobile
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('show');
+            }
+        }
+
+        function loadSectionData(section) {
+            switch(section) {
+                case 'dashboard':
+                    loadDashboardData();
+                    break;
+                case 'profesionales':
+                    loadProfesionales();
+                    break;
+                case 'chp':
+                    loadSolicitudesCHP();
+                    break;
+                case 'reportes':
+                    loadReportes();
+                    break;
+                case 'configuracion':
+                    loadConfiguracion();
+                    break;
+                case 'usuarios':
+                    loadUsuarios();
+                    break;
+            }
+        }
+
+        // DASHBOARD FUNCTIONS
+        async function loadDashboardData() {
+            try {
+                // Load stats
+                await Promise.all([
+                    loadDashboardStats(),
+                    loadRecentSolicitudes(),
+                    loadActivityChart()
+                ]);
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            }
+        }
+
+        async function loadDashboardStats() {
+            try {
+                const response = await fetch('/api/admin/dashboard/stats');
+                const stats = await response.json();
+                
+                document.getElementById('statProfesionales').textContent = safeLocaleString(stats.profesionales);
+                document.getElementById('statSolicitudes').textContent = safeLocaleString(stats.solicitudes);
+                document.getElementById('statPendientes').textContent = safeLocaleString(stats.pendientes);
+                document.getElementById('statRecaudacion').textContent = '$' + safeLocaleString(stats.recaudacion);
+                
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                // Fallback values
+                document.getElementById('statProfesionales').textContent = '-';
+                document.getElementById('statSolicitudes').textContent = '-';
+                document.getElementById('statPendientes').textContent = '-';
+                document.getElementById('statRecaudacion').textContent = '-';
+            }
+        }
+
+        async function loadRecentSolicitudes() {
+            try {
+                const response = await fetch('/api/admin/solicitudes');
+                const data = await response.json();
+                
+                const container = document.getElementById('recentSolicitudes');
+                
+                if (data.length === 0) {
+                    container.innerHTML = '<p>No hay solicitudes recientes.</p>';
+                    return;
+                }
+
+                const recentItems = data.slice(0, 5);
+                let html = '<div class="table-responsive"><table class="table">';
+                html += '<thead><tr><th>Número</th><th>Profesional</th><th>Estado</th><th>Fecha</th><th>Acciones</th></tr></thead><tbody>';
+
+                recentItems.forEach(solicitud => {
+                    const fecha = new Date(solicitud.fecha_solicitud).toLocaleDateString('es-AR');
+                    const estadoClass = getEstadoClass(solicitud.estado);
+                    
+                    html += `
+                        <tr>
+                            <td>${solicitud.numero_solicitud}</td>
+                            <td>${solicitud.profesional_nombre}</td>
+                            <td><span class="badge ${estadoClass}">${solicitud.estado}</span></td>
+                            <td>${fecha}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" onclick="verSolicitud(${solicitud.id})">
+                                    <i class="icon-view"></i> Ver
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                html += '</tbody></table></div>';
+                container.innerHTML = html;
+
+            } catch (error) {
+                console.error('Error loading recent solicitudes:', error);
+                document.getElementById('recentSolicitudes').innerHTML = '<p>Error al cargar solicitudes.</p>';
+            }
+        }
+
+        async function loadActivityChart() {
+            const ctx = document.getElementById('activityChart');
+            if (!ctx) return;
+            
+            // DESTRUCCIÓN BRUTAL DE CHART.JS - MÉTODO NUCLEAR
+            try {
+                // 1. Destruir variable global
+                if (window.activityChart) {
+                    window.activityChart.destroy();
+                    window.activityChart = null;
+                }
+                
+                // 2. Destruir por ID específico
+                Chart.getChart('activityChart')?.destroy();
+                
+                // 3. Destruir todos los charts en este canvas
+                Chart.getChart(ctx)?.destroy();
+                
+                // 4. Remover y recrear el canvas completamente
+                const parent = ctx.parentNode;
+                ctx.remove();
+                const newCanvas = document.createElement('canvas');
+                newCanvas.id = 'activityChart';
+                parent.appendChild(newCanvas);
+                
+                // Actualizar referencia
+                const newCtx = document.getElementById('activityChart');
+                
+            } catch (e) {
+                console.log('Chart cleanup error (ignorable):', e.message);
+            }
+
+            try {
+                const response = await fetch('/api/admin/dashboard/activity');
+                const activityData = await response.json();
+                
+                const data = {
+                    labels: activityData.map(item => item.mes),
+                    datasets: [{
+                        label: 'Solicitudes CHP',
+                        data: activityData.map(item => item.cantidad),
+                        borderColor: '#3498db',
+                        backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                };
+
+                window.activityChart = new Chart(newCtx, {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading activity chart:', error);
+                // Fallback chart with empty data
+                activityChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Solicitudes CHP',
+                            data: [0, 0, 0, 0, 0, 0],
+                            borderColor: '#95a5a6',
+                            backgroundColor: 'rgba(149, 165, 166, 0.1)',
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // PROFESIONALES FUNCTIONS
+        let currentPage = 1;
+        let currentProfesionalesPage = 1;
+        let currentPagination = null;
+
+        async function loadProfesionales(page = 1) {
+            const container = document.getElementById('profesionalesList');
+            container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Cargando profesionales...</p></div>';
+
+            try {
+                const buscar = document.getElementById('buscarProfesional')?.value || '';
+                const estado = document.getElementById('filtroEstadoProfesional')?.value || '';
+                
+                // Calcular offset usando currentPage
+                currentPage = page;
+                const offset = (currentPage - 1) * 50;
+                
+                const params = new URLSearchParams();
+                if (buscar) params.append('buscar', buscar);
+                if (estado) params.append('estado', estado);
+                params.append('page', page);
+                params.append('offset', offset);
+                
+                const response = await fetch(`/api/admin/profesionales?${params}`);
+                
+                // Verificar que la respuesta sea válida
+                if (!response.ok) {
+                    throw new Error(`Error ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+
+                // Verificar que los datos existan y tengan la estructura esperada
+                if (!data || !data.profesionales || !Array.isArray(data.profesionales)) {
+                    console.error('Estructura de datos inválida:', data);
+                    container.innerHTML = '<p>Error: Estructura de datos inválida del servidor.</p>';
+                    return;
+                }
+
+                // Actualizar variables globales
+                currentProfesionalesPage = page;
+                currentPagination = data.pagination || {};
+
+                if (data.profesionales.length === 0) {
+                    container.innerHTML = '<p>No se encontraron profesionales con los criterios especificados.</p>';
+                    return;
+                }
+
+                let html = '<div class="table-responsive"><table class="table">';
+                html += '<thead><tr><th>Matrícula</th><th>Nombre</th><th>Documento</th><th>Email</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>';
+
+                data.profesionales.forEach(prof => {
+                    // Verificar que el objeto profesional tenga las propiedades básicas
+                    if (!prof || !prof.id) {
+                        console.warn('Profesional con datos incompletos:', prof);
+                        return; // Saltar este registro
+                    }
+                    
+                    const estadoClass = (prof.estado === 'Activo') ? 'success' : 'warning';
+                    const estado = prof.estado || 'Sin estado';
+                    
+                    html += `
+                        <tr>
+                            <td><strong>${prof.matricula_profesional || prof.matricula || prof.numero_documento || 'Sin matrícula'}</strong></td>
+                            <td>${prof.nombre || 'Sin nombre'}</td>
+                            <td>${prof.numero_documento || '-'}</td>
+                            <td>${prof.email || '-'}</td>
+                            <td><span class="badge ${estadoClass}">${estado}</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" onclick="editarProfesional(${prof.id})" title="Editar">
+                                    <i class="icon-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-secondary" onclick="verProfesional(${prof.id})" title="Ver detalles">
+                                    <i class="icon-view"></i>
+                                </button>
+                                <button class="btn btn-sm btn-primary" onclick="verExpediente(${prof.id})" title="Ver expediente completo">
+                                    📋
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                html += '</tbody></table></div>';
+
+                // Agregar controles de paginación siempre visibles
+                if (data.pagination) {
+                    html += renderPaginationControls(data.pagination);
+                } else {
+                    // Controles básicos si no hay pagination data
+                    html += `
+                        <div class="pagination-controls">
+                            <div class="pagination-info">
+                                Mostrando profesionales
+                            </div>
+                            <div class="pagination-buttons">
+                                <button class="btn btn-sm btn-secondary" onclick="loadProfesionales(${currentProfesionalesPage - 1})" ${currentProfesionalesPage <= 1 ? 'disabled' : ''}>⬅️ Anterior</button>
+                                <span style="padding: 8px 12px; color: #6c757d;">Página ${currentProfesionalesPage}</span>
+                                <button class="btn btn-sm btn-secondary" onclick="loadProfesionales(${currentProfesionalesPage + 1})">Siguiente ➡️</button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                container.innerHTML = html;
+                
+                // Actualizar indicador de página
+                updatePageIndicator(data.pagination);
+
+            } catch (error) {
+                console.error('Error loading profesionales:', error);
+                container.innerHTML = `
+                    <div style="color: #e74c3c; text-align: center; padding: 40px; border: 2px solid #f8d7da; background: #f8d7da; border-radius: 8px; margin: 20px;">
+                        <h4 style="margin-bottom: 10px;">❌ Error al cargar profesionales</h4>
+                        <p>No se pudieron cargar los datos de profesionales.</p>
+                        <button class="btn btn-primary" onclick="loadProfesionales()" style="margin-top: 15px;">
+                            🔄 Reintentar
+                        </button>
+                        <details style="margin-top: 15px; text-align: left;">
+                            <summary style="cursor: pointer; color: #721c24;">Ver detalles técnicos</summary>
+                            <pre style="background: white; padding: 10px; margin-top: 10px; border-radius: 4px; font-size: 12px; overflow: auto;">${error.message}</pre>
+                        </details>
+                    </div>
+                `;
+            }
+        }
+
+        function renderPaginationControls(pagination) {
+            // Mapear y calcular valores desde la respuesta del servidor
+            const currentPage = pagination.current_page || currentProfesionalesPage;
+            const totalPages = pagination.total_pages || Math.ceil((pagination.total_records || 0) / 50);
+            const totalRecords = pagination.total_records || 0;
+            const perPage = pagination.per_page || 50;
+            
+            // Calcular startRecord y endRecord
+            const startRecord = ((currentPage - 1) * perPage) + 1;
+            const endRecord = Math.min(currentPage * perPage, totalRecords);
+            
+            // Calcular hasNext y hasPrev
+            const hasNext = currentPage < totalPages;
+            const hasPrev = currentPage > 1;
+            
+            let html = `
+                <div class="pagination-controls">
+                    <div class="pagination-info">
+                        Mostrando ${startRecord}-${endRecord} de ${totalRecords} profesionales<br>
+                        <small>Página ${currentPage} de ${totalPages}</small>
+                    </div>
+                    <div class="pagination-buttons">
+            `;
+
+            // Botón Primera página
+            if (currentPage > 1) {
+                html += `<button class="btn btn-sm btn-secondary" onclick="loadProfesionales(1)" title="Primera página">⏮️</button>`;
+            }
+
+            // Botón Anterior
+            if (hasPrev) {
+                html += `<button class="btn btn-sm btn-secondary" onclick="loadProfesionales(${currentPage - 1})" title="Página anterior">⬅️ Anterior</button>`;
+            }
+
+            // Números de página
+            const startPage = Math.max(1, currentPage - 2);
+            const endPage = Math.min(totalPages, currentPage + 2);
+
+            if (startPage > 1) {
+                html += `<button class="btn btn-sm btn-secondary" onclick="loadProfesionales(1)">1</button>`;
+                if (startPage > 2) {
+                    html += `<span style="padding: 5px 10px; color: #7f8c8d;">...</span>`;
+                }
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                const isActive = i === currentPage;
+                const btnClass = isActive ? 'btn-primary' : 'btn-secondary';
+                html += `<button class="btn btn-sm ${btnClass}" onclick="loadProfesionales(${i})" ${isActive ? 'disabled' : ''}>${i}</button>`;
+            }
+
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    html += `<span style="padding: 5px 10px; color: #7f8c8d;">...</span>`;
+                }
+                html += `<button class="btn btn-sm btn-secondary" onclick="loadProfesionales(${totalPages})">${totalPages}</button>`;
+            }
+
+            // Botón Siguiente
+            if (hasNext) {
+                html += `<button class="btn btn-sm btn-secondary" onclick="loadProfesionales(${currentPage + 1})" title="Página siguiente">Siguiente ➡️</button>`;
+            }
+
+            // Botón Última página
+            if (currentPage < totalPages) {
+                html += `<button class="btn btn-sm btn-secondary" onclick="loadProfesionales(${totalPages})" title="Última página">⏭️</button>`;
+            }
+
+            html += `
+                    </div>
+                </div>
+            `;
+
+            return html;
+        }
+
+        // Función para actualizar el indicador de página
+        function updatePageIndicator(pagination) {
+            const indicatorElement = document.getElementById('pageIndicator');
+            if (!indicatorElement) return;
+            
+            if (pagination) {
+                const currentPage = pagination.current_page || currentProfesionalesPage;
+                const totalPages = pagination.total_pages || Math.ceil((pagination.total_records || 0) / 50);
+                
+                if (totalPages > 0) {
+                    indicatorElement.innerHTML = `📄 Página ${currentPage} de ${totalPages}`;
+                } else {
+                    indicatorElement.innerHTML = `📄 Navegando: Página ${currentPage}`;
+                }
+            } else {
+                indicatorElement.innerHTML = `📄 Navegando: Página ${currentProfesionalesPage}`;
+            }
+        }
+
+        // Funciones de navegación con teclado
+        function navigateToPreviousPage() {
+            if (!currentPagination) return;
+            
+            const currentPage = currentPagination.current_page || currentProfesionalesPage;
+            if (currentPage > 1) {
+                loadProfesionales(currentPage - 1);
+            }
+        }
+
+        function navigateToNextPage() {
+            if (!currentPagination) return;
+            
+            const currentPage = currentPagination.current_page || currentProfesionalesPage;
+            const totalPages = currentPagination.total_pages || Math.ceil((currentPagination.total_records || 0) / 50);
+            
+            if (currentPage < totalPages) {
+                loadProfesionales(currentPage + 1);
+            }
+        }
+
+        function buscarProfesionales() {
+            const buscarInput = document.getElementById('buscarProfesional');
+            const mensajeBusqueda = document.getElementById('mensajeBusqueda');
+            const termino = buscarInput?.value.trim() || '';
+            
+            // Validar longitud mínima
+            if (termino.length > 0 && termino.length < 3) {
+                mensajeBusqueda.style.display = 'block';
+                mensajeBusqueda.className = 'search-message error';
+                mensajeBusqueda.textContent = 'Ingrese al menos 3 caracteres para buscar';
+                
+                // Enfocar el campo de búsqueda
+                buscarInput.focus();
+                return;
+            }
+            
+            // Ocultar mensaje si la validación pasa
+            mensajeBusqueda.style.display = 'none';
+            mensajeBusqueda.className = 'search-message';
+            
+            // Ejecutar búsqueda
+            currentPage = 1;
+            currentProfesionalesPage = 1;
+            loadProfesionales(1);
+        }
+
+        function exportarProfesionales() {
+            const buscarInput = document.getElementById('buscarProfesional');
+            const mensajeBusqueda = document.getElementById('mensajeBusqueda');
+            const buscar = buscarInput?.value.trim() || '';
+            const estado = document.getElementById('filtroEstadoProfesional')?.value || '';
+            
+            // Validar longitud mínima para términos de búsqueda
+            if (buscar.length > 0 && buscar.length < 3) {
+                mensajeBusqueda.style.display = 'block';
+                mensajeBusqueda.className = 'search-message error';
+                mensajeBusqueda.textContent = 'Ingrese al menos 3 caracteres para buscar antes de exportar';
+                buscarInput.focus();
+                return;
+            }
+            
+            const params = new URLSearchParams();
+            params.append('formato', 'csv');
+            if (buscar) params.append('buscar', buscar);
+            if (estado) params.append('estado', estado);
+            
+            const url = `/api/admin/profesionales/export?${params}`;
+            window.open(url, '_blank');
+        }
+
+        function descargarExpedientesCSV() {
+            // Mostrar mensaje de carga
+            const btn = event.target;
+            const textOriginal = btn.innerHTML;
+            btn.innerHTML = '⏳ Generando CSV...';
+            btn.disabled = true;
+            
+            try {
+                // Crear enlace de descarga para expedientes CSV
+                const url = '/api/admin/expedientes/export/csv';
+                
+                // Crear un elemento de descarga temporal
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `expedientes_completos_${new Date().toISOString().split('T')[0]}.csv`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Mostrar mensaje de éxito
+                setTimeout(() => {
+                    btn.innerHTML = '✅ Descargado';
+                    setTimeout(() => {
+                        btn.innerHTML = textOriginal;
+                        btn.disabled = false;
+                    }, 2000);
+                }, 1000);
+                
+            } catch (error) {
+                console.error('Error al descargar expedientes CSV:', error);
+                btn.innerHTML = '❌ Error';
+                setTimeout(() => {
+                    btn.innerHTML = textOriginal;
+                    btn.disabled = false;
+                }, 2000);
+            }
+        }
+
+        function showCreateProfesionalModal() {
+            document.getElementById('formCrearProfesional').reset();
+            document.getElementById('modalCrearProfesional').style.display = 'block';
+        }
+
+        // Manejar el envío del formulario de creación
+        document.getElementById('formCrearProfesional').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '⏳ Creando...';
+            
+            try {
+                const formData = {
+                    nombre: document.getElementById('createNombre').value,
+                    numero_documento: document.getElementById('createDocumento').value,
+                    tipo_documento: document.getElementById('createTipoDocumento').value,
+                    email: document.getElementById('createEmail').value,
+                    telefono: document.getElementById('createTelefono').value,
+                    domicilio: document.getElementById('createDomicilio').value,
+                    nacionalidad: document.getElementById('createNacionalidad').value || 'Argentina',
+                    numero_matricula: document.getElementById('createMatricula').value,
+                    categoria: document.getElementById('createCategoria').value,
+                    titulo: document.getElementById('createTitulo').value,
+                    password: document.getElementById('createPassword').value,
+                    activo: document.getElementById('createActivo').value === 'true'
+                };
+                
+                const response = await fetch('/api/admin/profesionales', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification('✅ Profesional creado exitosamente', 'success');
+                    cerrarModal('modalCrearProfesional');
+                    loadProfesionales(currentPage);
+                } else {
+                    showNotification(`❌ Error: ${result.message || 'No se pudo crear el profesional'}`, 'error');
+                }
+            } catch (error) {
+                console.error('Error al crear profesional:', error);
+                showNotification('❌ Error de conexión al crear profesional', 'error');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        async function editarProfesional(id) {
+            try {
+                console.log('Cargando datos del profesional:', id);
+                
+                // Obtener datos actuales del profesional
+                const response = await fetch(`/api/admin/profesionales/${id}`);
+                const profesional = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(profesional.error || 'Error al cargar datos del profesional');
+                }
+                
+                // Llenar el formulario con los datos actuales
+                document.getElementById('editProfId').value = id;
+                document.getElementById('editNombre').value = profesional.nombre || '';
+                document.getElementById('editDocumento').value = profesional.numero_documento || '';
+                document.getElementById('editEmail').value = profesional.email || '';
+                document.getElementById('editTelefono').value = profesional.telefono || '';
+                document.getElementById('editCelular').value = profesional.celular || '';
+                document.getElementById('editDomicilio').value = profesional.domicilio || '';
+                document.getElementById('editLocalidad').value = profesional.localidad || '';
+                document.getElementById('editProvincia').value = profesional.provincia || '';
+                document.getElementById('editNacionalidad').value = profesional.nacionalidad || '';
+                
+                // Mostrar modal
+                document.getElementById('modalEditarProfesional').style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error al cargar profesional:', error);
+                alert('Error al cargar los datos del profesional: ' + error.message);
+            }
+        }
+
+        // Manejar el envío del formulario de edición
+        document.getElementById('formEditarProfesional').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            try {
+                submitBtn.innerHTML = '⏳ Guardando...';
+                submitBtn.disabled = true;
+                
+                const profesionalId = document.getElementById('editProfId').value;
+                
+                const datosActualizados = {
+                    nombre: document.getElementById('editNombre').value.trim(),
+                    numero_documento: document.getElementById('editDocumento').value.trim(),
+                    email: document.getElementById('editEmail').value.trim() || null,
+                    telefono: document.getElementById('editTelefono').value.trim() || null,
+                    celular: document.getElementById('editCelular').value.trim() || null,
+                    domicilio: document.getElementById('editDomicilio').value.trim() || null,
+                    localidad: document.getElementById('editLocalidad').value.trim() || null,
+                    provincia: document.getElementById('editProvincia').value.trim() || null,
+                    nacionalidad: document.getElementById('editNacionalidad').value.trim() || null
+                };
+                
+                console.log('Enviando datos de actualización:', datosActualizados);
+                
+                const response = await fetch(`/api/admin/profesionales/${profesionalId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(datosActualizados)
+                });
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
+                let result;
+                const contentType = response.headers.get('Content-Type');
+                
+                if (contentType && contentType.includes('application/json')) {
+                    result = await response.json();
+                } else {
+                    const textResponse = await response.text();
+                    console.error('Respuesta no es JSON:', textResponse);
+                    throw new Error('El servidor devolvió una respuesta HTML en lugar de JSON. Revisa la consola para más detalles.');
+                }
+                
+                console.log('Response result:', result);
+                
+                if (!response.ok) {
+                    throw new Error(result.error || result.message || 'Error al actualizar el profesional');
+                }
+                
+                // Mostrar éxito
+                submitBtn.innerHTML = '✅ Guardado';
+                
+                setTimeout(() => {
+                    cerrarModal('modalEditarProfesional');
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Recargar la lista de profesionales
+                    loadProfesionales(currentProfesionalesPage || 1);
+                    
+                    alert('✅ Profesional actualizado exitosamente');
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Error al actualizar profesional:', error);
+                alert('❌ Error al actualizar: ' + error.message);
+                
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        async function verProfesional(id) {
+            try {
+                const response = await fetch(`/api/admin/profesionales/${id}`);
+                const profesional = await response.json();
+                
+                if (response.ok) {
+                    const fechaMatriculacion = profesional.fecha_matriculacion ? 
+                        new Date(profesional.fecha_matriculacion).toLocaleDateString('es-AR') : 'No disponible';
+                    
+                    const modalBody = document.getElementById('modalBody');
+                    modalBody.innerHTML = `
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                            <h3 style="color: #2c3e50; margin-bottom: 15px;">${profesional.nombre || 'Sin nombre'}</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div>
+                                    <p><strong>Matrícula:</strong> ${profesional.matricula_profesional || profesional.numero_documento || 'Sin matrícula'}</p>
+                                    <p><strong>Documento:</strong> ${profesional.numero_documento || 'No disponible'}</p>
+                                    <p><strong>Estado:</strong> <span class="badge ${profesional.activo ? 'success' : 'warning'}">${profesional.activo ? 'Activo' : 'Inactivo'}</span></p>
+                                    <p><strong>Fecha Matriculación:</strong> ${fechaMatriculacion}</p>
+                                </div>
+                                <div>
+                                    <p><strong>Email:</strong> ${profesional.email || 'No disponible'}</p>
+                                    <p><strong>Teléfono:</strong> ${profesional.telefono || 'No disponible'}</p>
+                                    <p><strong>Celular:</strong> ${profesional.celular || 'No disponible'}</p>
+                                    <p><strong>Solicitudes CHP:</strong> ${profesional.total_solicitudes_chp || 0}</p>
+                                </div>
+                            </div>
+                            ${profesional.domicilio ? `
+                                <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #dee2e6;">
+                                    <p><strong>Domicilio:</strong> ${profesional.domicilio}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                    
+                    document.getElementById('modalRevisar').style.display = 'block';
+                } else {
+                    alert('Error al cargar los detalles del profesional');
+                }
+            } catch (error) {
+                console.error('Error loading profesional details:', error);
+                alert('Error al cargar los detalles del profesional');
+            }
+        }
+
+        // SOLICITUDES FUNCTIONS (keeping existing functionality)
+        async function cargarSolicitudes() {
+            const loading = document.getElementById('loadingSolicitudes');
+            const container = document.getElementById('solicitudesContainer');
+            
+            loading.style.display = 'block';
+            container.innerHTML = '';
+            
+            try {
+                const response = await fetch('/api/admin/solicitudes');
+                
+                if (!response.ok) {
+                    throw new Error('Error al cargar solicitudes');
+                }
+                
+                solicitudes = await response.json();
+                solicitudesFiltradas = [...solicitudes];
+                
+                loading.style.display = 'none';
+                mostrarSolicitudes();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                loading.style.display = 'none';
+                container.innerHTML = '<div class="alert alert-danger">Error al cargar las solicitudes.</div>';
+            }
+        }
+
+        function mostrarSolicitudes() {
+            const container = document.getElementById('solicitudesContainer');
+            
+            if (solicitudesFiltradas.length === 0) {
+                container.innerHTML = '<p>No se encontraron solicitudes.</p>';
+                return;
+            }
+            
+            let html = '<div class="table-responsive"><table class="table">';
+            html += '<thead><tr><th>Número</th><th>Fecha</th><th>Profesional</th><th>Matrícula</th><th>Comitente</th><th>Estado</th><th>Arancel</th><th>Acciones</th></tr></thead><tbody>';
+
+            solicitudesFiltradas.forEach(solicitud => {
+                const fecha = new Date(solicitud.fecha_solicitud).toLocaleDateString('es-AR');
+                const estadoClass = getEstadoClass(solicitud.estado);
+                
+                html += `
+                    <tr>
+                        <td><strong>${solicitud.numero_solicitud}</strong></td>
+                        <td>${fecha}</td>
+                        <td>${solicitud.profesional_nombre}</td>
+                        <td>${solicitud.matricula}</td>
+                        <td>${solicitud.comitente}</td>
+                        <td><span class="badge ${estadoClass}">${solicitud.estado}</span></td>
+                        <td>${solicitud.importe_arancel ? '$' + solicitud.importe_arancel : 'No definido'}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="verSolicitud(${solicitud.id})">
+                                <i class="icon-view"></i>
+                            </button>
+                            ${solicitud.estado === 'Pendiente' ? `<button class="btn btn-sm btn-success" onclick="generarFactura(${solicitud.id})"><i class="icon-edit"></i></button>` : ''}
+                            ${solicitud.estado === 'Pagado' ? `<button class="btn btn-sm btn-success" onclick="aprobarCHP(${solicitud.id})">✓</button>` : ''}
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += '</tbody></table></div>';
+            container.innerHTML = html;
+        }
+
+        function getEstadoClass(estado) {
+            const classes = {
+                'Pendiente': 'warning',
+                'Esperando Pago': 'info',
+                'Pagado': 'success',
+                'Aprobado': 'success'
+            };
+            return classes[estado] || 'secondary';
+        }
+
+        function aplicarFiltros() {
+            const filtroEstado = document.getElementById('filtroEstado').value;
+            const busqueda = document.getElementById('busqueda').value.toLowerCase();
+            
+            solicitudesFiltradas = solicitudes.filter(solicitud => {
+                const coincideEstado = !filtroEstado || solicitud.estado === filtroEstado;
+                const coincideBusqueda = !busqueda || 
+                    solicitud.numero_solicitud.toLowerCase().includes(busqueda) ||
+                    solicitud.profesional_nombre.toLowerCase().includes(busqueda) ||
+                    solicitud.comitente.toLowerCase().includes(busqueda);
+                
+                return coincideEstado && coincideBusqueda;
+            });
+            
+            mostrarSolicitudes();
+        }
+
+        // Keep existing modal and form functions
+        async function verSolicitud(id) {
+            try {
+                const [solicitudResponse, archivosResponse] = await Promise.all([
+                    fetch(`/api/admin/solicitud/${id}`),
+                    fetch(`/api/admin/solicitud/${id}/archivos`)
+                ]);
+                
+                const solicitud = await solicitudResponse.json();
+                const archivos = await archivosResponse.json();
+                
+                const archivosParaMostrar = solicitud.archivos && solicitud.archivos.length > 0 ? solicitud.archivos : archivos;
+                
+                let archivosHtml = '';
+                if (archivosParaMostrar.length > 0) {
+                    archivosHtml = `
+                        <div class="form-group">
+                            <label>Documentos Adjuntos (${archivosParaMostrar.length}):</label>
+                            <div style="max-height: 200px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+                    `;
+                    
+                    archivosParaMostrar.forEach(archivo => {
+                        const tamanoKB = Math.round(archivo.tamano / 1024);
+                        const nombreArchivo = archivo.originalName || archivo.nombre || archivo.filename;
+                        const urlArchivo = archivo.downloadUrl || archivo.url;
+                        
+                        archivosHtml += `
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee;">
+                                <div>
+                                    <div style="font-weight: bold;">${nombreArchivo}</div>
+                                    <div style="font-size: 12px; color: #666;">Tamaño: ${tamanoKB} KB</div>
+                                </div>
+                                <a href="${urlArchivo}" target="_blank" class="btn btn-sm btn-primary">Ver</a>
+                            </div>
+                        `;
+                    });
+                    
+                    archivosHtml += '</div></div>';
+                } else {
+                    archivosHtml = '<div class="form-group"><label>Documentos Adjuntos:</label><p>No se adjuntaron documentos</p></div>';
+                }
+                
+                const modalBody = document.getElementById('modalBody');
+                modalBody.innerHTML = `
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                        <strong>Solicitud:</strong> ${solicitud.numero_solicitud}<br>
+                        <strong>Profesional:</strong> ${solicitud.profesional_nombre} (Matricula: ${solicitud.matricula})<br>
+                        <strong>Estado:</strong> <span class="badge ${getEstadoClass(solicitud.estado)}">${solicitud.estado}</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Comitente:</label>
+                        <div style="background: white; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">${solicitud.comitente}</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Descripción de Obra:</label>
+                        <div style="background: white; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">${solicitud.obra_descripcion}</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Descripción de Tarea Profesional:</label>
+                        <div style="background: white; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">${solicitud.descripcion_tarea_profesional || 'No especificada'}</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <div style="background: white; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">${solicitud.observaciones || 'Sin observaciones'}</div>
+                    </div>
+                    
+                    ${solicitud.importe_arancel ? `
+                    <div class="form-group">
+                        <label>Arancel Fijado:</label>
+                        <div style="background: white; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">$${solicitud.importe_arancel}</div>
+                    </div>
+                    ` : ''}
+                    
+                    ${archivosHtml}
+                `;
+                
+                document.getElementById('modalRevisar').style.display = 'block';
+                
+            } catch (error) {
+                alert('Error al cargar los detalles de la solicitud');
+            }
+        }
+
+        function generarFactura(id) {
+            const solicitud = solicitudes.find(s => s.id === id);
+            
+            document.getElementById('solicitudIdFactura').value = id;
+            document.getElementById('descripcionCorregida').value = solicitud.descripcion_tarea_profesional || '';
+            document.getElementById('importeArancel').value = '';
+            
+            document.getElementById('modalFactura').style.display = 'block';
+        }
+
+        async function handleFacturaSubmit(e) {
+            e.preventDefault();
+            
+            const solicitudId = document.getElementById('solicitudIdFactura').value;
+            const descripcionCorregida = document.getElementById('descripcionCorregida').value;
+            const importeArancel = document.getElementById('importeArancel').value;
+            
+            try {
+                const response = await fetch('/api/admin/generar-factura', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        solicitud_id: solicitudId,
+                        descripcion_corregida: descripcionCorregida,
+                        importe_arancel: parseFloat(importeArancel)
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('Factura generada exitosamente');
+                    cerrarModalFactura();
+                    cargarSolicitudes();
+                } else {
+                    alert('Error: ' + result.message);
+                }
+                
+            } catch (error) {
+                alert('Error al generar factura');
+            }
+        }
+
+        async function aprobarCHP(id) {
+            if (!confirm('¿Está seguro de que desea aprobar este CHP?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/admin/aprobar-chp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ solicitud_id: id })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('CHP aprobado exitosamente');
+                    cargarSolicitudes();
+                } else {
+                    alert('Error: ' + result.message);
+                }
+                
+            } catch (error) {
+                alert('Error al aprobar CHP');
+            }
+        }
+
+        function cerrarModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function cerrarModalFactura() {
+            document.getElementById('modalFactura').style.display = 'none';
+        }
+
+        // REPORTES FUNCTIONS
+        function loadReportes() {
+            // Implementation for reports
+            console.log('Loading reports...');
+        }
+
+        // CONFIGURACION FUNCTIONS
+        function loadConfiguracion() {
+            // Implementation for configuration
+            console.log('Loading configuration...');
+        }
+
+        // EXPEDIENTE FUNCTIONS - VERSIÓN SIMPLIFICADA
+        async function verExpediente(profesionalId) {
+            try {
+                const content = document.getElementById('expedienteContent');
+                content.innerHTML = '<div class="loading" style="padding: 40px; text-align: center;"><div class="spinner"></div><p>Cargando datos...</p></div>';
+                
+                document.getElementById('modalExpediente').style.display = 'block';
+                
+                const response = await fetch(`/api/admin/profesionales/${profesionalId}/expediente`);
+                const data = await response.json();
+                
+                console.log('Debug - Datos recibidos del servidor:');
+                console.log(data);
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Error al cargar expediente');
+                }
+                
+                // Generar tabla simple
+                content.innerHTML = `
+                    <div style="background: #f8f9fa; border-radius: 8px; padding: 20px; margin-bottom: 20px;">
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">
+                            📋 ${data.nombre || "Sin nombre"}
+                        </h3>
+                        <div style="display: grid; grid-template-columns: 200px 1fr; gap: 10px; margin-bottom: 20px;">
+                            <strong>Documento:</strong> <span>${data.numero_documento || "Sin documento"}</span>
+                            <strong>Matrícula:</strong> <span>${data.matricula_profesional || data.numero_documento || "Sin matrícula"} ${data.matricula_activa ? '✅ Activa' : '❌ Inactiva'}</span>
+                            <strong>Email:</strong> <span>${data.email || "Sin email"}</span>
+                            <strong>Teléfono:</strong> <span>${data.telefono || "Sin teléfono"}</span>
+                            <strong>Celular:</strong> <span>${data.celular || "Sin celular"}</span>
+                            <strong>Total Pagos:</strong> <span>${data.totalPagos || "Sin pagos registrados"}</span>
+                            <strong>Último Pago:</strong> <span>${data.ultimoPago ? new Date(data.ultimoPago).toLocaleDateString('es-ES') : "Sin pagos registrados"}</span>
+                        </div>
+                    </div>
+
+                    ${data.historialPagos && data.historialPagos.length > 0 ? `
+                    <div>
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">💰 Historial de Pagos</h4>
+                        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                            <thead>
+                                <tr style="background: #3498db; color: white;">
+                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Fecha</th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Concepto</th>
+                                    <th style="padding: 12px; text-align: right; border-bottom: 1px solid #ddd;">Importe</th>
+                                    <th style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">Recibo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${data.historialPagos.slice(0, 20).map(pago => `
+                                    <tr style="border-bottom: 1px solid #eee;">
+                                        <td style="padding: 10px;">${pago.fecha ? new Date(pago.fecha).toLocaleDateString('es-ES') : 'No disponible'}</td>
+                                        <td style="padding: 10px;">${pago.concepto || 'Sin especificar'}</td>
+                                        <td style="padding: 10px; text-align: right; font-weight: bold;">$${parseFloat(pago.importe || 0).toLocaleString('es-AR')}</td>
+                                        <td style="padding: 10px; text-align: center;">${pago.numero_recibo || '-'}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                        ${data.historialPagos.length > 20 ? `<p style="text-align: center; margin-top: 10px; color: #666; font-style: italic;">... y ${data.historialPagos.length - 20} pagos más</p>` : ''}
+                    </div>
+                    ` : '<div style="text-align: center; padding: 20px; color: #666;"><p>No hay pagos registrados</p></div>'}
+                `;
+                
+            } catch (error) {
+                console.error('Error loading expediente:', error);
+                document.getElementById('expedienteContent').innerHTML = `
+                    <div style="color: #e74c3c; text-align: center; padding: 40px;">
+                        <h4>❌ Error al cargar expediente</h4>
+                        <p>${error.message}</p>
+                        <button class="btn btn-primary" onclick="verExpediente(${profesionalId})">🔄 Reintentar</button>
+                    </div>
+                `;
+            }
+        }
+
+        // FUNCIONES REMOVIDAS - Ya no se usan con la versión simplificada
+        function generateExpedienteDisplay_OLD(expediente) {
+            return `
+                <div style="padding: 30px;">
+                    <!-- HEADER DEL EXPEDIENTE -->
+                    <div style="background: linear-gradient(135deg, #3498db, #2c3e50); color: white; padding: 25px; border-radius: 10px; margin-bottom: 30px; text-align: center;">
+                        <h2 style="margin-bottom: 10px; font-size: 1.8rem;">${expediente.datosPersonales.nombre}</h2>
+                        <p style="font-size: 1.1rem; opacity: 0.9;">Matrícula: ${expediente.datosMatricula.numero} | Estado: <strong>${expediente.datosMatricula.estado}</strong></p>
+                        <div style="margin-top: 15px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px;">
+                                <strong>Situación</strong><br>
+                                <span style="color: ${expediente.resumen.situacion === 'Al día' ? '#2ecc71' : '#f39c12'}">${expediente.resumen.situacion}</span>
+                            </div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px;">
+                                <strong>Total Pagado</strong><br>
+                                $${expediente.estadisticas.totalPagos.toLocaleString('es-AR')}
+                            </div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 5px;">
+                                <strong>Solicitudes CHP</strong><br>
+                                ${expediente.estadisticas.totalSolicitudesCHP}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SECCIONES DEL EXPEDIENTE -->
+                    <div class="expediente-tabs" style="margin-bottom: 30px;">
+                        <div class="tab-buttons" style="display: flex; border-bottom: 2px solid #ecf0f1; margin-bottom: 20px; overflow-x: auto;">
+                            <button class="tab-btn active" onclick="mostrarSeccionExp('datos')" data-section="datos" style="padding: 10px 20px; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; font-weight: 600;">📋 Datos Personales</button>
+                            <button class="tab-btn" onclick="mostrarSeccionExp('pagos')" data-section="pagos" style="padding: 10px 20px; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; font-weight: 600;">💰 Historial Pagos</button>
+                            <button class="tab-btn" onclick="mostrarSeccionExp('chp')" data-section="chp" style="padding: 10px 20px; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; font-weight: 600;">📋 Solicitudes CHP</button>
+                            ${expediente.deudas.length > 0 ? '<button class="tab-btn" onclick="mostrarSeccionExp(\'deudas\')" data-section="deudas" style="padding: 10px 20px; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; font-weight: 600;">⚠️ Deudas</button>' : ''}
+                            <button class="tab-btn" onclick="mostrarSeccionExp('estadisticas')" data-section="estadisticas" style="padding: 10px 20px; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; font-weight: 600;">📊 Estadísticas</button>
+                        </div>
+
+                        <!-- DATOS PERSONALES -->
+                        <div id="exp-datos" class="exp-section active">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                                <div class="card">
+                                    <div class="card-header"><h4>👤 Información Personal</h4></div>
+                                    <div class="card-body">
+                                        <div class="info-item"><strong>Nombre:</strong> ${expediente.datosPersonales.nombre || 'No disponible'}</div>
+                                        <div class="info-item"><strong>Documento:</strong> ${expediente.datosPersonales.tipoDocumento} ${expediente.datosPersonales.documento || 'No disponible'}</div>
+                                        <div class="info-item"><strong>Fecha Nacimiento:</strong> ${expediente.datosPersonales.fechaNacimiento || 'No disponible'}</div>
+                                        <div class="info-item"><strong>Estado Civil:</strong> ${expediente.datosPersonales.estadoCivil || 'No especificado'}</div>
+                                        <div class="info-item"><strong>Nacionalidad:</strong> ${expediente.datosPersonales.nacionalidad}</div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header"><h4>📞 Contacto</h4></div>
+                                    <div class="card-body">
+                                        <div class="info-item"><strong>Email:</strong> ${expediente.datosPersonales.email || 'No disponible'}</div>
+                                        <div class="info-item"><strong>Teléfono:</strong> ${expediente.datosPersonales.telefono || 'No disponible'}</div>
+                                        <div class="info-item"><strong>Celular:</strong> ${expediente.datosPersonales.celular || 'No disponible'}</div>
+                                        <div class="info-item"><strong>Domicilio:</strong> ${expediente.datosPersonales.domicilio || 'No disponible'}</div>
+                                        <div class="info-item"><strong>Localidad:</strong> ${expediente.datosPersonales.localidad || 'No disponible'}</div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header"><h4>🎓 Datos de Matrícula</h4></div>
+                                    <div class="card-body">
+                                        <div class="info-item"><strong>Número:</strong> ${expediente.datosMatricula.numero}</div>
+                                        <div class="info-item"><strong>Estado:</strong> <span class="badge ${expediente.datosMatricula.activo ? 'success' : 'warning'}">${expediente.datosMatricula.estado}</span></div>
+                                        <div class="info-item"><strong>Fecha Matriculación:</strong> ${expediente.datosMatricula.fechaMatriculacion}</div>
+                                        <div class="info-item"><strong>Vencimiento:</strong> ${expediente.datosMatricula.fechaVencimiento || 'No disponible'}</div>
+                                        <div class="info-item"><strong>Categoría:</strong> ${expediente.datosMatricula.categoria || 'No especificada'}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- HISTORIAL DE PAGOS -->
+                        <div id="exp-pagos" class="exp-section" style="display: none;">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>💰 Historial de Pagos Completo</h4>
+                                    <div>
+                                        <span class="badge info">Total: $${expediente.estadisticas.totalPagos.toLocaleString('es-AR')}</span>
+                                        <span class="badge success">${expediente.estadisticas.cantidadPagos} pagos</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    ${expediente.historialPagos.length > 0 ? `
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha</th>
+                                                    <th>Concepto</th>
+                                                    <th>Año Hab.</th>
+                                                    <th>Importe</th>
+                                                    <th>Recibo</th>
+                                                    <th>Estado</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ${expediente.historialPagos.map(pago => `
+                                                    <tr>
+                                                        <td>${pago.fecha_pago_formatted}</td>
+                                                        <td>${pago.concepto || 'Sin especificar'}</td>
+                                                        <td>${pago.ano_habilitacion || '-'}</td>
+                                                        <td><strong>$${parseFloat(pago.importe || 0).toLocaleString('es-AR')}</strong></td>
+                                                        <td>${pago.numero_recibo || '-'}</td>
+                                                        <td><span class="badge success">${pago.estado || 'Completado'}</span></td>
+                                                    </tr>
+                                                `).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    ` : '<p>No hay pagos registrados en el historial.</p>'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SOLICITUDES CHP -->
+                        <div id="exp-chp" class="exp-section" style="display: none;">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>📋 Solicitudes CHP</h4>
+                                    <div>
+                                        <span class="badge info">Total: ${expediente.estadisticas.totalSolicitudesCHP}</span>
+                                        <span class="badge success">Aprobadas: ${expediente.estadisticas.solicitudesAprobadas}</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    ${expediente.solicitudesCHP.length > 0 ? `
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Número</th>
+                                                    <th>Fecha</th>
+                                                    <th>Comitente</th>
+                                                    <th>Obra</th>
+                                                    <th>Estado</th>
+                                                    <th>Arancel</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ${expediente.solicitudesCHP.map(sol => `
+                                                    <tr>
+                                                        <td><strong>${sol.numero_solicitud}</strong></td>
+                                                        <td>${sol.fecha_solicitud_formatted}</td>
+                                                        <td>${sol.comitente}</td>
+                                                        <td title="${sol.obra_descripcion}">${sol.obra_descripcion ? sol.obra_descripcion.substring(0, 50) + '...' : 'Sin descripción'}</td>
+                                                        <td><span class="badge ${sol.estado === 'Aprobado' ? 'success' : sol.estado === 'Pendiente' ? 'warning' : 'info'}">${sol.estado}</span></td>
+                                                        <td>${sol.importe_arancel ? '$' + parseFloat(sol.importe_arancel).toLocaleString('es-AR') : 'No definido'}</td>
+                                                    </tr>
+                                                `).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    ` : '<p>No hay solicitudes CHP registradas.</p>'}
+                                </div>
+                            </div>
+                        </div>
+
+                        ${expediente.deudas.length > 0 ? `
+                        <!-- DEUDAS -->
+                        <div id="exp-deudas" class="exp-section" style="display: none;">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 style="color: #e74c3c;">⚠️ Deudas Pendientes</h4>
+                                    <span class="badge danger">Monto Total: $${expediente.resumen.montoDeudas.toLocaleString('es-AR')}</span>
+                                </div>
+                                <div class="card-body">
+                                    ${expediente.deudas.map(deuda => `
+                                        <div style="background: #fff5f5; border: 1px solid #fed7d7; border-left: 4px solid #e53e3e; padding: 15px; margin-bottom: 15px; border-radius: 6px;">
+                                            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; align-items: center;">
+                                                <div>
+                                                    <strong style="color: #e53e3e;">${deuda.concepto}</strong>
+                                                </div>
+                                                <div>
+                                                    <strong>$${deuda.importe.toLocaleString('es-AR')}</strong>
+                                                </div>
+                                                <div>
+                                                    Vence: ${deuda.vencimiento}
+                                                </div>
+                                                <div>
+                                                    <span class="badge danger">${deuda.estado}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                        ` : ''}
+
+                        <!-- ESTADÍSTICAS -->
+                        <div id="exp-estadisticas" class="exp-section" style="display: none;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                                <div class="stat-card success">
+                                    <div class="stat-icon">💰</div>
+                                    <div class="stat-info">
+                                        <h3>$${expediente.estadisticas.totalPagos.toLocaleString('es-AR')}</h3>
+                                        <p>Total Pagado</p>
+                                        <small>${expediente.estadisticas.cantidadPagos} transacciones</small>
+                                    </div>
+                                </div>
+                                <div class="stat-card info">
+                                    <div class="stat-icon">📋</div>
+                                    <div class="stat-info">
+                                        <h3>${expediente.estadisticas.totalSolicitudesCHP}</h3>
+                                        <p>Solicitudes CHP</p>
+                                        <small>${expediente.estadisticas.solicitudesAprobadas} aprobadas</small>
+                                    </div>
+                                </div>
+                                <div class="stat-card ${expediente.resumen.situacion === 'Al día' ? 'success' : 'warning'}">
+                                    <div class="stat-icon">${expediente.resumen.situacion === 'Al día' ? '✅' : '⚠️'}</div>
+                                    <div class="stat-info">
+                                        <h3>${expediente.resumen.situacion}</h3>
+                                        <p>Estado Actual</p>
+                                        <small>${expediente.resumen.montoDeudas > 0 ? '$' + expediente.resumen.montoDeudas.toLocaleString('es-AR') + ' adeudado' : 'Sin deudas'}</small>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">📅</div>
+                                    <div class="stat-info">
+                                        <h3>${expediente.resumen.ultimoPago !== 'Sin pagos' ? (expediente.resumen.ultimoPago ? new Date(expediente.resumen.ultimoPago).toLocaleDateString('es-ES') : expediente.resumen.ultimoPago) : 'N/A'}</h3>
+                                        <p>Último Pago</p>
+                                        <small>Próximo venc: ${expediente.resumen.proximoVencimiento || 'N/A'}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Resumen por años -->
+                            ${Object.keys(expediente.estadisticas.pagosPorAno).length > 0 ? `
+                            <div class="card" style="margin-top: 30px;">
+                                <div class="card-header">
+                                    <h4>📊 Resumen por Años</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Año</th>
+                                                    <th>Cantidad Pagos</th>
+                                                    <th>Importe Total</th>
+                                                    <th>Promedio</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                ${Object.entries(expediente.estadisticas.pagosPorAno)
+                                                  .sort(([a], [b]) => parseInt(b) - parseInt(a))
+                                                  .map(([ano, datos]) => `
+                                                    <tr>
+                                                        <td><strong>${ano}</strong></td>
+                                                        <td>${datos.cantidad}</td>
+                                                        <td><strong>$${datos.importe.toLocaleString('es-AR')}</strong></td>
+                                                        <td>$${(datos.importe / datos.cantidad).toLocaleString('es-AR')}</td>
+                                                    </tr>
+                                                `).join('')}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .info-item { margin-bottom: 12px; }
+                    .info-item strong { display: inline-block; width: 130px; color: #2c3e50; }
+                    .tab-btn { transition: all 0.3s ease; }
+                    .tab-btn:hover { background: #ecf0f1; }
+                    .tab-btn.active { border-bottom-color: #3498db !important; color: #3498db; background: #ecf0f1; }
+                    .exp-section { animation: fadeIn 0.3s ease; }
+                </style>
+            `;
+        }
+
+        function mostrarSeccionExp(seccion) {
+            // Actualizar botones
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-section="${seccion}"]`).classList.add('active');
+            
+            // Mostrar sección
+            document.querySelectorAll('.exp-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(`exp-${seccion}`).style.display = 'block';
+        }
+
+        // FUNCIONES REMOVIDAS - imprimirExpediente y exportarExpedientePDF ya no se usan
+
+        // DATABASE TEST FUNCTION
+        async function testDatabaseConnection() {
+            try {
+                const testBtn = event.target;
+                const originalText = testBtn.innerHTML;
+                testBtn.innerHTML = '🔄 Probando...';
+                testBtn.disabled = true;
+
+                const response = await fetch('/api/admin/test-db');
+                const result = await response.json();
+
+                if (result.success) {
+                    alert(`✅ Conexión exitosa!\n\nProfesionales en BD: ${result.total_profesionales}\nTimestamp: ${new Date(result.timestamp).toLocaleString()}`);
+                } else {
+                    alert(`❌ Error de conexión:\n\n${result.error}`);
+                }
+
+                testBtn.innerHTML = originalText;
+                testBtn.disabled = false;
+
+            } catch (error) {
+                alert(`❌ Error de red:\n\n${error.message}`);
+                event.target.innerHTML = '🔧 Test BD';
+                event.target.disabled = false;
+            }
+        }
+
+        // SEARCH DEBOUNCING
+        let searchTimeout;
+        function debounceSearch() {
+            clearTimeout(searchTimeout);
+            
+            const buscarInput = document.getElementById('buscarProfesional');
+            const mensajeBusqueda = document.getElementById('mensajeBusqueda');
+            const termino = buscarInput?.value.trim() || '';
+            
+            // Mostrar/ocultar mensaje según la longitud del término
+            if (termino.length > 0 && termino.length < 3) {
+                mensajeBusqueda.style.display = 'block';
+                mensajeBusqueda.className = 'search-message error';
+                mensajeBusqueda.textContent = 'Ingrese al menos 3 caracteres para buscar';
+                return; // No ejecutar búsqueda
+            } else {
+                mensajeBusqueda.style.display = 'none';
+                mensajeBusqueda.className = 'search-message';
+            }
+            
+            searchTimeout = setTimeout(() => {
+                if (currentSection === 'profesionales') {
+                    // Solo buscar si hay 3 o más caracteres, o si está vacío (mostrar todos)
+                    if (termino.length === 0 || termino.length >= 3) {
+                        currentPage = 1;
+                        currentProfesionalesPage = 1;
+                        loadProfesionales(1);
+                    }
+                }
+            }, 500);
+        }
+
+        // USER MANAGEMENT FUNCTIONS
+        let users = [];
+        let currentUser = null;
+
+        async function loadUsuarios() {
+            try {
+                const response = await fetch('/api/admin/users', {
+                    credentials: 'same-origin'
+                });
+                if (!response.ok) {
+                    throw new Error('Error al cargar usuarios');
+                }
+                const data = await response.json();
+                // Manejar tanto formato nuevo como antiguo
+                users = data.users || data;
+                displayUsers();
+            } catch (error) {
+                console.error('Error loading users:', error);
+                document.getElementById('usersTableBody').innerHTML = '<tr><td colspan="6">Error al cargar usuarios</td></tr>';
+            }
+        }
+
+        function displayUsers() {
+            const tbody = document.getElementById('usersTableBody');
+            if (users.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6">No hay usuarios registrados</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = users.map(user => {
+                const createdDate = new Date(user.created_at).toLocaleDateString('es-AR');
+                const status = user.active ? 'Activo' : 'Inactivo';
+                const statusClass = user.active ? 'badge-success' : 'badge-danger';
+                
+                // Mostrar DNI si el username es igual al documento
+                const displayUsername = user.username === user.documento ? `DNI: ${user.documento}` : user.username;
+                
+                // Traducir roles
+                const roleDisplay = user.role === 'staff' ? 'Staff COPIG' : 
+                                   user.role === 'admin' ? 'Administrador' : 
+                                   user.role === 'super_admin' ? 'Super Admin' : user.role;
+                
+                return `
+                    <tr>
+                        <td><strong>${displayUsername}</strong></td>
+                        <td>${user.email || '-'}</td>
+                        <td>${user.full_name || '-'}</td>
+                        <td><span class="badge badge-primary">${roleDisplay}</span></td>
+                        <td><span class="badge ${statusClass}">${status}</span></td>
+                        <td>${createdDate}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="editUser(${user.id})" title="Editar">
+                                <i class="icon-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-warning" onclick="showChangePasswordModal(${user.id})" title="Cambiar contraseña">
+                                <i class="icon-key"></i>
+                            </button>
+                            <button class="btn btn-sm ${user.active ? 'btn-danger' : 'btn-success'}" onclick="toggleUserStatus(${user.id})" title="${user.active ? 'Desactivar' : 'Activar'}">
+                                <i class="icon-${user.active ? 'ban' : 'check'}"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteUser(${user.id})" title="Eliminar">
+                                <i class="icon-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function showCreateUserModal() {
+            currentUser = null;
+            document.getElementById('userModalTitle').innerHTML = '🚀 Crear Nuevo Usuario - Panel Super Admin';
+            document.getElementById('userForm').reset();
+            document.getElementById('userModal').style.display = 'block';
+            document.getElementById('userActive').checked = true;
+            
+            // Ocultar todos los campos específicos al inicio
+            document.querySelectorAll('.profesional-only').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.staff-only').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
+        }
+        
+        function updateFormForUserType() {
+            const userType = document.getElementById('userType').value;
+            
+            // Ocultar todos los campos específicos
+            document.querySelectorAll('.profesional-only').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.staff-only').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
+            
+            // Mostrar campos según el tipo seleccionado
+            if (userType === 'profesional') {
+                document.querySelectorAll('.profesional-only').forEach(el => el.style.display = 'block');
+            } else if (userType === 'staff') {
+                document.querySelectorAll('.staff-only').forEach(el => el.style.display = 'block');
+            } else if (userType === 'admin') {
+                document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'block');
+            }
+        }
+        
+        async function confirmAndSaveUser() {
+            const userType = document.getElementById('userType').value;
+            const fullName = document.getElementById('userFullName').value;
+            const password = document.getElementById('userPassword').value;
+            const passwordConfirm = document.getElementById('userPasswordConfirm').value;
+            
+            // Validaciones básicas
+            if (!userType) {
+                showNotification('❌ Debe seleccionar un tipo de usuario', 'error');
+                return;
+            }
+            
+            if (password !== passwordConfirm) {
+                showNotification('❌ Las contraseñas no coinciden', 'error');
+                return;
+            }
+            
+            // Confirmación según tipo
+            const tipoTexto = userType === 'profesional' ? 'PROFESIONAL' : 
+                             userType === 'staff' ? 'STAFF COPIG' : 
+                             'ADMINISTRADOR';
+            
+            if (!confirm(`⚠️ CONFIRMACIÓN IMPORTANTE:\n\n¿Está seguro que desea crear un usuario tipo ${tipoTexto}?\n\nNombre: ${fullName}\n\nEsto le dará acceso al sistema según el tipo seleccionado.`)) {
+                return;
+            }
+            
+            // Procesar según el tipo
+            if (userType === 'profesional') {
+                await createProfesional();
+            } else if (userType === 'staff') {
+                await createStaffUser();
+            } else if (userType === 'admin') {
+                await createAdminUser();
+            }
+        }
+        
+        async function createProfesional() {
+            try {
+                const formData = {
+                    nombre: document.getElementById('userFullName').value,
+                    numero_documento: document.getElementById('userDNI').value,
+                    tipo_documento: 'DNI',
+                    email: document.getElementById('userEmail').value,
+                    telefono: document.getElementById('userPhone').value,
+                    domicilio: document.getElementById('userDomicilio').value,
+                    nacionalidad: 'Argentina',
+                    numero_matricula: document.getElementById('userMatricula').value,
+                    categoria: document.getElementById('userCategoria').value,
+                    titulo: document.getElementById('userTitulo').value,
+                    password: document.getElementById('userPassword').value,
+                    activo: document.getElementById('userActive').checked
+                };
+                
+                const response = await fetch('/api/admin/profesionales', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showNotification(`✅ Profesional creado exitosamente\n\nMatrícula: ${formData.numero_matricula}\nAcceso con DNI: ${formData.numero_documento}`, 'success');
+                    closeUserModal();
+                    if (currentSection === 'profesionales') loadProfesionales();
+                } else {
+                    showNotification(`❌ Error: ${result.message}`, 'error');
+                }
+            } catch (error) {
+                showNotification('❌ Error al crear profesional', 'error');
+            }
+        }
+        
+        async function createStaffUser() {
+            try {
+                const formData = {
+                    username: document.getElementById('userDNI').value, // Usar DNI como username
+                    documento: document.getElementById('userDNI').value,
+                    full_name: document.getElementById('userFullName').value,
+                    email: document.getElementById('userEmail').value,
+                    telefono: document.getElementById('userPhone').value,
+                    departamento: document.getElementById('userDepartamento').value,
+                    password: document.getElementById('userPassword').value,
+                    role: 'staff',
+                    active: document.getElementById('userActive').checked
+                };
+                
+                const response = await fetch('/api/admin/create-unified-user', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showNotification(`✅ Usuario Staff creado exitosamente\n\nAcceso con DNI: ${formData.documento}`, 'success');
+                    closeUserModal();
+                    if (currentSection === 'usuarios') loadUsuarios();
+                } else {
+                    showNotification(`❌ Error: ${result.message}`, 'error');
+                }
+            } catch (error) {
+                showNotification('❌ Error al crear usuario staff', 'error');
+            }
+        }
+        
+        async function createAdminUser() {
+            try {
+                const formData = {
+                    username: document.getElementById('userDNI').value, // Usar DNI como username
+                    documento: document.getElementById('userDNI').value,
+                    full_name: document.getElementById('userFullName').value,
+                    email: document.getElementById('userEmail').value,
+                    telefono: document.getElementById('userPhone').value,
+                    password: document.getElementById('userPassword').value,
+                    role: document.getElementById('userAdminLevel').value,
+                    active: document.getElementById('userActive').checked
+                };
+                
+                const response = await fetch('/api/admin/create-unified-user', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showNotification(`✅ Administrador creado exitosamente\n\nAcceso con DNI: ${formData.documento}`, 'success');
+                    closeUserModal();
+                    if (currentSection === 'usuarios') loadUsuarios();
+                } else {
+                    showNotification(`❌ Error: ${result.message}`, 'error');
+                }
+            } catch (error) {
+                showNotification('❌ Error al crear administrador', 'error');
+            }
+        }
+
+        function editUser(userId) {
+            currentUser = users.find(u => u.id === userId);
+            if (!currentUser) return;
+
+            // Configurar el modal para edición
+            document.getElementById('userModalTitle').innerHTML = '✏️ Editar Usuario';
+            document.getElementById('userId').value = currentUser.id;
+            
+            // Limpiar el formulario
+            document.getElementById('userForm').reset();
+            
+            // Ocultar todos los campos específicos
+            document.querySelectorAll('.profesional-only').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.staff-only').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'none');
+            
+            // Determinar el tipo de usuario basado en el rol
+            let userType = 'admin';
+            if (currentUser.role === 'staff') {
+                userType = 'staff';
+                document.querySelectorAll('.staff-only').forEach(el => el.style.display = 'block');
+            } else if (currentUser.role === 'admin' || currentUser.role === 'super_admin') {
+                userType = 'admin';
+                document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'block');
+            }
+            
+            // Cargar los datos del usuario
+            document.getElementById('userType').value = userType;
+            document.getElementById('userFullName').value = currentUser.full_name || '';
+            document.getElementById('userDNI').value = currentUser.documento || currentUser.username || '';
+            document.getElementById('userEmail').value = currentUser.email || '';
+            document.getElementById('userPhone').value = currentUser.telefono || '';
+            document.getElementById('userActive').checked = currentUser.active !== false;
+            
+            // Campos específicos según tipo
+            if (userType === 'staff' && currentUser.departamento) {
+                document.getElementById('userDepartamento').value = currentUser.departamento;
+            } else if (userType === 'admin') {
+                document.getElementById('userAdminLevel').value = currentUser.role;
+            }
+            
+            // No requerir contraseña en edición
+            document.getElementById('userPassword').removeAttribute('required');
+            document.getElementById('userPasswordConfirm').removeAttribute('required');
+            document.getElementById('userPassword').placeholder = 'Dejar vacío para mantener la actual';
+            document.getElementById('userPasswordConfirm').placeholder = 'Dejar vacío para mantener la actual';
+            
+            // Cambiar el botón para que diga "Actualizar"
+            document.querySelector('#userModal .modal-footer .btn-success').innerHTML = '💾 Actualizar Usuario';
+            document.querySelector('#userModal .modal-footer .btn-success').onclick = updateUser;
+            
+            // Mostrar el modal
+            document.getElementById('userModal').style.display = 'block';
+        }
+        
+        async function updateUser() {
+            const userId = document.getElementById('userId').value;
+            const userType = document.getElementById('userType').value;
+            const password = document.getElementById('userPassword').value;
+            const passwordConfirm = document.getElementById('userPasswordConfirm').value;
+            
+            // Validar contraseñas si se ingresaron
+            if (password && password !== passwordConfirm) {
+                showNotification('❌ Las contraseñas no coinciden', 'error');
+                return;
+            }
+            
+            try {
+                const formData = {
+                    id: userId,
+                    full_name: document.getElementById('userFullName').value,
+                    documento: document.getElementById('userDNI').value,
+                    email: document.getElementById('userEmail').value,
+                    telefono: document.getElementById('userPhone').value,
+                    active: document.getElementById('userActive').checked
+                };
+                
+                // Agregar contraseña solo si se cambió
+                if (password) {
+                    formData.password = password;
+                }
+                
+                // Agregar campos específicos según tipo
+                if (userType === 'staff') {
+                    formData.departamento = document.getElementById('userDepartamento').value;
+                    formData.role = 'staff';
+                } else if (userType === 'admin') {
+                    formData.role = document.getElementById('userAdminLevel').value;
+                }
+                
+                const response = await fetch(`/api/admin/users/${userId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification('✅ Usuario actualizado exitosamente', 'success');
+                    closeUserModal();
+                    loadUsuarios();
+                } else {
+                    showNotification(`❌ Error: ${result.message || 'No se pudo actualizar'}`, 'error');
+                }
+            } catch (error) {
+                console.error('Error al actualizar usuario:', error);
+                showNotification('❌ Error al actualizar usuario', 'error');
+            }
+        }
+
+        function closeUserModal() {
+            document.getElementById('userModal').style.display = 'none';
+            currentUser = null;
+            
+            // Restaurar el botón a su estado original de crear
+            document.querySelector('#userModal .modal-footer .btn-success').innerHTML = '💾 Crear Usuario';
+            document.querySelector('#userModal .modal-footer .btn-success').onclick = confirmAndSaveUser;
+            
+            // Restaurar los campos de contraseña como requeridos
+            document.getElementById('userPassword').setAttribute('required', 'required');
+            document.getElementById('userPasswordConfirm').setAttribute('required', 'required');
+            document.getElementById('userPassword').placeholder = 'Mínimo 6 caracteres';
+            document.getElementById('userPasswordConfirm').placeholder = 'Repetir contraseña';
+        }
+
+        async function saveUser() {
+            const form = document.getElementById('userForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const formData = new FormData(form);
+            
+            // Collect permissions
+            const permissions = {};
+            document.querySelectorAll('.permission-checkbox:checked').forEach(cb => {
+                permissions[cb.value] = true;
+            });
+            formData.append('permissions', JSON.stringify(permissions));
+
+            const method = currentUser ? 'PUT' : 'POST';
+            const url = currentUser ? `/api/admin/users/${currentUser.id}` : '/api/admin/users';
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: formData.get('username'),
+                        email: formData.get('email'),
+                        password: formData.get('password'),
+                        full_name: formData.get('full_name'),
+                        role: formData.get('role'),
+                        permissions: permissions
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    closeUserModal();
+                    loadUsuarios();
+                    showNotification(currentUser ? 'Usuario actualizado exitosamente' : 'Usuario creado exitosamente', 'success');
+                } else {
+                    showNotification(result.message || 'Error al guardar usuario', 'error');
+                }
+            } catch (error) {
+                console.error('Error saving user:', error);
+                showNotification('Error de conexión', 'error');
+            }
+        }
+
+        async function toggleUserStatus(userId) {
+            const user = users.find(u => u.id === userId);
+            if (!user) return;
+
+            const action = user.active ? 'desactivar' : 'activar';
+            if (!confirm(`¿Está seguro de que desea ${action} este usuario?`)) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/admin/users/${userId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({
+                        active: !user.active
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    loadUsuarios();
+                    showNotification(`Usuario ${action} exitosamente`, 'success');
+                } else {
+                    showNotification(result.message || `Error al ${action} usuario`, 'error');
+                }
+            } catch (error) {
+                console.error('Error toggling user status:', error);
+                showNotification('Error de conexión', 'error');
+            }
+        }
+
+        async function deleteUser(userId) {
+            const user = users.find(u => u.id === userId);
+            if (!user) return;
+
+            if (!confirm(`¿Está seguro de que desea ELIMINAR PERMANENTEMENTE el usuario ${user.username}?\n\nEsta acción no se puede deshacer.`)) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/admin/users/${userId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'same-origin'
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    loadUsuarios();
+                    showNotification(`Usuario ${user.username} eliminado exitosamente`, 'success');
+                } else {
+                    showNotification(result.message || 'Error al eliminar usuario', 'error');
+                }
+            } catch (error) {
+                console.error('Error deleting user:', error);
+                showNotification('Error de conexión', 'error');
+            }
+        }
+
+        function showChangePasswordModal(userId) {
+            const user = users.find(u => u.id === userId);
+            if (!user) return;
+
+            document.getElementById('changePasswordUserId').value = userId;
+            document.getElementById('changePasswordUserName').textContent = user.username;
+            document.getElementById('passwordChangeForm').reset();
+            document.getElementById('changePasswordModal').style.display = 'block';
+        }
+
+        function closePasswordModal() {
+            document.getElementById('changePasswordModal').style.display = 'none';
+        }
+
+        async function changePassword() {
+            const form = document.getElementById('passwordChangeForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const userId = document.getElementById('changePasswordUserId').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword !== confirmPassword) {
+                showNotification('Las contraseñas no coinciden', 'error');
+                return;
+            }
+
+            if (newPassword.length < 6) {
+                showNotification('La contraseña debe tener al menos 6 caracteres', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/admin/users/change-password', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: userId,
+                        new_password: newPassword
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    closePasswordModal();
+                    showNotification('Contraseña actualizada exitosamente', 'success');
+                } else {
+                    showNotification(result.message || 'Error al cambiar contraseña', 'error');
+                }
+            } catch (error) {
+                console.error('Error changing password:', error);
+                showNotification('Error de conexión', 'error');
+            }
+        }
+
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 5px;
+                color: white;
+                font-weight: bold;
+                z-index: 10000;
+                max-width: 300px;
+                ${type === 'success' ? 'background-color: #27ae60;' : 'background-color: #e74c3c;'}
+            `;
+
+            document.body.appendChild(notification);
+
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 3000);
+        }
+
+        // RESPONSIVE HANDLING
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('sidebar').classList.remove('show');
+            }
+        });
+    
+        // FUNCIONES CHP
+        let solicitudesCHPData = [];
+        
+        async function loadSolicitudesCHP() {
+            try {
+                console.log('📡 Cargando solicitudes CHP...');
+                const response = await fetch('/api/admin/solicitudes-chp', {
+                    credentials: 'include'
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Error HTTP: ' + response.status);
+                }
+                
+                const data = await response.json();
+                console.log('📊 Respuesta CHP:', data);
+                
+                if (data.success && data.solicitudes) {
+                    solicitudesCHPData = data.solicitudes;
+                    renderSolicitudesCHP(solicitudesCHPData);
+                    updateCHPStats(solicitudesCHPData);
+                } else {
+                    console.error('❌ Error en respuesta CHP:', data.message);
+                    document.getElementById('chp-table-body').innerHTML = 
+                        '<tr><td colspan="8" style="text-align: center; color: #e74c3c; padding: 40px;">❌ Error cargando solicitudes: ' + (data.message || 'Error desconocido') + '</td></tr>';
+                }
+                
+            } catch (error) {
+                console.error('❌ Error cargando solicitudes CHP:', error);
+                document.getElementById('chp-table-body').innerHTML = 
+                    '<tr><td colspan="8" style="text-align: center; color: #e74c3c; padding: 40px;">❌ Error de conexión: ' + error.message + '</td></tr>';
+            }
+        }
+        
+        function renderSolicitudesCHP(solicitudes) {
+            const tbody = document.getElementById('chp-table-body');
+            
+            if (!solicitudes || solicitudes.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: #7f8c8d; padding: 40px;">📄 No se encontraron solicitudes CHP</td></tr>';
+                return;
+            }
+            
+            const html = solicitudes.map(s => {
+                const fecha = s.fecha_solicitud ? new Date(s.fecha_solicitud).toLocaleDateString('es-AR') : 'Sin fecha';
+                const costo = s.costo ? '$' + parseFloat(s.costo).toLocaleString('es-AR') : 'Sin costo';
+                
+                let estadoClass = 'status-pendiente';
+                if (s.estado === 'APROBADO') estadoClass = 'status-aprobado';
+                else if (s.estado === 'RECHAZADO') estadoClass = 'status-rechazado';
+                else if (s.estado === 'EMITIDO') estadoClass = 'status-emitido';
+                else if (s.estado === 'PENDIENTE_PAGO') estadoClass = 'status-pago';
+                
+                return `
+                    <tr>
+                        <td><strong>${s.numero_solicitud || 'N/A'}</strong></td>
+                        <td>${s.cliente || 'Sin cliente'}</td>
+                        <td>${s.profesional_nombre || 'Sin asignar'}</td>
+                        <td>${s.proyecto || 'Sin proyecto'}</td>
+                        <td><span class="status-badge ${estadoClass}">${s.estado || 'PENDIENTE'}</span></td>
+                        <td>${fecha}</td>
+                        <td><strong>${costo}</strong></td>
+                        <td>
+                            <button onclick="verDetalleCHP(${s.id})" class="btn btn-sm btn-secondary">👁️ Ver</button>
+                            ${s.estado === 'PENDIENTE' || s.estado === 'PENDIENTE_PAGO' ? 
+                                `<button onclick="aprobarCHP(${s.id})" class="btn btn-sm btn-success">✅ Aprobar</button>` : ''}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+            
+            tbody.innerHTML = html;
+        }
+        
+        function updateCHPStats(solicitudes) {
+            const total = solicitudes.length;
+            const pendientes = solicitudes.filter(s => s.estado === 'PENDIENTE' || s.estado === 'PENDIENTE_PAGO').length;
+            const aprobadas = solicitudes.filter(s => s.estado === 'APROBADO').length;
+            const emitidas = solicitudes.filter(s => s.estado === 'EMITIDO').length;
+            
+            document.getElementById('total-chp').textContent = total;
+            document.getElementById('pendientes-chp').textContent = pendientes;
+            document.getElementById('aprobadas-chp').textContent = aprobadas;
+            document.getElementById('emitidas-chp').textContent = emitidas;
+        }
+        
+        function verDetalleCHP(id) {
+            const solicitud = solicitudesCHPData.find(s => s.id === id);
+            if (solicitud) {
+                alert('Solicitud: ' + solicitud.numero_solicitud + '\nCliente: ' + solicitud.cliente + '\nEstado: ' + solicitud.estado);
+            }
+        }
+        
+        function aprobarCHP(id) {
+            if (confirm('¿Aprobar esta solicitud CHP?')) {
+                // Implementar aprobación
+                console.log('Aprobando solicitud CHP:', id);
+            }
+        }
+        
+        function filtrarSolicitudesCHP() {
+            const searchTerm = document.getElementById('chp-search').value.toLowerCase();
+            const estadoFilter = document.getElementById('chp-filter-estado').value;
+            
+            let filtered = solicitudesCHPData;
+            
+            if (searchTerm) {
+                filtered = filtered.filter(s => 
+                    (s.cliente && s.cliente.toLowerCase().includes(searchTerm)) ||
+                    (s.numero_solicitud && s.numero_solicitud.toLowerCase().includes(searchTerm))
+                );
+            }
+            
+            if (estadoFilter) {
+                filtered = filtered.filter(s => s.estado === estadoFilter);
+            }
+            
+            renderSolicitudesCHP(filtered);
+        }
+        
+        function limpiarFiltrosCHP() {
+            document.getElementById('chp-search').value = '';
+            document.getElementById('chp-filter-estado').value = '';
+            renderSolicitudesCHP(solicitudesCHPData);
+        }</script>
+        <!-- SECCIÓN CHP -->
+        <div class="content-section" id="chp" style="display: none;">
+            <div class="section-header">
+                <h2>🎯 Gestión de Solicitudes CHP</h2>
+                <p>Administra las solicitudes de Certificados de Habilitación Profesional</p>
+            </div>
+            
+            <!-- Filtros -->
+            <div class="filters-bar">
+                <div class="filter-group">
+                    <input type="text" id="chp-search" placeholder="🔍 Buscar por cliente o número..." class="filter-input">
+                    <select id="chp-filter-estado" class="filter-select">
+                        <option value="">Todos los estados</option>
+                        <option value="PENDIENTE">Pendiente</option>
+                        <option value="PENDIENTE_PAGO">Pendiente Pago</option>
+                        <option value="EN_REVISION">En Revisión</option>
+                        <option value="APROBADO">Aprobado</option>
+                        <option value="RECHAZADO">Rechazado</option>
+                        <option value="EMITIDO">Emitido</option>
+                    </select>
+                    <button onclick="filtrarSolicitudesCHP()" class="btn btn-secondary">🔍 Filtrar</button>
+                    <button onclick="limpiarFiltrosCHP()" class="btn btn-light">🔄 Limpiar</button>
+                </div>
+            </div>
+            
+            <!-- Estadísticas rápidas -->
+            <div class="stats-cards" id="chp-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-chp">0</div>
+                    <div class="stat-label">Total Solicitudes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="pendientes-chp">0</div>
+                    <div class="stat-label">Pendientes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="aprobadas-chp">0</div>
+                    <div class="stat-label">Aprobadas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="emitidas-chp">0</div>
+                    <div class="stat-label">Emitidas</div>
+                </div>
+            </div>
+            
+            <!-- Tabla de solicitudes -->
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Número</th>
+                            <th>Cliente</th>
+                            <th>Profesional</th>
+                            <th>Proyecto</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Costo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="chp-table-body">
+                        <tr>
+                            <td colspan="8" style="text-align: center; padding: 40px;">
+                                📄 Cargando solicitudes CHP...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "profesional_id": null,
+    "matricula": "6497A",
+    "tipo_restriccion": "SUSPENSION_INFORMATIVA",
+    "descripcion": "  6497A SUSPENSIONRESOL.22/94. 224/S/95.-          19960313                0.001",
+    "numero_resolucion": null,
+    "fecha_inicio": "1996-03-13T03:00:00.000Z",
+    "fecha_fin": null,
+    "estado": "INFORMATIVA",
+    "dbf_origen": "SPRESTRI.DBF",
+    "dbf_registro": "  6497A SUSPENSIONRESOL.22/94. 224/S/95.-          19960313                0.001",
+    "fecha_importacion": "2025-09-02T20:09:44.246Z"
+  },
+  {
+    "id": 2,
+    "profesional_id": null,
+    "matricula": "4742A",
+    "tipo_restriccion": "LEVANTAMIENTO",
+    "descripcion": "  4742A LEVANTAM. SUSP.MUN.CAPITAL 996/T/94        1997112619971126        0.001",
+    "numero_resolucion": null,
+    "fecha_inicio": "1997-11-26T03:00:00.000Z",
+    "fecha_fin": null,
+    "estado": "INFORMATIVA",
+    "dbf_origen": "SPRESTRI.DBF",
+    "dbf_registro": "  4742A LEVANTAM. SUSP.MUN.CAPITAL 996/T/94        1997112619971126        0.001",
+    "fecha_importacion": "2025-09-02T20:09:44.250Z"
+  }
+]

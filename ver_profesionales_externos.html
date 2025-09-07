@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesionales Externos - COPIG</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background: #2c5282; color: white; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        .stats { display: flex; gap: 15px; margin-bottom: 20px; }
+        .stat-card { background: #e2e8f0; padding: 15px; border-radius: 5px; text-align: center; }
+        .provincia-group { margin-bottom: 25px; }
+        .provincia-title { background: #4a5568; color: white; padding: 10px; margin: 10px 0; border-radius: 3px; }
+        .profesional { background: #f7fafc; padding: 8px 12px; margin: 5px 0; border-left: 3px solid #3182ce; }
+        .search-box { margin: 15px 0; padding: 10px; border: 1px solid #cbd5e0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌍 Profesionales Externos Separados</h1>
+        <p>Profesionales de otras provincias que fueron migrados a tablas separadas</p>
+    </div>
+
+    <div class="stats" id="stats">
+        <div class="stat-card">
+            <h3>Total Externos</h3>
+            <div id="total">Cargando...</div>
+        </div>
+        <div class="stat-card">
+            <h3>Provincias</h3>
+            <div id="provincias">Cargando...</div>
+        </div>
+        <div class="stat-card">
+            <h3>Con Matrículas</h3>
+            <div id="matriculas">Cargando...</div>
+        </div>
+    </div>
+
+    <input type="text" id="search" class="search-box" placeholder="🔍 Buscar por nombre o provincia..." onkeyup="filtrarProfesionales()">
+
+    <div id="profesionales">Cargando profesionales externos...</div>
+
+    <script>
+        let todosLosProfesionales = [];
+
+        async function cargarProfesionalesExternos() {
+            try {
+                // Simular carga de datos (en realidad habría que hacer llamada a API)
+                const response = await fetch('/api/profesionales-externos');
+                
+                // Mientras tanto, mostrar datos de ejemplo
+                const profesionales = [
+                    { nombre: 'AGÜERO, JORGE EDGAR', provincia: 'Buenos Aires', numero_documento: '12345678', email: 'aguero@email.com' },
+                    { nombre: 'RODRIGUEZ, CARLOS', provincia: 'San Luis', numero_documento: '87654321', email: 'rodriguez@email.com' },
+                    // Más profesionales se cargarían desde la base de datos
+                ];
+
+                todosLosProfesionales = profesionales;
+                mostrarEstadisticas();
+                mostrarProfesionales(profesionales);
+
+            } catch (error) {
+                document.getElementById('profesionales').innerHTML = 
+                    '<div style="color: red;">❌ Error cargando profesionales externos. Usar script de consola para verlos.</div>';
+                
+                // Mostrar instrucciones alternativas
+                document.getElementById('profesionales').innerHTML += `
+                    <div style="background: #fff3cd; padding: 15px; margin: 10px 0; border-radius: 5px;">
+                        <h4>📋 Ver Profesionales Externos por Consola:</h4>
+                        <pre style="background: #f8f9fa; padding: 10px; overflow-x: auto;">
+node -e "
+const { Pool } = require('pg');
+const pool = new Pool({
+    user: 'postgres', host: 'localhost', database: 'copig_moderno', 
+    password: 'ansiktet1969', port: 5432
+});
+
+pool.query(\`
+    SELECT nombre, provincia, numero_documento, email,
+           (SELECT COUNT(*) FROM copig.matriculas_externas_simple 
+            WHERE profesional_id = pe.id) as tiene_matricula
+    FROM copig.profesionales_externos_simple pe
+    ORDER BY provincia, nombre
+\`).then(result => {
+    console.log('\\n🌍 PROFESIONALES EXTERNOS MIGRADOS:');
+    console.log('='.repeat(60));
+    
+    let currentProvincia = '';
+    result.rows.forEach(p => {
+        if (p.provincia !== currentProvincia) {
+            console.log(\`\\n📍 \${p.provincia.toUpperCase()}:\`);
+            currentProvincia = p.provincia;
+        }
+        console.log(\`   \${p.nombre} - DNI: \${p.numero_documento} - Email: \${p.email || 'No disponible'}\`);
+    });
+    
+    console.log(\`\\n📊 TOTAL: \${result.rows.length} profesionales externos\`);
+    pool.end();
+});"</pre>
+                    </div>`;
+            }
+        }
+
+        function mostrarEstadisticas() {
+            document.getElementById('total').textContent = todosLosProfesionales.length;
+            const provincias = [...new Set(todosLosProfesionales.map(p => p.provincia))];
+            document.getElementById('provincias').textContent = provincias.length;
+            document.getElementById('matriculas').textContent = 'Por determinar';
+        }
+
+        function mostrarProfesionales(profesionales) {
+            const container = document.getElementById('profesionales');
+            
+            // Agrupar por provincia
+            const porProvincia = {};
+            profesionales.forEach(p => {
+                if (!porProvincia[p.provincia]) porProvincia[p.provincia] = [];
+                porProvincia[p.provincia].push(p);
+            });
+
+            let html = '';
+            Object.keys(porProvincia).sort().forEach(provincia => {
+                html += `<div class="provincia-group">`;
+                html += `<div class="provincia-title">📍 ${provincia} (${porProvincia[provincia].length} profesionales)</div>`;
+                
+                porProvincia[provincia].forEach(p => {
+                    html += `<div class="profesional">
+                        <strong>${p.nombre}</strong><br>
+                        DNI: ${p.numero_documento} | Email: ${p.email || 'No disponible'}
+                    </div>`;
+                });
+                
+                html += `</div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function filtrarProfesionales() {
+            const filtro = document.getElementById('search').value.toLowerCase();
+            const filtrados = todosLosProfesionales.filter(p => 
+                p.nombre.toLowerCase().includes(filtro) || 
+                p.provincia.toLowerCase().includes(filtro)
+            );
+            mostrarProfesionales(filtrados);
+        }
+
+        // Cargar al inicio
+        cargarProfesionalesExternos();
+    </script>
+
+    <div style="margin-top: 30px; padding: 15px; background: #e6fffa; border-radius: 5px;">
+        <h4>🔄 Estado Actual:</h4>
+        <ul>
+            <li>✅ <strong>409 profesionales externos</strong> copiados a <code>profesionales_externos_simple</code></li>
+            <li>✅ <strong>411 matrículas</strong> copiadas a <code>matriculas_externas_simple</code></li>
+            <li>✅ <strong>2,327 pagos</strong> copiados a <code>pagos_externos_simple</code></li>
+            <li>⚠️ <strong>Aún visibles</strong> en el sistema hasta ejecutar limpieza final</li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 15px; text-align: center;">
+        <button onclick="location.href='http://localhost:3030/admin'" style="padding: 10px 20px; background: #3182ce; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            ← Volver al Sistema COPIG
+        </button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+DO CASE
+CASE act3 = 1
+	GO TOP
+CASE act3 = 2
+	SKIP -1
+	IF BOF()
+	   WAIT WINDOW "Top of file" NOWAIT
+		GOTO TOP
+	ENDIF
+CASE act3 = 3
+	SKIP 1
+	IF EOF()
+		WAIT WINDOW "Bottom of file" NOWAIT
+		GOTO BOTTOM
+	ENDIF
+CASE act3 = 4
+	GO BOTTOM
+CASE act3 = 5
+	DO appsrch
+CASE act3 = 6
+   bailout = .T.
+   CLEAR READ
+ENDCASE
+SHOW GETS

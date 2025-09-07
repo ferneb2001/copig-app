@@ -1,0 +1,21 @@
+
+Structure for database: Z:\ADMINSP\FOXPRO2\CONSEJO\SPMATRIE.DBF
+Number of data records:    1492
+Date of last update   : 07/11/25
+Field  Field Name  Type       Width    Dec    Index
+    1  NUMERO      Numeric        5            
+    2  CATEGO      Character      2            
+    3  DCTIPO      Numeric        1            
+    4  DCNRO       Numeric        8            
+    5  TITULO      Character      3            
+    6  OTORGA      Character      4            
+    7  INSCR       Date           8            
+    8  FECTIT      Date           8            
+    9  FECHAB      Date           8            
+   10  FECCERT     Date           8            
+   11  PAGO        Date           8            
+   12  RECIBO      Numeric        7            
+   13  HABILI      Numeric        4            
+   14  AFILIA      Numeric        1            
+   15  CONDIC      Character      1            
+** Total **                      77

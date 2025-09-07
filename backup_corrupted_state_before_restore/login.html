@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COPIG - Acceso al Sistema</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 40px 30px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .logo img {
+            height: 100px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .login-header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-header p {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .login-form {
+            padding: 40px 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e8ecf0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3498db;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group input::placeholder {
+            color: #a0a8b0;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-login:hover {
+            background: linear-gradient(135deg, #2980b9, #1f5f8b);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .btn-login:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .loading {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ffffff;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c92a2a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c92a2a;
+            display: none;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .info-message {
+            background: #e3f2fd;
+            color: #0277bd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0277bd;
+            display: none;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .login-container {
+                border-radius: 15px;
+            }
+
+            .login-header {
+                padding: 30px 20px 25px;
+            }
+
+            .logo {
+                width: 70px;
+                height: 70px;
+            }
+
+            .login-header h1 {
+                font-size: 24px;
+            }
+
+            .login-header p {
+                font-size: 14px;
+            }
+
+            .login-form {
+                padding: 30px 20px;
+            }
+
+            .form-group input {
+                padding: 14px 16px;
+                font-size: 16px; /* Evita zoom en iOS */
+            }
+
+            .btn-login {
+                padding: 14px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .login-header h1 {
+                font-size: 22px;
+            }
+            
+            .form-group input {
+                padding: 12px 14px;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo">
+                <img src="/assets/images/logo-copig.png" alt="COPIG Logo" style="height: 60px; width: auto; display: block; margin: 0 auto;" />
+            </div>
+            <h1>COPIG</h1>
+            <p>Consejo Profesional de Ingenieros y Geólogos de Mendoza</p>
+        </div>
+
+        <form class="login-form" id="loginForm">
+            <div class="info-message" id="infoMessage"></div>
+            <div class="error-message" id="errorMessage"></div>
+            
+            <div class="form-group">
+                <label for="dni">DNI</label>
+                <input 
+                    type="text" 
+                    id="dni" 
+                    name="dni" 
+                    placeholder="Ingrese su DNI"
+                    required
+                    maxlength="8"
+                    pattern="[0-9]{7,8}"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Ingrese su contraseña"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="btn-login" id="loginBtn">
+                <span class="loading" id="loadingSpinner"></span>
+                <span id="btnText">Ingresar</span>
+            </button>
+        </form>
+
+        <div class="footer">
+            <p>&copy; 2024 COPIG. Consejo Profesional de Ingenieros y Geólogos</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('loginForm');
+            const dniInput = document.getElementById('dni');
+            const passwordInput = document.getElementById('password');
+            const loginBtn = document.getElementById('loginBtn');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const btnText = document.getElementById('btnText');
+            const errorMessage = document.getElementById('errorMessage');
+            const infoMessage = document.getElementById('infoMessage');
+
+            // Verificar si hay un mensaje en la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('message');
+            if (message) {
+                let displayMessage = '';
+                
+                // Manejar mensajes específicos
+                if (message === 'sistema-unificado') {
+                    displayMessage = '🔄 Sistema Actualizado: Ahora usamos DNI como usuario único. Los administradores también deben ingresar con su número de documento.';
+                } else {
+                    displayMessage = decodeURIComponent(message);
+                }
+                
+                infoMessage.innerHTML = displayMessage;
+                infoMessage.style.display = 'block';
+                
+                // Limpiar la URL después de mostrar el mensaje
+                window.history.replaceState({}, document.title, window.location.pathname);
+                
+                // Ocultar el mensaje después de 10 segundos para el mensaje del sistema
+                const hideDelay = message === 'sistema-unificado' ? 10000 : 8000;
+                setTimeout(() => {
+                    infoMessage.style.display = 'none';
+                }, hideDelay);
+            }
+
+            // Formatear DNI mientras se escribe
+            dniInput.addEventListener('input', function(e) {
+                // Solo permitir números
+                this.value = this.value.replace(/\D/g, '');
+                
+                // Limitar a 8 dígitos
+                if (this.value.length > 8) {
+                    this.value = this.value.substring(0, 8);
+                }
+            });
+
+            // Función para mostrar errores
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }
+
+            // Función para mostrar loading
+            function setLoading(isLoading) {
+                if (isLoading) {
+                    loginBtn.disabled = true;
+                    loadingSpinner.style.display = 'inline-block';
+                    btnText.textContent = 'Ingresando...';
+                } else {
+                    loginBtn.disabled = false;
+                    loadingSpinner.style.display = 'none';
+                    btnText.textContent = 'Ingresar';
+                }
+            }
+
+            // Manejar envío del formulario
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const dni = dniInput.value.trim();
+                const password = passwordInput.value;
+
+                // Validaciones básicas
+                if (!dni || !password) {
+                    showError('Por favor complete todos los campos');
+                    return;
+                }
+
+                if (dni.length < 7 || dni.length > 8) {
+                    showError('El DNI debe tener entre 7 y 8 dígitos');
+                    return;
+                }
+
+                setLoading(true);
+                errorMessage.style.display = 'none';
+
+                try {
+                    const response = await fetch('/api/unified-login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            dni: dni,
+                            password: password
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        // Éxito - redirigir según el tipo de usuario
+                        btnText.textContent = 'Redirigiendo...';
+                        
+                        setTimeout(() => {
+                            window.location.href = data.redirectUrl;
+                        }, 500);
+                        
+                    } else {
+                        // Error en la autenticación
+                        showError(data.message || 'Error en el inicio de sesión');
+                        setLoading(false);
+                    }
+
+                } catch (error) {
+                    console.error('Error en login:', error);
+                    showError('Error de conexión. Intente nuevamente.');
+                    setLoading(false);
+                }
+            });
+
+            // Focus automático en DNI al cargar
+            dniInput.focus();
+
+            // Enter en DNI pasa a contraseña
+            dniInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    passwordInput.focus();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

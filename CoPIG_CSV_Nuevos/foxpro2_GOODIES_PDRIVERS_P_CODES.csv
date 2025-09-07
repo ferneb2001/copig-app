@@ -1,0 +1,126 @@
+P_NAME,P_OUTPORT,P_SETUP,P_RESET,P_FLEN,P_FF,P_6LPI,P_8LPI,P_10CPI,P_12CPI,P_COMPRESS,P_LANDSCAP,P_PORTRAIT,P_BOLDON,P_BOLDOFF,P_ULINEON,P_ULINEOFF,P_ITALON,P_ITALOFF,P_SUPERON,P_SUPEROFF,P_SUBON,P_SUBOFF,P_FIXED,P_PROPTNAL,P_CRLF,P_HORZMV1,P_HORZMV2,P_TOPMARG
+AST TurboLaser,LPT1,"LGP
+LANGUAGE=X630
+X630.RESET
+X630.SPACING=STANDARD
+END!",,,,"LGP
+X630.VERTICAL=51
+END!","LGP
+X630.VERTICAL=68
+END!","LGP
+X630.FONT[1]=PCOURIER12
+END!F","LGP
+X630.FONT[2]=PCOURIER9
+END!F","LGP
+X630.FONT[3]=PCOURIER7
+END!F","LGP
+X630.FORMAT=LANDSCAPE
+END!","LGP
+X630.FORMAT=PORTRAIT
+END!",O,&,E,R,,,,,,,,,,,,
+Alphacom 8125,LPT1,,,{NULL},,,,,,,,,,,E,R,,,,,,,,,,,,
+ALPS Allegro 24,LPT1,@,,,,2,0,P,M,,,,E,F,-,-{NULL},4,5,S{NULL},T,S,T,P{NULL},P,,,,
+Anadex 9620A,COM1,,,,,H,I,U,T,R,,,,,,,,,,,,,,,,,,
+Anadex DP-6500,LPT1,,,4,,H,I,Q,T,R,,,p,q,8,9,t,u,,,,,,,,,,
+Anadex DP-9000/DP-9500,LPT1,,,,,H,I,,,,,,,,,,,,,,,,,,,,,
+Anadex DP-9001/DP-9501,LPT1,,,,,H,I,,,,,,,,,,,,,,,,,,,,,
+Blaser,LPT1,(,,C,,2,0,,"%
+",,?,@,G,H,-,-{NULL},,,,,,,,,,,,
+Brother HR1,LPT1,,,,,6,,P,E,M,,,,,,,,,,,,,,,,,,
+Brother HR15/25,LPT1,,,,,	,,,,M,,,,,E,R,,,,,,,,,,,,
+C. Itoh 8510A,LPT1,,,,,A,B,N,E,Q,,,!,"""",X,Y,,,,,,,,,,,,
+C. Itoh F10,LPT1,,,,,L08,L06,E12,E10,E08,,,O,&,_,R,,,,,,,,,,,,
+C. Itoh LIPS 10+,LPT1,(O] SEM 6; EXIT;E,,,,&l7.27C,&l5.45C,(s10H,(s12H,(s16.6H,&l1O&l14c1E,&l0O,(s3B,(s0B,&dD,&d@,(s1S,(s0S,,,,,,,,,,
+Canon LBP-8 A1/A2,LPT1,":P",,,,	,,"",,	,,,O,&,E,R,,,,,,,,,,,,
+Canon LBP-8 A1/A2(ISO),LPT1,c,,,,0 B,4 B,0 K,1 K,2 K,1%r,0%r,1m,22m,4m,24m,3m,22m,,,,,,,,,,
+Centronics 351/352/353,LPT1,,,,,[1z,[2z,[1w,[2w,[4w,,,,,[4m,[0m,,,,,,,,,,,,
+Centronics H80-1/H80-2,LPT1,@,,C,,2,0,,M,,,,G,H,-,-{NULL},4,5,,,,,,,,,,
+Citizen MSP-10/MSP-15,LPT1,@,,C,,2,0,P,M,,,,G,H,-,-{NULL},4,5,,,,,,,,,,
+Comrex CR-I,LPT1,,,,,6,,P,E,M,,,,,,,,,,,,,,,,,,
+Comrex CR-II,LPT1,"P",,,,	,,"",,	,,,F,&,E,R,,,,,,,,,,,,
+Cordata LP300,LPT1,@RESET;@FONT MX9M;,,,,@LH 48;@TBORDER 66;@PHEIGHT 3168;,@LH 36;@TBORDER 66;@PHEIGHT 3168;,,,,,,@FONT MX9B;,@FONT MX9M;,@ULON;,@ULOFF;,@FONT MX9MI;,@FONT MX9M;,,,,,,,,,,
+"Cordata Lbls 10x1""high",LPT1,@RESET;@TBORDER 150;@PHEIGHT 3000;@FONT MX9M;,,,,,,,,,,,@FONT MX9B;,@FONT MX9M;,@ULON;,@ULOFF;,@FONT MX9MI;,@FONT MX9M;,,,,,,,,,,
+DaisyWriter 1500/2000,LPT1,S,,,,808,806,P,E,M,,,O,&,I,J,,,,,,,,,,,,
+Data Products SPG-8010,LPT1,,,,,"B,8,$","B,6,$",,,,,,d,e,"f,1,$","f,0,$",,,,,,,,,,,,
+Datasouth DS 180,LPT1,,,,,[1z,[2z,[1w,[2w,[4w,,,,,$1,$2,,,,,,,,,,,,
+Diablo 620 & 630,LPT1,"P",,,,	,,"",,	,,,W,&,E,R,,,,,,,,,,,,
+Dynax DX-15,LPT1,"P",,,,	,,"",,	,,,F,&,E,R,,,,,,,,,,,,
+Epson E/F/J/RX/LQ,LPT1,@,,C{#},,2,0,P,M,,,,G,H,-,-{NULL},4,5,,,,,,,,,,
+Epson EX-800/1000,LPT1,@,,C{#},,2,0,P,M,,,,G,H,-,-{NULL},4,5,,,,,,,,,,
+Epson LX,LPT1,@,,C{#},,2,0,P,M,,,,G,H,-,-{NULL},4,5,,,,,,,,,,
+Epson LX-810,LPT1,@,,C{#},{CR},2,0,P,M,,,,E,F,-,-{NULL},4,5,S{NULL},T,S,T,,,{CR}{LF},,,
+Epson LX-810 Graphic Mode,LPT1,@t,,C{#},{CR},2,0,P,M,,,,E,F,-,-{NULL},4,5,S{NULL},T,S,T,,,{CR}{LF},,,
+Epson LX-90,LPT1,,,C{#},,2,0,,,,,,G,H,-,-{NULL},,,,,,,,,,,,
+Epson MX,LPT1,@,,C{#},,2,0,,,,,,G,H,-,-{NULL},4,5,,,,,,,,,,
+Generic printer,LPT1,,,,,,,,,,,,,,,,,,,,,,,,,,,
+HP 2225C+ (Epson Mode),LPT1,@,,C,,2,0,P,M,,,,E,F,-1,-0,,,,,,,,,,,,
+HP 2225C+ (HP Mode),LPT1,E,,,,&l6D,&l8D,&k0S,,&k2S,,,(s1B,(s0B,&dD,&d@,,,,,,,,,,,,
+HP DeskJet Plus,LPT1,E,,,&l0H,&l6D,&l8D,(s10H,(s12H,(s16.67H,&l1O,&l0O,(s3B,(s0B,&d0D,&d@,(s1S,(s0S,(s+1U,(s0U,(s-1U,(s0U,(s0P,(s1P,{CR}{LF},&a,C,
+HP LaserJet 500/+/II,LPT1,E,,&l{#}F,{CR},&l7.27C,&l5.45C,(s10H,(s12H,(s16.6H,&l1O&l14c1E,&l0O,(s3B,(s0B,&dD,&d@,(s1S,(s0S,(s16.6h8.5v&a-40V,(s12v&a+40V,(s16.6h8.5v&a+25V,(s12v&a-25V,(s0P,(s1P,{CR}{LF},&a,C,&l{#}E
+HP PaintJet (HP3630),LPT1,E,,,,&l6D,&l8D,&k0S,&k4S,&k2S,,,(s1B,(s0B,&dD,&d@,,,,,,,,,,,,
+IBM 80 CPS Graphics,LPT1,6,,C,,2,0,,,,,,G,H,-,-{NULL},,,,,,,,,,,,
+IBM 80 CPS Matrix,LPT1,,,C,,2,0,,,,,,G,H,,,,,,,,,,,,,,
+IBM Color Printer,LPT1,?,,C,,,0,,:,,,,G,H,-,-{NULL},,,,,,,,,,,,
+IBM LetterQuality 5218,COM1,p5,,,,2,0,,:,,,,,,-,-{NULL},,,,,,,,,,,,
+IBM Pageprinter 3812,LPT1,,,C,,2,0,,,,,,E,F,-,-{NULL},,,,,,,,,,,,
+IBM Proprinter,LPT1,,,C,,2,0,,:,,,,G,H,-,-{NULL},,,,,,,,,,,,
+IBM Proprinter X24,LPT1,,,C{#},,2,0,,:,,,,G,H,-,-{NULL},,,S{NULL},T,S,T,P{NULL},P,,,,
+IBM Quietwriter 5201,LPT1,,,C,,2,0,X,X,X,,,,,-,-{NULL},,,,,,,,,,,,
+IBM Quietwriter III,LPT1,,,C,,2,0,,:,,,,E,F,-,-{NULL},,,,,,,,,,,,
+IBM Wheelprinter 5216,LPT1,,,,,2,0,,:,,,,,,-,-{NULL},,,,,,,,,,,,
+IDS 460,LPT1,,,,,"B,8,$","B,6,$",,,,,,,,,,,,,,,,,,,,,
+IDS Prism 80/132,LPT1,,,,,"B,8,$","B,6,$",,,,,,,,,,,,,,,,,,,,,
+Juki 6100,LPT1,IQ,,,,	,,"",,	,,,O,&,E,R,,,,,,,,,,,,
+Kyocera F-1010 (Land),LPT1,!R! RES; UNIT D; SPO L; EXIT;,,,,!R! STM 102; SLPP 51; SLS 46; EXIT;,!R! STM 85; SLPP 68; SLS 35; EXIT;,(s10H,(s12H,(s16.6H,,,(s3B,(s0B,&dD,&d@,(s1S,(s0S,,,,,,,,,,
+Kyocera F-1010 (Port),LPT1,!R! RES; UNIT D; SPO P; EXIT;,,,,!R! STM 132; SLPP 66; SLS 46; EXIT;,!R! STM 110; SLPP 88; SLS 35; EXIT;,(s10H,(s12H,(s16.6H,,,(s3B,(s0B,&dD,&d@,(s1S,(s0S,,,,,,,,,,
+Mannesmann MT160/180,LPT1,[6~,,,,[3z,[4z,[4w,[5w,[6w,,,[=z,[>z,[4m,[0m,,,,,,,,,,,,
+Mannesmann Spirit-80,LPT1,@,,C,,2,0,,,,,,G,H,-,-{NULL},4,5,,,,,,,,,,
+NEC Pinwriter P2/P3,LPT1,,,C,,2,0,?1,?3,?7,,,G,H,-1,-0,,,,,,,,,,,,
+NEC Pinwriter P2200,LPT1,@,,C,,2,0,P,M,,,,E,F,-,-{NULL},4,5,,,,,,,,,,
+NEC Pinwriter P5/P6/P7,LPT1,@,,C,,2,0,P,M,g,,,G,H,-1,-0,4,5,,,,,,,,,,
+NEC Silentwriter LC850,LPT1,#A,,+,,2,0,S,I,,,,E,F,-,',,,,,,,,,,,,
+NEC Silentwriter LC860,LPT1,E,,,,&l7.27C,&l5.45C,(s10H,(s12H,(s16.6H,&l1O&l14c1E,&l0O,(s3B,(s0B,&dD,&d@,(s1S,(s0S,,,,,,,,,,
+NEC Spinwriter 3550,LPT1,=,,C,,2,0,S,I,,,,E,F,-,',,,,,,,,,,,,
+NEC Spinwriter 5515/25,COM1,,,,,]W,]U,]L,]J,]H,,,,,,,,,,,,,,,,,,
+NEC Spinwriter 7710/20,LPT1,#B,,,,]W,]U,]L,]J,]H,,,*,",",-,',,,,,,,,,,,,
+NEC Spinwriter 7715/25,LPT1,R,,,,]W,]U,]L,]J,]H,,,O,&,E,R,,,,,,,,,,,,
+NEC Spinwriter 7730,LPT1,,,,,]W,]U,]L,]J,]H,,,,,,,,,,,,,,,,,,
+Oki Laserline 6,LPT1,E,,,,&l6D,&l8D,&l0O(0U(s1p10v0s0b1T,(s12H&l0O(0U(s1p10v0s0b2T,&10O(0U(s-1p10v0s0b5T,&l1O,&l0O,(s1B,(s0B,&dD,&d@,(s1S,(s0S,,,,,,,,,,
+Oki Microline 182/183,LPT1,,,,,3$,0,,:,,,,G,H,-1,-0,,,,,,,,,,,,
+Oki Microline 192/193,LPT1,,,,,6,8,,,,,,T,I,C,D,!/,!*,,,,,,,,,,
+Oki Microline 292/3/4,LPT1,,,F,,6,8,,,,,,T,I,C,D,!*,!/,,,,,,,,,,
+Oki Microline 82A/83A,LPT1,,,,,6,8,,,,,,,,,,,,,,,,,,,,,
+Oki Microline 84/92/93,LPT1,,,F,,6,8,,,,,,H,I,C,D,,,,,,,,,,,,
+Oki Okimate 20,LPT1,,,C,,2,A,,:,,,,,,-,-{NULL},%G,%H,,,,,,,,,,
+Oki Pacemark 2350,LPT1,,,,,4,5,6,A,B,,,,,U,V,,,,,,,,,,,,
+Oki Pacemark 2410,LPT1,,,,,,,6,A,B,,,,,,,,,,,,,,,,,,
+Oki Pacemerk 2410-IBM,LPT1,,,C,,2,0,,:,,,,G,H,-,-{NULL},,,,,,,,,,,,
+Oki Plug&Play 192/193,LPT1,,,C,,2,0,,:,,,,G,H,-,-{NULL},%G,%H,,,,,,,,,,
+Oki Plug&Play 82A/83A,LPT1,,,,,2,0,,,,,,,,,,,,,,,,,,,,,
+Oki Plug&Play 84/92/93,LPT1,,,C,,2,0,,,,,,G,H,-,-{NULL},,,,,,,,,,,,
+Panasonic KX-P1090,LPT1,@,,C,,2,0,P,P{NULL},P{NULL},,,G,H,-,-{NULL},4,5,,,,,,,,,,
+Panasonic KX-P1091,LPT1,@,,C{#},,2,0,P,M,,,,G,H,-,-{NULL},4,5,,,,,,,,,,
+Panasonic KX-P3151,LPT1,I,,,,	,,"",,	,,,O,&,E,R,,,,,,,,,,,,
+Postscript,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+QuadLaser,LPT1,|1eI|1s|2i,,,,	,,"",,	,|1m,|0m,O,&,I,J,W,&,,,,,,,,,,
+Quadram QuadJet,LPT1,,,,,F,F,N,,,,,,,,,,,,,,,,,,,,
+Qume Sprint 5,LPT1,I,,,,,,,,[,,,,,I,J,,,,,,,,,,,,
+"Qume Sprint 9/45, 9/55",COM1,I,,,,8,6,,"
+",,,,K,M,I,J,,,,,,,,,,,,
+Sanyo PR-5500,LPT1,"P",,,,,,,"
+",,,,,,,,,,,,,,,,,,,
+Silver Reed 550 (Line),LPT1,,,,,,,,,,,,O,&,E,R,,,,,,,,,,,,
+Silver Reed 550 (Ser),LPT1,"P",,,,	,,,"
+",,,,,,,,,,,,,,,,,,,
+Silver Reed 770,LPT1,"P",,,,	,,"",,	,,,O,&,E,R,,,,,,,,,,,,
+Star Gemini 10-X/15-X,LPT1,@,,,,2,0,B,B,B,,,G,H,-,-{NULL},4,5,,,,,,,,,,
+Star Radix 10/15,LPT1,@,,,,2,0,B,B,B,,,G,H,-,-{NULL},4,5,,,,,,,,,,
+Texas Inst 850/855,COM1,,,,,	,,y,z,,,,K,M,I,J,,,,,,,,,,,,
+Texas Inst 860/865,LPT1,@,,C,,2,0,y,z,,,,G,H,I,J,,,,,,,,,,,,
+Toshiba P 341/351,LPT1,I,,,,	,,,,[,,,Q,R,I,J,,,,,,,,,,,,
+Toshiba P1340,LPT1,I,,,,	,,,,[,,,,,I,J,,,,,,,,,,,,
+Toshiba P1350,LPT1,I,,,,	,,,,	,,,,,I,J,,,,,,,,,,,,
+Toshiba P1351,LPT1,I,,,,	,,,,[,,,,,I,J,,,,,,,,,,,,
+Xerox 2700 II,LPT1,"+X
+",,,,,,,,,,,b,p,U,W,,,,,,,,,,,,
+Xerox 4045 - 630 Mode,LPT1,"P+1Titan10iso-P+2XCP14iso-L",,,,	,,"",,	,F2,F1,W,&,E,R,,,,,,,,,,,,

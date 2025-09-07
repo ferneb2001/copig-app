@@ -1,0 +1,9 @@
+
+Structure for database: Z:\ADMINSP\FOXPRO2\CONSEJO\SPDESCUR.DBF
+Number of data records:       8
+Date of last update   : 02/23/15
+Field  Field Name  Type       Width    Dec    Index
+    1  CURSO       Numeric        3            Asc
+    2  DESCRIP     Character     30            
+    3  CUROTOR     Character     20            
+** Total **                      54

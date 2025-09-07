@@ -1,0 +1,16 @@
+{
+  "fecha_backup": "2025-09-05T03:04:40.877Z",
+  "descripcion": "Backup antes de cambiar cliente por comitente",
+  "sistema_funcionando": "SI",
+  "replicacion_admin": "CORREGIDA",
+  "endpoint_admin": "FUNCIONAL",
+  "constraint_estados": "CORREGIDO",
+  "profesional_prueba": "DNI 99999999, contraseña prueba123",
+  "notas": [
+    "Sistema CHP completamente funcional",
+    "Replicación bidireccional operativa",
+    "Endpoint admin corregido (sin apellido)",
+    "Constraint estados incluyendo PENDIENTE_PAGO",
+    "Listo para implementar cambios comitente"
+  ]
+}

@@ -1,0 +1,101 @@
+RESTAURANT,ADDRESS,CITY,STATE,ZIP,AREACODE,PHONE,CUISINE,SPECIALITY,RESERVE,MAITRE_D,CREDITCARD,COST,NOTES,ATTIRE,ACCESS,VALET,RATING
+A&P Steaks,5171 Dorcas Way,Kailua,HI,96734,808,340-7002,Surf & Turf,Filet Mignon,False,Ronald Pecukonis,True,$50-100,,True,True,False,II
+Abstruse Steak House,4526 Sage Avenue,Odessa,TX,79762,915,624-3572,American,T-Bone Steak,False,Pat Mikelk,True,$50-100,,True,True,False,III
+Alfresco Chophouse,3224 Alberich Trail,Wilkes-Barre,PA,18702,717,609-6757,American,Kansas City Strip,True,,True,$25-49,,False,True,False,II
+Algerian Cuisine,200 Stumble Trail 2,Ann Arbor,MI,48104,313,520-3925,Algerian,Couscous with Cumin,False,,True,$25-49,,False,True,False,II
+Aquatic Cafe,412 Highland Pk.,San Francisco,CA,94103,415,259-8802,American,Squid Salad,False,,True,$25-49,,True,True,False,I
+Arnie's Seafood,40 Japanese Avenue,Phoenix,AZ,65020,602,314-9485,Seafood,Orange Almond Trout,True,,True,$ 0-24,,True,True,False,I
+Aromatic Tavern,Rufous Drive 6738,Stillwater,OK,74074,405,526-7554,Greek,Souvlaki,False,,True,$ 0-24,,True,False,False,II
+Backyard Dining,17 Haggle Way,Newport Beach,CA,92660,714,463-0575,Greek,Souzoukakia,True,,True,$25-49,,False,True,False,II
+Bahamas,642 Snuff Towers 562,Fremont,CA,94536,415,067-8027,Seafood,Broiled Perch,False,,True,$25-49,,True,False,False,II
+Barbados Inn & Cafe,199 Kelly Avenue 7,MAnassas,VA,22110,703,468-1957,Seafood,Nantucket Fish Pie,False,Jeff Casey,True,$ 0-24,,False,False,False,I
+Barett's Sandwiches Etc.,49 Stripped Ave.,North Hollywood,CA,91601,818,592-9034,American,Chopped Liver,False,,True,$25-49,,True,False,False,II
+Beefy's,3433 Filing Ln.,Milpitas,CA,95035,415,342-5903,Surf & Turf,New York Strip,False,Carol Hale,True,$25-49,,True,True,False,II
+Belgian Bistro,7 Ado Ln.,Montville,NJ,07045,201,982-5214,Surf & Turf,Pepper Steak,False,,True,$25-49,,True,True,False,I
+Believe-it Delights,51 Heating Lane,Brookline,MA,02146,617,697-1355,Seafood,Oyster Casserole,False,,True,$25-49,,False,True,False,II
+Berlin Surf & Turf,7000 Mung Pk. 712,Houston,TX,77055,713,457-3059,Surf & Turf,Mushroom Steak,False,Don Bush,True,$25-49,,False,True,False,I
+Bernice's Deli,4541 Shamble Estates,Waltham,MA,02154,617,148-0599,American,Kosher Foods,False,,True,$25-49,,False,False,False,II
+Bill's Catch-a-bite,5732 Password Dr.,Sunnyvale,CA,94087,408,638-8591,Seafood,Crab Souffle Roll,True,,True,$ 0-24,,False,True,False,II
+Boody Warehouse,1409 Nomodify Budget Ave. 531,Morehead City,NC,28557,919,989-7363,American,Frog Legs,False,Parky Colby,True,$25-49,,False,True,False,II
+Breakers Surf & Turf,2 Gifford Way,Columbus,OH,43207,614,577-6845,Surf & Turf,Main Lobster Tail,False,,True,$50-100,,False,True,False,II
+Campus Deli,10 Marlin Loose Plaza,Rochester,NY,14617,716,343-2726,American,Hoagies,False,Mike Rasmussen,True,$ 0-24,,False,False,False,II
+Carriage House Restaurant,556 Monmouth Initiate Avenue,Amarillo,TX,79106,806,073-5816,American,,False,,True,$25-49,,False,True,False,II
+Champion Food & Spirits,50 Morale Trail,Woodsboro,TX,78393,512,229-7757,Seafood,Hot Pepper Snapper,False,Jon P. Nolan,True,$ 0-24,,False,True,False,II
+Crew Diner,102 Inserts Suite,San Diego,CA,92115,619,867-0021,Italian,Baccala Vicentine,False,,True,$25-49,,False,False,False,I
+Crossway Club & Catering,5361 Alpaca Andesine Towers 76,Irvine,CA,92715,714,277-4300,French,Coq au vin,True,Edward Davis,True,$50-100,,True,True,False,III
+Dixie Lane Cafe,Panel Spray Ln.,NO.Wikesboro,NC,28659,919,536-1341,American,Pork Bar-B-Que,False,,False,$25-49,,False,False,False,II
+Dreamy Chateau,25 Sari Court,Yalesville,CT,06492,203,009-7787,French,Consomme de viande,False,,True,$25-49,,False,True,False,II
+Effluvia's Fricassees,793 Claim St.,Bellevue,WA,98004,206,163-7293,Japanese,Samurai Shrimp,False,,True,$25-49,,False,True,False,II
+Eileen's Spaghetti,137 Keyword Circle,Miami,FL,33156,305,915-8504,Italian,Braciola,True,,False,$ 0-24,,False,True,False,II
+Embezzled Steaks,305 Silica Ln.,Fort Collins,CO,80525,303,112-9394,American,,False,,True,$25-49,,False,False,False,II
+Emperor Keenan's,108 Academic Towers,Huntsville,AL,35802,205,770-0210,Chinese,Peking Duck,False,,False,$ 0-24,,False,True,False,II
+Emperor's Bamboo Shop,4 Alps Rd.,Oak Park,IL,60302,312,495-6758,Chinese,Shao Shing Soup,False,Jo Spence,True,$25-49,,False,True,True,II
+Enormous Sandwitch Shop,845 Alert Way,Scottsdale,AZ,85253,602,883-7513,American,,False,,True,$ 0-24,,True,True,False,II
+Enrico's,5432 Request Drive,New Orleans,LA,70113,504,145-2605,Italian,Veal Scaloppine,True,,True,$25-49,,False,True,False,II
+Ernie's Pretzels,848 Deposit Bettor Road,Houston,TX,77035,713,253-5922,American,,False,Harry Mostov,True,$25-49,,False,True,False,II
+Eternal Grab,116 Innate Circle,Billings,MT,59101,406,180-3820,Lebanese,Eggplant with Tahini,True,,True,$25-49,,False,True,False,I
+European Coffee Shop,4725 Bryan Drive,Spring Valley,NY,10016,914,816-0956,American,Cappuccino,False,,True,$ 0-24,,False,True,False,I
+Exemplar Club,928 Shagbark System Court,Tulsa,OK,74133,918,490-6229,American,,True,Dee Straub,True,$25-49,,False,True,True,II
+Figure Lounge,Friendly 71,Tustin,CA,92680,714,250-5239,Seafood,Fish Divan,False,,True,$ 0-24,,True,False,False,II
+Flyaway Grill,55 Fast Way 931,Agoura,CA,91301,818,717-0743,American,Chicken wings,False,,True,$ 0-24,,False,False,False,I
+Frank's Casual Dining,20 Oblique Suite,Austrillia,NW,2560,046,026-4990,Seafood,Tuna-Lemon Puff,False,,True,$25-49,,True,True,False,II
+Frita's Spaghetti,240 Imitable Ln.,Coconut Creek,FL,33063,305,564-8021,Italian,Veal Reggiano,False,,True,$25-49,,False,False,False,I
+Crab Eating House,226 Codfish Suite,Fort Pierce,FL,33451,305,679-9783,Seafood,Shrimp Almond Ding,True,,True,$ 0-24,,False,True,False,II
+Giantess Coffee Shop,3 McDaniel Drive 999,Aurora,IL,60507,312,504-1829,American,,False,Duane P. Klinger,True,$25-49,,False,True,False,I
+Ginsberg Endpoint,5044 Matroid Rd. 221,S Pasadena,CA,91030,800,479-2021,Mexican,Seafood Enchiladas,False,,True,$ 0-24,,True,False,False,I
+Headline Banquet Place,2 Phase Place Duma,Tulsa,OK,74104,918,220-3719,Italian,Lasagne,False,Warren Bitaille,True,$25-49,,False,False,False,II
+Highroad Family Foods,5 January Amaze Pk.,Albuquerque,NM,87102,505,973-5006,American,,False,,True,$ 0-24,,False,True,False,II
+Invasion Pizzaria,8 Estella Tr.,Bergenfield,NJ,07621,201,360-4218,Italian,Manicotti,False,,True,$25-49,,True,True,False,I
+Isn't Saloon,585 Fullback Nitric Towers 1,New York,NY,10014,212,092-1022,Lebanese,Makaroon Fingers,False,,True,$25-49,,False,True,False,II
+Italian Dining,64886 Doorway Circle,Deerfield,IL,60015,312,423-8156,Italian,Tortellini,False,,True,$25-49,,False,True,False,I
+Jeremiah's,43 Fasten Bemuse Tr.,Wheaton,IL,60187,312,775-3332,Surf & Turf,Shrimp ala King,True,Iva Powell,True,$50-100,,False,True,False,III
+Kosher Batch,203 Pence Way,Bakersfield,CA,93309,805,865-4312,American,Golden Yoich,True,,True,$25-49,,False,True,False,II
+Leeward Galley,80 Vast Neutrino Trail 594,Dallas,TX,75234,214,328-8498,American,,False,,True,$ 0-24,,False,True,False,I
+Madstone Casual Dining,3710 Scramble Blvd.,West Hartford,CT,06110,203,749-2006,American,,False,,True,$25-49,,False,False,False,II
+Mama's Place,8 AmokDr. 202 Amiss Suite,Buffalo,NY,14222,716,943-7930,Italian,Great Spaghetti,True,,True,$ 0-24,,False,True,False,II
+Markham Grill,8243 Pipeline Road,Arlington,MA,02174,617,512-9829,Surf & Turf,Steak & Shrimp Combo,False,,True,$ 0-24,,False,True,False,II
+Mattock's Cafe,47 Pericles Estates,Santa Ana,CA,92701,714,118-0067,American,,True,,True,$ 0-24,,False,True,False,II
+Maxine's Italian Delights,3937 Showmen Muncie Pk.,Lewiston,ME,04240,207,690-4136,Italian,Melanzane Parmigiana,False,,True,$ 0-24,,False,True,False,II
+Mcguire Family Foods,44 Insight Way 654,Dallas,TX,75206,214,881-7104,Persian,Rice Pilaff,False,,True,$25-49,,False,True,False,II
+Mckesson's Steak House,295 Scaup Estates,Hayward,CA,94541,415,666-7475,American,,False,,True,$ 0-24,,False,True,False,I
+Merry Roadhouse,10 Abstract Deportee Ln.,Rochester,NY,14617,716,086-2664,Surf & Turf,T-Bone Steak,False,,True,$ 0-24,,True,True,False,III
+Michael's Eating House,6188 Slake Dr.,Tustin,CA,92680,714,773-9603,American,,False,,True,$25-49,,False,True,False,II
+My Sister's Place,854 Aviate Dr. 2841,Memphis,TN,38163,901,165-9317,American,,False,Jeffrey Klinger,True,$25-49,,False,True,False,I
+Natural Eating & Drinking,282 Cavalier Heretic Drive,Pittsburgh,PA,15222,412,340-6247,American,,True,,True,$25-49,,False,True,False,II
+Newport Fish & Chips,4 Bulkhead Urania Pk.,Sudbury,MA,01776,617,095-7374,Surf & Turf,London Broil,False,,True,$ 0-24,,False,True,False,II
+Nice Cuisine By Yeager,3126 Atomic Lane,Scottsdale,AZ,85254,602,490-3265,American,,True,,True,$25-49,,False,True,False,II
+Au'lait,2187 Nickel Dr.,Hurst,TX,76053,817,496-8832,French,Jugged Hare,False,Marion Flower,True,$50-100,,True,True,True,III
+Penalty Meeting Place,489 Predict Estates,Oceanport,NJ,07757,201,786-6360,American,,True,,True,$25-49,,False,True,False,II
+Peru House,2 Sabine Budd Ave.,Prairie Vllge,KS,66208,913,093-2895,Peruvian,Corn Pudding,True,,False,$25-49,,False,True,False,II
+Quiet Attic,18 Tomorrow Lane 37,Santa Clara,CA,95051,408,046-9016,American,Turkey Club Melt,False,,True,$ 0-24,,False,True,False,II
+Rocklike Cafe,42 Dwarves Ave.,Ann Arbor,MI,48104,313,959-1983,American,,True,,True,$25-49,,False,True,False,II
+Sensible Sandwitch Shop,940 Fleabane Drive,Houstin,TX,77063,713,894-3795,American,Bean Sprout Salad,False,,True,$25-49,,False,False,False,I
+Shooter's Rib House,67 Swarm Towers,Vancoover B.C.,CA,V6R2H,604,287-9610,American,St. Louis Style ribs,False,,True,$ 0-24,,False,False,False,I
+Sioux Chop House,66 Hathaway Pectoral Junction,Barrington,RI,02806,401,909-4657,Surf & Turf,Porterhouse Steak,False,,True,$25-49,,False,True,False,II
+Snarl Convervatory,954 Dianne Rd.,Melrose,MA,02176,617,594-4069,Greek,Moussaka,True,,True,$ 0-24,,False,True,True,I
+Souffle Shop,9117 Wrench Junction,Colorado Spring,CO,80909,303,403-0475,French,Pheasant Pate,False,Edmund Power,True,$50-100,,True,False,False,III
+Soup'n Such,9 Arachnid,Monmouth,IL,61462,309,614-4301,American,,True,,True,$25-49,,False,False,False,II
+Sprint Canteena,92 Dry Pk.,Talahase,FL,32301,904,192-2372,Mexican,Tequila,False,,True,$25-49,,False,True,False,I
+Staple Super Club,Absent Street 2443,San Diego,CA,92103,619,280-6876,American,,True,,True,$ 0-24,,False,True,False,I
+Grill & Soda Shop,111 Disks Suite 13,New York,NY,10013,212,927-0067,American,,False,,True,$25-49,,False,True,False,II
+Suzanne's,8 Derived Trail,Carmichael,CA,95608,916,540-5480,Lebanese,Hummus Be-Tahine,False,,True,$25-49,,False,False,False,I
+Synoptic Country Kitchen,8 Cleanest Court 3,Reedley,CA,93654,209,816-4855,American,,True,,True,$ 0-24,,False,False,False,I
+The Abbey,7628 Senora,Knoxville,TN,37917,615,934-6818,Surf & Turf,Sirloin Tips,False,,True,$ 0-24,,False,True,False,II
+The Amazing Warehouse,Rotenone Court 858,Ronkonkoma,NY,11779,516,797-9409,American,,False,,True,$25-49,,False,True,False,II
+The Brass Gate,3923 Newell Dr.,Los Altos,CA,94022,415,155-9342,Chinese,Fukien Meat Wool,False,William B. Sine,True,$25-49,,False,True,False,I
+The Finest Canteena,61 Devotee Trail,Weehawken,NJ,07087,617,523-7038,Mexican,Chicken Fajitas,False,Roger Murphy,True,$ 0-24,,False,True,False,II
+Hangar 9,68 Keyed Ave.,Dallas,TX,75235,214,022-3707,American,,False,Bill Strange,True,$25-49,,False,True,True,II
+The Meeting Place,6655 RecsizeSt.,Longview,TX,75604,214,705-5561,Chinese,Kung-Po Chicken,False,,False,$25-49,,False,True,False,I
+The Now Saloon,90 Ross Drive,Erie,PA,16505,814,596-6355,Seafood,Shrimp Creole,True,,True,$ 0-24,,False,True,False,II
+The Old Tavern,3000 O'brien Way,Tawnton,MA,02780,617,668-3461,American,,True,,True,$25-49,,False,True,False,I
+The Original Restaurant,621 Profit Drive,Dallas,TX,75201,214,376-0152,American,Bread Pudding,False,Roger W. Eddimgton,True,$25-49,,True,False,True,II
+The Palace,628 Dice Tr.,Gardena,CA,90248,213,172-8473,Chinese,Steamed Pigeons,False,,True,$ 0-24,,False,False,False,II
+The Quiet Chophouse,4324 Cement Ave.,Sparta,NJ,07871,201,772-8458,Surf & Turf,Broiled Flounder,True,,True,$ 0-24,,False,True,False,III
+The Unusual Rib House,Maraud Trail W.,Los Angeles,CA,90071,213,847-1255,American,,True,,True,$ 0-24,,True,False,False,I
+Thick Crust Pizzaria,709 Expelled Drive,Boulder,CO,80303,303,334-1571,Italian,Fettuccine Alfredo,False,,True,$25-49,,True,False,False,II
+Toledo's Succulent Foods,666 Curse Rd.,Novato,CA,94947,415,818-9299,American,,True,Marty Levine,False,$25-49,,False,False,False,II
+Tom's Place,5618 Init Pk. 710,Washington,DC,20016,202,405-6900,Seafood,Shrimp Egg Foo Yung,False,,True,$ 0-24,,False,True,False,II
+Tres Hombres,701 Utter Place 13,Wheeling,WV,26003,304,326-8757,Mexican,Burritos Grande,False,Garret A. Younger,False,$25-49,,True,False,True,II
+Tune-up Health Foods,1533 Spatlum Lane,Warren,MI,48093,313,187-6841,American,Tofu and Greens,False,,True,$25-49,,True,True,False,II
+Urbana Lobster House,997 Aiming Blvd.,Deale,MD,20751,301,458-4310,Seafood,Shrimp Souffle,False,,True,$25-49,,True,False,True,I
+Workmen's Diner,3 Bit St.,Bloomington,MN,55431,612,386-0693,American,,False,,True,$25-49,,False,False,False,II

@@ -1,0 +1,61 @@
+UNICO
+001  Horas Normales           Gananc.con Desc.
+002  Horas Extras 50%         Gananc.con Desc.
+003  Horas Extras 100%        Gananc.con Desc.
+011  Horas Nocturnas          Gananc.con Desc.
+012  Horas Adicional 15%      Gananc.con Desc.
+013  Horas Adicional 25%      Gananc.con Desc.
+021  Accidentes Trabajo       Gananc.con Desc.
+022  Licencia Enfermedad      Gananc.con Desc.
+023  Licencia Nacim.Hijos     Gananc.con Desc.
+024  Licencia Fallecim.       Gananc.con Desc.
+025  Licencia Matrimonio      Gananc.con Desc.
+026  Licencia Examen          Gananc.con Desc.
+027  Licencia Don.Sangre      Gananc.con Desc.
+028  Licencia Rev.Ser.Mil.    Gananc.con Desc.
+029  Licencias Especiales     Gananc.con Desc.
+030  Feriados Pagos           Gananc.con Desc.
+031  Vacaciones Anuales       Gananc.con Desc.
+041  Bonific.Antigedad       Gananc.con Desc.
+042  Presentismo              Gananc.con Desc.
+051  Premios                  Gananc.con Desc.
+052  Comisiones               Gananc.con Desc.
+061  Fallas de Caja           Gananc.con Desc.
+062  Bonificacin Titulo      Gananc.con Desc.
+063  Viticos sin Compbte.    Gananc.con Desc.
+069  Sueldo Anual Complement. Gananc.con Desc.
+071  Indemn.Accidentes        Gananc.sin Desc.
+072  Indemn.Despido           Gananc.sin Desc.
+073  Indemn.Falta Preaviso    Gananc.sin Desc.
+074  Indemn.Vacac.NO Gozadas  Gananc.sin Desc.
+075  Aguinaldo s/Preaviso     Gananc.sin Desc.
+076  Aguin.s/Vac.NO Gozadas   Gananc.sin Desc.
+077  Integracin Sueldo       Gananc.sin Desc.
+081  Sal.Fliar.Hijos          Subs.Fliar.Perm.
+082  Sal.Fliar.Hijos          Subs.Fliar.Perm.
+083  Sal.Fliar.Hijos          Subs.Fliar.Perm.
+084  Sal.Fliar.Hijos Incapac. Subs.Fliar.Perm.
+091  Sal.Fliar.Prenatal       Subs.Fliar.Event
+093  Sal.Fliar.Complem.Vacac. Subs.Fliar.Event
+094  Ayuda Escolar            Subs.Fliar.Event
+098  Licencia Maternidad      Subs.Fliar.Event
+099  Reajustes Sal.Fliar      Subs.Fliar.Event
+101  Aporte Jubilacin 11%    Aporte
+102  Aporte INSSJP. 3%        Aporte
+103  Aporte Voluntario Jubil. Aporte
+108  Ahorro de Menores        Aporte
+111  Aporte Obra Social 3%    Aporte
+"112  Aporte Adic.O.Soc. 1,5%  Aporte"
+121  Aporte Cuota Sindical    Aporte
+141  Embargos                 Aporte
+145  Seguro de Vida           Aporte
+151  Prestamo C.N.A.S.        Aporte
+155  Impuesto a las Ganancias Aporte
+161  Reintegro Anticipos      Deduccin
+201  Contribucin Jubilacin  Contribucin
+203  Contribuc. I.N.S.S.J.P.  Contribucin
+205  Contrib.Asign.Familiares Contribucin
+211  Contribucin Obra Social Contribucin
+213  Contribuc.I.S.S.A.R.A.   Contribucin
+215  Fdo.Desempleo Cont.8%    Contribucin
+216  Fdo.Desempleo Contr.12%  Contribucin

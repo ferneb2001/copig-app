@@ -1,0 +1,2360 @@
+TRANS_TYPE,TRANS_DATE,CHECK_NO,CARD_ID,ACCT_ID,AMT,CLIENT_ID,CLEARED,DEDUCTIBLE,TAXABLE,SERVICE
+Check,1991-01-01,858,,881-03197,7.81,,True,False,False,Grocery - Miscellaneous
+Charge,1991-01-01,,AE1,,12.37,,False,False,True,Moss                    
+Charge,1991-01-01,,AE1,,13.42,,False,False,True,Initiate mailbox        
+Charge,1991-01-01,,VI2,,18.44,,False,False,True,Mercer grosbeak         
+Charge,1991-01-01,,DI1,,18.84,,False,False,True,Still cadmium           
+Charge,1991-01-01,,AE1,,19.55,,False,False,True,Madstone aide           
+Expense,1991-01-01,542,,095-39035,23.5,M2235,True,False,True,Airline ticket
+Billing,1991-01-01,,,,29.19,P1800,False,False,True,Hardware and Software Analysis
+Expense,1991-01-01,300,,393-34031,36.09,M6852,True,True,True,Hotel expenses
+Expense,1991-01-01,515,,095-39035,46.54,L2225,True,True,True,Phone calls
+Check,1991-01-01,425,,095-39035,49.38,,True,True,False,Gas bill
+Billing,1991-01-01,,,,51.82,C6380,False,False,True,On-site consultation and Installation
+Check,1991-01-01,854,,881-03197,71.63,,True,True,True,Electric bill
+Expense,1991-01-01,174,,393-34031,89.19,B4876,True,False,True,Hardware purchase
+Expense,1991-01-01,539,,095-39035,108.83,S4481,True,False,True,Airline ticket
+Billing,1991-01-01,,,,123.09,Q0440,False,False,True,System's Analysis
+Expense,1991-01-01,128,,393-34031,126.86,E0916,True,True,True,Subcontractor
+Billing,1991-01-01,,,,183.56,T5858,False,False,True,Installation
+Deposit,1991-01-01,,,090-76619,388.0,,False,False,False,
+Deposit,1991-01-01,,,126-16789,401.0,,False,False,True,
+Billing,1991-01-01,,,,406.35,S2821,False,False,True,Phone consultation
+Deposit,1991-01-01,,,921-32161,449.0,,False,False,True,
+Billing,1991-01-01,,,,1041.89,C6380,False,False,True,Programming Time
+Deposit,1991-01-01,,,095-39035,7047.38,,False,False,False,
+Check,1991-01-02,847,,881-03197,5.5,,True,False,True,Grocery - Miscellaneous
+Expense,1991-01-02,364,,095-39035,5.68,M3237,True,True,True,Hotel expenses
+Check,1991-01-02,423,,095-39035,6.2,,True,True,False,Grocery - Miscellaneous
+Charge,1991-01-02,,MC1,,25.48,,False,False,False,Staccato bettor         
+Charge,1991-01-02,,AE1,,25.96,,False,False,True,Grizzle sensor          
+Billing,1991-01-02,,,,77.16,M3237,False,False,True,Research Time
+Expense,1991-01-02,517,,095-39035,86.49,B4876,True,False,False,Disks
+Billing,1991-01-02,,,,110.2,K1988,False,False,True,Phone consultation
+Expense,1991-01-02,507,,095-39035,152.1,S5052,True,False,False,Phone calls
+Billing,1991-01-02,,,,201.08,D0648,False,False,True,"Fax, phone, etc."
+Billing,1991-01-02,,,,202.33,M7105,False,False,True,Initial contact
+Billing,1991-01-02,,,,240.66,S3016,False,False,True,Misc. expenses
+Billing,1991-01-02,,,,353.58,C1512,False,False,True,Hardware Maintenance
+Billing,1991-01-02,,,,354.2,S2821,False,False,True,"Fax, phone, etc."
+Billing,1991-01-02,,,,560.41,M8135,False,False,True,Hardware Analysis
+Deposit,1991-01-02,,,096-18493,564.0,,False,False,False,
+Billing,1991-01-02,,,,622.02,B3615,False,False,True,Initial contact
+Deposit,1991-01-02,,,020-65025,718.0,,False,False,True,
+Deposit,1991-01-02,,,070-92592,822.0,,False,False,False,
+Billing,1991-01-02,,,,929.32,C6124,False,False,True,Software Maintenance
+Deposit,1991-01-02,,,379-28583,950.0,,False,False,False,
+Deposit,1991-01-02,,,393-34031,3462.56,,False,False,False,
+Expense,1991-01-03,986,,881-03197,4.66,C8326,True,False,True,Disks
+Expense,1991-01-03,789,,881-03197,5.24,M6626,True,True,True,Software purchase
+Charge,1991-01-03,,MC1,,10.22,,False,False,True,Bayed raspberries       
+Fee,1991-01-03,,,095-39035,15.0,,False,False,False,
+Charge,1991-01-03,,VI2,,26.73,,False,False,True,Paunch niobium          
+Billing,1991-01-03,,,,35.68,C8326,False,False,True,System's Analysis
+Billing,1991-01-03,,,,47.58,C2404,False,False,True,Hardware Analysis
+Check,1991-01-03,835,,881-03197,58.87,,True,False,True,Longish nuance          
+Check,1991-01-03,836,,881-03197,77.05,,True,False,True,Telling migrate         
+Billing,1991-01-03,,,,142.89,M6852,False,False,True,Misc. expenses
+Billing,1991-01-03,,,,172.02,S2898,False,False,True,Initial contact
+Expense,1991-01-03,799,,881-03197,251.15,S1488,True,True,True,Hotel expenses
+Billing,1991-01-03,,,,457.31,B4876,False,False,True,Hardware Maintenance
+Deposit,1991-01-03,,,881-03197,2942.09,,False,False,True,
+Fee,1991-01-04,,,393-34031,12.0,,False,False,False,
+Expense,1991-01-04,541,,095-39035,15.62,V1833,True,True,True,Hotel expenses
+Expense,1991-01-04,496,,095-39035,19.86,E2660,True,True,True,Gasoline
+Expense,1991-01-04,371,,095-39035,22.07,B4876,True,False,True,Phone calls
+Charge,1991-01-04,,MC1,,28.64,,False,False,True,Phloem subpoena         
+Billing,1991-01-04,,,,40.95,W9316,False,False,True,Misc. expenses
+Billing,1991-01-04,,,,124.95,D7845,False,False,True,Initial contact
+Billing,1991-01-04,,,,157.75,R2905,False,False,True,System's Analysis
+Billing,1991-01-04,,,,167.09,U1337,False,False,True,"Fax, phone, etc."
+Billing,1991-01-04,,,,190.39,G3397,False,False,True,System's Analysis
+Billing,1991-01-04,,,,232.89,M6626,False,False,True,Hardware Analysis
+Billing,1991-01-04,,,,302.61,E2660,False,False,True,Hardware Analysis
+Billing,1991-01-04,,,,432.3,M3237,False,False,True,Programming Time
+Billing,1991-01-04,,,,600.94,P1800,False,False,True,Phone consultation
+Billing,1991-01-04,,,,728.17,S2821,False,False,True,System's Analysis
+Billing,1991-01-04,,,,744.3,S4481,False,False,True,Installation
+Billing,1991-01-04,,,,815.54,S1488,False,False,True,Software Maintenance
+Billing,1991-01-04,,,,1632.01,S2898,False,False,True,Misc. expenses
+Expense,1991-01-05,521,,095-39035,6.75,T4710,True,True,True,Meals
+Check,1991-01-05,842,,881-03197,16.69,,True,False,True,Grocery - Miscellaneous
+Withdraw,1991-01-05,,,881-03197,31.31,,False,False,False,Automatic Teller
+Billing,1991-01-05,,,,33.14,Q0440,False,False,True,System's Analysis
+Expense,1991-01-05,303,,393-34031,38.82,V1833,True,False,True,Phone calls
+Check,1991-01-05,430,,095-39035,39.99,,True,True,True,Shulman cleavage        
+Billing,1991-01-05,,,,80.32,C5973,False,False,True,Programming Time
+Billing,1991-01-05,,,,189.41,C6124,False,False,True,Hardware Maintenance
+Billing,1991-01-05,,,,298.27,C8326,False,False,True,Phone consultation
+Billing,1991-01-05,,,,307.62,D2624,False,False,True,Programming Time
+Billing,1991-01-05,,,,1040.98,D0648,False,False,True,Initial contact
+Check,1991-01-06,226,,393-34031,3.42,,True,True,True,Grocery - Miscellaneous
+Expense,1991-01-06,327,,095-39035,37.11,P6890,True,False,True,Miscellaneous
+Expense,1991-01-06,802,,881-03197,83.44,V1833,True,True,True,Hardware purchase
+Expense,1991-01-06,357,,095-39035,114.56,M0970,True,False,True,Fax expenses
+Expense,1991-01-06,132,,393-34031,125.97,B3615,True,True,True,Hotel expenses
+Billing,1991-01-06,,,,131.13,H5320,False,False,True,"Fax, phone, etc."
+Payment,1991-01-06,830,MC2,881-03197,165.66,,False,False,True,Payment on a credit card
+Billing,1991-01-06,,,,330.94,E2660,False,False,True,Hardware Analysis
+Billing,1991-01-06,,,,383.44,M6852,False,False,True,On-site consultation
+Billing,1991-01-07,,,,8.41,K1988,False,False,True,Software Maintenance
+Check,1991-01-07,432,,095-39035,8.78,,True,True,True,Grocery - Miscellaneous
+Withdraw,1991-05-17,,,020-65025,99.0,F5548,False,False,False,
+Expense,1991-01-07,514,,095-39035,20.28,S3016,True,True,True,Phone calls
+Expense,1991-01-07,494,,095-39035,45.34,C8994,True,False,True,Phone calls
+Billing,1991-01-07,,,,55.16,G3397,False,False,True,Misc. expenses
+Expense,1991-01-07,341,,095-39035,69.15,S5142,True,True,True,Software purchase
+Check,1991-01-07,230,,393-34031,185.28,,True,False,True,Clothes
+Billing,1991-01-07,,,,196.77,S2898,False,False,True,Hardware Maintenance
+Check,1991-01-08,216,,393-34031,9.57,,True,True,True,Grocery - Miscellaneous
+Check,1991-01-08,846,,881-03197,18.52,,True,False,True,Debra snub              
+Check,1991-01-08,848,,881-03197,18.64,,True,False,True,Reuters irvin           
+Charge,1991-01-08,,AE1,,22.76,,False,False,True,Morris rig              
+Expense,1991-01-08,500,,095-39035,23.6,M0970,True,True,False,Disks
+Expense,1991-01-08,544,,095-39035,31.43,D0648,True,True,True,Subcontractor
+Charge,1991-01-08,,VI1,,56.93,,False,True,True,Repelled rhombic inborn 
+Payment,1991-01-08,205,AE2,393-34031,61.49,,False,False,True,Payment on a credit card
+Expense,1991-01-08,525,,095-39035,69.48,T5858,True,True,True,Subcontractor
+Billing,1991-01-08,,,,80.55,E9737,False,False,True,"Fax, phone, etc."
+Withdraw,1991-01-08,,,095-39035,110.79,,False,False,False,Automatic Teller
+Billing,1991-01-08,,,,125.41,D2624,False,False,True,Software Maintenance
+Billing,1991-01-08,,,,165.07,D2624,False,False,True,"Fax, phone, etc."
+Billing,1991-01-08,,,,166.16,W9316,False,False,True,Hardware Analysis
+Billing,1991-01-08,,,,180.37,V1833,False,False,True,"Fax, phone, etc."
+Check,1991-01-08,855,,881-03197,184.65,,True,False,True,Clothes
+Payment,1991-01-08,200,DI1,393-34031,196.71,,False,False,True,Payment on a credit card
+Expense,1991-01-08,492,,095-39035,273.01,M2253,True,True,True,Disks
+Billing,1991-01-08,,,,295.44,S2821,False,False,True,Hardware Maintenance
+Billing,1991-01-08,,,,400.78,H9029,False,False,True,Hardware Analysis
+Billing,1991-01-08,,,,829.66,R7564,False,False,True,Installation
+Expense,1991-01-09,299,,393-34031,4.46,R4698,True,True,False,Gasoline
+Check,1991-01-09,852,,881-03197,5.42,,True,True,True,Mackey scm              
+Expense,1991-01-09,295,,393-34031,5.65,W2501,True,False,True,Gasoline
+Check,1991-01-09,213,,393-34031,13.57,,True,False,True,Brains mung             
+Payment,1991-01-09,203,AE1,393-34031,25.44,,False,False,True,Payment on a credit card
+Payment,1991-01-09,409,MC1,095-39035,37.66,,False,False,True,Payment on a credit card
+Billing,1991-01-09,,,,46.08,G3397,False,False,True,Hardware Analysis
+Expense,1991-01-09,380,,095-39035,68.18,A1741,True,True,True,Gasoline
+Check,1991-01-09,857,,881-03197,74.53,,True,False,False,Formant intuit          
+Billing,1991-01-09,,,,84.74,E2660,False,False,True,"Fax, phone, etc."
+Expense,1991-01-09,790,,881-03197,92.51,C2404,True,True,True,Miscellaneous
+Expense,1991-01-09,532,,095-39035,168.85,C2404,True,False,True,Meals
+Billing,1991-01-09,,,,463.69,M8135,False,False,True,Phone consultation
+Payment,1991-01-09,406,DC1,095-39035,511.82,,False,False,True,Payment on a credit card
+Billing,1991-01-09,,,,871.68,C1512,False,False,True,System's Analysis
+Billing,1991-01-09,,,,1198.38,L2225,False,False,True,Initial contact
+Check,1991-01-10,428,,095-39035,1.97,,True,False,True,Marshall fadeout        
+Billing,1991-01-10,,,,11.03,R7564,False,False,True,Hardware Maintenance
+Charge,1991-01-10,,AE1,,11.09,,False,False,True,Terminal tribunal       
+Expense,1991-01-10,806,,881-03197,15.45,S5052,True,True,True,Hardware purchase
+Expense,1991-01-10,991,,881-03197,19.15,P7914,True,False,True,Disks
+Billing,1991-01-10,,,,21.61,E0916,False,False,True,Hardware Analysis
+Expense,1991-01-10,493,,095-39035,23.03,R7784,True,False,True,Gasoline
+Charge,1991-01-10,,VI2,,24.75,,False,False,True,Organic meridian        
+Billing,1991-01-10,,,,30.28,M7683,False,False,True,Misc. expenses
+Check,1991-01-10,839,,881-03197,41.67,,True,True,True,Failed minutiae         
+Expense,1991-01-10,535,,095-39035,156.8,D7845,True,False,True,Miscellaneous
+Check,1991-01-10,218,,393-34031,170.31,,True,True,True,Orifice sock            
+Billing,1991-01-10,,,,921.96,V1833,False,False,True,Programming Time
+Check,1991-01-11,214,,393-34031,13.04,,True,True,False,Giles dash              
+Check,1991-01-11,851,,881-03197,22.6,,True,False,True,Shoemaker dickey        
+Expense,1991-01-11,984,,881-03197,38.67,M6852,True,False,True,Subcontractor
+Expense,1991-01-11,520,,095-39035,41.35,W8662,True,False,False,Hardware purchase
+Billing,1991-01-11,,,,105.15,H9029,False,False,True,"Fax, phone, etc."
+Billing,1991-01-11,,,,170.69,I8476,False,False,True,Programming Time
+Billing,1991-01-11,,,,196.39,G3397,False,False,True,System's Analysis
+Expense,1991-01-11,501,,095-39035,219.72,U1337,True,False,False,Gasoline
+Billing,1991-01-11,,,,280.87,P1800,False,False,True,Research Time
+Billing,1991-01-11,,,,574.23,W9316,False,False,True,Initial contact
+Billing,1991-01-11,,,,708.66,G3397,False,False,True,System's Analysis
+Billing,1991-01-11,,,,901.24,F4255,False,False,True,Software Maintenance
+Billing,1991-01-12,,,,1.68,C1512,False,False,True,"Fax, phone, etc."
+Billing,1991-01-12,,,,3.78,L2225,False,False,True,System's Analysis
+Check,1991-01-12,227,,393-34031,4.85,,True,False,True,Confocal boon           
+Charge,1991-01-12,,AE1,,13.48,,False,False,True,Handhold souvenir       
+Check,1991-01-12,215,,393-34031,13.75,,True,False,True,Elapsed piggy           
+Charge,1991-01-12,,AE1,,23.72,,False,False,True,Typhon succubus         
+Expense,1991-01-12,297,,393-34031,29.21,A8101,True,True,True,Phone calls
+Billing,1991-01-12,,,,43.51,P1800,False,False,True,Misc. expenses
+Billing,1991-01-12,,,,54.76,M3237,False,False,True,Research Time
+Check,1991-01-12,229,,393-34031,87.52,,True,False,True,Struck toolkit          
+Check,1991-01-12,231,,393-34031,101.99,,True,True,True,Groceries
+Payment,1991-01-12,412,VI1,095-39035,108.68,,False,False,True,Payment on a credit card
+Billing,1991-01-12,,,,114.99,F6890,False,False,True,Misc. expenses
+Billing,1991-01-12,,,,312.45,M7683,False,False,True,Phone consultation
+Billing,1991-01-12,,,,556.71,L6622,False,False,True,Hardware Analysis
+Expense,1991-01-13,800,,881-03197,22.04,D7845,True,True,True,Gasoline
+Check,1991-01-13,853,,881-03197,29.28,,True,False,True,Still cadmium           
+Billing,1991-01-13,,,,60.73,T6915,False,False,True,Hardware Analysis
+Billing,1991-01-13,,,,75.65,C0720,False,False,True,Programming Time
+Expense,1991-01-13,326,,095-39035,82.53,A9045,True,False,True,Disks
+Expense,1991-01-13,503,,095-39035,83.59,F6890,True,True,True,Fax expenses
+Expense,1991-01-13,298,,393-34031,86.32,C6124,True,True,True,Hotel expenses
+Billing,1991-01-13,,,,109.3,K1988,False,False,True,Phone consultation
+Check,1991-01-13,834,,881-03197,117.29,,True,False,True,Groceries
+Expense,1991-01-13,538,,095-39035,120.56,M6626,True,False,True,Miscellaneous
+Billing,1991-01-13,,,,270.1,B3615,False,False,True,Initial contact
+Billing,1991-01-13,,,,394.93,C6124,False,False,True,Software Maintenance
+Billing,1991-01-13,,,,490.79,R7564,False,False,True,Software Maintenance
+Billing,1991-01-13,,,,717.17,M7683,False,False,True,Research Time
+Payment,1991-01-14,832,VI2,881-03197,18.18,,False,False,True,Payment on a credit card
+Expense,1991-01-14,130,,393-34031,22.38,S2821,True,False,True,Phone calls
+Check,1991-01-14,436,,095-39035,26.09,,True,True,True,Natty townsman          
+Expense,1991-01-14,296,,393-34031,53.94,M8135,True,False,True,Airline ticket
+Check,1991-01-14,849,,881-03197,63.12,,True,False,True,Morris rig              
+Expense,1991-01-14,360,,095-39035,79.64,F6890,True,False,True,Disks
+Expense,1991-01-14,511,,095-39035,118.52,L8776,True,True,True,Meals
+Expense,1991-01-14,527,,095-39035,162.0,A8962,True,True,True,Hardware purchase
+Billing,1991-01-14,,,,242.77,J6313,False,False,True,On-site consultation
+Billing,1991-01-14,,,,319.1,T3307,False,False,True,Software Maintenance
+Billing,1991-01-14,,,,346.98,S2898,False,False,True,Programming Time
+Billing,1991-01-14,,,,926.7,M6852,False,False,True,Misc. expenses
+Expense,1991-01-15,988,,881-03197,4.9,W8662,True,False,True,Disks
+Check,1991-01-15,225,,393-34031,8.51,,True,False,True,Lars shamble            
+Billing,1991-01-15,,,,23.44,U1337,False,False,True,Hardware Analysis
+Charge,1991-01-15,,VI2,,37.64,,False,False,True,Mung beans              
+Expense,1991-01-15,990,,881-03197,48.93,Z3522,True,True,True,Gasoline
+Expense,1991-01-15,495,,095-39035,55.3,R2905,True,True,True,Hardware purchase
+Check,1991-01-15,435,,095-39035,55.36,,True,True,True,Gibbons already         
+Charge,1991-01-15,,VI2,,63.28,,False,False,False,Kyoto sandman           
+Expense,1991-01-15,165,,393-34031,78.12,T6915,True,True,False,Miscellaneous
+Billing,1991-01-15,,,,89.51,I0123,False,False,True,Research Time
+Billing,1991-01-15,,,,133.97,B4876,False,False,True,Programming Time
+Billing,1991-01-15,,,,183.4,F4255,False,False,True,Misc. expenses
+Billing,1991-01-15,,,,296.93,E2660,False,False,True,Installation
+Billing,1991-01-15,,,,350.04,G3397,False,False,True,On-site consultation
+Billing,1991-01-15,,,,476.43,P6574,False,False,True,Research Time
+Billing,1991-01-15,,,,724.45,D2624,False,False,True,On-site consultation
+Expense,1991-01-16,164,,393-34031,5.47,T6095,True,True,True,Subcontractor
+Check,1991-01-16,224,,393-34031,12.16,,True,False,True,Gabon cosy              
+Expense,1991-01-16,513,,095-39035,14.14,T0284,True,True,True,Phone calls
+Check,1991-01-16,840,,881-03197,17.31,,True,True,True,Beriberi almond         
+Charge,1991-01-16,,AE2,,23.97,,False,False,True,Peculate pedestal       
+Billing,1991-01-16,,,,43.36,M7105,False,False,True,Initial contact
+Expense,1991-01-16,497,,095-39035,44.38,L6622,True,False,True,Disks
+Expense,1991-01-16,519,,095-39035,68.46,M7105,True,False,True,Gasoline
+Check,1991-01-16,429,,095-39035,83.37,,True,False,True,Polaron scotland        
+Billing,1991-01-16,,,,346.43,B4876,False,False,True,Installation
+Billing,1991-01-16,,,,358.41,R7564,False,False,True,Hardware Analysis
+Billing,1991-01-16,,,,508.26,M6852,False,False,True,System's Analysis
+Expense,1991-01-17,509,,095-39035,6.42,C0720,True,True,True,Disks
+Expense,1991-01-17,536,,095-39035,15.24,C8994,True,False,True,Gasoline
+Charge,1991-01-17,,MC1,,28.99,,False,False,True,Runty riordan           
+Charge,1991-01-17,,AE1,,29.49,,False,False,True,Sequitur burley         
+Expense,1991-01-17,983,,881-03197,31.8,A1741,True,True,True,Miscellaneous
+Charge,1991-01-17,,VI2,,59.93,,False,False,True,Apathy tramp            
+Charge,1991-01-17,,MC1,,65.74,,False,False,False,Failsafe simply         
+Billing,1991-01-17,,,,71.6,D2624,False,False,True,Software Maintenance
+Check,1991-01-17,211,,393-34031,89.7,,True,False,True,Fresh septate           
+Billing,1991-01-17,,,,121.25,M8135,False,False,True,On-site consultation
+Billing,1991-01-17,,,,125.49,M8135,False,False,True,Hardware Analysis
+Check,1991-01-17,228,,393-34031,139.79,,True,False,True,Groceries
+Billing,1991-01-17,,,,707.71,C5973,False,False,True,Installation
+Billing,1991-01-18,,,,24.11,S1488,False,False,True,Hardware Maintenance
+Expense,1991-01-18,530,,095-39035,39.07,W9316,True,False,True,Gasoline
+Billing,1991-01-18,,,,52.33,P1800,False,False,True,Hardware Maintenance
+Billing,1991-01-18,,,,57.4,C8994,False,False,True,Hardware Maintenance
+Expense,1991-01-18,529,,095-39035,64.27,T6915,True,False,True,Airline ticket
+Check,1991-01-18,843,,881-03197,82.64,,True,False,True,Enormous now            
+Expense,1991-01-18,173,,393-34031,149.45,W9316,True,False,False,Hotel expenses
+Billing,1991-01-18,,,,276.63,I0123,False,False,True,Programming Time
+Expense,1991-01-18,358,,095-39035,298.77,W9316,True,True,True,Phone calls
+Billing,1991-01-18,,,,446.22,L6622,False,False,True,Hardware Maintenance
+Billing,1991-01-18,,,,615.94,H9029,False,False,True,Programming Time
+Billing,1991-01-18,,,,1091.86,C1512,False,False,True,Initial contact
+Expense,1991-01-19,131,,393-34031,11.36,S2821,True,True,True,Subcontractor
+Expense,1991-01-19,533,,095-39035,11.58,T3307,True,False,True,Phone calls
+Check,1991-01-19,221,,393-34031,12.1,,True,False,True,Achievers nally         
+Billing,1991-01-19,,,,12.4,I0123,False,False,True,Research Time
+Billing,1991-01-19,,,,13.2,L2225,False,False,True,Research Time
+Expense,1991-01-19,498,,095-39035,13.73,B5620,True,True,True,Gasoline
+Check,1991-01-19,427,,095-39035,14.9,,True,False,True,Suit bead corvus        
+Expense,1991-01-19,505,,095-39035,25.24,T6095,True,False,True,Hardware purchase
+Charge,1991-01-19,,DC1,,29.25,,False,False,True,Booting pelt            
+Expense,1991-01-19,523,,095-39035,29.72,G4324,True,True,True,Hardware purchase
+Billing,1991-01-19,,,,65.03,R7564,False,False,True,System's Analysis
+Billing,1991-01-19,,,,287.24,C5973,False,False,True,Phone consultation
+Billing,1991-01-19,,,,291.49,W9316,False,False,True,Installation
+Billing,1991-01-19,,,,472.97,K1988,False,False,True,Hardware Analysis
+Billing,1991-01-19,,,,920.15,M6852,False,False,True,Misc. expenses
+Expense,1991-01-20,302,,393-34031,3.65,S5142,True,False,True,Fax expenses
+Expense,1991-01-20,490,,095-39035,4.64,T0926,True,True,False,Software purchase
+Billing,1991-01-20,,,,5.9,I8476,False,False,True,Hardware Maintenance
+Check,1991-01-20,223,,393-34031,12.76,,True,False,True,Debra snub              
+Expense,1991-01-20,359,,095-39035,13.37,R4698,True,False,True,Fax expenses
+Expense,1991-01-20,504,,095-39035,18.32,U1337,True,True,False,Gasoline
+Expense,1991-01-20,522,,095-39035,21.38,G3397,True,True,True,Airline ticket
+Check,1991-01-20,431,,095-39035,26.57,,True,True,True,Barbados chromate       
+Expense,1991-01-20,801,,881-03197,33.91,R7564,True,True,False,Software purchase
+Expense,1991-01-20,524,,095-39035,56.1,M3237,True,False,False,Software purchase
+Withdraw,1991-01-20,,,095-39035,71.23,,False,False,False,Automatic Teller
+Billing,1991-01-20,,,,103.76,C1976,False,False,True,Phone consultation
+Check,1991-01-20,856,,881-03197,118.71,,True,False,True,Groceries
+Billing,1991-01-20,,,,139.4,C1976,False,False,True,Phone consultation
+Billing,1991-01-20,,,,154.8,L2225,False,False,True,Research Time
+Billing,1991-01-20,,,,162.36,M7683,False,False,True,System's Analysis
+Check,1991-01-20,850,,881-03197,222.37,,True,True,True,TV purchase
+Billing,1991-01-20,,,,298.88,G3397,False,False,True,Phone consultation
+Billing,1991-01-20,,,,486.93,M0970,False,False,True,Programming Time
+Billing,1991-01-20,,,,501.88,C5973,False,False,True,Programming Time
+Billing,1991-01-20,,,,834.92,S2898,False,False,True,Programming Time
+Expense,1991-01-21,175,,393-34031,4.95,M2253,True,False,True,Meals
+Charge,1991-01-21,,MC1,,9.77,,False,False,False,Skimpy ampex            
+Charge,1991-01-21,,JC1,,43.37,,False,False,True,Clothes and etc.
+Expense,1991-01-21,531,,095-39035,46.91,C1976,True,True,True,Meals
+Billing,1991-01-21,,,,172.58,M2235,False,False,True,Research Time
+Billing,1991-01-21,,,,478.28,C6380,False,False,True,Hardware Analysis
+Check,1991-01-22,219,,393-34031,6.27,,True,False,False,Scourge nib             
+Expense,1991-01-22,540,,095-39035,9.72,U1337,True,True,False,Meals
+Charge,1991-01-22,,DC1,,14.28,,False,False,True,Camera henry            
+Charge,1991-01-22,,AE1,,14.63,,False,False,True,Showy roadside          
+Expense,1991-01-22,534,,095-39035,22.73,M7683,True,True,True,Software purchase
+Expense,1991-01-22,185,,393-34031,106.68,S4019,True,False,True,Hardware purchase
+Charge,1991-01-22,,AE1,,125.42,,False,False,True,Antares parsley         
+Billing,1991-01-22,,,,228.99,S5052,False,False,True,Misc. expenses
+Billing,1991-01-22,,,,268.77,G3397,False,False,True,Software Maintenance
+Billing,1991-01-22,,,,581.19,H9029,False,False,True,Research Time
+Expense,1991-01-23,987,,881-03197,8.79,S1488,True,False,True,Disks
+Billing,1991-01-23,,,,14.18,W9316,False,False,True,Installation
+Billing,1991-01-23,,,,30.43,F6890,False,False,True,Software Maintenance
+Charge,1991-01-23,,DI1,,31.88,,False,False,True,Lazy downbeat           
+Billing,1991-01-23,,,,34.1,W9316,False,False,True,"Fax, phone, etc."
+Expense,1991-01-23,512,,095-39035,34.56,H9029,True,True,True,Software purchase
+Check,1991-01-23,424,,095-39035,45.34,,True,False,True,Tuesday cot             
+Charge,1991-01-23,,MC1,,63.07,,False,False,True,Classic forum           
+Check,1991-01-23,220,,393-34031,74.05,,True,True,False,Haggle current          
+Expense,1991-01-23,506,,095-39035,103.71,T6915,True,True,True,Hardware purchase
+Billing,1991-01-23,,,,221.61,M7105,False,False,True,Research Time
+Billing,1991-01-23,,,,222.17,M6852,False,False,True,Initial contact
+Check,1991-01-23,222,,393-34031,316.9,,True,False,True,Equipment for the office
+Billing,1991-01-23,,,,600.76,S5052,False,False,True,Hardware Maintenance
+Billing,1991-01-23,,,,1207.08,C1512,False,False,True,Installation
+Expense,1991-01-24,301,,393-34031,4.03,M0970,True,True,True,Hotel expenses
+Billing,1991-01-24,,,,4.3,T6915,False,False,True,Software Maintenance
+Check,1991-01-24,845,,881-03197,19.16,,True,True,True,Paunch niobium          
+Billing,1991-01-24,,,,25.59,C5973,False,False,True,Misc. expenses
+Charge,1991-01-24,,AE1,,33.46,,False,False,True,Immobile passes         
+Expense,1991-01-24,510,,095-39035,33.5,S1488,True,False,True,Disks
+Expense,1991-01-24,156,,393-34031,65.35,A1741,True,False,True,Hardware purchase
+Billing,1991-01-24,,,,97.28,W9316,False,False,True,Initial contact
+Expense,1991-01-24,528,,095-39035,97.86,L6622,True,True,True,Airline ticket
+Billing,1991-01-24,,,,109.02,B4876,False,False,True,Research Time
+Billing,1991-01-24,,,,125.21,C5973,False,False,True,Installation
+Check,1991-01-24,841,,881-03197,127.17,,True,False,True,Anaheim heroes          
+Billing,1991-01-24,,,,209.65,S4019,False,False,True,Research Time
+Billing,1991-01-24,,,,229.0,P7724,False,False,True,Programming Time
+Billing,1991-01-24,,,,252.45,T6095,False,False,True,Hardware Maintenance
+Check,1991-01-25,838,,881-03197,8.45,,True,False,True,Glimmer axe             
+Check,1991-01-25,844,,881-03197,9.69,,True,False,True,Scourge nib             
+Check,1991-01-25,212,,393-34031,12.24,,True,False,True,Scourge nib             
+Charge,1991-01-25,,AE1,,13.43,,False,False,True,Adequate pile           
+Expense,1991-01-25,365,,095-39035,44.91,A8063,True,False,False,Hotel expenses
+Expense,1991-01-25,499,,095-39035,45.84,R7564,True,False,True,Subcontractor
+Check,1991-01-25,209,,393-34031,47.29,,True,True,True,Pressed mobil           
+Expense,1991-01-25,518,,095-39035,60.92,K1988,True,False,False,Software purchase
+Check,1991-01-25,433,,095-39035,66.59,,True,False,True,Douglass exponent       
+Billing,1991-01-25,,,,100.62,I0123,False,False,True,Phone consultation
+Billing,1991-01-25,,,,156.67,M8135,False,False,True,Research Time
+Charge,1991-01-25,,AE1,,174.09,,False,False,True,Catlike slogan          
+Billing,1991-01-25,,,,191.41,I0123,False,False,True,Programming Time
+Billing,1991-01-25,,,,228.18,M0970,False,False,True,"Fax, phone, etc."
+Billing,1991-01-25,,,,306.58,M8135,False,False,True,Installation
+Billing,1991-01-25,,,,368.61,S2898,False,False,True,Hardware Analysis
+Billing,1991-01-25,,,,419.43,C1512,False,False,True,On-site consultation
+Billing,1991-01-25,,,,1011.94,M7683,False,False,True,"Fax, phone, etc."
+Billing,1991-01-25,,,,1180.71,M6852,False,False,True,Phone consultation
+Check,1991-01-26,210,,393-34031,6.15,,True,False,False,Vex tea                 
+Billing,1991-01-26,,,,14.56,V1833,False,False,True,Research Time
+Check,1991-01-26,837,,881-03197,57.9,,True,True,True,Muskrat sloop           
+Expense,1991-01-26,537,,095-39035,77.05,C8994,True,True,True,Airline ticket
+Billing,1991-01-26,,,,87.91,C0720,False,False,True,Research Time
+Billing,1991-01-26,,,,99.1,M0970,False,False,True,System's Analysis
+Expense,1991-01-26,543,,095-39035,115.78,S2898,True,False,True,Disks
+Billing,1991-01-26,,,,121.19,B4876,False,False,True,Hardware Maintenance
+Expense,1991-01-26,129,,393-34031,135.59,W9316,True,False,True,Hotel expenses
+Charge,1991-01-26,,DI1,,221.06,,False,False,False,Morris rig              
+Billing,1991-01-26,,,,344.82,T0284,False,False,True,"Fax, phone, etc."
+Billing,1991-01-26,,,,461.78,C2404,False,False,True,"Fax, phone, etc."
+Billing,1991-01-26,,,,598.06,I0123,False,False,True,Misc. expenses
+Billing,1991-01-26,,,,692.31,U1337,False,False,True,Research Time
+Expense,1991-01-27,508,,095-39035,22.47,B5620,True,False,True,Phone calls
+Billing,1991-01-27,,,,33.81,P7724,False,False,True,Research Time
+Charge,1991-01-27,,MC1,,37.87,,False,False,True,Zone camber             
+Check,1991-01-27,208,,393-34031,37.95,,True,False,True,Moss                    
+Billing,1991-01-27,,,,50.46,C5973,False,False,True,Initial contact
+Billing,1991-01-27,,,,56.89,C6380,False,False,True,Phone consultation
+Check,1991-01-27,434,,095-39035,74.34,,True,False,True,Clot reverse            
+Billing,1991-01-27,,,,176.81,K1988,False,False,True,Hardware Maintenance
+Expense,1991-01-28,145,,393-34031,5.49,G3397,True,True,True,Subcontractor
+Expense,1991-01-28,516,,095-39035,6.01,M2253,True,True,True,Software purchase
+Check,1991-01-28,207,,393-34031,14.19,,True,False,False,Tied-dyed mats          
+Expense,1991-01-28,526,,095-39035,16.82,M3237,True,True,True,Airline ticket
+Expense,1991-01-28,491,,095-39035,33.82,S2821,True,True,False,Airline ticket
+Interest,1991-01-28,,JC1,,44.27,,False,True,False,Interest Charge
+Payment,1991-01-28,,,,57.06,Q0440,False,False,False,Client Payment
+Deposit,1991-01-28,,,095-39035,57.06,,False,False,False,Payment from customer# Q0440
+Interest,1991-01-28,,DC1,,67.38,,False,True,False,Interest Charge
+Payment,1991-01-28,,,,95.25,F6890,False,False,False,Client Payment
+Deposit,1991-01-28,,,393-34031,95.25,,False,False,False,Payment from customer# F6890
+Check,1991-01-28,426,,095-39035,97.17,,True,False,True,Urgent atom             
+Expense,1991-01-28,184,,393-34031,109.62,T4710,True,False,True,Subcontractor
+Payment,1991-01-28,,,,122.39,I8476,False,False,False,Client Payment
+Deposit,1991-01-28,,,881-03197,122.39,,False,False,False,Payment from customer# I8476
+Payment,1991-01-28,,,,129.05,T6095,False,False,False,Client Payment
+Deposit,1991-01-28,,,881-03197,129.05,,False,False,False,Payment from customer# T6095
+Payment,1991-01-28,,,,137.34,S3016,False,False,False,Client Payment
+Deposit,1991-01-28,,,881-03197,137.34,,False,False,False,Payment from customer# S3016
+Payment,1991-01-28,,,,182.18,P6574,False,False,False,Client Payment
+Deposit,1991-01-28,,,393-34031,182.18,,False,False,False,Payment from customer# P6574
+Payment,1991-01-28,,,,187.69,M7105,False,False,False,Client Payment
+Deposit,1991-01-28,,,881-03197,187.69,,False,False,False,Payment from customer# M7105
+Payment,1991-01-28,,,,203.65,C8994,False,False,False,Client Payment
+Deposit,1991-01-28,,,095-39035,203.65,,False,False,False,Payment from customer# C8994
+Deposit,1991-01-28,,,393-34031,244.83,,False,False,False,Payment from customer# Z3522
+Payment,1991-01-28,,,,262.99,M6626,False,False,False,Client Payment
+Deposit,1991-01-28,,,881-03197,262.99,,False,False,False,Payment from customer# M6626
+Payment,1991-01-28,,,,292.67,C8326,False,False,False,Client Payment
+Deposit,1991-01-28,,,881-03197,292.67,,False,False,False,Payment from customer# C8326
+Deposit,1991-01-28,,,095-39035,301.68,,False,False,False,Payment from customer# A1741
+Interest,1991-01-28,,MC1,,13.15,,False,True,False,Interest Charge
+Payment,1991-01-28,,,,367.14,P1800,False,False,False,Client Payment
+Deposit,1991-01-28,,,095-39035,367.14,,False,False,False,Payment from customer# P1800
+Payment,1991-01-28,,,,367.84,M3237,False,False,False,Client Payment
+Deposit,1991-01-28,,,095-39035,367.84,,False,False,False,Payment from customer# M3237
+Payment,1991-01-28,,,,387.35,U1337,False,False,False,Client Payment
+Deposit,1991-01-28,,,881-03197,387.35,,False,False,False,Payment from customer# U1337
+Billing,1991-01-28,,,,482.1,C1976,False,False,True,Programming Time
+Payment,1991-01-28,,,,823.86,D2624,False,False,False,Client Payment
+Deposit,1991-01-28,,,393-34031,823.86,,False,False,False,Payment from customer# D2624
+Payment,1991-01-28,,,,1132.05,M8135,False,False,False,Client Payment
+Deposit,1991-01-28,,,881-03197,1132.05,,False,False,False,Payment from customer# M8135
+Payment,1991-01-28,,,,1144.51,D0648,False,False,False,Client Payment
+Deposit,1991-01-28,,,881-03197,1144.51,,False,False,False,Payment from customer# D0648
+Payment,1991-01-28,,,,1202.4,C6124,False,False,False,Client Payment
+Deposit,1991-01-28,,,881-03197,1202.4,,False,False,False,Payment from customer# C6124
+Payment,1991-01-28,,,,1223.14,G3397,False,False,False,Client Payment
+Deposit,1991-01-28,,,393-34031,1223.14,,False,False,False,Payment from customer# G3397
+Payment,1991-01-28,,,,1512.65,C6380,False,False,False,Client Payment
+Deposit,1991-01-28,,,881-03197,1512.65,,False,False,False,Payment from customer# C6380
+Expense,1991-01-29,989,,881-03197,6.45,C9151,True,False,True,Fax expenses
+Payment,1991-01-29,,,,7.38,E0916,False,False,False,Client Payment
+Deposit,1991-01-29,,,095-39035,7.38,,False,False,False,Payment from customer# E0916
+Charge,1991-01-29,,AE1,,14.7,,False,False,True,Destiny dunbar          
+Expense,1991-01-29,502,,095-39035,15.37,E2660,True,False,True,Hardware purchase
+Check,1991-01-29,217,,393-34031,19.75,,True,False,True,Alpaca roll             
+Billing,1991-01-29,,,,28.77,M3237,False,False,True,Software Maintenance
+Expense,1991-01-29,386,,095-39035,44.84,D0648,True,False,True,Fax expenses
+Charge,1991-01-29,,AE1,,46.08,,False,False,True,Gibbons already         
+Payment,1991-01-29,,,,48.41,D7845,False,False,False,Client Payment
+Deposit,1991-01-29,,,881-03197,48.41,,False,False,False,Payment from customer# D7845
+Charge,1991-01-29,,MC2,,66.21,,False,False,True,Randy bustard           
+Billing,1991-01-29,,,,181.15,J6313,False,False,True,Installation
+Payment,1991-01-29,,,,214.36,T3307,False,False,False,Client Payment
+Deposit,1991-01-29,,,393-34031,214.36,,False,False,False,Payment from customer# T3307
+Interest,1991-01-29,,VI2,,23.29,,False,True,False,Interest Charge
+Interest,1991-01-29,,DI1,,45.18,,False,True,False,Interest Charge
+Billing,1991-01-29,,,,253.81,M6626,False,False,True,Hardware Maintenance
+Payment,1991-01-29,,,,264.91,S1488,False,False,False,Client Payment
+Deposit,1991-01-29,,,881-03197,264.91,,False,False,False,Payment from customer# S1488
+Interest,1991-01-29,,AE2,,21.45,,False,True,False,Interest Charge
+Deposit,1991-01-29,,,881-03197,380.94,,False,False,False,Payment from customer# A1276
+Interest,1991-01-29,,VI1,,93.89,,False,True,False,Interest Charge
+Billing,1991-01-29,,,,453.01,C5973,False,False,True,Installation
+Payment,1991-01-29,,,,542.91,V1833,False,False,False,Client Payment
+Deposit,1991-01-29,,,881-03197,542.91,,False,False,False,Payment from customer# V1833
+Interest,1991-01-29,,MC2,,68.35,,False,True,False,Interest Charge
+Payment,1991-01-29,,,,674.99,S4481,False,False,False,Client Payment
+Deposit,1991-01-29,,,881-03197,674.99,,False,False,False,Payment from customer# S4481
+Payment,1991-01-29,,,,687.63,C1976,False,False,False,Client Payment
+Deposit,1991-01-29,,,881-03197,687.63,,False,False,False,Payment from customer# C1976
+Payment,1991-01-29,,,,926.34,L2225,False,False,False,Client Payment
+Deposit,1991-01-29,,,881-03197,926.34,,False,False,False,Payment from customer# L2225
+Payment,1991-01-29,,,,1011.39,H9029,False,False,False,Client Payment
+Deposit,1991-01-29,,,881-03197,1011.39,,False,False,False,Payment from customer# H9029
+Payment,1991-01-29,,,,1060.89,M7683,False,False,False,Client Payment
+Deposit,1991-01-29,,,095-39035,1060.89,,False,False,False,Payment from customer# M7683
+Payment,1991-01-29,,,,2249.61,M6852,False,False,False,Client Payment
+Deposit,1991-01-29,,,393-34031,2249.61,,False,False,False,Payment from customer# M6852
+Payment,1991-01-30,,,,38.01,T6915,False,False,False,Client Payment
+Deposit,1991-01-30,,,095-39035,38.01,,False,False,False,Payment from customer# T6915
+Payment,1991-01-30,,,,39.71,E9737,False,False,False,Client Payment
+Deposit,1991-01-30,,,095-39035,39.71,,False,False,False,Payment from customer# E9737
+Payment,1991-01-30,,,,59.89,M2235,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,59.89,,False,False,False,Payment from customer# M2235
+Payment,1991-01-30,,,,70.28,M7067,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,70.28,,False,False,False,Payment from customer# M7067
+Payment,1991-01-30,,,,73.85,H5320,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,73.85,,False,False,False,Payment from customer# H5320
+Payment,1991-01-30,,,,73.87,T5858,False,False,False,Client Payment
+Deposit,1991-01-30,,,095-39035,73.87,,False,False,False,Payment from customer# T5858
+Payment,1991-01-30,,,,79.0,R2905,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,79.0,,False,False,False,Payment from customer# R2905
+Payment,1991-01-30,,,,109.27,P7724,False,False,False,Client Payment
+Deposit,1991-01-30,,,393-34031,109.27,,False,False,False,Payment from customer# P7724
+Payment,1991-01-30,,,,111.77,C0720,False,False,False,Client Payment
+Deposit,1991-01-30,,,393-34031,111.77,,False,False,False,Payment from customer# C0720
+Billing,1991-01-30,,,,185.71,M7067,False,False,True,Hardware Analysis
+Payment,1991-01-30,,,,199.97,S4019,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,199.97,,False,False,False,Payment from customer# S4019
+Payment,1991-01-30,,,,206.46,C2404,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,206.46,,False,False,False,Payment from customer# C2404
+Payment,1991-01-30,,,,220.9,T0284,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,220.9,,False,False,False,Payment from customer# T0284
+Billing,1991-01-30,,,,230.08,C8994,False,False,True,Misc. expenses
+Billing,1991-01-30,,,,271.19,M6852,False,False,True,"Fax, phone, etc."
+Payment,1991-01-30,,,,284.37,J6313,False,False,False,Client Payment
+Deposit,1991-01-30,,,393-34031,284.37,,False,False,False,Payment from customer# J6313
+Payment,1991-01-30,,,,345.48,A8063,False,False,False,Client Payment
+Deposit,1991-01-30,,,393-34031,345.48,,False,False,False,Payment from customer# A8063
+Payment,1991-01-30,,,,392.29,M0970,False,False,False,Client Payment
+Deposit,1991-01-30,,,095-39035,392.29,,False,False,False,Payment from customer# M0970
+Payment,1991-01-30,,,,447.81,B3615,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,447.81,,False,False,False,Payment from customer# B3615
+Payment,1991-01-30,,,,492.04,S5052,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,492.04,,False,False,False,Payment from customer# S5052
+Billing,1991-01-30,,,,496.47,E2660,False,False,True,Software Maintenance
+Payment,1991-01-30,,,,574.71,K1988,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,574.71,,False,False,False,Payment from customer# K1988
+Payment,1991-01-30,,,,610.63,B4876,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,610.63,,False,False,False,Payment from customer# B4876
+Interest,1991-01-30,,AE1,,29.2,,False,True,False,Interest Charge
+Payment,1991-01-30,,,,750.26,S2821,False,False,False,Client Payment
+Deposit,1991-01-30,,,393-34031,750.26,,False,False,False,Payment from customer# S2821
+Payment,1991-01-30,,,,871.23,R7564,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,871.23,,False,False,False,Payment from customer# R7564
+Payment,1991-01-30,,,,928.2,L6622,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,928.2,,False,False,False,Payment from customer# L6622
+Payment,1991-01-30,,,,963.69,I0123,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,963.69,,False,False,False,Payment from customer# I0123
+Payment,1991-01-30,,,,975.67,C5973,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,975.67,,False,False,False,Payment from customer# C5973
+Payment,1991-01-30,,,,1054.3,F4255,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,1054.3,,False,False,False,Payment from customer# F4255
+Billing,1991-01-30,,,,1107.84,C6380,False,False,True,Programming Time
+Payment,1991-01-30,,,,1195.94,W9316,False,False,False,Client Payment
+Deposit,1991-01-30,,,095-39035,1195.94,,False,False,False,Payment from customer# W9316
+Payment,1991-01-30,,,,1317.97,E2660,False,False,False,Client Payment
+Deposit,1991-01-30,,,393-34031,1317.97,,False,False,False,Payment from customer# E2660
+Payment,1991-01-30,,,,2074.33,S2898,False,False,False,Client Payment
+Deposit,1991-01-30,,,393-34031,2074.33,,False,False,False,Payment from customer# S2898
+Payment,1991-01-30,,,,3506.5,C1512,False,False,False,Client Payment
+Deposit,1991-01-30,,,881-03197,3506.5,,False,False,False,Payment from customer# C1512
+Billing,1991-01-31,,,,192.37,B4876,False,False,True,Software Maintenance
+Billing,1991-01-31,,,,523.98,C1976,False,False,True,Hardware Maintenance
+Billing,1991-01-31,,,,590.84,C8326,False,False,True,Hardware Analysis
+Expense,1991-02-01,342,,095-39035,16.25,T6915,True,True,True,Phone calls
+Expense,1991-02-01,304,,393-34031,20.88,H5320,True,True,True,Subcontractor
+Expense,1991-02-01,548,,095-39035,34.31,M2235,False,True,True,Hotel expenses
+Expense,1991-02-01,559,,095-39035,52.96,R4698,True,True,True,Software purchase
+Deposit,1991-02-01,,,070-92592,273.0,,False,False,False,
+Deposit,1991-02-01,,,020-65025,433.0,,False,False,False,
+Billing,1991-02-01,,,,643.12,C2404,False,False,True,"Fax, phone, etc."
+Deposit,1991-02-01,,,393-34031,4780.52,,False,False,True,
+Billing,1991-02-02,,,,2.86,B4876,False,False,True,System's Analysis
+Expense,1991-02-02,361,,095-39035,13.13,M2253,True,True,True,Fax expenses
+Check,1991-02-02,255,,393-34031,54.79,,True,True,True,Electric bill
+Expense,1991-02-02,994,,881-03197,82.66,I8476,True,False,True,Airline ticket
+Billing,1991-02-02,,,,134.42,S2821,False,False,True,Initial contact
+Billing,1991-02-02,,,,188.3,M7683,False,False,True,System's Analysis
+Billing,1991-02-02,,,,196.62,G4324,False,False,True,On-site consultation
+Deposit,1991-02-02,,,090-76619,360.0,,False,False,False,
+Billing,1991-02-02,,,,452.75,E0916,False,False,True,Installation
+Deposit,1991-02-02,,,379-28583,668.0,,False,False,True,
+Deposit,1991-02-02,,,096-18493,781.0,,False,False,True,
+Deposit,1991-02-02,,,126-16789,909.0,,False,False,True,
+Deposit,1991-02-02,,,095-39035,8076.87,,False,False,True,
+Fee,1991-02-03,,,095-39035,15.0,,False,False,False,
+Charge,1991-02-03,,SH1,,16.52,,False,False,True,Gasoline Purchase
+Billing,1991-02-03,,,,40.32,A8101,False,False,True,Misc. expenses
+Charge,1991-02-03,,VI2,,109.77,,False,False,True,Bereft honeybee         
+Billing,1991-02-03,,,,126.08,W2501,False,False,True,Software Maintenance
+Payment,1991-02-03,413,VI1,095-39035,137.58,,False,False,True,Payment on a credit card
+Billing,1991-02-03,,,,158.31,D2624,False,False,True,System's Analysis
+Charge,1991-02-03,,MC2,,219.89,,False,False,True,Initial barrett         
+Deposit,1991-02-03,,,921-32161,318.0,,False,False,True,
+Billing,1991-02-03,,,,798.18,K1988,False,False,True,Initial contact
+Deposit,1991-02-03,,,881-03197,1506.3,,False,False,True,
+Fee,1991-02-04,,,393-34031,12.0,,False,False,False,
+Charge,1991-02-04,,VI1,,18.49,,False,True,True,Confocal boon           
+Charge,1991-02-04,,VI1,,18.5,,False,False,True,Fiasco pratt            
+Billing,1991-02-04,,,,25.45,J6313,False,False,True,On-site consultation
+Check,1991-02-04,437,,095-39035,26.86,,True,True,True,Tuesday cot             
+Billing,1991-02-04,,,,31.27,E2660,False,False,True,Installation
+Expense,1991-02-04,329,,095-39035,33.56,L8776,True,True,True,Airline ticket
+Expense,1991-02-04,343,,095-39035,41.01,G4324,True,False,True,Hardware purchase
+Billing,1991-02-04,,,,180.71,E2660,False,False,True,"Fax, phone, etc."
+Billing,1991-02-04,,,,392.78,T5858,False,False,True,Initial contact
+Expense,1991-02-05,186,,393-34031,7.47,I0123,True,False,True,Miscellaneous
+Charge,1991-02-05,,VI1,,45.23,,False,False,True,Initial barrett         
+Expense,1991-02-05,362,,095-39035,49.57,B4876,True,False,True,Hotel expenses
+Charge,1991-02-05,,AE2,,52.44,,False,False,True,Bayed raspberries       
+Charge,1991-02-05,,JC1,,73.19,,False,False,True,Items for the house
+Expense,1991-02-05,812,,881-03197,93.02,T5858,True,False,True,Subcontractor
+Expense,1991-02-05,387,,095-39035,163.11,C5101,True,True,True,Phone calls
+Billing,1991-02-05,,,,178.99,D2624,False,False,True,Installation
+Billing,1991-02-05,,,,317.61,P7724,False,False,True,Hardware Maintenance
+Billing,1991-02-05,,,,328.33,C8994,False,False,True,"Fax, phone, etc."
+Billing,1991-02-05,,,,340.19,K1988,False,False,True,System's Analysis
+Billing,1991-02-05,,,,386.32,H5320,False,False,True,Initial contact
+Billing,1991-02-05,,,,420.14,M8135,False,False,True,"Fax, phone, etc."
+Expense,1991-02-06,993,,881-03197,6.03,T6915,True,True,True,Hardware purchase
+Expense,1991-02-06,792,,881-03197,12.12,S4481,True,True,True,Disks
+Expense,1991-02-06,557,,095-39035,13.91,W1113,True,False,True,Subcontractor
+Check,1991-02-06,250,,393-34031,17.93,,True,False,True,Grocery - Miscellaneous
+Expense,1991-02-06,157,,393-34031,23.29,Q0440,True,False,True,Subcontractor
+Charge,1991-02-06,,MC2,,31.55,,False,False,True,Lazy downbeat           
+Charge,1991-02-06,,AE2,,50.93,,False,False,True,Carrot withers          
+Charge,1991-02-06,,AE1,,54.53,,False,False,False,Mallow sectors          
+Expense,1991-02-06,551,,095-39035,59.34,C8326,True,False,True,Hotel expenses
+Billing,1991-02-06,,,,68.35,D2624,False,False,True,Research Time
+Charge,1991-02-06,,AE1,,87.99,,False,False,True,Presto formica          
+Charge,1991-02-06,,AE2,,95.4,,False,False,True,Woodyard lizard         
+Expense,1991-02-06,388,,095-39035,137.36,J6313,False,False,True,Meals
+Expense,1991-02-06,383,,095-39035,225.09,S2821,True,True,True,Hardware purchase
+Billing,1991-02-06,,,,364.36,S2821,False,False,True,Hardware Maintenance
+Billing,1991-02-06,,,,433.55,K1988,False,False,True,Phone consultation
+Billing,1991-02-07,,,,4.73,V0899,False,False,True,Misc. expenses
+Charge,1991-02-07,,VI2,,14.97,,False,False,True,Cursive irishman        
+Check,1991-02-07,242,,393-34031,34.9,,False,False,True,Gas bill
+Charge,1991-02-07,,SH1,,56.61,,False,False,True,"Gasoline, oil, filter, etc."
+Expense,1991-02-07,133,,393-34031,60.2,T0926,False,True,True,Miscellaneous
+Charge,1991-02-07,,MC2,,74.91,,False,False,True,Rufous conduit          
+Withdraw,1991-02-07,,,095-39035,120.02,,False,False,False,Automatic Teller
+Billing,1991-02-07,,,,133.7,M7105,False,False,True,"Fax, phone, etc."
+Expense,1991-02-07,366,,095-39035,133.98,T0284,False,False,True,Disks
+Billing,1991-02-07,,,,167.53,M3237,False,False,True,On-site consultation
+Billing,1991-02-07,,,,328.88,B3615,False,False,True,Software Maintenance
+Billing,1991-02-07,,,,338.74,K1988,False,False,True,Hardware Maintenance
+Charge,1991-02-08,,VI2,,14.41,,False,False,True,Elapsed piggy           
+Charge,1991-02-08,,VI2,,52.18,,False,False,True,Urgent atom             
+Billing,1991-02-08,,,,97.19,M7105,False,False,True,"Fax, phone, etc."
+Billing,1991-02-08,,,,152.17,S2821,False,False,True,Misc. expenses
+Billing,1991-02-08,,,,243.83,I8476,False,False,True,Initial contact
+Billing,1991-02-08,,,,300.9,C1976,False,False,True,On-site consultation
+Billing,1991-02-08,,,,301.48,M7067,False,False,True,Hardware Analysis
+Billing,1991-02-08,,,,308.35,T6915,False,False,True,Installation
+Billing,1991-02-08,,,,424.24,W9316,False,False,True,"Fax, phone, etc."
+Payment,1991-02-08,201,DI1,393-34031,516.25,,False,False,True,Payment on a credit card
+Billing,1991-02-08,,,,647.34,S2821,False,False,True,Programming Time
+Check,1991-02-09,232,,393-34031,3.76,,True,False,True,Grocery - Miscellaneous
+Expense,1991-02-09,992,,881-03197,6.51,J6313,True,True,True,Phone calls
+Charge,1991-02-09,,MC2,,16.52,,False,False,True,Panel bantu             
+Charge,1991-02-09,,VI1,,18.41,,False,False,True,Reuters irvin           
+Billing,1991-02-09,,,,20.79,S1488,False,False,True,Misc. expenses
+Charge,1991-02-09,,AE1,,25.42,,False,False,True,Assumed typed           
+Charge,1991-02-09,,VI2,,61.08,,False,False,True,Tribal piety            
+Check,1991-02-09,449,,095-39035,62.02,,True,False,True,Debra snub              
+Charge,1991-02-09,,VI2,,110.68,,False,False,True,Inequity melcher        
+Expense,1991-02-09,167,,393-34031,118.95,P7914,True,True,True,Disks
+Expense,1991-02-09,381,,095-39035,140.32,R2905,True,True,True,Gasoline
+Expense,1991-02-09,134,,393-34031,164.07,P7724,False,True,True,Meals
+Billing,1991-02-09,,,,202.73,M7105,False,False,True,Initial contact
+Billing,1991-02-09,,,,224.72,B4876,False,False,True,Programming Time
+Billing,1991-02-09,,,,425.04,E9737,False,False,True,"Fax, phone, etc."
+Billing,1991-02-09,,,,443.01,M8135,False,False,True,Initial contact
+Payment,1991-02-09,419,AE1,095-39035,475.07,,False,False,True,Payment on a credit card
+Payment,1991-02-09,421,AE2,095-39035,626.68,,False,False,True,Payment on a credit card
+Billing,1991-02-09,,,,717.76,P7724,False,False,True,"Fax, phone, etc."
+Expense,1991-02-10,996,,881-03197,11.57,C6380,True,False,True,Gasoline
+Expense,1991-02-10,556,,095-39035,17.28,T0926,True,False,False,Fax expenses
+Charge,1991-02-10,,VI1,,17.59,,False,False,True,Pep bide                
+Expense,1991-02-10,814,,881-03197,24.54,P1800,True,False,True,Meals
+Charge,1991-02-10,,MC2,,41.91,,False,False,False,Argot danzig            
+Expense,1991-02-10,555,,095-39035,50.46,T4710,True,True,True,Disks
+Expense,1991-02-10,375,,095-39035,58.82,D2624,True,True,False,Disks
+Check,1991-02-10,447,,095-39035,60.32,,True,False,True,Bryan sonoma            
+Charge,1991-02-10,,VI1,,72.67,,False,False,True,Tenth prints            
+Expense,1991-02-10,389,,095-39035,165.4,C5973,True,True,False,Gasoline
+Check,1991-02-10,233,,393-34031,200.2,,True,True,True,Toledo Museum of Art - contribution
+Billing,1991-02-10,,,,364.6,K1988,False,False,True,Software Maintenance
+Billing,1991-02-10,,,,414.81,D2624,False,False,True,Hardware Maintenance
+Billing,1991-02-10,,,,1298.02,Q0440,False,False,True,Programming Time
+Charge,1991-02-11,,VI1,,14.12,,False,False,True,Pundit oilmen           
+Billing,1991-02-11,,,,20.64,I0123,False,False,True,Research Time
+Billing,1991-02-11,,,,30.97,C6380,False,False,True,Phone consultation
+Expense,1991-02-11,552,,095-39035,61.28,M2235,True,False,True,Subcontractor
+Charge,1991-02-11,,AE2,,65.54,,False,False,True,Saloon habit            
+Expense,1991-02-11,813,,881-03197,67.76,L8776,True,True,True,Fax expenses
+Check,1991-02-11,262,,393-34031,132.58,,True,True,True,Groceries
+Expense,1991-02-11,774,,881-03197,154.51,M2253,True,False,True,Airline ticket
+Billing,1991-02-11,,,,202.47,J6313,False,False,True,Hardware Maintenance
+Billing,1991-02-11,,,,281.81,C0720,False,False,True,Hardware Analysis
+Billing,1991-02-11,,,,286.43,B4876,False,False,True,Installation
+Billing,1991-02-11,,,,326.31,S1488,False,False,True,On-site consultation
+Billing,1991-02-11,,,,562.8,M7683,False,False,True,Hardware Maintenance
+Expense,1991-02-11,344,,095-39035,734.24,M7105,False,True,True,Meals
+Charge,1991-02-12,,JC1,,7.38,,False,False,True,Clothes and etc.
+Charge,1991-02-12,,DC1,,14.63,,False,False,True,Punster octant          
+Billing,1991-02-12,,,,37.96,H5320,False,False,True,Software Maintenance
+Billing,1991-02-12,,,,49.91,A9045,False,False,True,Initial contact
+Billing,1991-02-12,,,,51.79,M7683,False,False,True,Initial contact
+Check,1991-02-12,448,,095-39035,60.23,,True,False,True,Egyptian oarsman        
+Billing,1991-02-12,,,,68.5,M6852,False,False,True,Installation
+Check,1991-02-12,238,,393-34031,78.05,,True,False,True,Auto bushel             
+Expense,1991-02-12,545,,095-39035,140.88,S5608,True,False,True,Software purchase
+Billing,1991-02-12,,,,213.89,B4876,False,False,True,Initial contact
+Expense,1991-02-13,393,,095-39035,2.31,Q0440,True,True,True,Airline ticket
+Expense,1991-02-13,554,,095-39035,15.24,S5608,True,True,True,Hardware purchase
+Charge,1991-02-13,,MC1,,29.44,,False,False,True,Cat's rhenish           
+Payment,1991-02-13,202,VI2,393-34031,32.66,,False,False,True,Payment on a credit card
+Expense,1991-02-13,146,,393-34031,44.86,J2627,False,True,True,Disks
+Check,1991-02-13,439,,095-39035,58.97,,True,True,True,Boatyard teamster       
+Billing,1991-02-13,,,,132.39,E2660,False,False,True,System's Analysis
+Check,1991-02-13,243,,393-34031,136.52,,True,False,True,Groceries
+Expense,1991-02-13,553,,095-39035,136.83,B4876,True,False,True,Meals
+Billing,1991-02-13,,,,155.15,H9029,False,False,True,Installation
+Billing,1991-02-13,,,,168.36,C8326,False,False,True,Phone consultation
+Billing,1991-02-13,,,,190.78,P1847,False,False,True,Misc. expenses
+Billing,1991-02-13,,,,669.87,D0648,False,False,True,Misc. expenses
+Payment,1991-02-13,410,MC1,095-39035,792.27,,False,False,True,Payment on a credit card
+Charge,1991-02-14,,AE2,,38.78,,False,False,True,Packaged auspices       
+Billing,1991-02-14,,,,65.64,C5973,False,False,True,Misc. expenses
+Charge,1991-02-14,,VI2,,72.18,,False,False,True,Spoke sulky             
+Expense,1991-02-14,390,,095-39035,101.25,H9029,True,False,True,Hardware purchase
+Billing,1991-02-14,,,,105.52,B4876,False,False,True,Hardware Maintenance
+Payment,1991-02-14,197,DC1,393-34031,137.25,,False,False,True,Payment on a credit card
+Billing,1991-02-14,,,,165.86,P7914,False,False,True,On-site consultation
+Billing,1991-02-14,,,,334.71,B4876,False,False,True,Programming Time
+Billing,1991-02-14,,,,470.34,W9316,False,False,True,Programming Time
+Billing,1991-02-14,,,,470.82,K1988,False,False,True,Phone consultation
+Billing,1991-02-14,,,,766.62,M0970,False,False,True,"Fax, phone, etc."
+Billing,1991-02-14,,,,1020.13,R7564,False,False,True,On-site consultation
+Check,1991-02-15,237,,393-34031,7.79,,False,False,True,Grocery - Miscellaneous
+Charge,1991-02-15,,SH1,,13.88,,False,False,True,Gasoline Purchase
+Check,1991-02-15,248,,393-34031,21.99,,True,True,True,Mattock                 
+Check,1991-02-15,443,,095-39035,29.1,,True,False,True,Glimmer axe             
+Check,1991-02-15,251,,393-34031,29.65,,True,False,True,Elite poseur            
+Expense,1991-02-15,550,,095-39035,44.06,C5973,True,True,False,Disks
+Expense,1991-02-15,546,,095-39035,83.23,P6574,True,True,True,Miscellaneous
+Check,1991-02-15,246,,393-34031,89.26,,True,False,True,Confocal boon           
+Billing,1991-02-15,,,,104.69,T5858,False,False,True,Installation
+Expense,1991-02-15,558,,095-39035,128.39,W9316,True,False,True,Hotel expenses
+Billing,1991-02-15,,,,575.31,P6574,False,False,True,Phone consultation
+Billing,1991-02-15,,,,680.05,B4876,False,False,True,System's Analysis
+Billing,1991-02-16,,,,4.52,M7067,False,False,True,Software Maintenance
+Expense,1991-02-16,166,,393-34031,12.43,C9151,True,True,True,Airline ticket
+Expense,1991-02-16,330,,095-39035,30.33,J2627,True,False,True,Disks
+Expense,1991-02-16,374,,095-39035,32.38,K1988,True,True,True,Meals
+Check,1991-02-16,259,,393-34031,34.35,,True,False,True,Orifice sock            
+Charge,1991-02-16,,AE2,,37.9,,False,False,True,Fireside vault gates    
+Billing,1991-02-16,,,,69.6,J2627,False,False,True,"Fax, phone, etc."
+Charge,1991-02-16,,VI2,,84.84,,False,False,True,Newport servitor        
+Billing,1991-02-16,,,,90.59,C8994,False,False,True,Programming Time
+Expense,1991-02-16,547,,095-39035,155.97,R7784,True,False,True,Phone calls
+Billing,1991-02-16,,,,402.32,T0284,False,False,True,"Fax, phone, etc."
+Billing,1991-02-16,,,,580.19,C6380,False,False,True,Hardware Analysis
+Charge,1991-02-17,,JC1,,1.32,,False,False,True,Clothes and etc.
+Check,1991-02-17,446,,095-39035,1.38,,True,False,True,Grocery - Miscellaneous
+Charge,1991-02-17,,AE2,,17.88,,False,False,True,Colby frontier          
+Expense,1991-02-17,305,,393-34031,27.19,P1800,True,True,True,Disks
+Charge,1991-02-17,,VI1,,63.36,,False,False,True,Die chestnut            
+Billing,1991-02-17,,,,85.66,M8135,False,False,True,Programming Time
+Billing,1991-02-17,,,,206.21,S1488,False,False,True,Hardware Maintenance
+Billing,1991-02-17,,,,233.13,K1988,False,False,True,Hardware Maintenance
+Billing,1991-02-17,,,,516.36,T6915,False,False,True,Research Time
+Charge,1991-02-18,,MC2,,5.1,,False,False,True,Pedantic cosine         
+Billing,1991-02-18,,,,5.56,S2821,False,False,True,On-site consultation
+Charge,1991-02-18,,AE2,,19.27,,False,False,True,Blanche sees            
+Charge,1991-02-18,,SH1,,21.61,,False,False,True,Gasoline Purchase
+Check,1991-02-18,249,,393-34031,44.24,,True,False,True,Debra snub              
+Billing,1991-02-18,,,,126.44,S1488,False,False,True,On-site consultation
+Billing,1991-02-18,,,,130.45,R7784,False,False,True,On-site consultation
+Charge,1991-02-18,,VI1,,195.74,,False,False,True,Apart snipe             
+Billing,1991-02-18,,,,282.23,M8135,False,False,True,Phone consultation
+Billing,1991-02-18,,,,607.59,C6380,False,False,True,Installation
+Billing,1991-02-18,,,,622.92,M8135,False,False,True,Hardware Analysis
+Billing,1991-02-19,,,,8.59,P1800,False,False,True,Installation
+Charge,1991-02-19,,VI1,,14.6,,False,False,True,Copious muzzle          
+Billing,1991-02-19,,,,18.24,P1800,False,False,True,On-site consultation
+Check,1991-02-19,235,,393-34031,19.07,,True,True,True,Grocery - Miscellaneous
+Check,1991-02-19,244,,393-34031,27.35,,True,False,True,Spumoni ferocity        
+Charge,1991-02-19,,VI1,,62.98,,False,False,True,Handhold souvenir       
+Charge,1991-02-19,,MC2,,80.77,,False,False,True,Fiesta blatant          
+Expense,1991-02-19,791,,881-03197,90.56,M8135,True,False,True,Airline ticket
+Billing,1991-02-19,,,,106.37,S2821,False,False,True,Hardware Maintenance
+Billing,1991-02-19,,,,111.54,R7564,False,False,True,Hardware Maintenance
+Billing,1991-02-19,,,,127.44,M7105,False,False,True,"Fax, phone, etc."
+Billing,1991-02-19,,,,246.99,S5052,False,False,True,Misc. expenses
+Billing,1991-02-19,,,,534.28,J6313,False,False,True,Programming Time
+Billing,1991-02-19,,,,566.92,R7564,False,False,True,Installation
+Billing,1991-02-19,,,,1615.37,I0123,False,False,True,Hardware Analysis
+Charge,1991-02-20,,VI2,,15.67,,False,False,True,Portage lusaka          
+Check,1991-02-20,236,,393-34031,21.24,,True,False,True,Foam front              
+Charge,1991-02-20,,DI1,,25.2,,False,False,True,Grendel resumes         
+Billing,1991-02-20,,,,37.93,U1337,False,False,True,Programming Time
+Billing,1991-02-20,,,,39.81,F6890,False,False,True,Misc. expenses
+Charge,1991-02-20,,MC2,,42.72,,False,False,True,Reuters irvin           
+Expense,1991-02-20,306,,393-34031,58.71,G3397,True,False,True,Meals
+Charge,1991-02-20,,MC2,,75.14,,False,False,True,Gryphon caps            
+Billing,1991-02-20,,,,78.43,G4324,False,False,True,Installation
+Check,1991-02-01,256,,393-34031,101.7,,True,False,True,Groceries
+Billing,1991-02-20,,,,109.26,G3397,False,False,True,Hardware Maintenance
+Billing,1991-02-20,,,,138.23,M2253,False,False,True,Misc. expenses
+Billing,1991-02-20,,,,206.53,T6915,False,False,True,Programming Time
+Charge,1991-02-21,,MC2,,20.58,,False,False,True,Foam front              
+Expense,1991-02-21,158,,393-34031,42.85,S4019,True,True,True,Phone calls
+Expense,1991-02-21,995,,881-03197,101.26,I8476,True,False,True,Phone calls
+Check,1991-02-21,258,,393-34031,173.65,,True,False,True,Clothes
+Billing,1991-02-21,,,,198.76,T0284,False,False,True,Initial contact
+Charge,1991-02-21,,VI1,,267.98,,False,False,True,Glimmer axe             
+Billing,1991-02-21,,,,306.65,A8101,False,False,True,Research Time
+Billing,1991-02-21,,,,313.43,F6890,False,False,True,Research Time
+Billing,1991-02-21,,,,347.11,M7105,False,False,True,Research Time
+Expense,1991-02-21,793,,881-03197,399.24,L2225,True,False,True,Gasoline
+Billing,1991-02-21,,,,642.13,I0123,False,False,True,Initial contact
+Check,1991-02-22,239,,393-34031,17.79,,True,False,True,Grocery - Miscellaneous
+Billing,1991-02-22,,,,23.01,S2821,False,False,True,System's Analysis
+Charge,1991-02-22,,SH1,,26.72,,False,False,True,Gasoline Purchase
+Check,1991-02-22,440,,095-39035,27.62,,False,True,True,Inequity melcher        
+Charge,1991-02-22,,DI1,,33.62,,False,False,True,Aphelion path           
+Expense,1991-02-22,160,,393-34031,75.89,C1512,True,True,True,Phone calls
+Expense,1991-02-22,561,,095-39035,79.37,B3615,True,False,True,Subcontractor
+Billing,1991-02-22,,,,100.71,S1488,False,False,True,Hardware Analysis
+Check,1991-02-08,234,,393-34031,135.26,,True,False,True,Groceries
+Billing,1991-02-22,,,,153.6,M6626,False,False,True,Phone consultation
+Expense,1991-02-22,182,,393-34031,159.68,S3016,True,True,True,Software purchase
+Billing,1991-02-22,,,,201.32,E2660,False,False,True,System's Analysis
+Billing,1991-02-22,,,,438.87,D7845,False,False,True,Hardware Analysis
+Billing,1991-02-23,,,,11.7,L6622,False,False,True,Hardware Maintenance
+Check,1991-02-23,438,,095-39035,17.21,,True,False,True,Grocery - Miscellaneous
+Expense,1991-02-23,328,,095-39035,42.28,D0648,True,True,True,Airline ticket
+Billing,1991-02-23,,,,60.59,S2821,False,False,True,Misc. expenses
+Billing,1991-02-23,,,,61.31,W8662,False,False,True,Phone consultation
+Charge,1991-02-23,,JC1,,61.78,,False,False,True,Clothes and etc.
+Check,1991-02-23,441,,095-39035,75.95,,True,False,True,Scourge nib             
+Check,1991-02-23,253,,393-34031,80.92,,False,False,True,Confute sibyl suitcase  
+Billing,1991-02-23,,,,98.17,P6890,False,False,True,"Fax, phone, etc."
+Billing,1991-02-23,,,,106.68,C0720,False,False,True,"Fax, phone, etc."
+Billing,1991-02-23,,,,119.3,W2501,False,False,True,Hardware Maintenance
+Check,1991-02-13,257,,393-34031,127.48,,True,False,True,Destiny dunbar          
+Check,1991-02-23,263,,393-34031,150.63,,True,False,True,Clothes
+Charge,1991-02-23,,AE2,,175.2,,False,False,True,Leadsman lahore         
+Billing,1991-02-23,,,,236.03,B5620,False,False,True,Phone consultation
+Expense,1991-02-24,549,,095-39035,1.31,R2905,True,True,True,Subcontractor
+Check,1991-02-24,442,,095-39035,11.3,,True,False,True,Isabella emissary       
+Expense,1991-02-24,159,,393-34031,15.67,A9045,True,False,True,Fax expenses
+Charge,1991-02-24,,AE1,,16.1,,False,False,True,Egyptian oarsman        
+Billing,1991-02-24,,,,22.88,V1833,False,False,True,Hardware Analysis
+Expense,1991-02-24,997,,881-03197,27.38,B4876,True,True,True,Disks
+Check,1991-02-24,252,,393-34031,33.19,,True,True,True,Heating culvert         
+Charge,1991-02-24,,SH1,,34.81,,False,False,True,"Gasoline, oil, filter, etc."
+Billing,1991-02-24,,,,40.41,M8135,False,False,True,Programming Time
+Check,1991-02-24,240,,393-34031,46.42,,True,False,True,Heating culvert         
+Charge,1991-02-24,,SH1,,46.67,,False,False,True,"Gasoline, oil, filter, etc."
+Expense,1991-02-24,187,,393-34031,47.02,C1976,True,True,True,Software purchase
+Billing,1991-02-24,,,,67.82,C2404,False,False,True,Initial contact
+Billing,1991-02-24,,,,151.67,T6095,False,False,True,Phone consultation
+Billing,1991-02-24,,,,166.81,M7105,False,False,True,System's Analysis
+Billing,1991-02-24,,,,359.97,R2905,False,False,True,Hardware Analysis
+Withdraw,1991-02-25,,,095-39035,0.44,,False,False,False,Automatic Teller
+Billing,1991-02-25,,,,17.46,S2821,False,False,True,Installation
+Check,1991-02-25,245,,393-34031,18.97,,True,True,True,Melamine stephens       
+Check,1991-02-25,241,,393-34031,24.0,,True,False,True,Fiasco pratt            
+Check,1991-02-25,254,,393-34031,28.93,,True,False,True,Fireside vault gates    
+Withdraw,1991-02-25,,,393-34031,31.35,,False,False,False,Automatic Teller
+Charge,1991-02-25,,MC2,,66.84,,False,False,True,Camera henry            
+Billing,1991-02-25,,,,85.2,E2660,False,False,True,Programming Time
+Expense,1991-02-25,345,,095-39035,154.77,I8476,True,True,True,Disks
+Billing,1991-02-25,,,,209.53,R7564,False,False,True,"Fax, phone, etc."
+Billing,1991-02-25,,,,243.38,Q0440,False,False,True,On-site consultation
+Billing,1991-02-25,,,,493.87,S4481,False,False,True,Misc. expenses
+Billing,1991-02-25,,,,510.38,W8662,False,False,True,System's Analysis
+Billing,1991-02-25,,,,513.48,C6124,False,False,True,Research Time
+Billing,1991-02-25,,,,619.88,E2660,False,False,True,Phone consultation
+Billing,1991-02-25,,,,630.52,S1488,False,False,True,"Fax, phone, etc."
+Check,1991-02-26,261,,393-34031,4.82,,True,False,False,Flyway synoptic         
+Check,1991-02-26,445,,095-39035,5.71,,True,False,True,Phloem subpoena         
+Expense,1991-02-26,560,,095-39035,24.36,R7784,True,False,False,Gasoline
+Charge,1991-02-26,,JC1,,53.37,,False,False,True,Clothes and etc.
+Charge,1991-02-26,,DC1,,58.49,,False,False,True,Gothic flam             
+Billing,1991-02-26,,,,61.48,T5858,False,False,True,Hardware Analysis
+Check,1991-02-26,247,,393-34031,62.92,,True,False,True,Formant intuit          
+Charge,1991-02-26,,VI1,,140.72,,False,False,True,Champion isis           
+Payment,1991-02-27,,SH1,,216.82,,False,False,True,Gasoline Purchase
+Expense,1991-02-27,811,,881-03197,25.83,L6622,True,False,True,Fax expenses
+Charge,1991-02-27,,VI1,,37.52,,False,False,True,Failed minutiae         
+Billing,1991-02-27,,,,69.2,V1833,False,False,True,Research Time
+Check,1991-02-27,265,,393-34031,116.03,,True,False,True,Nag                     
+Check,1991-03-08,444,,095-39035,146.01,,True,False,True,Micro monastic          
+Billing,1991-02-27,,,,150.53,S4481,False,False,True,System's Analysis
+Billing,1991-02-27,,,,177.37,B3615,False,False,True,Misc. expenses
+Interest,1991-02-27,,DI1,,51.75,,False,True,False,Interest Charge
+Billing,1991-02-27,,,,310.83,T5858,False,False,True,Misc. expenses
+Interest,1991-02-27,,VI2,,98.76,,False,True,False,Interest Charge
+Interest,1991-02-27,,MC2,,90.01,,False,True,False,Interest Charge
+Payment,1991-02-28,,,,4.0,V0899,False,False,False,Client Payment
+Deposit,1991-02-28,,,393-34031,4.0,,False,False,False,Payment from customer# V0899
+Charge,1991-02-28,,VI2,,17.18,,False,False,True,Spheroid gloss          
+Billing,1991-02-28,,,,22.82,S5052,False,False,True,On-site consultation
+Payment,1991-02-28,,,,35.38,P6890,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,35.38,,False,False,False,Payment from customer# P6890
+Payment,1991-02-28,,,,38.86,C5973,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,38.86,,False,False,False,Payment from customer# C5973
+Billing,1991-02-28,,,,45.83,A8101,False,False,True,Hardware Analysis
+Payment,1991-02-28,,,,46.29,M6852,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,46.29,,False,False,False,Payment from customer# M6852
+Payment,1991-02-28,,,,55.6,C8326,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,55.6,,False,False,False,Payment from customer# C8326
+Payment,1991-02-28,,,,67.69,M3237,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,67.69,,False,False,False,Payment from customer# M3237
+Expense,1991-02-28,382,,095-39035,79.53,B4876,True,False,True,Hotel expenses
+Billing,1991-02-28,,,,93.19,H5320,False,False,True,Installation
+Expense,1991-02-28,391,,095-39035,93.71,L8776,True,False,True,Fax expenses
+Expense,1991-02-28,392,,095-39035,107.23,T4710,True,True,True,Phone calls
+Billing,1991-02-28,,,,116.75,M7683,False,False,True,Installation
+Check,1991-03-15,264,,393-34031,127.26,,True,False,True,Knockout junco          
+Billing,1991-02-28,,,,151.6,B4876,False,False,True,Hardware Maintenance
+Check,1991-02-28,260,,393-34031,155.75,,False,False,True,Saloon habit            
+Payment,1991-02-28,,,,157.37,P1847,False,False,False,Client Payment
+Deposit,1991-02-28,,,393-34031,157.37,,False,False,False,Payment from customer# P1847
+Payment,1991-02-28,,,,187.39,C1976,False,False,False,Client Payment
+Deposit,1991-02-28,,,393-34031,187.39,,False,False,False,Payment from customer# C1976
+Interest,1991-02-28,,JC1,,21.15,,False,True,False,Interest Charge
+Interest,1991-02-28,,DC1,,44.12,,False,True,False,Interest Charge
+Payment,1991-02-28,,,,256.91,M7067,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,256.91,,False,False,False,Payment from customer# M7067
+Payment,1991-02-28,,,,265.4,A8101,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,265.4,,False,False,False,Payment from customer# A8101
+Billing,1991-02-28,,,,288.8,H9029,False,False,True,Programming Time
+Payment,1991-02-28,,,,331.41,E0916,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,331.41,,False,False,False,Payment from customer# E0916
+Payment,1991-02-28,,,,350.47,D7845,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,350.47,,False,False,False,Payment from customer# D7845
+Interest,1991-02-28,,MC1,,90.79,,False,True,False,Interest Charge
+Payment,1991-02-28,,,,408.71,W9316,False,False,False,Client Payment
+Deposit,1991-02-28,,,095-39035,408.71,,False,False,False,Payment from customer# W9316
+Billing,1991-02-28,,,,481.76,D2624,False,False,True,Research Time
+Interest,1991-02-28,,AE1,,95.5,,False,True,False,Interest Charge
+Payment,1991-02-28,,,,649.78,T6915,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,649.78,,False,False,False,Payment from customer# T6915
+Payment,1991-02-28,,,,650.2,J6313,False,False,False,Client Payment
+Deposit,1991-02-28,,,393-34031,650.2,,False,False,False,Payment from customer# J6313
+Billing,1991-02-28,,,,695.93,B3615,False,False,True,Hardware Analysis
+Billing,1991-02-28,,,,702.72,T4710,False,False,True,Hardware Maintenance
+Payment,1991-02-28,,,,737.68,M7683,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,737.68,,False,False,False,Payment from customer# M7683
+Interest,1991-02-28,,VI1,,83.05,,False,True,False,Interest Charge
+Payment,1991-02-28,,,,1036.13,K1988,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,1036.13,,False,False,False,Payment from customer# K1988
+Payment,1991-02-28,,,,1042.84,D2624,False,False,False,Client Payment
+Deposit,1991-02-28,,,095-39035,1042.84,,False,False,False,Payment from customer# D2624
+Payment,1991-02-28,,,,1204.56,M8135,False,False,False,Client Payment
+Deposit,1991-02-28,,,393-34031,1204.56,,False,False,False,Payment from customer# M8135
+Interest,1991-02-28,,AE2,,12.99,,False,True,False,Interest Charge
+Payment,1991-02-28,,,,1812.38,R7564,False,False,False,Client Payment
+Deposit,1991-02-28,,,095-39035,1812.38,,False,False,False,Payment from customer# R7564
+Payment,1991-02-28,,,,2127.56,I0123,False,False,False,Client Payment
+Deposit,1991-02-28,,,881-03197,2127.56,,False,False,False,Payment from customer# I0123
+Expense,1991-03-01,334,,393-34031,14.94,W9316,False,False,True,Meals
+Charge,1991-03-01,,DI1,,16.15,,False,False,True,Initial barrett         
+Check,1991-03-01,942,,881-03197,16.91,,False,True,True,Grocery - Miscellaneous
+Charge,1991-03-01,,DI1,,19.63,,False,False,True,Marquee busby           
+Check,1991-03-01,877,,881-03197,21.46,,True,False,False,Emery keyword           
+Check,1991-03-01,874,,881-03197,23.33,,True,False,True,Emitted silicate        
+Payment,1991-03-01,,,,23.43,A9045,False,False,False,Client Payment
+Deposit,1991-03-01,,,881-03197,23.43,,False,False,False,Payment from customer# A9045
+Billing,1991-03-01,,,,32.0,C6124,False,False,True,Programming Time
+Charge,1991-03-01,,MC1,,38.79,,False,False,True,Marlin creation         
+Payment,1991-03-01,,,,38.97,J2627,False,False,False,Client Payment
+Deposit,1991-03-01,,,881-03197,38.97,,False,False,False,Payment from customer# J2627
+Expense,1991-03-01,323,,393-34031,43.22,F6890,False,True,True,Fax expenses
+Payment,1991-03-01,,,,53.96,M6626,False,False,False,Client Payment
+Deposit,1991-03-01,,,095-39035,53.96,,False,False,False,Payment from customer# M6626
+Payment,1991-03-01,,,,74.62,M2253,False,False,False,Client Payment
+Deposit,1991-03-01,,,393-34031,74.62,,False,False,False,Payment from customer# M2253
+Billing,1991-03-01,,,,168.55,V1833,False,False,True,Hardware Analysis
+Expense,1991-03-01,999,,881-03197,188.52,E2660,True,False,True,Gasoline
+Payment,1991-03-01,,,,210.35,H9029,False,False,False,Client Payment
+Deposit,1991-03-01,,,393-34031,210.35,,False,False,False,Payment from customer# H9029
+Deposit,1991-03-01,,,393-34031,215.51,,False,False,False,Payment from customer# A1276
+Payment,1991-03-01,,,,242.54,W2501,False,False,False,Client Payment
+Deposit,1991-03-01,,,393-34031,242.54,,False,False,False,Payment from customer# W2501
+Payment,1991-03-01,,,,252.68,S5052,False,False,False,Client Payment
+Deposit,1991-03-01,,,881-03197,252.68,,False,False,False,Payment from customer# S5052
+Payment,1991-03-01,,,,277.35,D0648,False,False,False,Client Payment
+Deposit,1991-03-01,,,393-34031,277.35,,False,False,False,Payment from customer# D0648
+Billing,1991-03-01,,,,277.5,W9316,False,False,True,"Fax, phone, etc."
+Payment,1991-03-01,,,,321.21,C0720,False,False,False,Client Payment
+Deposit,1991-03-01,,,393-34031,321.21,,False,False,False,Payment from customer# C0720
+Payment,1991-03-01,,,,337.34,R2905,False,False,False,Client Payment
+Deposit,1991-03-01,,,881-03197,337.34,,False,False,False,Payment from customer# R2905
+Payment,1991-03-01,,,,338.58,T0284,False,False,False,Client Payment
+Deposit,1991-03-01,,,881-03197,338.58,,False,False,False,Payment from customer# T0284
+Payment,1991-03-01,,,,339.71,T4710,False,False,False,Client Payment
+Deposit,1991-03-01,,,393-34031,339.71,,False,False,False,Payment from customer# T4710
+Deposit,1991-03-01,,,096-18493,351.0,,False,False,True,
+Payment,1991-03-01,,,,398.67,E9737,False,False,False,Client Payment
+Deposit,1991-03-01,,,393-34031,398.67,,False,False,False,Payment from customer# E9737
+Payment,1991-03-01,,,,450.9,P6574,False,False,False,Client Payment
+Deposit,1991-03-01,,,393-34031,450.9,,False,False,False,Payment from customer# P6574
+Billing,1991-03-01,,,,481.27,T0284,False,False,True,Hardware Maintenance
+Payment,1991-03-01,,,,513.34,M7105,False,False,False,Client Payment
+Deposit,1991-03-01,,,393-34031,513.34,,False,False,False,Payment from customer# M7105
+Payment,1991-03-01,,,,557.38,P7724,False,False,False,Client Payment
+Deposit,1991-03-01,,,095-39035,557.38,,False,False,False,Payment from customer# P7724
+Billing,1991-03-01,,,,577.87,W2501,False,False,True,Hardware Analysis
+Payment,1991-03-01,,,,1120.75,S1488,False,False,False,Client Payment
+Deposit,1991-03-01,,,095-39035,1120.75,,False,False,False,Payment from customer# S1488
+Deposit,1991-03-01,,,881-03197,7382.76,,False,False,True,
+Check,1991-03-02,268,,393-34031,4.58,,True,False,True,Grocery - Miscellaneous
+Check,1991-03-02,920,,881-03197,4.91,,True,False,True,Grocery - Miscellaneous
+Payment,1991-03-02,,,,6.3,L6622,False,False,False,Client Payment
+Deposit,1991-03-02,,,393-34031,6.3,,False,False,False,Payment from customer# L6622
+Charge,1991-03-02,,AE2,,11.93,,False,False,True,Rhetoric grope          
+Check,1991-03-02,897,,881-03197,14.13,,False,True,True,Grocery - Miscellaneous
+Payment,1991-03-02,,,,16.0,P1800,False,False,False,Client Payment
+Deposit,1991-03-02,,,095-39035,16.0,,False,False,False,Payment from customer# P1800
+Payment,1991-03-02,,,,35.88,U1337,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,35.88,,False,False,False,Payment from customer# U1337
+Check,1991-03-02,913,,881-03197,46.3,,True,False,True,Gas bill
+Expense,1991-03-02,318,,393-34031,50.4,B4876,True,False,True,Miscellaneous
+Expense,1991-03-02,319,,393-34031,52.26,V1833,True,False,True,Hotel expenses
+Payment,1991-03-02,,,,55.33,G3397,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,55.33,,False,False,False,Payment from customer# G3397
+Payment,1991-03-02,,,,55.96,V1833,False,False,False,Client Payment
+Deposit,1991-03-02,,,095-39035,55.96,,False,False,False,Payment from customer# V1833
+Expense,1991-03-02,336,,393-34031,72.91,C6124,True,True,True,Phone calls
+Payment,1991-03-02,,,,107.43,P7914,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,107.43,,False,False,False,Payment from customer# P7914
+Payment,1991-03-02,,,,112.02,R7784,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,112.02,,False,False,False,Payment from customer# R7784
+Payment,1991-03-02,,,,146.06,T6095,False,False,False,Client Payment
+Deposit,1991-03-02,,,393-34031,146.06,,False,False,False,Payment from customer# T6095
+Payment,1991-03-02,,,,155.86,B5620,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,155.86,,False,False,False,Payment from customer# B5620
+Payment,1991-03-02,,,,158.3,C6124,False,False,False,Client Payment
+Deposit,1991-03-02,,,095-39035,158.3,,False,False,False,Payment from customer# C6124
+Payment,1991-03-02,,,,164.54,H5320,False,False,False,Client Payment
+Deposit,1991-03-02,,,095-39035,164.54,,False,False,False,Payment from customer# H5320
+Payment,1991-03-02,,,,189.13,F6890,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,189.13,,False,False,False,Payment from customer# F6890
+Billing,1991-03-02,,,,208.86,C5973,False,False,True,Programming Time
+Payment,1991-03-02,,,,226.5,I8476,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,226.5,,False,False,False,Payment from customer# I8476
+Payment,1991-03-02,,,,245.71,G4324,False,False,False,Client Payment
+Deposit,1991-03-02,,,393-34031,245.71,,False,False,False,Payment from customer# G4324
+Deposit,1991-03-02,,,095-39035,245.81,,False,False,False,Payment from customer# A8962
+Payment,1991-03-02,,,,248.28,C2404,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,248.28,,False,False,False,Payment from customer# C2404
+Payment,1991-03-02,,,,264.58,W8662,False,False,False,Client Payment
+Deposit,1991-03-02,,,393-34031,264.58,,False,False,False,Payment from customer# W8662
+Payment,1991-03-02,,,,290.76,C8994,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,290.76,,False,False,False,Payment from customer# C8994
+Payment,1991-03-02,,,,355.93,S4481,False,False,False,Client Payment
+Deposit,1991-03-02,,,393-34031,355.93,,False,False,False,Payment from customer# S4481
+Payment,1991-03-02,,,,398.54,M0970,False,False,False,Client Payment
+Deposit,1991-03-02,,,393-34031,398.54,,False,False,False,Payment from customer# M0970
+Payment,1991-03-02,,,,477.6,C6380,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,477.6,,False,False,False,Payment from customer# C6380
+Payment,1991-03-02,,,,511.64,Q0440,False,False,False,Client Payment
+Deposit,1991-03-02,,,393-34031,511.64,,False,False,False,Payment from customer# Q0440
+Payment,1991-03-02,,,,590.02,B3615,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,590.02,,False,False,False,Payment from customer# B3615
+Billing,1991-03-02,,,,661.82,K1988,False,False,True,Initial contact
+Deposit,1991-03-02,,,126-16789,792.0,,False,False,False,
+Deposit,1991-03-02,,,379-28583,832.0,,False,False,False,
+Payment,1991-03-02,,,,838.17,T5858,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,838.17,,False,False,False,Payment from customer# T5858
+Deposit,1991-03-02,,,393-34031,880.33,,False,False,False,Payment from customer# Z3522
+Billing,1991-03-02,,,,960.23,G3397,False,False,True,Software Maintenance
+Deposit,1991-03-02,,,020-65025,964.0,,False,False,True,
+Payment,1991-03-02,,,,994.41,B4876,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,994.41,,False,False,False,Payment from customer# B4876
+Payment,1991-03-02,,,,1102.01,E2660,False,False,False,Client Payment
+Deposit,1991-03-02,,,393-34031,1102.01,,False,False,False,Payment from customer# E2660
+Payment,1991-03-02,,,,1270.62,S2821,False,False,False,Client Payment
+Deposit,1991-03-02,,,881-03197,1270.62,,False,False,False,Payment from customer# S2821
+Deposit,1991-03-02,,,095-39035,1313.95,,False,False,False,
+Withdraw,1991-03-03,,,393-34031,1.48,,False,False,False,Automatic Teller
+Fee,1991-03-03,,,095-39035,15.0,,False,False,False,
+Check,1991-03-03,912,,881-03197,15.99,,False,False,True,Grocery - Miscellaneous
+Check,1991-03-03,930,,881-03197,17.79,,True,False,True,Grocery - Miscellaneous
+Charge,1991-03-03,,DI1,,25.76,,False,False,True,Barbados chromate       
+Billing,1991-03-03,,,,30.51,R4698,False,False,True,On-site consultation
+Billing,1991-03-03,,,,54.6,M8135,False,False,True,Hardware Analysis
+Expense,1991-03-03,1002,,881-03197,63.82,T6915,True,True,True,Phone calls
+Billing,1991-03-03,,,,69.27,W9316,False,False,True,"Fax, phone, etc."
+Billing,1991-03-03,,,,82.97,C8326,False,False,True,"Fax, phone, etc."
+Payment,1991-03-03,416,VI2,095-39035,92.31,,False,False,True,Payment on a credit card
+Billing,1991-03-03,,,,110.58,L6622,False,False,True,Software Maintenance
+Billing,1991-03-03,,,,302.64,D7845,False,False,True,Software Maintenance
+Billing,1991-03-03,,,,409.72,V1833,False,False,True,Initial contact
+Deposit,1991-03-03,,,090-76619,445.0,,False,False,True,
+Billing,1991-03-03,,,,477.69,E2660,False,False,True,Installation
+Deposit,1991-03-03,,,070-92592,605.0,,False,False,True,
+Deposit,1991-03-03,,,921-32161,869.0,,False,False,False,
+Billing,1991-03-03,,,,928.37,M7105,False,False,True,System's Analysis
+Deposit,1991-03-03,,,393-34031,3497.8,,False,False,False,
+Billing,1991-03-04,,,,7.95,C6124,False,False,True,"Fax, phone, etc."
+Fee,1991-03-04,,,393-34031,12.0,,False,False,False,
+Check,1991-03-04,947,,881-03197,13.11,,False,False,True,Grocery - Miscellaneous
+Expense,1991-03-04,1007,,881-03197,18.61,R7784,False,False,True,Hotel expenses
+Charge,1991-03-04,,JC1,,27.51,,False,False,True,Clothes and etc.
+Withdraw,1991-03-04,,,881-03197,30.08,,False,False,False,Automatic Teller
+Payment,1991-03-04,833,AE1,881-03197,37.77,,False,False,True,Payment on a credit card
+Check,1991-03-04,881,,881-03197,50.13,,False,True,True,Electric bill
+Charge,1991-03-04,,SH1,,54.72,,False,False,True,"Gasoline, oil, filter, etc."
+Check,1991-03-04,452,,095-39035,56.43,,True,True,True,Sequitur burley         
+Expense,1991-03-04,807,,881-03197,66.14,P1800,True,True,True,Airline ticket
+Charge,1991-03-04,,AE1,,126.17,,False,False,True,Holst rash              
+Billing,1991-03-04,,,,460.57,S1488,False,False,True,Research Time
+Billing,1991-03-04,,,,472.41,M7683,False,False,True,Misc. expenses
+Billing,1991-03-04,,,,643.91,D2624,False,False,True,Initial contact
+Billing,1991-03-04,,,,650.89,B3615,False,False,True,System's Analysis
+Charge,1991-03-05,,DI1,,5.3,,False,False,True,Rockwell abase          
+Expense,1991-03-05,346,,393-34031,6.39,W8662,True,True,True,Gasoline
+Check,1991-03-05,929,,881-03197,9.29,,False,False,True,Sulfate images          
+Charge,1991-03-05,,AE2,,9.78,,False,False,True,Pleat nook              
+Check,1991-03-05,934,,881-03197,10.12,,True,False,True,Nip entrance            
+Charge,1991-03-05,,SH1,,10.76,,False,False,True,Gasoline Purchase
+Expense,1991-03-05,307,,393-34031,15.49,T0926,True,True,True,Disks
+Withdraw,1991-03-05,,,095-39035,15.67,,False,False,False,Automatic Teller
+Check,1991-03-05,866,,881-03197,26.11,,True,True,True,Thing evict             
+Check,1991-03-05,275,,393-34031,48.68,,True,False,True,Cloddish maser          
+Fee,1991-03-05,,MC1,,50.0,,False,False,False,
+Check,1991-03-05,879,,881-03197,52.18,,True,False,True,Vex tea                 
+Billing,1991-03-05,,,,56.67,V1833,False,False,True,On-site consultation
+Check,1991-03-05,890,,881-03197,67.5,,False,False,True,Scotch celanese         
+Expense,1991-03-05,815,,881-03197,69.94,P7724,False,True,True,Disks
+Billing,1991-03-05,,,,392.63,S2821,False,False,True,"Fax, phone, etc."
+Billing,1991-03-05,,,,1062.32,B3615,False,False,True,Software Maintenance
+Expense,1991-03-06,344,,393-34031,1.68,L2225,False,True,True,Gasoline
+Check,1991-03-06,936,,881-03197,2.44,,False,False,True,Cursor saint            
+Expense,1991-03-06,1006,,881-03197,8.22,S5142,False,False,True,Gasoline
+Charge,1991-03-06,,DI1,,18.06,,False,False,True,Leadsman lahore         
+Charge,1991-03-06,,DI1,,18.34,,False,False,True,Rubbish piraeus         
+Expense,1991-03-06,1003,,881-03197,18.42,A9045,True,True,True,Miscellaneous
+Payment,1991-03-06,827,DI1,881-03197,22.84,,False,False,True,Payment on a credit card
+Charge,1991-03-06,,MC1,,23.96,,False,False,True,Nails trophy            
+Expense,1991-03-06,342,,393-34031,25.48,C8326,False,True,True,Subcontractor
+Billing,1991-03-06,,,,28.27,I0123,False,False,True,Programming Time
+Billing,1991-03-06,,,,28.39,S2898,False,False,True,Phone consultation
+Billing,1991-03-06,,,,38.29,W9316,False,False,True,System's Analysis
+Check,1991-03-06,886,,881-03197,38.45,,False,False,True,Debra snub              
+Expense,1991-03-06,384,,095-39035,38.95,M2235,False,False,False,Airline ticket
+Expense,1991-03-06,338,,393-34031,39.4,H9029,False,False,True,Phone calls
+Check,1991-03-06,908,,881-03197,53.0,,True,False,True,Mackey scm              
+Billing,1991-03-06,,,,114.65,R7564,False,False,True,Initial contact
+Payment,1991-03-06,422,AE2,095-39035,145.78,,False,False,True,Payment on a credit card
+Check,1991-03-06,922,,881-03197,168.96,,False,False,True,Clothes
+Billing,1991-03-06,,,,505.14,I0123,False,False,True,Phone consultation
+Billing,1991-03-06,,,,654.83,R7784,False,False,True,Programming Time
+Charge,1991-03-07,,MC1,,4.58,,False,False,True,Leadsman lahore         
+Check,1991-03-07,900,,881-03197,8.26,,True,False,True,Micah subtly            
+Check,1991-03-07,909,,881-03197,8.42,,True,False,True,Assumed typed           
+Expense,1991-03-07,347,,393-34031,10.7,F6890,False,False,False,Gasoline
+Check,1991-03-07,889,,881-03197,18.86,,True,True,True,Cloddish maser          
+Billing,1991-03-07,,,,34.29,M6852,False,False,True,Programming Time
+Expense,1991-03-07,345,,393-34031,37.1,S3016,False,False,True,Subcontractor
+Charge,1991-03-07,,DI1,,50.74,,False,False,True,Booting pelt            
+Expense,1991-03-07,178,,393-34031,74.56,W2501,True,False,False,Software purchase
+Billing,1991-03-07,,,,118.66,M7683,False,False,True,Research Time
+Billing,1991-03-07,,,,341.35,S1488,False,False,True,Software Maintenance
+Billing,1991-03-07,,,,887.82,G3397,False,False,True,On-site consultation
+Check,1991-03-08,870,,881-03197,8.85,,True,False,True,Xerox brushing          
+Check,1991-03-08,266,,393-34031,9.46,,False,False,True,Chance lure             
+Charge,1991-03-08,,DI1,,15.79,,False,False,True,Booting pelt            
+Check,1991-03-08,905,,881-03197,16.74,,False,False,True,Runty riordan           
+Charge,1991-03-08,,SH1,,17.34,,False,False,True,Gasoline Purchase
+Expense,1991-03-08,135,,393-34031,22.51,A8101,True,True,True,Phone calls
+Check,1991-03-08,903,,881-03197,24.88,,True,False,False,Divert wharf            
+Charge,1991-03-08,,DI1,,43.16,,False,False,True,Aphelion path           
+Billing,1991-03-08,,,,148.86,M7105,False,False,True,"Fax, phone, etc."
+Billing,1991-03-08,,,,262.81,S5052,False,False,True,Installation
+Billing,1991-03-08,,,,316.73,I0123,False,False,True,Programming Time
+Billing,1991-03-08,,,,947.81,C6380,False,False,True,Software Maintenance
+Billing,1991-03-09,,,,2.69,W9316,False,False,True,Hardware Maintenance
+Expense,1991-03-09,331,,393-34031,3.26,A8101,True,True,False,Hotel expenses
+Check,1991-03-09,904,,881-03197,8.32,,False,False,True,Niamey climax           
+Billing,1991-03-09,,,,8.69,K1988,False,False,True,Initial contact
+Check,1991-03-09,893,,881-03197,10.05,,True,False,True,Cognate shim            
+Check,1991-03-09,943,,881-03197,16.22,,False,True,True,Failsafe simply         
+Billing,1991-03-09,,,,17.72,S5052,False,False,True,Phone consultation
+Check,1991-03-09,910,,881-03197,19.27,,True,True,True,Bird arterial           
+Payment,1991-03-09,411,MC1,095-39035,36.57,,False,False,True,Payment on a credit card
+Expense,1991-03-09,1010,,881-03197,37.39,C8326,False,False,True,Phone calls
+Check,1991-03-09,887,,881-03197,37.75,,True,False,True,Organic meridian        
+Charge,1991-03-09,,DI1,,44.98,,False,False,True,Maurine sidestep        
+Expense,1991-03-09,1004,,881-03197,58.65,A9045,False,False,False,Meals
+Billing,1991-03-09,,,,63.91,D2624,False,False,True,Phone consultation
+Withdraw,1991-03-09,,,095-39035,65.55,,False,False,False,Automatic Teller
+Charge,1991-03-09,,DI1,,80.76,,False,False,True,Soiree intuit           
+Check,1991-03-21,859,,881-03197,109.24,,False,True,True,Groceries
+Billing,1991-03-09,,,,190.79,G3397,False,False,True,Software Maintenance
+Billing,1991-03-09,,,,671.7,R7564,False,False,True,Initial contact
+Check,1991-03-10,273,,393-34031,3.51,,False,False,True,Soiree intuit           
+Expense,1991-03-10,309,,393-34031,12.01,C2404,True,True,True,Phone calls
+Check,1991-03-10,927,,881-03197,13.48,,False,False,False,Knockout junco          
+Charge,1991-03-10,,DI1,,19.05,,False,False,True,Mackey scm              
+Expense,1991-03-10,328,,393-34031,20.58,C2404,False,False,True,Fax expenses
+Check,1991-03-10,906,,881-03197,21.99,,True,False,True,Fiend addict            
+Check,1991-03-10,919,,881-03197,30.4,,False,False,True,Crib ethic              
+Billing,1991-03-10,,,,74.03,C0720,False,False,True,"Fax, phone, etc."
+Billing,1991-03-10,,,,78.1,L2225,False,False,True,Hardware Analysis
+Expense,1991-03-10,794,,881-03197,80.34,C5973,True,False,True,Software purchase
+Expense,1991-03-10,311,,393-34031,100.69,T4710,True,False,True,Hotel expenses
+Expense,1991-03-10,563,,095-39035,141.39,P6574,False,False,True,Disks
+Billing,1991-03-10,,,,349.86,T5858,False,False,True,Initial contact
+Billing,1991-03-10,,,,424.32,R2905,False,False,True,Installation
+Billing,1991-03-10,,,,613.28,I8476,False,False,True,Software Maintenance
+Check,1991-03-11,267,,393-34031,12.37,,False,False,True,Blanche sees            
+Billing,1991-03-11,,,,13.64,R7564,False,False,True,Initial contact
+Payment,1991-03-11,407,DC1,095-39035,14.06,,False,False,True,Payment on a credit card
+Withdraw,1991-03-11,,,095-39035,20.12,,False,False,False,Automatic Teller
+Check,1991-03-11,864,,881-03197,33.53,,True,False,True,Ohm sycamore            
+Check,1991-03-11,924,,881-03197,47.03,,False,False,True,Spumoni ferocity        
+Check,1991-03-11,946,,881-03197,58.9,,False,False,True,Crib ethic              
+Charge,1991-03-11,,AE1,,68.49,,False,False,True,Kim showmen             
+Expense,1991-03-11,317,,393-34031,121.44,Z3522,False,False,True,Hotel expenses
+Billing,1991-03-11,,,,128.32,H9029,False,False,True,Hardware Analysis
+Billing,1991-03-11,,,,150.6,C6124,False,False,True,On-site consultation
+Billing,1991-03-11,,,,588.28,K1988,False,False,True,Hardware Analysis
+Expense,1991-03-12,330,,393-34031,8.37,R7564,True,False,True,Phone calls
+Charge,1991-03-12,,DI1,,13.67,,False,False,True,Beriberi almond         
+Withdraw,1991-03-12,,,881-03197,28.13,,False,False,False,Automatic Teller
+Billing,1991-03-12,,,,35.93,T6915,False,False,True,Misc. expenses
+Expense,1991-03-12,333,,393-34031,45.1,R7564,False,True,True,Fax expenses
+Check,1991-03-12,882,,881-03197,46.88,,False,False,True,Micah subtly            
+Check,1991-03-12,885,,881-03197,69.92,,False,False,True,Balmy artery bearers    
+Expense,1991-03-12,313,,393-34031,75.74,A9045,False,True,True,Hardware purchase
+Billing,1991-03-12,,,,82.19,B4876,False,False,True,Hardware Analysis
+Billing,1991-03-12,,,,88.92,C1976,False,False,True,Hardware Maintenance
+Check,1991-03-30,871,,881-03197,117.03,,True,False,True,Groceries
+Billing,1991-03-12,,,,398.01,M6852,False,False,True,Initial contact
+Billing,1991-03-12,,,,458.18,C5973,False,False,True,Software Maintenance
+Billing,1991-03-12,,,,694.53,R7564,False,False,True,Installation
+Billing,1991-03-12,,,,891.73,C0720,False,False,True,Software Maintenance
+Check,1991-03-13,278,,393-34031,10.13,,False,False,True,Kyoto sandman           
+Check,1991-03-13,892,,881-03197,10.97,,False,False,True,Favor spray             
+Check,1991-03-13,891,,881-03197,13.59,,False,False,True,Initiate mailbox        
+Expense,1991-03-13,341,,393-34031,72.21,W8662,False,False,True,Airline ticket
+Check,1991-03-13,937,,881-03197,178.31,,True,False,False,Clothes
+Billing,1991-03-13,,,,222.1,W8662,False,False,True,System's Analysis
+Check,1991-03-14,277,,393-34031,7.88,,True,False,True,Null pickaxe            
+Check,1991-03-14,926,,881-03197,7.9,,True,True,True,Glimmer axe             
+Check,1991-03-14,280,,393-34031,12.8,,True,False,True,Midpoint syntax         
+Charge,1991-03-14,,VI2,,41.46,,False,False,False,Cloddish maser          
+Charge,1991-03-14,,DI1,,65.26,,False,False,True,Cat's rhenish           
+Check,1991-04-05,933,,881-03197,104.82,,True,False,True,Groceries
+Billing,1991-03-14,,,,149.46,I0123,False,False,True,Hardware Maintenance
+Expense,1991-03-14,816,,881-03197,182.39,Q0440,True,False,True,Subcontractor
+Check,1991-03-14,925,,881-03197,189.78,,False,False,False,Pressed mobil           
+Billing,1991-03-14,,,,213.31,J6313,False,False,True,Installation
+Check,1991-03-15,898,,881-03197,13.71,,False,True,True,Marquee busby           
+Check,1991-03-15,914,,881-03197,43.92,,True,False,True,Urgent atom             
+Billing,1991-03-15,,,,63.45,I0123,False,False,True,On-site consultation
+Billing,1991-03-15,,,,63.8,S2821,False,False,True,Initial contact
+Expense,1991-03-15,808,,881-03197,76.0,L6622,False,True,True,Meals
+Billing,1991-03-15,,,,234.62,C6380,False,False,True,Installation
+Check,1991-03-16,916,,881-03197,4.64,,True,True,True,Staccato bettor         
+Check,1991-03-16,923,,881-03197,16.73,,True,True,True,Egyptian oarsman        
+Billing,1991-03-16,,,,23.7,D2624,False,False,True,Hardware Analysis
+Check,1991-03-16,272,,393-34031,32.22,,True,True,True,Fiesta blatant          
+Charge,1991-03-16,,SH1,,30.0,,False,False,True,"Gasoline, oil, filter, etc."
+Check,1991-03-16,896,,881-03197,154.54,,False,True,True,Arcane pamphlet         
+Check,1991-03-16,281,,393-34031,241.8,,False,True,True,Charity
+Billing,1991-03-16,,,,452.92,S5052,False,False,True,Programming Time
+Billing,1991-03-16,,,,646.8,S2821,False,False,True,Phone consultation
+Charge,1991-03-17,,DI1,,11.59,,False,False,True,Ito paternal            
+Expense,1991-03-17,1000,,881-03197,18.31,M6852,False,True,True,Airline ticket
+Check,1991-03-17,939,,881-03197,20.64,,True,True,True,Bausch nuts             
+Charge,1991-03-17,,DI1,,23.99,,False,False,True,Assumed typed           
+Charge,1991-03-17,,DI1,,50.87,,False,False,False,Bologna                 
+Expense,1991-03-17,316,,393-34031,65.9,T4710,True,True,True,Subcontractor
+Billing,1991-03-17,,,,89.9,H9029,False,False,True,"Fax, phone, etc."
+Billing,1991-03-17,,,,141.27,I8476,False,False,True,"Fax, phone, etc."
+Billing,1991-03-17,,,,244.79,L2225,False,False,True,Hardware Maintenance
+Expense,1991-03-17,325,,393-34031,300.65,P6574,True,True,True,Software purchase
+Billing,1991-03-17,,,,337.52,M7683,False,False,True,"Fax, phone, etc."
+Billing,1991-03-17,,,,434.02,R7784,False,False,True,Hardware Maintenance
+Billing,1991-03-17,,,,577.18,I0123,False,False,True,Programming Time
+Billing,1991-03-17,,,,875.58,G4324,False,False,True,System's Analysis
+Charge,1991-03-18,,JC1,,7.2,,False,False,True,Clothes and etc.
+Withdraw,1991-03-18,,,095-39035,12.73,,False,False,False,Automatic Teller
+Check,1991-03-18,894,,881-03197,15.51,,True,False,True,Fast dumpty             
+Check,1991-03-18,867,,881-03197,16.49,,True,True,True,Destiny dunbar          
+Check,1991-03-18,918,,881-03197,18.78,,False,False,True,Magnesia jag            
+Check,1991-03-18,860,,881-03197,21.21,,False,False,True,Defeat confocal         
+Billing,1991-03-18,,,,22.57,V1833,False,False,True,Programming Time
+Check,1991-03-18,450,,095-39035,23.92,,False,False,True,Ayers diatonic          
+Withdraw,1991-03-18,,,095-39035,24.3,,False,False,False,Automatic Teller
+Check,1991-03-18,931,,881-03197,24.67,,True,False,True,Shulman cleavage        
+Expense,1991-03-18,340,,393-34031,36.13,D2624,False,True,True,Meals
+Charge,1991-03-18,,DC1,,39.41,,False,False,True,Amble cyril             
+Check,1991-03-18,861,,881-03197,40.5,,True,False,True,Ito paternal            
+Check,1991-03-18,279,,393-34031,44.03,,True,True,True,Achievers nally         
+Billing,1991-03-18,,,,57.06,W9316,False,False,True,Phone consultation
+Billing,1991-03-18,,,,216.77,M7683,False,False,True,Installation
+Billing,1991-03-18,,,,351.09,H9029,False,False,True,Hardware Maintenance
+Check,1991-03-19,274,,393-34031,14.99,,False,False,True,Punster octant          
+Billing,1991-03-19,,,,15.95,W9316,False,False,True,Research Time
+Expense,1991-03-19,1005,,881-03197,16.31,M2253,True,True,True,Hardware purchase
+Billing,1991-03-19,,,,22.66,T6095,False,False,True,Misc. expenses
+Check,1991-03-19,878,,881-03197,28.14,,True,False,True,Giles dash              
+Expense,1991-03-19,326,,393-34031,33.98,M6626,True,True,True,Miscellaneous
+Billing,1991-03-19,,,,265.55,T6095,False,False,True,Initial contact
+Check,1991-03-19,453,,095-39035,309.69,,True,False,True,Office equipment
+Billing,1991-03-19,,,,678.01,M7683,False,False,True,"Fax, phone, etc."
+Billing,1991-03-19,,,,1217.42,P1800,False,False,True,Initial contact
+Expense,1991-03-20,817,,881-03197,2.81,C9151,True,True,True,Hotel expenses
+Check,1991-03-20,932,,881-03197,3.69,,True,False,True,Sampled letter          
+Withdraw,1991-03-20,,,095-39035,8.18,,False,False,False,Automatic Teller
+Withdraw,1991-03-20,,,095-39035,11.19,,False,False,False,Automatic Teller
+Check,1991-03-20,873,,881-03197,13.03,,True,False,True,Soiree intuit           
+Check,1991-03-20,862,,881-03197,13.64,,True,False,True,Kimono                  
+Check,1991-03-20,863,,881-03197,18.66,,True,False,True,Liggett curse           
+Expense,1991-03-20,312,,393-34031,50.49,L2225,True,False,True,Fax expenses
+Charge,1991-03-20,,MC2,,56.39,,False,False,True,Rhetoric grope          
+Billing,1991-03-20,,,,85.49,C5973,False,False,True,Hardware Analysis
+Billing,1991-03-20,,,,444.17,P7914,False,False,True,Phone consultation
+Billing,1991-03-20,,,,816.58,A8101,False,False,True,Phone consultation
+Billing,1991-03-21,,,,10.12,S3016,False,False,True,Initial contact
+Check,1991-03-21,911,,881-03197,25.09,,True,False,True,Woodyard lizard         
+Withdraw,1991-03-21,,,095-39035,25.6,,False,False,False,Automatic Teller
+Expense,1991-03-21,775,,881-03197,33.78,S5142,False,False,True,Software purchase
+Check,1991-03-21,868,,881-03197,35.98,,True,True,True,Adequate pile           
+Check,1991-03-21,865,,881-03197,42.67,,False,False,True,Saloon habit            
+Check,1991-03-21,901,,881-03197,48.51,,True,False,True,Silica held             
+Check,1991-03-21,928,,881-03197,48.93,,False,False,True,Brains mung             
+Billing,1991-03-21,,,,107.89,C6124,False,False,True,Software Maintenance
+Expense,1991-03-21,998,,881-03197,115.97,V0899,False,False,True,Subcontractor
+Check,1991-03-21,941,,881-03197,173.5,,True,True,True,Mallow sectors          
+Billing,1991-03-21,,,,324.7,S2821,False,False,True,Research Time
+Billing,1991-03-21,,,,344.43,G3397,False,False,True,Software Maintenance
+Check,1991-03-22,935,,881-03197,2.33,,False,False,True,Vitro halifax           
+Billing,1991-03-22,,,,19.89,S5052,False,False,True,Initial contact
+Check,1991-03-22,917,,881-03197,26.17,,True,False,True,Micah subtly            
+Expense,1991-03-22,324,,393-34031,44.65,H9029,True,True,True,Miscellaneous
+Expense,1991-03-22,320,,393-34031,55.34,T6915,True,True,True,Subcontractor
+Billing,1991-03-22,,,,189.07,C8994,False,False,True,Initial contact
+Billing,1991-03-22,,,,328.32,C6380,False,False,True,Initial contact
+Billing,1991-03-22,,,,447.75,I0123,False,False,True,Initial contact
+Billing,1991-03-22,,,,712.92,Q0440,False,False,True,Software Maintenance
+Billing,1991-03-22,,,,889.68,D0648,False,False,True,Installation
+Expense,1991-03-23,339,,393-34031,39.04,H9029,True,False,True,Disks
+Check,1991-03-23,944,,881-03197,53.1,,True,True,True,Peculate pedestal       
+Check,1991-03-23,276,,393-34031,57.78,,True,False,True,Landau wainscot         
+Check,1991-03-23,915,,881-03197,64.79,,True,False,True,Geiger a's              
+Check,1991-03-23,945,,881-03197,98.57,,True,False,True,Emitted silicate        
+Charge,1991-03-23,,DI1,,141.13,,False,False,True,Randy bustard           
+Check,1991-04-23,895,,881-03197,287.47,,False,True,False,Hotel in Detroit
+Billing,1991-03-23,,,,357.21,K1988,False,False,True,Hardware Analysis
+Billing,1991-03-23,,,,385.92,I0123,False,False,True,"Fax, phone, etc."
+Billing,1991-03-23,,,,590.11,C2404,False,False,True,Installation
+Expense,1991-03-24,335,,393-34031,5.58,G4324,False,False,True,Hardware purchase
+Check,1991-03-24,888,,881-03197,10.88,,True,False,True,Carrot withers          
+Expense,1991-03-24,1001,,881-03197,31.92,I0997,True,True,True,Gasoline
+Charge,1991-03-24,,DI1,,35.91,,False,False,True,Die chestnut            
+Check,1991-03-24,270,,393-34031,49.24,,False,True,True,Moss                    
+Expense,1991-03-24,1008,,881-03197,54.37,S5774,True,True,True,Phone calls
+Billing,1991-03-24,,,,72.62,B3615,False,False,True,System's Analysis
+Check,1991-04-11,875,,881-03197,115.14,,True,False,True,Groceries
+Billing,1991-03-24,,,,195.25,S2898,False,False,True,Hardware Maintenance
+Billing,1991-03-24,,,,214.33,C1976,False,False,True,Phone consultation
+Billing,1991-03-24,,,,589.43,M7683,False,False,True,"Fax, phone, etc."
+Billing,1991-03-24,,,,724.06,M7105,False,False,True,Programming Time
+Billing,1991-03-24,,,,796.65,M7067,False,False,True,On-site consultation
+Check,1991-03-25,921,,881-03197,7.29,,False,False,True,Inequity melcher        
+Expense,1991-03-25,776,,881-03197,21.12,L2225,False,False,True,Disks
+Expense,1991-03-25,168,,393-34031,45.58,I0123,True,True,True,Disks
+Check,1991-03-25,869,,881-03197,52.26,,False,True,True,Runty riordan           
+Expense,1991-03-25,1012,,881-03197,64.62,T5858,True,True,True,Airline ticket
+Expense,1991-03-25,327,,393-34031,80.36,P1800,False,True,True,Hotel expenses
+Check,1991-03-25,938,,881-03197,81.33,,False,False,True,Anaheim heroes          
+Expense,1991-03-25,308,,393-34031,124.52,T0926,False,False,True,Hardware purchase
+Billing,1991-03-25,,,,216.56,G3397,False,False,True,Initial contact
+Billing,1991-03-25,,,,321.65,R2905,False,False,True,Misc. expenses
+Billing,1991-03-25,,,,956.0,B4876,False,False,True,Phone consultation
+Charge,1991-03-26,,DI1,,10.76,,False,False,True,Tuesday cot             
+Billing,1991-03-26,,,,21.33,S2821,False,False,True,"Fax, phone, etc."
+Check,1991-03-26,899,,881-03197,30.72,,False,True,True,Intel diopter           
+Payment,1991-03-26,,SH1,,112.82,,False,False,True,"Gasoline, oil, filter, etc."
+Check,1991-03-26,451,,095-39035,66.76,,True,True,True,Allyn kennedy           
+Check,1991-03-26,880,,881-03197,69.85,,True,True,True,Nails trophy            
+Check,1991-03-26,907,,881-03197,76.87,,False,False,False,Cat's rhenish           
+Billing,1991-03-26,,,,79.56,R7564,False,False,True,On-site consultation
+Charge,1991-03-26,,DI1,,102.93,,False,False,False,Panel bantu             
+Billing,1991-03-26,,,,131.78,M7105,False,False,True,Programming Time
+Billing,1991-03-26,,,,199.14,W9316,False,False,True,"Fax, phone, etc."
+Billing,1991-03-26,,,,280.04,K1988,False,False,True,Software Maintenance
+Billing,1991-03-26,,,,372.79,C2404,False,False,True,Hardware Analysis
+Billing,1991-03-26,,,,475.76,G3397,False,False,True,Phone consultation
+Check,1991-03-27,269,,393-34031,12.51,,False,False,True,Showy roadside          
+Check,1991-03-27,884,,881-03197,12.9,,True,True,True,Failsafe simply         
+Expense,1991-03-27,310,,393-34031,22.25,I8476,True,True,True,Miscellaneous
+Charge,1991-03-27,,DC1,,31.61,,False,False,True,Cognate shim            
+Expense,1991-03-27,337,,393-34031,48.25,R7564,True,True,True,Subcontractor
+Charge,1991-03-27,,DI1,,87.41,,False,False,True,Destiny dunbar          
+Expense,1991-03-27,1011,,881-03197,88.41,B4876,False,True,True,Hotel expenses
+Charge,1991-03-27,,DC1,,89.61,,False,False,True,Vex tea                 
+Expense,1991-03-27,188,,393-34031,102.31,S1488,False,False,True,Software purchase
+Expense,1991-03-27,332,,393-34031,119.77,T0926,True,False,False,Software purchase
+Check,1991-03-27,940,,881-03197,171.23,,True,True,True,Failsafe simply         
+Billing,1991-03-27,,,,235.42,S4481,False,False,True,Research Time
+Billing,1991-03-27,,,,354.86,F4255,False,False,True,Software Maintenance
+Billing,1991-03-27,,,,360.11,R2905,False,False,True,"Fax, phone, etc."
+Billing,1991-03-27,,,,730.99,R7564,False,False,True,Hardware Analysis
+Expense,1991-03-28,562,,095-39035,4.24,C3137,True,False,True,Fax expenses
+Payment,1991-03-28,,,,13.25,R4698,False,False,False,Client Payment
+Deposit,1991-03-28,,,881-03197,13.25,,False,False,False,Payment from customer# R4698
+Charge,1991-03-28,,VI2,,15.93,,False,False,True,Lavatory hourglass      
+Expense,1991-03-28,376,,095-39035,17.22,I0123,True,False,True,Gasoline
+Expense,1991-03-28,1009,,881-03197,30.21,Q0440,False,True,True,Meals
+Interest,1991-03-28,,JC1,,35.43,,False,True,False,Interest Charge
+Expense,1991-03-28,777,,881-03197,38.42,M7067,False,False,True,Gasoline
+Check,1991-03-28,883,,881-03197,54.7,,False,False,True,Typhon succubus         
+Billing,1991-03-28,,,,58.58,C8994,False,False,True,System's Analysis
+Charge,1991-03-28,,VI1,,72.41,,False,False,True,Fiend addict            
+Payment,1991-03-28,,,,92.4,S4481,False,False,False,Client Payment
+Deposit,1991-03-28,,,881-03197,92.4,,False,False,False,Payment from customer# S4481
+Payment,1991-03-28,,,,115.42,F6890,False,False,False,Client Payment
+Deposit,1991-03-28,,,881-03197,115.42,,False,False,False,Payment from customer# F6890
+Expense,1991-03-28,329,,393-34031,122.64,T4710,True,False,True,Disks
+Interest,1991-03-28,,MC1,,26.67,,False,True,False,Interest Charge
+Check,1991-04-18,872,,881-03197,128.48,,True,False,True,Kyoto sandman           
+Payment,1991-03-28,,,,150.4,W8662,False,False,False,Client Payment
+Deposit,1991-03-28,,,393-34031,150.4,,False,False,False,Payment from customer# W8662
+Interest,1991-03-28,,DC1,,54.99,,False,True,False,Interest Charge
+Charge,1991-03-28,,DI1,,224.95,,False,False,True,Divert wharf            
+Billing,1991-03-28,,,,228.69,P6574,False,False,True,Research Time
+Payment,1991-03-28,,,,247.82,F4255,False,False,False,Client Payment
+Deposit,1991-03-28,,,095-39035,247.82,,False,False,False,Payment from customer# F4255
+Payment,1991-03-28,,,,258.64,T6095,False,False,False,Client Payment
+Deposit,1991-03-28,,,881-03197,258.64,,False,False,False,Payment from customer# T6095
+Payment,1991-03-28,,,,297.82,D7845,False,False,False,Client Payment
+Deposit,1991-03-28,,,393-34031,297.82,,False,False,False,Payment from customer# D7845
+Payment,1991-03-28,,,,335.39,V1833,False,False,False,Client Payment
+Deposit,1991-03-28,,,881-03197,335.39,,False,False,False,Payment from customer# V1833
+Payment,1991-03-28,,,,358.52,W2501,False,False,False,Client Payment
+Deposit,1991-03-28,,,393-34031,358.52,,False,False,False,Payment from customer# W2501
+Billing,1991-03-28,,,,394.56,M7683,False,False,True,Phone consultation
+Payment,1991-03-28,,,,548.18,G4324,False,False,False,Client Payment
+Deposit,1991-03-28,,,881-03197,548.18,,False,False,False,Payment from customer# G4324
+Payment,1991-03-28,,,,622.58,D2624,False,False,False,Client Payment
+Deposit,1991-03-28,,,881-03197,622.58,,False,False,False,Payment from customer# D2624
+Payment,1991-03-28,,,,654.56,W9316,False,False,False,Client Payment
+Deposit,1991-03-28,,,881-03197,654.56,,False,False,False,Payment from customer# W9316
+Payment,1991-03-28,,,,667.63,C5973,False,False,False,Client Payment
+Deposit,1991-03-28,,,393-34031,667.63,,False,False,False,Payment from customer# C5973
+Payment,1991-03-28,,,,692.96,Q0440,False,False,False,Client Payment
+Deposit,1991-03-28,,,881-03197,692.96,,False,False,False,Payment from customer# Q0440
+Payment,1991-03-28,,,,740.07,D0648,False,False,False,Client Payment
+Deposit,1991-03-28,,,095-39035,740.07,,False,False,False,Payment from customer# D0648
+Payment,1991-03-28,,,,785.4,E2660,False,False,False,Client Payment
+Deposit,1991-03-28,,,393-34031,785.4,,False,False,False,Payment from customer# E2660
+Payment,1991-03-28,,,,1026.27,P1800,False,False,False,Client Payment
+Deposit,1991-03-28,,,095-39035,1026.27,,False,False,False,Payment from customer# P1800
+Interest,1991-03-28,,DI1,,53.62,,False,True,False,Interest Charge
+Payment,1991-03-28,,,,1588.81,S2821,False,False,False,Client Payment
+Deposit,1991-03-28,,,095-39035,1588.81,,False,False,False,Payment from customer# S2821
+Expense,1991-03-29,314,,393-34031,2.64,V1833,True,False,True,Subcontractor
+Expense,1991-03-29,394,,095-39035,8.53,M7683,True,True,True,Meals
+Check,1991-03-29,271,,393-34031,16.26,,True,True,True,Fresh septate           
+Check,1991-03-29,902,,881-03197,22.61,,False,False,True,Rumpus araby            
+Payment,1991-03-29,,,,24.79,M8135,False,False,False,Client Payment
+Deposit,1991-03-29,,,881-03197,24.79,,False,False,False,Payment from customer# M8135
+Withdraw,1991-03-29,,,393-34031,28.91,,False,False,False,Automatic Teller
+Check,1991-03-29,876,,881-03197,42.46,,False,False,True,Ethic specie            
+Billing,1991-03-29,,,,42.71,S2821,False,False,True,On-site consultation
+Expense,1991-03-29,343,,393-34031,46.89,P6574,True,False,True,Airline ticket
+Expense,1991-03-29,315,,393-34031,49.5,K1988,True,False,True,Phone calls
+Interest,1991-03-29,,VI1,,54.31,,False,True,False,Interest Charge
+Expense,1991-03-29,321,,393-34031,55.67,M8135,True,True,True,Airline ticket
+Expense,1991-03-29,322,,393-34031,61.1,V0899,True,True,True,Subcontractor
+Charge,1991-03-29,,DI1,,67.49,,False,False,True,Boy gunther             
+Payment,1991-03-29,,,,81.5,L6622,False,False,False,Client Payment
+Deposit,1991-03-29,,,393-34031,81.5,,False,False,False,Payment from customer# L6622
+Payment,1991-03-29,,,,136.68,T5858,False,False,False,Client Payment
+Deposit,1991-03-29,,,881-03197,136.68,,False,False,False,Payment from customer# T5858
+Interest,1991-03-29,,VI2,,94.85,,False,True,False,Interest Charge
+Interest,1991-03-29,,AE1,,24.4,,False,True,False,Interest Charge
+Payment,1991-03-29,,,,242.23,L2225,False,False,False,Client Payment
+Deposit,1991-03-29,,,881-03197,242.23,,False,False,False,Payment from customer# L2225
+Billing,1991-03-29,,,,285.86,S2821,False,False,True,Misc. expenses
+Payment,1991-03-29,,,,338.83,T0284,False,False,False,Client Payment
+Deposit,1991-03-29,,,393-34031,338.83,,False,False,False,Payment from customer# T0284
+Interest,1991-03-29,,AE2,,47.75,,False,True,False,Interest Charge
+Billing,1991-03-29,,,,365.11,H9029,False,False,True,Misc. expenses
+Payment,1991-03-29,,,,377.93,P7914,False,False,False,Client Payment
+Deposit,1991-03-29,,,881-03197,377.93,,False,False,False,Payment from customer# P7914
+Payment,1991-03-29,,,,575.48,S1488,False,False,False,Client Payment
+Deposit,1991-03-29,,,881-03197,575.48,,False,False,False,Payment from customer# S1488
+Deposit,1991-03-29,,,881-03197,597.6,,False,False,False,Payment from customer# A8962
+Payment,1991-03-29,,,,608.61,I8476,False,False,False,Client Payment
+Deposit,1991-03-29,,,881-03197,608.61,,False,False,False,Payment from customer# I8476
+Payment,1991-03-29,,,,644.24,C6380,False,False,False,Client Payment
+Deposit,1991-03-29,,,095-39035,644.24,,False,False,False,Payment from customer# C6380
+Payment,1991-03-29,,,,698.82,C2404,False,False,False,Client Payment
+Deposit,1991-03-29,,,881-03197,698.82,,False,False,False,Payment from customer# C2404
+Payment,1991-03-29,,,,751.78,S5052,False,False,False,Client Payment
+Deposit,1991-03-29,,,881-03197,751.78,,False,False,False,Payment from customer# S5052
+Payment,1991-03-29,,,,792.28,R2905,False,False,False,Client Payment
+Deposit,1991-03-29,,,393-34031,792.28,,False,False,False,Payment from customer# R2905
+Payment,1991-03-29,,,,823.73,M7105,False,False,False,Client Payment
+Deposit,1991-03-29,,,393-34031,823.73,,False,False,False,Payment from customer# M7105
+Payment,1991-03-29,,,,920.46,M7683,False,False,False,Client Payment
+Deposit,1991-03-29,,,393-34031,920.46,,False,False,False,Payment from customer# M7683
+Payment,1991-03-29,,,,953.97,B3615,False,False,False,Client Payment
+Deposit,1991-03-29,,,881-03197,953.97,,False,False,False,Payment from customer# B3615
+Payment,1991-03-29,,,,1091.74,B4876,False,False,False,Client Payment
+Deposit,1991-03-29,,,393-34031,1091.74,,False,False,False,Payment from customer# B4876
+Payment,1991-03-29,,,,1796.64,R7564,False,False,False,Client Payment
+Deposit,1991-03-29,,,393-34031,1796.64,,False,False,False,Payment from customer# R7564
+Payment,1991-03-29,,,,2107.97,G3397,False,False,False,Client Payment
+Deposit,1991-03-29,,,393-34031,2107.97,,False,False,False,Payment from customer# G3397
+Payment,1991-03-30,,,,5.04,S3016,False,False,False,Client Payment
+Deposit,1991-03-30,,,881-03197,5.04,,False,False,False,Payment from customer# S3016
+Deposit,1991-03-30,,,095-39035,14.11,,False,False,False,Payment from customer# Z3522
+Interest,1991-03-30,,MC2,,57.56,,False,True,False,Interest Charge
+Payment,1991-03-30,,,,82.62,T6915,False,False,False,Client Payment
+Deposit,1991-03-30,,,393-34031,82.62,,False,False,False,Payment from customer# T6915
+Payment,1991-03-30,,,,118.21,S2898,False,False,False,Client Payment
+Deposit,1991-03-30,,,095-39035,118.21,,False,False,False,Payment from customer# S2898
+Payment,1991-03-30,,,,132.31,M6852,False,False,False,Client Payment
+Deposit,1991-03-30,,,881-03197,132.31,,False,False,False,Payment from customer# M6852
+Payment,1991-03-30,,,,147.87,C6124,False,False,False,Client Payment
+Deposit,1991-03-30,,,393-34031,147.87,,False,False,False,Payment from customer# C6124
+Payment,1991-03-30,,,,177.86,J6313,False,False,False,Client Payment
+Deposit,1991-03-30,,,881-03197,177.86,,False,False,False,Payment from customer# J6313
+Payment,1991-03-30,,,,183.14,C8326,False,False,False,Client Payment
+Deposit,1991-03-30,,,393-34031,183.14,,False,False,False,Payment from customer# C8326
+Payment,1991-03-30,,,,189.44,C1976,False,False,False,Client Payment
+Deposit,1991-03-30,,,393-34031,189.44,,False,False,False,Payment from customer# C1976
+Payment,1991-03-30,,,,209.73,P6574,False,False,False,Client Payment
+Deposit,1991-03-30,,,881-03197,209.73,,False,False,False,Payment from customer# P6574
+Payment,1991-03-30,,,,210.89,A8063,False,False,False,Client Payment
+Deposit,1991-03-30,,,393-34031,210.89,,False,False,False,Payment from customer# A8063
+Payment,1991-03-30,,,,225.05,C8994,False,False,False,Client Payment
+Deposit,1991-03-30,,,095-39035,225.05,,False,False,False,Payment from customer# C8994
+Payment,1991-03-30,,,,259.03,M3237,False,False,False,Client Payment
+Deposit,1991-03-30,,,881-03197,259.03,,False,False,False,Payment from customer# M3237
+Payment,1991-03-30,,,,272.48,A8101,False,False,False,Client Payment
+Deposit,1991-03-30,,,095-39035,272.48,,False,False,False,Payment from customer# A8101
+Billing,1991-03-30,,,,344.29,R7564,False,False,True,Misc. expenses
+Payment,1991-03-30,,,,445.16,R7784,False,False,False,Client Payment
+Deposit,1991-03-30,,,881-03197,445.16,,False,False,False,Payment from customer# R7784
+Payment,1991-03-30,,,,515.24,M7067,False,False,False,Client Payment
+Deposit,1991-03-30,,,881-03197,515.24,,False,False,False,Payment from customer# M7067
+Payment,1991-03-30,,,,704.65,C0720,False,False,False,Client Payment
+Deposit,1991-03-30,,,393-34031,704.65,,False,False,False,Payment from customer# C0720
+Payment,1991-03-30,,,,859.03,I0123,False,False,False,Client Payment
+Deposit,1991-03-30,,,095-39035,859.03,,False,False,False,Payment from customer# I0123
+Payment,1991-03-30,,,,877.99,H9029,False,False,False,Client Payment
+Deposit,1991-03-30,,,393-34031,877.99,,False,False,False,Payment from customer# H9029
+Payment,1991-03-30,,,,882.79,K1988,False,False,False,Client Payment
+Deposit,1991-03-30,,,881-03197,882.79,,False,False,False,Payment from customer# K1988
+Deposit,1991-03-30,,,881-03197,990.26,,False,False,False,Payment from customer# A1276
+Billing,1991-03-31,,,,11.22,C0720,False,False,True,Software Maintenance
+Billing,1991-03-31,,,,47.67,T6915,False,False,True,System's Analysis
+Billing,1991-03-31,,,,85.2,M7683,False,False,True,Research Time
+Billing,1991-03-31,,,,108.2,C8326,False,False,True,"Fax, phone, etc."
+Billing,1991-03-31,,,,139.69,L2225,False,False,True,Initial contact
+Billing,1991-03-31,,,,148.56,F6890,False,False,True,Software Maintenance
+Billing,1991-03-31,,,,346.64,M3237,False,False,True,Installation
+Billing,1991-03-31,,,,356.35,B4876,False,False,True,"Fax, phone, etc."
+Billing,1991-03-31,,,,589.98,E2660,False,False,True,Hardware Analysis
+Withdraw,1991-04-01,,,393-34031,12.88,,False,False,False,Automatic Teller
+Withdraw,1991-04-01,,,393-34031,14.0,,False,False,False,Automatic Teller
+Check,1991-04-01,965,,881-03197,16.74,,True,False,True,Grocery - Miscellaneous
+Charge,1991-04-01,,VI2,,37.04,,False,False,True,Eligible chuff          
+Billing,1991-04-01,,,,51.46,S1488,False,False,True,Hardware Maintenance
+Fee,1991-04-01,,AE1,,65.0,,False,False,False,
+Billing,1991-04-01,,,,142.1,F6890,False,False,True,Initial contact
+Billing,1991-04-01,,,,158.94,M7105,False,False,True,Hardware Analysis
+Billing,1991-04-01,,,,257.55,S5052,False,False,True,"Fax, phone, etc."
+Deposit,1991-04-01,,,126-16789,283.0,,False,False,True,
+Billing,1991-04-01,,,,640.87,M7683,False,False,True,Hardware Maintenance
+Billing,1991-04-01,,,,694.94,M7105,False,False,True,Installation
+Deposit,1991-04-01,,,379-28583,726.0,,False,False,True,
+Billing,1991-04-01,,,,834.56,S4481,False,False,True,Programming Time
+Deposit,1991-04-01,,,096-18493,913.0,,False,False,True,
+Deposit,1991-04-01,,,090-76619,956.0,,False,False,False,
+Billing,1991-04-02,,,,4.09,W2501,False,False,True,Programming Time
+Expense,1991-04-02,351,,095-39035,41.94,M6852,False,True,False,Phone calls
+Billing,1991-04-02,,,,46.0,R7564,False,False,True,Misc. expenses
+Expense,1991-04-02,778,,881-03197,50.51,P7724,False,True,True,Subcontractor
+Billing,1991-04-02,,,,79.62,R7564,False,False,True,Phone consultation
+Billing,1991-04-02,,,,146.87,I8476,False,False,True,Software Maintenance
+Billing,1991-04-02,,,,166.62,G3397,False,False,True,Hardware Analysis
+Payment,1991-04-02,417,VI2,095-39035,185.6,,False,False,True,Payment on a credit card
+Deposit,1991-04-02,,,070-92592,261.0,,False,False,True,
+Billing,1991-04-02,,,,320.01,W9316,False,False,True,Software Maintenance
+Deposit,1991-04-02,,,921-32161,321.0,,False,False,True,
+Deposit,1991-04-02,,,020-65025,917.0,,False,False,True,
+Fee,1991-04-03,,,095-39035,15.0,,False,False,False,
+Billing,1991-04-03,,,,53.46,M2253,False,False,True,Misc. expenses
+Check,1991-04-03,967,,881-03197,59.45,,False,True,True,Electric bill
+Charge,1991-04-03,,DC1,,64.81,,False,False,True,Leadsman lahore         
+Billing,1991-04-03,,,,172.02,R2905,False,False,True,Hardware Maintenance
+Expense,1991-04-03,566,,095-39035,185.24,E0916,False,False,False,Subcontractor
+Billing,1991-04-03,,,,300.23,T6915,False,False,True,Research Time
+Billing,1991-04-03,,,,405.04,I0123,False,False,True,Misc. expenses
+Deposit,1991-04-03,,,393-34031,2129.94,,False,False,False,
+Deposit,1991-04-03,,,095-39035,2390.23,,False,False,True,
+Deposit,1991-04-03,,,881-03197,4541.79,,False,False,False,
+Check,1991-04-04,979,,881-03197,4.35,,False,False,False,Grocery - Miscellaneous
+Fee,1991-04-04,,,393-34031,12.0,,False,False,False,
+Check,1991-04-04,956,,881-03197,28.73,,True,False,True,Auto bushel             
+Billing,1991-04-04,,,,30.09,B4876,False,False,True,On-site consultation
+Check,1991-04-04,963,,881-03197,33.47,,False,False,True,Gas bill
+Billing,1991-04-04,,,,67.0,I0123,False,False,True,"Fax, phone, etc."
+Payment,1991-04-04,199,VI1,393-34031,74.86,,False,False,True,Payment on a credit card
+Billing,1991-04-04,,,,88.01,C1976,False,False,True,Installation
+Billing,1991-04-04,,,,131.11,L2225,False,False,True,"Fax, phone, etc."
+Billing,1991-04-04,,,,173.46,S5052,False,False,True,Misc. expenses
+Billing,1991-04-04,,,,255.87,P1800,False,False,True,System's Analysis
+Billing,1991-04-04,,,,592.08,H9029,False,False,True,Phone consultation
+Billing,1991-04-04,,,,831.82,P1800,False,False,True,"Fax, phone, etc."
+Expense,1991-04-05,1013,,881-03197,11.46,S4019,False,False,True,Phone calls
+Billing,1991-04-05,,,,47.06,M3237,False,False,True,On-site consultation
+Check,1991-04-05,951,,881-03197,157.07,,False,True,False,Clothes
+Billing,1991-04-05,,,,335.09,M7683,False,False,True,System's Analysis
+Billing,1991-04-05,,,,382.0,M7105,False,False,True,Installation
+Billing,1991-04-05,,,,452.24,M7067,False,False,True,Programming Time
+Check,1991-04-06,971,,881-03197,1.15,,False,False,True,Grocery - Miscellaneous
+Check,1991-04-06,966,,881-03197,11.96,,True,True,True,Grocery - Miscellaneous
+Charge,1991-04-06,,VI2,,13.49,,False,False,True,Tribal piety            
+Charge,1991-04-06,,VI2,,14.05,,False,False,True,Runty riordan           
+Billing,1991-04-06,,,,30.55,B5620,False,False,True,Software Maintenance
+Billing,1991-04-06,,,,43.06,C5973,False,False,True,"Fax, phone, etc."
+Check,1991-04-06,454,,095-39035,60.08,,True,False,True,Crowley amino           
+Expense,1991-04-06,348,,095-39035,87.27,T3307,True,True,True,Hotel expenses
+Billing,1991-04-06,,,,322.39,D2624,False,False,True,Misc. expenses
+Billing,1991-04-06,,,,654.48,M3237,False,False,True,Software Maintenance
+Check,1991-04-07,952,,881-03197,3.09,,False,True,True,Grocery - Miscellaneous
+Check,1991-04-07,975,,881-03197,4.54,,True,False,True,Grocery - Miscellaneous
+Check,1991-04-07,968,,881-03197,11.06,,False,True,True,Grocery - Miscellaneous
+Expense,1991-04-07,797,,881-03197,53.3,L8776,True,True,True,Airline ticket
+Billing,1991-04-07,,,,70.86,M7683,False,False,True,"Fax, phone, etc."
+Check,1991-04-23,973,,881-03197,141.19,,False,False,True,Groceries
+Expense,1991-04-07,350,,095-39035,216.63,A8063,False,True,True,Airline ticket
+Billing,1991-04-07,,,,225.07,M7105,False,False,True,Research Time
+Billing,1991-04-07,,,,262.97,V1833,False,False,True,Installation
+Check,1991-04-08,960,,881-03197,5.95,,True,False,True,Organic meridian        
+Billing,1991-04-08,,,,21.86,S5052,False,False,True,Misc. expenses
+Billing,1991-04-08,,,,24.76,T0284,False,False,True,Programming Time
+Expense,1991-04-08,809,,881-03197,33.86,M8135,True,True,True,Airline ticket
+Billing,1991-04-08,,,,43.04,C6124,False,False,True,Hardware Maintenance
+Billing,1991-04-08,,,,66.53,W9316,False,False,True,Software Maintenance
+Expense,1991-04-08,163,,393-34031,89.21,M0970,False,True,True,Gasoline
+Charge,1991-04-08,,MC1,,89.38,,False,False,True,Absentee donkey         
+Billing,1991-04-08,,,,117.94,B4876,False,False,True,Hardware Analysis
+Payment,1991-04-08,408,DC1,095-39035,132.35,,False,False,True,Payment on a credit card
+Check,1991-04-08,950,,881-03197,187.48,,False,True,True,Clothes
+Billing,1991-04-08,,,,248.22,S2898,False,False,True,Software Maintenance
+Billing,1991-04-08,,,,248.27,V1833,False,False,True,Installation
+Expense,1991-04-09,377,,095-39035,4.94,P1847,False,False,True,Airline ticket
+Check,1991-04-09,461,,095-39035,15.87,,True,False,True,Irony neff              
+Billing,1991-04-09,,,,148.42,E2660,False,False,True,Hardware Analysis
+Billing,1991-04-09,,,,223.9,B3615,False,False,True,Misc. expenses
+Billing,1991-04-09,,,,268.69,W9316,False,False,True,Hardware Maintenance
+Billing,1991-04-09,,,,273.76,S5052,False,False,True,Initial contact
+Billing,1991-04-09,,,,363.35,M7105,False,False,True,Initial contact
+Check,1991-04-10,972,,881-03197,25.6,,False,True,True,Euler roil              
+Expense,1991-04-10,349,,095-39035,89.36,M7067,True,False,True,Hardware purchase
+Check,1991-04-10,961,,881-03197,90.73,,False,False,True,Tuesday cot             
+Billing,1991-04-10,,,,151.53,B5620,False,False,True,"Fax, phone, etc."
+Billing,1991-04-10,,,,174.53,P7724,False,False,True,Programming Time
+Payment,1991-04-10,828,DI1,881-03197,225.72,,False,False,True,Payment on a credit card
+Billing,1991-04-10,,,,472.39,D2624,False,False,True,System's Analysis
+Billing,1991-04-10,,,,550.83,C3137,False,False,True,"Fax, phone, etc."
+Charge,1991-04-11,,VI2,,34.0,,False,False,True,Elapsed piggy           
+Expense,1991-04-11,162,,393-34031,55.48,T0284,False,True,True,Gasoline
+Payment,1991-04-11,420,AE1,095-39035,61.62,,False,False,True,Payment on a credit card
+Check,1991-04-11,959,,881-03197,91.78,,False,False,True,Marlin creation         
+Billing,1991-04-11,,,,323.4,W9316,False,False,True,Phone consultation
+Billing,1991-04-11,,,,567.75,P6890,False,False,True,Research Time
+Billing,1991-04-12,,,,11.87,C0720,False,False,True,Programming Time
+Check,1991-04-12,974,,881-03197,24.13,,True,False,True,Gifford answer          
+Billing,1991-04-12,,,,52.97,B4876,False,False,True,Hardware Maintenance
+Expense,1991-04-12,352,,393-34031,139.06,R7564,False,False,True,Meals
+Expense,1991-04-12,803,,881-03197,156.63,S5142,False,True,True,Fax expenses
+Billing,1991-04-12,,,,185.88,I0123,False,False,True,Phone consultation
+Expense,1991-04-12,148,,393-34031,255.3,A8101,False,False,True,Meals
+Billing,1991-04-12,,,,284.29,A8101,False,False,True,Hardware Analysis
+Billing,1991-04-12,,,,577.64,C6124,False,False,True,"Fax, phone, etc."
+Payment,1991-04-12,826,MC1,881-03197,191.29,,False,False,True,Payment on a credit card
+Expense,1991-04-13,176,,393-34031,4.68,A8962,False,False,True,Subcontractor
+Expense,1991-04-13,358,,393-34031,5.36,W9316,True,False,False,Software purchase
+Check,1991-04-13,954,,881-03197,11.64,,False,False,True,Camera henry            
+Billing,1991-04-13,,,,70.01,M8135,False,False,True,Software Maintenance
+Expense,1991-04-13,179,,393-34031,84.96,T4710,False,True,True,Miscellaneous
+Charge,1991-04-13,,MC1,,88.81,,False,False,True,Classic forum           
+Check,1991-04-30,969,,881-03197,104.02,,False,False,True,Groceries
+Billing,1991-04-13,,,,300.81,R7564,False,False,True,System's Analysis
+Payment,1991-04-13,831,MC2,881-03197,407.53,,False,False,True,Payment on a credit card
+Expense,1991-04-14,356,,393-34031,7.63,S5052,False,False,True,Airline ticket
+Expense,1991-04-14,795,,881-03197,36.32,E0916,True,True,True,Subcontractor
+Expense,1991-04-14,137,,393-34031,57.12,T6095,False,True,True,Subcontractor
+Charge,1991-04-14,,VI2,,189.86,,False,False,True,Saloon habit            
+Billing,1991-04-14,,,,350.68,C1512,False,False,True,Research Time
+Check,1991-04-15,456,,095-39035,7.11,,False,True,True,Suit bead corvus        
+Charge,1991-04-15,,VI2,,11.84,,False,False,True,Gibbons already         
+Check,1991-04-15,970,,881-03197,16.97,,False,False,True,Saguaro marque          
+Expense,1991-04-15,564,,095-39035,41.98,F6890,False,False,True,Miscellaneous
+Check,1991-04-15,964,,881-03197,43.9,,False,False,True,Cargill baleen          
+Expense,1991-04-15,781,,881-03197,55.25,I0997,False,True,True,Disks
+Expense,1991-04-15,354,,393-34031,61.96,T5858,True,False,False,Phone calls
+Billing,1991-04-15,,,,95.69,B4876,False,False,True,Phone consultation
+Billing,1991-04-15,,,,199.0,R2905,False,False,True,Hardware Analysis
+Billing,1991-04-15,,,,210.76,P1800,False,False,True,Software Maintenance
+Billing,1991-04-15,,,,532.54,M8135,False,False,True,"Fax, phone, etc."
+Billing,1991-04-16,,,,34.81,T3307,False,False,True,Hardware Analysis
+Charge,1991-04-16,,VI2,,55.98,,False,False,True,Confocal boon           
+Expense,1991-04-16,149,,393-34031,68.06,P7914,False,True,True,Miscellaneous
+Expense,1991-04-16,183,,393-34031,82.61,M0970,False,True,True,Miscellaneous
+Billing,1991-04-16,,,,226.33,S5052,False,False,True,"Fax, phone, etc."
+Billing,1991-04-16,,,,415.12,S1488,False,False,True,Misc. expenses
+Billing,1991-04-16,,,,496.53,V1833,False,False,True,Phone consultation
+Billing,1991-04-16,,,,1075.24,H9029,False,False,True,On-site consultation
+Check,1991-04-17,459,,095-39035,10.29,,False,False,True,Grizzle sensor          
+Check,1991-04-17,962,,881-03197,13.74,,False,False,False,Punster octant          
+Charge,1991-04-17,,AE2,,34.35,,False,False,True,Skimpy ampex            
+Billing,1991-04-17,,,,40.99,H9029,False,False,True,Misc. expenses
+Expense,1991-04-17,780,,881-03197,61.48,C1976,True,False,True,Meals
+Expense,1991-04-17,349,,393-34031,79.71,E9737,False,False,True,Disks
+Billing,1991-04-17,,,,87.51,M0970,False,False,True,Hardware Maintenance
+Billing,1991-04-17,,,,271.05,R2905,False,False,True,System's Analysis
+Billing,1991-04-17,,,,323.61,F6890,False,False,True,System's Analysis
+Billing,1991-04-17,,,,384.58,M7105,False,False,True,Initial contact
+Billing,1991-04-17,,,,480.92,E9737,False,False,True,Research Time
+Billing,1991-04-17,,,,668.6,C8326,False,False,True,Research Time
+Billing,1991-04-17,,,,702.54,M7105,False,False,True,Programming Time
+Billing,1991-04-17,,,,1035.42,B4876,False,False,True,On-site consultation
+Check,1991-04-18,949,,881-03197,12.59,,False,False,True,Fast dumpty             
+Expense,1991-04-18,796,,881-03197,24.78,C5973,True,True,True,Software purchase
+Expense,1991-04-18,779,,881-03197,25.68,A8063,False,False,True,Hotel expenses
+Check,1991-04-18,955,,881-03197,26.94,,True,False,True,Bogota apple            
+Check,1991-04-18,462,,095-39035,27.47,,True,True,True,Stairway prayer epic    
+Billing,1991-04-18,,,,50.58,L2225,False,False,True,Misc. expenses
+Check,1991-04-18,457,,095-39035,65.21,,False,True,True,Euler roil              
+Expense,1991-04-18,804,,881-03197,106.31,R7564,True,True,True,Gasoline
+Expense,1991-04-18,346,,095-39035,162.92,P6890,False,False,True,Hotel expenses
+Billing,1991-04-18,,,,217.28,C0720,False,False,True,Misc. expenses
+Billing,1991-04-18,,,,228.98,H9029,False,False,True,Software Maintenance
+Billing,1991-04-18,,,,303.74,M7683,False,False,True,Hardware Analysis
+Billing,1991-04-18,,,,514.61,W2501,False,False,True,Misc. expenses
+Billing,1991-04-18,,,,568.93,M7683,False,False,True,Research Time
+Billing,1991-04-18,,,,605.16,M8135,False,False,True,Software Maintenance
+Billing,1991-04-19,,,,3.45,R2905,False,False,True,Software Maintenance
+Check,1991-04-19,948,,881-03197,15.04,,False,False,True,Merkin seasoning        
+Billing,1991-04-19,,,,36.59,B3615,False,False,True,Installation
+Charge,1991-04-19,,VI2,,60.81,,False,False,True,Fancy stylites          
+Billing,1991-04-19,,,,228.59,T6915,False,False,True,"Fax, phone, etc."
+Billing,1991-04-19,,,,260.18,M7683,False,False,True,Programming Time
+Billing,1991-04-19,,,,419.07,U1337,False,False,True,Hardware Analysis
+Billing,1991-04-19,,,,916.66,L2225,False,False,True,Research Time
+Withdraw,1991-04-20,,,393-34031,7.82,,False,False,False,Automatic Teller
+Billing,1991-04-20,,,,13.55,I0123,False,False,True,Misc. expenses
+Billing,1991-04-20,,,,14.1,R7564,False,False,True,Software Maintenance
+Charge,1991-04-20,,VI2,,139.56,,False,False,True,Mattock                 
+Billing,1991-04-20,,,,256.77,C8994,False,False,True,Phone consultation
+Expense,1991-04-20,372,,095-39035,270.09,M8135,False,False,True,Disks
+Billing,1991-04-20,,,,375.56,M7105,False,False,True,System's Analysis
+Billing,1991-04-20,,,,490.1,J6313,False,False,True,Hardware Maintenance
+Billing,1991-04-20,,,,657.03,J6313,False,False,True,Hardware Analysis
+Billing,1991-04-20,,,,1177.94,M2235,False,False,True,Phone consultation
+Charge,1991-04-21,,AE2,,12.94,,False,False,True,Woodyard lizard         
+Billing,1991-04-21,,,,23.24,M3237,False,False,True,Research Time
+Charge,1991-04-21,,VI2,,48.28,,False,False,False,Saguaro marque          
+Expense,1991-04-21,331,,095-39035,59.07,S5052,False,True,True,Meals
+Billing,1991-04-21,,,,111.85,M7683,False,False,True,Hardware Maintenance
+Billing,1991-04-21,,,,131.9,V0899,False,False,True,On-site consultation
+Billing,1991-04-21,,,,273.99,L6622,False,False,True,Initial contact
+Check,1991-04-22,978,,881-03197,23.71,,False,False,True,Sequitur burley         
+Charge,1991-04-22,,VI1,,25.37,,False,False,True,Rubbish piraeus         
+Check,1991-04-22,958,,881-03197,49.39,,False,False,True,Camera henry            
+Billing,1991-04-22,,,,160.15,S2821,False,False,True,Initial contact
+Charge,1991-04-22,,JC1,,168.05,,False,False,True,Items for the house
+Billing,1991-04-22,,,,211.61,S2821,False,False,True,Programming Time
+Billing,1991-04-22,,,,889.18,M3237,False,False,True,"Fax, phone, etc."
+Billing,1991-04-23,,,,3.34,C2404,False,False,True,Misc. expenses
+Charge,1991-04-23,,AE2,,32.84,,False,False,False,Elite poseur            
+Expense,1991-04-23,180,,393-34031,41.07,C6124,False,False,True,Airline ticket
+Billing,1991-04-23,,,,70.19,P1800,False,False,True,Programming Time
+Check,1991-04-23,282,,393-34031,93.2,,True,False,True,Cognate shim            
+Billing,1991-04-23,,,,146.4,T3307,False,False,True,Phone consultation
+Billing,1991-04-23,,,,331.89,S2898,False,False,True,Misc. expenses
+Billing,1991-04-23,,,,394.07,M7683,False,False,True,Hardware Analysis
+Billing,1991-04-23,,,,489.0,E2660,False,False,True,"Fax, phone, etc."
+Withdraw,1991-04-24,,,393-34031,69.08,,False,False,False,Automatic Teller
+Charge,1991-04-24,,MC2,,116.67,,False,False,True,Pressed mobil           
+Billing,1991-04-24,,,,213.04,C6380,False,False,True,Initial contact
+Billing,1991-04-24,,,,218.38,T3307,False,False,True,Hardware Analysis
+Check,1991-04-25,458,,095-39035,15.56,,True,True,True,Handhold souvenir       
+Expense,1991-04-25,147,,393-34031,18.44,C1976,False,True,True,Miscellaneous
+Expense,1991-04-25,350,,393-34031,24.77,T4710,False,True,True,Airline ticket
+Billing,1991-04-25,,,,57.8,S4019,False,False,True,Initial contact
+Check,1991-04-25,980,,881-03197,62.42,,False,False,True,Waste rufous            
+Check,1991-04-25,981,,881-03197,64.41,,False,True,True,Magnesia jag            
+Expense,1991-04-25,368,,095-39035,78.45,M2235,True,False,True,Gasoline
+Expense,1991-04-25,161,,393-34031,93.5,E2660,False,True,True,Disks
+Billing,1991-04-25,,,,261.38,T6915,False,False,True,Phone consultation
+Billing,1991-04-25,,,,303.43,B3615,False,False,True,Hardware Maintenance
+Billing,1991-04-25,,,,357.37,S2821,False,False,True,Phone consultation
+Billing,1991-04-25,,,,382.23,I0123,False,False,True,Misc. expenses
+Billing,1991-04-25,,,,466.78,M6626,False,False,True,Phone consultation
+Billing,1991-04-25,,,,510.6,L2225,False,False,True,Hardware Analysis
+Billing,1991-04-25,,,,632.04,C6380,False,False,True,Research Time
+Billing,1991-04-25,,,,1188.43,I0123,False,False,True,Phone consultation
+Check,1991-04-26,977,,881-03197,9.31,,False,False,True,Presto formica          
+Charge,1991-04-26,,AE2,,10.14,,False,False,True,Fiasco pratt            
+Billing,1991-04-26,,,,22.07,V1833,False,False,True,Research Time
+Expense,1991-04-26,565,,095-39035,27.14,S5052,True,True,True,Hotel expenses
+Expense,1991-04-26,348,,393-34031,34.73,B3615,True,False,True,Meals
+Charge,1991-04-26,,AE2,,36.31,,False,False,True,Liggett curse           
+Check,1991-04-26,460,,095-39035,62.18,,True,False,True,Windmill offering       
+Billing,1991-04-26,,,,125.13,R7564,False,False,True,Research Time
+Expense,1991-04-26,347,,095-39035,148.06,C9151,False,True,True,Fax expenses
+Billing,1991-04-26,,,,196.02,W9316,False,False,True,Research Time
+Billing,1991-04-26,,,,247.52,C1512,False,False,True,Initial contact
+Expense,1991-04-26,355,,393-34031,251.7,J2627,False,True,True,Disks
+Billing,1991-04-26,,,,261.13,R7564,False,False,True,Misc. expenses
+Check,1991-04-27,455,,095-39035,10.15,,False,False,True,Tenth prints            
+Charge,1991-04-27,,VI2,,11.97,,False,False,True,Micah subtly            
+Billing,1991-04-27,,,,38.45,B4876,False,False,True,"Fax, phone, etc."
+Expense,1991-04-27,351,,393-34031,42.45,W1113,False,True,True,Phone calls
+Check,1991-04-27,463,,095-39035,46.16,,False,False,True,Arcane pamphlet         
+Expense,1991-04-27,810,,881-03197,68.52,P1847,False,True,True,Airline ticket
+Expense,1991-04-27,357,,393-34031,94.38,V1833,False,False,True,Meals
+Billing,1991-04-27,,,,254.91,P7724,False,False,True,Misc. expenses
+Billing,1991-04-27,,,,402.9,C6380,False,False,True,On-site consultation
+Billing,1991-04-27,,,,929.15,C1512,False,False,True,Programming Time
+Check,1991-04-28,957,,881-03197,6.98,,False,False,True,Spoke sulky             
+Expense,1991-04-28,352,,095-39035,9.47,R7784,False,False,True,Meals
+Expense,1991-04-28,1014,,881-03197,44.07,W9316,False,False,True,Fax expenses
+Billing,1991-04-28,,,,58.29,S2821,False,False,True,System's Analysis
+Billing,1991-04-28,,,,106.77,M7105,False,False,True,Programming Time
+Interest,1991-04-28,,VI1,,41.53,,False,True,False,Interest Charge
+Billing,1991-04-28,,,,145.66,M7105,False,False,True,Programming Time
+Payment,1991-04-28,,,,152.16,B5620,False,False,False,Client Payment
+Deposit,1991-04-28,,,095-39035,152.16,,False,False,False,Payment from customer# B5620
+Billing,1991-04-28,,,,170.01,B4876,False,False,True,Installation
+Billing,1991-04-28,,,,211.3,P1847,False,False,True,On-site consultation
+Interest,1991-04-28,,MC2,,51.99,,False,True,False,Interest Charge
+Payment,1991-04-28,,,,256.99,U1337,False,False,False,Client Payment
+Deposit,1991-04-28,,,881-03197,256.99,,False,False,False,Payment from customer# U1337
+Interest,1991-04-28,,MC1,,83.05,,False,True,False,Interest Charge
+Payment,1991-04-28,,,,407.84,D2624,False,False,False,Client Payment
+Deposit,1991-04-28,,,393-34031,407.84,,False,False,False,Payment from customer# D2624
+Payment,1991-04-28,,,,447.56,S2821,False,False,False,Client Payment
+Deposit,1991-04-28,,,095-39035,447.56,,False,False,False,Payment from customer# S2821
+Payment,1991-04-28,,,,512.22,B3615,False,False,False,Client Payment
+Deposit,1991-04-28,,,393-34031,512.22,,False,False,False,Payment from customer# B3615
+Billing,1991-04-28,,,,513.47,S5052,False,False,True,Programming Time
+Payment,1991-04-28,,,,650.34,C1512,False,False,False,Client Payment
+Deposit,1991-04-28,,,881-03197,650.34,,False,False,False,Payment from customer# C1512
+Payment,1991-04-28,,,,739.86,M2235,False,False,False,Client Payment
+Deposit,1991-04-28,,,881-03197,739.86,,False,False,False,Payment from customer# M2235
+Payment,1991-04-28,,,,961.25,R2905,False,False,False,Client Payment
+Deposit,1991-04-28,,,881-03197,961.25,,False,False,False,Payment from customer# R2905
+Payment,1991-04-28,,,,1101.57,W9316,False,False,False,Client Payment
+Deposit,1991-04-28,,,881-03197,1101.57,,False,False,False,Payment from customer# W9316
+Billing,1991-04-28,,,,1162.45,E0916,False,False,True,Initial contact
+Payment,1991-04-28,,,,3085.16,M7105,False,False,False,Client Payment
+Deposit,1991-04-28,,,393-34031,3085.16,,False,False,False,Payment from customer# M7105
+Deposit,1991-04-29,,,095-39035,6.31,,False,False,False,Payment from customer# Z3522
+Payment,1991-04-29,,,,7.54,T0284,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,7.54,,False,False,False,Payment from customer# T0284
+Check,1991-04-29,976,,881-03197,10.11,,False,True,True,Ethane turbofan         
+Billing,1991-04-29,,,,13.8,W9316,False,False,True,Software Maintenance
+Interest,1991-04-29,,AE1,,24.05,,False,True,False,Interest Charge
+Withdraw,1991-04-29,,,393-34031,25.48,,False,False,False,Automatic Teller
+Expense,1991-04-29,136,,393-34031,26.09,G4324,False,True,True,Hardware purchase
+Billing,1991-04-29,,,,28.39,M8135,False,False,True,Initial contact
+Payment,1991-04-29,,,,30.38,C5973,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,30.38,,False,False,False,Payment from customer# C5973
+Expense,1991-04-29,353,,393-34031,32.25,M3237,False,False,True,Miscellaneous
+Interest,1991-04-29,,DI1,,32.9,,False,True,False,Interest Charge
+Payment,1991-04-29,,,,57.54,S4019,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,57.54,,False,False,False,Payment from customer# S4019
+Check,1991-04-29,464,,095-39035,58.92,,False,False,True,Melamine stephens       
+Expense,1991-04-29,367,,095-39035,73.36,M7105,False,False,True,Phone calls
+Payment,1991-04-29,,,,87.74,V0899,False,False,False,Client Payment
+Deposit,1991-04-29,,,095-39035,87.74,,False,False,False,Payment from customer# V0899
+Payment,1991-04-29,,,,90.75,I8476,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,90.75,,False,False,False,Payment from customer# I8476
+Billing,1991-04-29,,,,92.44,L6622,False,False,True,Installation
+Payment,1991-04-29,,,,105.65,G3397,False,False,False,Client Payment
+Deposit,1991-04-29,,,095-39035,105.65,,False,False,False,Payment from customer# G3397
+Payment,1991-04-29,,,,118.97,C0720,False,False,False,Client Payment
+Deposit,1991-04-29,,,393-34031,118.97,,False,False,False,Payment from customer# C0720
+Check,1991-04-29,953,,881-03197,150.93,,False,True,True,Randy bustard           
+Payment,1991-04-29,,,,205.07,C8994,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,205.07,,False,False,False,Payment from customer# C8994
+Billing,1991-04-29,,,,207.72,M2253,False,False,True,Installation
+Payment,1991-04-29,,,,215.3,F6890,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,215.3,,False,False,False,Payment from customer# F6890
+Payment,1991-04-29,,,,223.45,C8326,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,223.45,,False,False,False,Payment from customer# C8326
+Payment,1991-04-29,,,,258.06,M2253,False,False,False,Client Payment
+Deposit,1991-04-29,,,095-39035,258.06,,False,False,False,Payment from customer# M2253
+Payment,1991-04-29,,,,306.28,S4481,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,306.28,,False,False,False,Payment from customer# S4481
+Payment,1991-04-29,,,,354.68,J6313,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,354.68,,False,False,False,Payment from customer# J6313
+Payment,1991-04-29,,,,358.42,S1488,False,False,False,Client Payment
+Deposit,1991-04-29,,,095-39035,358.42,,False,False,False,Payment from customer# S1488
+Payment,1991-04-29,,,,359.8,T3307,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,359.8,,False,False,False,Payment from customer# T3307
+Payment,1991-04-29,,,,465.93,V1833,False,False,False,Client Payment
+Deposit,1991-04-29,,,393-34031,465.93,,False,False,False,Payment from customer# V1833
+Payment,1991-04-29,,,,529.85,C6124,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,529.85,,False,False,False,Payment from customer# C6124
+Payment,1991-04-29,,,,684.28,T6915,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,684.28,,False,False,False,Payment from customer# T6915
+Payment,1991-04-29,,,,720.92,R7564,False,False,False,Client Payment
+Deposit,1991-04-29,,,393-34031,720.92,,False,False,False,Payment from customer# R7564
+Billing,1991-04-29,,,,799.8,M7683,False,False,True,Initial contact
+Deposit,1991-04-29,,,095-39035,951.83,,False,False,False,Payment from customer# A8962
+Payment,1991-04-29,,,,1021.11,C6380,False,False,False,Client Payment
+Deposit,1991-04-29,,,095-39035,1021.11,,False,False,False,Payment from customer# C6380
+Payment,1991-04-29,,,,1213.74,M8135,False,False,False,Client Payment
+Deposit,1991-04-29,,,095-39035,1213.74,,False,False,False,Payment from customer# M8135
+Payment,1991-04-29,,,,1240.23,P1800,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,1240.23,,False,False,False,Payment from customer# P1800
+Payment,1991-04-29,,,,1579.47,L2225,False,False,False,Client Payment
+Deposit,1991-04-29,,,881-03197,1579.47,,False,False,False,Payment from customer# L2225
+Payment,1991-04-30,,,,2.56,C2404,False,False,False,Client Payment
+Deposit,1991-04-30,,,095-39035,2.56,,False,False,False,Payment from customer# C2404
+Payment,1991-04-30,,,,21.34,M6852,False,False,False,Client Payment
+Deposit,1991-04-30,,,393-34031,21.34,,False,False,False,Payment from customer# M6852
+Payment,1991-04-30,,,,46.27,C1976,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,46.27,,False,False,False,Payment from customer# C1976
+Billing,1991-04-30,,,,50.76,S2821,False,False,True,"Fax, phone, etc."
+Billing,1991-04-30,,,,51.53,M6852,False,False,True,Initial contact
+Payment,1991-04-30,,,,58.51,M0970,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,58.51,,False,False,False,Payment from customer# M0970
+Interest,1991-04-30,,DC1,,68.51,,False,True,False,Interest Charge
+Payment,1991-04-30,,,,78.03,A8063,False,False,False,Client Payment
+Deposit,1991-04-30,,,393-34031,78.03,,False,False,False,Payment from customer# A8063
+Billing,1991-04-30,,,,108.98,C8994,False,False,True,Phone consultation
+Payment,1991-04-30,,,,145.6,E9737,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,145.6,,False,False,False,Payment from customer# E9737
+Payment,1991-04-30,,,,157.32,P7724,False,False,False,Client Payment
+Deposit,1991-04-30,,,393-34031,157.32,,False,False,False,Payment from customer# P7724
+Interest,1991-04-30,,JC1,,71.55,,False,True,False,Interest Charge
+Interest,1991-04-30,,AE2,,81.96,,False,True,False,Interest Charge
+Payment,1991-04-30,,,,184.1,A8101,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,184.1,,False,False,False,Payment from customer# A8101
+Payment,1991-04-30,,,,203.06,P1847,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,203.06,,False,False,False,Payment from customer# P1847
+Billing,1991-04-30,,,,213.22,M3237,False,False,True,Installation
+Payment,1991-04-30,,,,214.98,M6626,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,214.98,,False,False,False,Payment from customer# M6626
+Payment,1991-04-30,,,,223.31,C3137,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,223.31,,False,False,False,Payment from customer# C3137
+Payment,1991-04-30,,,,249.85,S2898,False,False,False,Client Payment
+Deposit,1991-04-30,,,393-34031,249.85,,False,False,False,Payment from customer# S2898
+Payment,1991-04-30,,,,266.23,L6622,False,False,False,Client Payment
+Deposit,1991-04-30,,,393-34031,266.23,,False,False,False,Payment from customer# L6622
+Payment,1991-04-30,,,,321.72,W2501,False,False,False,Client Payment
+Deposit,1991-04-30,,,095-39035,321.72,,False,False,False,Payment from customer# W2501
+Payment,1991-04-30,,,,415.5,M7067,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,415.5,,False,False,False,Payment from customer# M7067
+Payment,1991-04-30,,,,477.77,P6890,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,477.77,,False,False,False,Payment from customer# P6890
+Payment,1991-04-30,,,,567.09,B4876,False,False,False,Client Payment
+Deposit,1991-04-30,,,095-39035,567.09,,False,False,False,Payment from customer# B4876
+Payment,1991-04-30,,,,600.24,E2660,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,600.24,,False,False,False,Payment from customer# E2660
+Interest,1991-04-30,,VI2,,50.78,,False,True,False,Interest Charge
+Payment,1991-04-30,,,,797.04,I0123,False,False,False,Client Payment
+Deposit,1991-04-30,,,393-34031,797.04,,False,False,False,Payment from customer# I0123
+Payment,1991-04-30,,,,845.79,S5052,False,False,False,Client Payment
+Deposit,1991-04-30,,,095-39035,845.79,,False,False,False,Payment from customer# S5052
+Billing,1991-04-30,,,,1004.84,R2905,False,False,True,Research Time
+Payment,1991-04-30,,,,1091.86,E0916,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,1091.86,,False,False,False,Payment from customer# E0916
+Payment,1991-04-30,,,,1446.5,H9029,False,False,False,Client Payment
+Deposit,1991-04-30,,,095-39035,1446.5,,False,False,False,Payment from customer# H9029
+Payment,1991-04-30,,,,1814.96,M3237,False,False,False,Client Payment
+Deposit,1991-04-30,,,881-03197,1814.96,,False,False,False,Payment from customer# M3237
+Payment,1991-04-30,,,,2422.91,M7683,False,False,False,Client Payment
+Deposit,1991-04-30,,,393-34031,2422.91,,False,False,False,Payment from customer# M7683
+Expense,1991-05-01,375,,393-34031,7.01,J6313,False,True,True,Subcontractor
+Check,1991-05-01,288,,393-34031,10.29,,False,False,True,Grocery - Miscellaneous
+Charge,1991-05-01,,MC2,,15.04,,False,False,True,Lars shamble            
+Charge,1991-05-01,,MC1,,37.36,,False,False,True,Still cadmium           
+Billing,1991-05-01,,,,38.5,P7724,False,False,True,Research Time
+Expense,1991-05-01,373,,393-34031,42.82,T0926,False,True,True,Hardware purchase
+Expense,1991-05-01,139,,393-34031,94.37,V1833,False,False,True,Disks
+Deposit,1991-05-01,,,126-16789,290.0,,False,False,False,
+Deposit,1991-05-01,,,096-18493,494.0,,False,False,False,
+Payment,1991-05-01,825,DC1,881-03197,53.34,,False,False,True,Payment on a credit card
+Billing,1991-05-01,,,,778.32,K1988,False,False,True,Initial contact
+Deposit,1991-05-01,,,020-65025,781.0,,False,False,True,
+Deposit,1991-05-01,,,070-92592,969.0,,False,False,False,
+Billing,1991-05-01,,,,993.02,P1800,False,False,True,On-site consultation
+Billing,1991-05-02,,,,5.65,F6890,False,False,True,Initial contact
+Charge,1991-05-02,,MC2,,13.96,,False,False,True,Hyaline either          
+Expense,1991-05-02,354,,095-39035,31.07,S3016,False,False,False,Hotel expenses
+Billing,1991-05-02,,,,35.84,C6124,False,False,True,Hardware Analysis
+Billing,1991-05-02,,,,50.12,C8994,False,False,True,Software Maintenance
+Billing,1991-05-02,,,,54.23,E9737,False,False,True,Software Maintenance
+Charge,1991-05-02,,DI1,,66.89,,False,False,True,Cat's rhenish           
+Expense,1991-05-02,364,,393-34031,76.63,M0970,False,True,True,Gasoline
+Billing,1991-05-02,,,,77.55,P7724,False,False,True,On-site consultation
+Check,1991-05-02,467,,095-39035,81.5,,False,True,True,Electric bill
+Expense,1991-05-02,155,,393-34031,116.94,S4481,False,False,True,Airline ticket
+Expense,1991-05-02,356,,095-39035,159.21,M6852,False,True,True,Miscellaneous
+Billing,1991-05-02,,,,173.41,S2821,False,False,True,Initial contact
+Billing,1991-05-02,,,,278.09,T6915,False,False,True,"Fax, phone, etc."
+Expense,1991-05-02,181,,393-34031,321.34,C3137,False,False,True,Disks
+Billing,1991-05-02,,,,450.55,W9316,False,False,True,Research Time
+Deposit,1991-05-02,,,379-28583,532.0,,False,False,False,
+Billing,1991-05-02,,,,532.66,L2225,False,False,True,System's Analysis
+Billing,1991-05-02,,,,1443.34,D0648,False,False,True,"Fax, phone, etc."
+Deposit,1991-05-02,,,095-39035,5208.73,,False,False,True,
+Deposit,1991-05-02,,,393-34031,6118.34,,False,False,True,
+Fee,1991-05-03,,,095-39035,15.0,,False,False,False,
+Expense,1991-05-03,368,,393-34031,31.15,E0916,False,True,True,Meals
+Payment,1991-05-03,415,MC2,095-39035,32.0,,False,False,True,Payment on a credit card
+Check,1991-05-03,285,,393-34031,32.16,,False,True,True,Gas bill
+Charge,1991-05-03,,AE2,,36.01,,False,False,False,Mercer grosbeak         
+Expense,1991-05-03,333,,095-39035,61.48,M3237,True,True,True,Phone calls
+Expense,1991-05-03,378,,095-39035,111.78,B3615,False,True,True,Subcontractor
+Expense,1991-05-03,151,,393-34031,136.69,F6890,False,True,True,Miscellaneous
+Billing,1991-05-03,,,,154.22,P1847,False,False,True,Hardware Maintenance
+Billing,1991-05-03,,,,171.66,R7564,False,False,True,System's Analysis
+Billing,1991-05-03,,,,343.2,S2898,False,False,True,Software Maintenance
+Deposit,1991-05-03,,,090-76619,580.0,,False,False,False,
+Billing,1991-05-03,,,,625.12,E2660,False,False,True,Initial contact
+Billing,1991-05-03,,,,953.7,U1337,False,False,True,Software Maintenance
+Deposit,1991-05-03,,,881-03197,2466.52,,False,False,False,
+Check,1991-05-04,479,,095-39035,2.98,,False,False,True,Grocery - Miscellaneous
+Fee,1991-05-04,,,393-34031,12.0,,False,False,False,
+Charge,1991-05-04,,MC1,,27.84,,False,False,True,Staccato bettor         
+Charge,1991-05-04,,MC1,,46.73,,False,False,True,Magnesia jag            
+Check,1991-05-04,488,,095-39035,52.22,,False,False,True,Punster octant          
+Billing,1991-05-04,,,,55.27,I8476,False,False,True,Initial contact
+Expense,1991-05-04,385,,095-39035,57.1,P6574,False,False,True,Phone calls
+Charge,1991-05-04,,MC1,,58.44,,False,False,True,Kyoto sandman           
+Expense,1991-05-04,338,,095-39035,81.82,W8662,False,True,True,Miscellaneous
+Billing,1991-05-04,,,,83.38,S5142,False,False,True,Programming Time
+Check,1991-05-04,476,,095-39035,108.04,,True,False,True,Groceries
+Charge,1991-05-04,,MC1,,138.02,,False,False,True,Reuters irvin           
+Billing,1991-05-04,,,,168.57,C1512,False,False,True,Initial contact
+Payment,1991-05-04,829,DI1,881-03197,211.36,,False,False,True,Payment on a credit card
+Billing,1991-05-04,,,,232.35,P1847,False,False,True,Installation
+Billing,1991-05-04,,,,369.37,B3615,False,False,True,On-site consultation
+Check,1991-05-05,480,,095-39035,10.98,,False,False,False,Grocery - Miscellaneous
+Expense,1991-05-05,340,,095-39035,19.19,V0899,False,False,True,Fax expenses
+Charge,1991-05-05,,MC1,,50.53,,False,False,True,Bologna                 
+Expense,1991-05-05,337,,095-39035,59.94,F4255,False,True,True,Subcontractor
+Expense,1991-05-05,401,,095-39035,83.84,C6380,True,False,True,Subcontractor
+Billing,1991-05-05,,,,209.75,A8101,False,False,True,Initial contact
+Billing,1991-05-05,,,,726.2,D7845,False,False,True,Phone consultation
+Billing,1991-05-05,,,,1637.03,R7564,False,False,True,On-site consultation
+Expense,1991-05-06,172,,393-34031,6.47,T0284,False,False,True,Disks
+Charge,1991-05-06,,DI1,,9.16,,False,False,False,Portage lusaka          
+Charge,1991-05-06,,MC2,,11.69,,False,False,True,Still cadmium           
+Expense,1991-05-06,805,,881-03197,12.94,A1741,False,True,True,Disks
+Check,1991-05-06,465,,095-39035,13.98,,True,False,True,Grocery - Miscellaneous
+Expense,1991-05-06,372,,393-34031,21.48,P6890,False,True,True,Gasoline
+Check,1991-05-06,483,,095-39035,21.53,,False,False,True,Nails trophy            
+Charge,1991-05-06,,VI1,,30.26,,False,False,True,Polaron scotland        
+Expense,1991-05-06,784,,881-03197,42.34,M7683,False,True,True,Fax expenses
+Charge,1991-05-06,,MC1,,45.14,,False,False,True,Nip entrance            
+Expense,1991-05-06,140,,393-34031,48.83,R2905,False,False,True,Hotel expenses
+Expense,1991-05-06,399,,095-39035,147.04,J2627,False,True,True,Hardware purchase
+Billing,1991-05-06,,,,237.45,K1988,False,False,True,Installation
+Expense,1991-05-06,379,,095-39035,405.42,C5101,False,True,True,Meals
+Billing,1991-05-06,,,,964.97,S2821,False,False,True,Initial contact
+Charge,1991-05-07,,MC1,,10.77,,False,False,True,Economy winds           
+Charge,1991-05-07,,VI2,,22.01,,False,False,True,Rockwell abase          
+Charge,1991-05-07,,DI1,,22.47,,False,False,True,Marquee busby           
+Expense,1991-05-07,363,,393-34031,25.25,K1988,False,False,True,Hotel expenses
+Expense,1991-05-07,365,,393-34031,35.37,L8776,False,False,True,Fax expenses
+Charge,1991-05-07,,AE1,,81.66,,False,False,True,Immobile passes         
+Charge,1991-05-07,,MC1,,125.46,,False,False,True,Kilohm roadster         
+Billing,1991-05-07,,,,271.3,R7564,False,False,True,"Fax, phone, etc."
+Billing,1991-05-07,,,,334.2,I0123,False,False,True,"Fax, phone, etc."
+Expense,1991-05-08,359,,393-34031,22.26,W9316,False,True,True,Fax expenses
+Expense,1991-05-08,142,,393-34031,31.58,W2501,False,True,True,Disks
+Billing,1991-05-08,,,,52.97,D2624,False,False,True,Programming Time
+Check,1991-05-08,292,,393-34031,61.99,,False,False,True,Mackey scm              
+Expense,1991-05-08,196,,393-34031,68.89,R4698,True,True,True,Fax expenses
+Billing,1991-05-08,,,,69.12,C1512,False,False,True,Software Maintenance
+Billing,1991-05-08,,,,221.91,W9316,False,False,True,Software Maintenance
+Billing,1991-05-08,,,,349.36,C0720,False,False,True,Software Maintenance
+Charge,1991-05-09,,MC1,,17.62,,False,False,False,Silica held             
+Charge,1991-05-09,,AE2,,20.37,,False,False,True,Pandanus postal         
+Charge,1991-05-09,,AE1,,23.08,,False,False,True,Dollop polymer heptane  
+Expense,1991-05-09,363,,095-39035,25.11,M7067,False,True,True,Meals
+Charge,1991-05-09,,MC2,,27.46,,False,False,True,Adieu divider           
+Expense,1991-05-09,154,,393-34031,56.3,S1488,False,False,True,Meals
+Check,1991-05-09,489,,095-39035,73.13,,False,True,True,Marquee busby           
+Expense,1991-05-09,819,,881-03197,80.62,D2624,True,False,True,Software purchase
+Billing,1991-05-09,,,,85.98,P7724,False,False,True,Programming Time
+Billing,1991-05-09,,,,359.71,G3397,False,False,True,Installation
+Expense,1991-05-10,378,,393-34031,21.21,U1337,False,True,True,Disks
+Billing,1991-05-10,,,,23.21,B4876,False,False,True,Initial contact
+Expense,1991-05-10,380,,393-34031,24.62,W2501,False,False,True,Airline ticket
+Charge,1991-05-10,,AE2,,40.16,,False,False,True,Bringing frazzle        
+Expense,1991-05-10,370,,095-39035,42.83,Q0440,True,False,True,Gasoline
+Expense,1991-05-10,771,,881-03197,44.45,M2235,False,True,True,Airline ticket
+Expense,1991-05-10,773,,881-03197,86.89,F4255,False,True,True,Phone calls
+Charge,1991-05-10,,MC1,,173.86,,False,False,True,Micro monastic          
+Billing,1991-05-10,,,,179.1,S1488,False,False,True,System's Analysis
+Payment,1991-05-10,206,AE2,393-34031,437.65,,False,False,True,Payment on a credit card
+Billing,1991-05-11,,,,50.63,C6124,False,False,True,Hardware Maintenance
+Charge,1991-05-11,,MC1,,62.67,,False,False,True,Absentee donkey         
+Expense,1991-05-11,405,,095-39035,160.77,M0970,False,True,True,Software purchase
+Charge,1991-05-11,,MC1,,192.98,,False,False,True,Budget delaware         
+Billing,1991-05-11,,,,197.89,C2404,False,False,True,Misc. expenses
+Billing,1991-05-11,,,,298.78,C1512,False,False,True,Software Maintenance
+Billing,1991-05-11,,,,301.97,Q0440,False,False,True,Phone consultation
+Billing,1991-05-11,,,,441.94,B4876,False,False,True,Software Maintenance
+Billing,1991-05-11,,,,1193.01,S2821,False,False,True,System's Analysis
+Payment,1991-05-12,204,AE1,393-34031,37.97,,False,False,True,Payment on a credit card
+Withdraw,1991-05-12,,,881-03197,41.95,,False,False,False,Automatic Teller
+Expense,1991-05-12,143,,393-34031,119.3,E9737,False,False,True,Software purchase
+Expense,1991-05-12,377,,393-34031,150.34,E9737,False,True,True,Airline ticket
+Check,1991-05-12,290,,393-34031,241.6,,False,False,False,Hotel - trip to Montreal
+Billing,1991-05-12,,,,260.6,S4019,False,False,True,Programming Time
+Billing,1991-05-12,,,,451.73,C8994,False,False,True,Hardware Analysis
+Billing,1991-05-13,,,,5.01,D7845,False,False,True,Initial contact
+Billing,1991-05-13,,,,20.11,B4876,False,False,True,On-site consultation
+Check,1991-05-13,475,,095-39035,27.87,,False,False,True,Gifford answer          
+Charge,1991-05-13,,MC2,,45.58,,False,False,True,Spheroid gloss          
+Billing,1991-05-13,,,,75.16,B4876,False,False,True,"Fax, phone, etc."
+Expense,1991-05-13,798,,881-03197,105.2,P6574,True,True,False,Hotel expenses
+Billing,1991-05-13,,,,188.67,C8326,False,False,True,Misc. expenses
+Payment,1991-05-13,418,VI2,095-39035,588.26,,False,False,True,Payment on a credit card
+Billing,1991-05-13,,,,593.91,C1976,False,False,True,On-site consultation
+Billing,1991-05-13,,,,2471.23,K1988,False,False,True,On-site consultation
+Expense,1991-05-14,381,,393-34031,9.55,C8326,False,False,False,Airline ticket
+Expense,1991-05-14,786,,881-03197,14.29,S3016,False,True,True,Hardware purchase
+Expense,1991-05-14,1015,,881-03197,16.32,R7784,False,True,True,Disks
+Expense,1991-05-14,332,,095-39035,17.25,I8476,True,True,True,Miscellaneous
+Payment,1991-05-14,414,VI1,095-39035,24.33,,False,False,True,Payment on a credit card
+Expense,1991-05-14,361,,393-34031,26.24,I0123,False,False,True,Disks
+Billing,1991-05-14,,,,32.05,M8135,False,False,True,System's Analysis
+Check,1991-05-14,289,,393-34031,78.56,,False,False,True,Pundit oilmen           
+Check,1991-05-08,291,,393-34031,105.98,,False,False,True,Groceries
+Billing,1991-05-14,,,,108.99,W9316,False,False,True,Installation
+Expense,1991-05-14,788,,881-03197,112.18,S4481,False,True,False,Hardware purchase
+Billing,1991-05-14,,,,168.36,M7683,False,False,True,Initial contact
+Payment,1991-05-14,198,MC1,393-34031,284.81,,False,False,True,Payment on a credit card
+Billing,1991-05-14,,,,292.05,P6574,False,False,True,Installation
+Billing,1991-05-14,,,,351.06,B4876,False,False,True,Misc. expenses
+Billing,1991-05-14,,,,369.61,I8476,False,False,True,Programming Time
+Billing,1991-05-14,,,,683.27,F6890,False,False,True,Programming Time
+Check,1991-05-15,284,,393-34031,14.84,,False,False,True,Grocery - Miscellaneous
+Check,1991-05-15,477,,095-39035,16.95,,False,False,True,Grocery - Miscellaneous
+Charge,1991-05-15,,MC1,,32.61,,False,False,True,Rubbish piraeus         
+Expense,1991-05-15,373,,095-39035,36.09,B5620,True,False,True,Disks
+Check,1991-05-15,481,,095-39035,53.64,,False,True,True,Suit bead corvus        
+Expense,1991-05-15,823,,881-03197,77.89,A9045,True,False,True,Meals
+Charge,1991-05-15,,DC1,,128.24,,False,False,True,Leadsman lahore         
+Billing,1991-05-15,,,,135.72,P7724,False,False,True,Hardware Maintenance
+Billing,1991-05-15,,,,150.79,S5052,False,False,True,"Fax, phone, etc."
+Billing,1991-05-15,,,,194.54,J6313,False,False,True,Hardware Analysis
+Billing,1991-05-15,,,,371.36,R2905,False,False,True,Software Maintenance
+Billing,1991-05-15,,,,755.64,L2225,False,False,True,"Fax, phone, etc."
+Billing,1991-05-16,,,,35.49,S2821,False,False,True,Phone consultation
+Billing,1991-05-16,,,,112.62,D2624,False,False,True,Phone consultation
+Expense,1991-05-16,355,,095-39035,119.25,P6574,False,False,True,Phone calls
+Billing,1991-05-16,,,,126.38,S2821,False,False,True,Hardware Analysis
+Check,1991-05-16,487,,095-39035,154.73,,False,True,True,Clothes
+Billing,1991-05-16,,,,275.27,S1488,False,False,True,Research Time
+Billing,1991-05-16,,,,677.52,S5052,False,False,True,Installation
+Expense,1991-05-17,335,,095-39035,2.69,Q0440,False,True,True,Gasoline
+Expense,1991-05-17,404,,095-39035,10.44,E9737,False,True,True,Phone calls
+Charge,1991-05-17,,DC1,,15.37,,False,False,True,Ongoing rupee           
+Billing,1991-05-17,,,,19.25,T5858,False,False,True,Installation
+Expense,1991-05-17,782,,881-03197,21.04,P1847,False,False,True,Miscellaneous
+Charge,1991-05-17,,VI2,,35.4,,False,False,True,Randy bustard           
+Billing,1991-05-17,,,,51.89,E9737,False,False,True,Misc. expenses
+Charge,1991-05-17,,MC1,,76.33,,False,False,True,Bird arterial           
+Check,1991-05-17,293,,393-34031,84.7,,False,False,True,Ethane turbofan         
+Expense,1991-05-17,339,,095-39035,149.86,T3307,False,True,True,Hardware purchase
+Billing,1991-05-17,,,,177.17,L2225,False,False,True,Programming Time
+Billing,1991-05-17,,,,223.11,H5320,False,False,True,Hardware Maintenance
+Billing,1991-05-17,,,,295.45,L6622,False,False,True,Misc. expenses
+Billing,1991-05-17,,,,318.19,P7724,False,False,True,Misc. expenses
+Billing,1991-05-17,,,,326.41,M7105,False,False,True,System's Analysis
+Billing,1991-05-17,,,,1093.78,C5973,False,False,True,Programming Time
+Check,1991-05-18,473,,095-39035,5.22,,False,False,True,Grocery - Miscellaneous
+Check,1991-05-18,471,,095-39035,11.49,,False,False,True,Lend joliet             
+Billing,1991-05-18,,,,19.26,S2821,False,False,True,System's Analysis
+Charge,1991-05-18,,MC1,,23.3,,False,False,True,Panel bantu             
+Charge,1991-05-18,,AE1,,24.2,,False,False,True,Photon sophie           
+Expense,1991-05-18,824,,881-03197,28.25,E9737,False,True,True,Subcontractor
+Charge,1991-05-18,,DI1,,33.65,,False,False,True,Chinch guns             
+Charge,1991-05-18,,JC1,,57.37,,False,False,True,Clothes and etc.
+Billing,1991-05-18,,,,151.69,M3237,False,False,True,Research Time
+Billing,1991-05-18,,,,158.04,C6380,False,False,True,Software Maintenance
+Expense,1991-05-18,169,,393-34031,276.29,L8776,False,True,True,Subcontractor
+Billing,1991-05-18,,,,417.3,C0720,False,False,True,Software Maintenance
+Check,1991-05-19,482,,095-39035,5.33,,False,False,True,Tied-dyed mats          
+Expense,1991-05-19,770,,881-03197,24.14,P7724,False,True,True,Gasoline
+Expense,1991-05-19,353,,095-39035,49.87,S3016,False,True,True,Gasoline
+Charge,1991-05-19,,MC1,,60.38,,False,False,True,Suit bead corvus        
+Billing,1991-05-19,,,,63.12,W9316,False,False,True,Software Maintenance
+Charge,1991-05-19,,MC2,,95.27,,False,False,True,Boy gunther             
+Billing,1991-05-19,,,,102.62,B4876,False,False,True,Misc. expenses
+Expense,1991-05-19,395,,095-39035,243.84,M8135,False,True,True,Gasoline
+Billing,1991-05-19,,,,305.05,C6380,False,False,True,Phone consultation
+Billing,1991-05-19,,,,422.55,G3397,False,False,True,Hardware Analysis
+Billing,1991-05-19,,,,791.85,R7784,False,False,True,Hardware Maintenance
+Expense,1991-05-20,189,,393-34031,3.39,D0648,False,True,True,Fax expenses
+Check,1991-05-20,468,,095-39035,11.04,,False,False,True,Woodyard lizard         
+Expense,1991-05-20,785,,881-03197,11.56,H5320,False,True,True,Hotel expenses
+Charge,1991-05-20,,MC2,,12.91,,False,False,True,Abashed goat            
+Check,1991-05-20,466,,095-39035,24.47,,False,True,True,Ticklish polygon        
+Billing,1991-05-20,,,,27.02,C5101,False,False,True,Misc. expenses
+Expense,1991-05-20,366,,393-34031,29.96,M0970,False,True,True,Software purchase
+Expense,1991-05-20,1016,,881-03197,32.2,P6574,False,True,True,Software purchase
+Expense,1991-05-20,369,,393-34031,36.75,W2501,False,False,True,Fax expenses
+Expense,1991-05-20,769,,881-03197,37.84,S5774,False,True,True,Hardware purchase
+Charge,1991-05-20,,MC1,,38.4,,False,False,True,Gothic flam             
+Charge,1991-05-20,,MC1,,57.42,,False,False,True,Gabon cosy              
+Charge,1991-05-20,,AE1,,70.94,,False,False,False,Classic forum           
+Charge,1991-05-20,,MC2,,84.44,,False,False,True,Alert poole             
+Billing,1991-05-20,,,,93.6,K1988,False,False,True,"Fax, phone, etc."
+Check,1991-05-14,294,,393-34031,115.56,,False,True,False,Groceries
+Charge,1991-05-20,,JC1,,115.6,,False,False,False,Items for the house
+Billing,1991-05-20,,,,124.3,D2624,False,False,True,Software Maintenance
+Billing,1991-05-20,,,,372.61,U1337,False,False,True,Programming Time
+Billing,1991-05-20,,,,455.76,F6890,False,False,True,Installation
+Expense,1991-05-21,398,,095-39035,12.9,B5620,False,False,True,Hardware purchase
+Charge,1991-05-21,,MC1,,21.84,,False,False,True,Isabella emissary       
+Check,1991-05-21,486,,095-39035,27.44,,True,False,True,Leadsman lahore         
+Billing,1991-05-21,,,,30.48,S5052,False,False,True,On-site consultation
+Expense,1991-05-21,153,,393-34031,32.04,P7724,True,True,True,Gasoline
+Check,1991-05-21,478,,095-39035,38.86,,False,False,True,Merkin seasoning        
+Billing,1991-05-21,,,,40.35,M2235,False,False,True,"Fax, phone, etc."
+Billing,1991-05-21,,,,63.61,E2660,False,False,True,"Fax, phone, etc."
+Check,1991-05-21,469,,095-39035,63.79,,False,False,True,Inequity melcher        
+Billing,1991-05-21,,,,72.69,S2898,False,False,True,Hardware Analysis
+Expense,1991-05-21,369,,095-39035,80.54,T6915,False,True,True,Phone calls
+Billing,1991-05-21,,,,122.76,M6852,False,False,True,Software Maintenance
+Billing,1991-05-21,,,,430.17,I0123,False,False,True,Programming Time
+Charge,1991-05-22,,AE2,,1.64,,False,False,True,Chinch guns             
+Charge,1991-05-22,,DI1,,9.97,,False,False,True,Organic meridian        
+Expense,1991-05-22,818,,881-03197,17.1,A8063,False,False,True,Hotel expenses
+Check,1991-05-22,485,,095-39035,18.5,,False,False,True,Scotch celanese         
+Expense,1991-05-22,376,,393-34031,28.64,L8776,False,True,True,Hotel expenses
+Expense,1991-05-22,374,,393-34031,32.18,A1741,False,True,True,Hardware purchase
+Charge,1991-05-22,,MC1,,45.77,,False,False,False,Haggle current          
+Check,1991-05-22,287,,393-34031,46.57,,False,True,True,Bayed raspberries       
+Expense,1991-05-22,397,,095-39035,47.61,D2624,False,False,True,Subcontractor
+Billing,1991-05-22,,,,54.32,M7683,False,False,True,Programming Time
+Expense,1991-05-22,192,,393-34031,86.25,Q0440,False,False,True,Phone calls
+Billing,1991-05-22,,,,89.69,B4876,False,False,True,System's Analysis
+Billing,1991-05-22,,,,194.22,J6313,False,False,True,"Fax, phone, etc."
+Billing,1991-05-22,,,,231.17,C1512,False,False,True,Installation
+Billing,1991-05-22,,,,247.05,S4481,False,False,True,Misc. expenses
+Billing,1991-05-22,,,,905.19,I0123,False,False,True,On-site consultation
+Billing,1991-05-22,,,,1069.54,E9737,False,False,True,Research Time
+Billing,1991-05-22,,,,1964.2,B3615,False,False,True,Misc. expenses
+Expense,1991-05-23,822,,881-03197,2.35,A1741,False,True,True,Fax expenses
+Expense,1991-05-23,193,,393-34031,22.01,A9045,False,True,True,Hardware purchase
+Charge,1991-05-23,,MC2,,37.77,,False,False,True,Suit bead corvus        
+Expense,1991-05-23,783,,881-03197,77.15,P7724,False,False,True,Subcontractor
+Expense,1991-05-23,141,,393-34031,129.99,H9029,False,False,False,Subcontractor
+Billing,1991-05-23,,,,211.41,G3397,False,False,True,Installation
+Billing,1991-05-23,,,,249.84,M3237,False,False,True,Hardware Maintenance
+Billing,1991-05-23,,,,381.94,M6852,False,False,True,Installation
+Billing,1991-05-23,,,,760.49,T6915,False,False,True,Hardware Maintenance
+Billing,1991-05-23,,,,848.1,E9737,False,False,True,Hardware Maintenance
+Check,1991-05-24,286,,393-34031,14.56,,False,True,True,Drill pickle            
+Charge,1991-05-24,,MC1,,19.06,,False,False,True,Cargill baleen          
+Expense,1991-05-24,821,,881-03197,39.08,P6574,False,True,True,Gasoline
+Expense,1991-05-24,171,,393-34031,39.33,E9737,False,False,True,Meals
+Expense,1991-05-24,367,,393-34031,52.33,S5608,False,False,False,Airline ticket
+Expense,1991-05-24,787,,881-03197,68.79,H9029,False,True,True,Hotel expenses
+Billing,1991-05-24,,,,188.7,M7683,False,False,True,Software Maintenance
+Billing,1991-05-24,,,,483.9,S2898,False,False,True,Programming Time
+Expense,1991-05-25,177,,393-34031,12.29,T5858,False,False,True,Software purchase
+Charge,1991-05-25,,MC1,,14.09,,False,False,True,Niamey climax           
+Expense,1991-05-25,370,,393-34031,21.94,P1847,False,True,True,Disks
+Expense,1991-05-25,820,,881-03197,27.06,W8662,False,True,True,Meals
+Billing,1991-05-25,,,,34.3,M3237,False,False,True,"Fax, phone, etc."
+Expense,1991-05-25,191,,393-34031,37.63,J2627,False,True,True,Hotel expenses
+Billing,1991-05-25,,,,56.75,C0720,False,False,True,Hardware Analysis
+Expense,1991-05-25,403,,095-39035,77.03,P1847,False,False,True,Hotel expenses
+Check,1991-05-25,283,,393-34031,79.57,,False,False,True,Ongoing rupee           
+Expense,1991-05-25,152,,393-34031,79.87,C6380,False,False,True,Hardware purchase
+Billing,1991-05-25,,,,101.13,M8135,False,False,True,Research Time
+Billing,1991-05-25,,,,143.32,G3397,False,False,True,Research Time
+Expense,1991-05-25,138,,393-34031,170.92,B5620,False,False,True,Miscellaneous
+Charge,1991-05-25,,VI2,,178.55,,False,False,True,Glimmer axe             
+Billing,1991-05-25,,,,275.0,M3237,False,False,True,Software Maintenance
+Billing,1991-05-25,,,,710.09,S1488,False,False,True,Research Time
+Billing,1991-05-25,,,,2474.18,C8994,False,False,True,Initial contact
+Expense,1991-05-26,400,,095-39035,8.41,M7105,False,True,True,Software purchase
+Check,1991-05-26,470,,095-39035,10.01,,False,False,True,Landau wainscot         
+Billing,1991-05-26,,,,31.28,G3397,False,False,True,Hardware Analysis
+Check,1991-05-26,472,,095-39035,31.95,,False,False,True,Auto bushel             
+Billing,1991-05-26,,,,80.2,E9737,False,False,True,Initial contact
+Check,1991-05-26,484,,095-39035,133.63,,False,True,True,Groceries
+Expense,1991-05-26,336,,095-39035,144.67,M6852,False,True,True,Miscellaneous
+Billing,1991-05-26,,,,215.14,C1512,False,False,True,Installation
+Billing,1991-05-26,,,,333.77,B4876,False,False,True,Hardware Maintenance
+Check,1991-05-27,474,,095-39035,4.64,,False,False,True,Mallow sectors          
+Withdraw,1991-05-27,,,881-03197,7.74,,False,False,False,Automatic Teller
+Expense,1991-05-27,195,,393-34031,10.25,S3016,False,True,True,Subcontractor
+Expense,1991-05-27,379,,393-34031,14.86,E0916,False,True,True,Gasoline
+Expense,1991-05-27,371,,393-34031,18.16,P6890,False,True,True,Hardware purchase
+Expense,1991-05-27,402,,095-39035,47.15,B4876,False,False,True,Phone calls
+Check,1991-05-27,982,,881-03197,47.91,,False,False,True,Presto formica          
+Charge,1991-05-27,,MC1,,51.22,,False,False,True,Typhon succubus         
+Billing,1991-05-27,,,,68.76,S4481,False,False,True,Initial contact
+Billing,1991-05-27,,,,82.19,B4876,False,False,True,On-site consultation
+Expense,1991-05-27,362,,393-34031,98.17,G3397,False,True,True,Fax expenses
+Billing,1991-05-27,,,,168.1,M0970,False,False,True,"Fax, phone, etc."
+Billing,1991-05-27,,,,231.17,E2660,False,False,True,Programming Time
+Billing,1991-05-27,,,,281.0,M0970,False,False,True,Misc. expenses
+Billing,1991-05-27,,,,886.87,T6915,False,False,True,Research Time
+Expense,1991-05-28,396,,095-39035,4.13,P1847,False,True,True,Disks
+Expense,1991-05-28,567,,095-39035,6.67,C6124,False,False,True,Hardware purchase
+Billing,1991-05-28,,,,22.28,C6380,False,False,True,Phone consultation
+Interest,1991-05-28,,VI1,,23.28,,False,True,False,Interest Charge
+Expense,1991-05-28,360,,393-34031,27.32,S2821,True,False,True,Hardware purchase
+Expense,1991-05-28,190,,393-34031,69.66,H9029,False,True,True,Meals
+Expense,1991-05-28,334,,095-39035,71.48,A1741,True,True,True,Phone calls
+Expense,1991-05-28,772,,881-03197,78.61,A9045,True,False,True,Meals
+Billing,1991-05-28,,,,88.93,S1488,False,False,True,Misc. expenses
+Billing,1991-05-28,,,,175.08,M0970,False,False,True,Phone consultation
+Interest,1991-05-28,,AE1,,50.95,,False,True,False,Interest Charge
+Billing,1991-05-28,,,,329.43,I0123,False,False,True,"Fax, phone, etc."
+Billing,1991-05-28,,,,338.62,M6852,False,False,True,System's Analysis
+Billing,1991-05-28,,,,364.2,S1488,False,False,True,Programming Time
+Interest,1991-05-28,,VI2,,76.11,,False,True,False,Interest Charge
+Billing,1991-05-28,,,,776.01,P7724,False,False,True,Installation
+Interest,1991-05-28,,DC1,,37.6,,False,True,False,Interest Charge
+Charge,1991-05-29,,MC1,,13.01,,False,False,True,Marquee busby           
+Charge,1991-05-29,,MC1,,14.51,,False,False,True,Foam front              
+Expense,1991-05-29,194,,393-34031,16.54,I0123,False,True,True,Software purchase
+Billing,1991-05-29,,,,17.68,M2253,False,False,True,"Fax, phone, etc."
+Expense,1991-05-29,170,,393-34031,18.1,I0123,False,False,True,Meals
+Expense,1991-05-29,150,,393-34031,20.67,A8101,False,False,True,Software purchase
+Charge,1991-05-29,,MC1,,30.03,,False,False,True,Windmill offering       
+Billing,1991-05-29,,,,32.82,G3397,False,False,True,Misc. expenses
+Expense,1991-05-29,144,,393-34031,48.17,D0648,False,True,True,Software purchase
+Billing,1991-05-29,,,,95.45,M3237,False,False,True,System's Analysis
+Billing,1991-05-29,,,,386.74,M8135,False,False,True,Initial contact
+Interest,1991-05-29,,DI1,,45.88,,False,True,False,Interest Charge
+Billing,1991-05-29,,,,475.61,K1988,False,False,True,Misc. expenses
+Billing,1991-05-29,,,,522.25,C8994,False,False,True,Hardware Analysis
+Billing,1991-05-29,,,,612.44,G4324,False,False,True,Research Time
+Billing,1991-05-29,,,,1099.67,M6626,False,False,True,Hardware Maintenance
+Billing,1991-05-29,,,,1173.81,S2821,False,False,True,Programming Time
+Interest,1991-05-29,,MC1,,98.8,,False,True,False,Interest Charge
+Billing,1991-05-30,,,,26.98,T6915,False,False,True,Programming Time
+Interest,1991-05-30,,JC1,,76.57,,False,True,False,Interest Charge
+Billing,1991-05-30,,,,205.23,G3397,False,False,True,Research Time
+Interest,1991-05-30,,MC2,,81.22,,False,True,False,Interest Charge
+Billing,1991-05-30,,,,437.68,S2898,False,False,True,Programming Time
+Billing,1991-05-30,,,,1125.13,M6852,False,False,True,On-site consultation
+Interest,1991-05-30,,AE2,,67.82,,False,True,False,Interest Charge
+Billing,1991-05-31,,,,2.99,C1512,False,False,True,Programming Time
+Billing,1991-05-31,,,,8.51,G3397,False,False,True,Research Time
+Billing,1991-05-31,,,,15.93,E9737,False,False,True,System's Analysis
+Billing,1991-05-31,,,,190.04,C1512,False,False,True,System's Analysis
+Billing,1991-05-31,,,,893.55,Q0440,False,False,True,Misc. expenses
+Billing,1991-05-31,,,,1410.06,C0720,False,False,True,Hardware Analysis
+Charge,1991-06-26,,DI1,,2.0,,False,False,False,a new record

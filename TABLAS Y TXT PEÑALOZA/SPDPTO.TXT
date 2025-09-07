@@ -1,0 +1,10 @@
+
+Structure for database: Z:\ADMINSP\FOXPRO2\CONSEJO\SPDPTO.DBF
+Number of data records:      89
+Date of last update   : 05/05/16
+Field  Field Name  Type       Width    Dec    Index
+    1  DPTO        Numeric        3            Asc
+    2  NOMBRE      Character     15            Asc
+    3  CPOST       Character      4            
+    4  PROV        Numeric        2            
+** Total **                      25

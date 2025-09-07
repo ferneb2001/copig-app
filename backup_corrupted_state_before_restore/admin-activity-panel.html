@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Actividad - COPIG Admin</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .header .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #dc3545;
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.connected {
+            background: #28a745;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            text-align: center;
+        }
+
+        .metric-card .metric-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .metric-card .metric-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .metric-card.pending {
+            border-color: #ffc107;
+        }
+
+        .metric-card.processing {
+            border-color: #17a2b8;
+        }
+
+        .metric-card.completed {
+            border-color: #28a745;
+        }
+
+        .metric-card.urgent {
+            border-color: #dc3545;
+        }
+
+        .activity-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .activity-feed {
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .activity-feed .header {
+            background: #e9ecef;
+            padding: 15px 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .activity-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .activity-item:hover {
+            background: #ffffff;
+        }
+
+        .activity-item.new-item {
+            background: #fff3cd;
+            animation: highlightNew 3s ease-in-out;
+        }
+
+        @keyframes highlightNew {
+            0% { background: #fff3cd; }
+            100% { background: transparent; }
+        }
+
+        .activity-item .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .activity-item .activity-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .activity-item .activity-time {
+            color: #6c757d;
+            font-size: 0.8rem;
+        }
+
+        .activity-item .activity-description {
+            color: #495057;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .activity-item .activity-metadata {
+            display: flex;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        .activity-type {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .type-chp {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .type-data {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .type-payment {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .type-death {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .type-withdrawal {
+            background: #e2e3e5;
+            color: #383d41;
+        }
+
+        .notifications-panel {
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .notifications-panel .header {
+            background: #e9ecef;
+            padding: 15px 20px;
+            font-weight: 600;
+            color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .notification-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e9ecef;
+            cursor: pointer;
+        }
+
+        .notification-item:hover {
+            background: #ffffff;
+        }
+
+        .notification-item.unread {
+            background: #e3f2fd;
+        }
+
+        .notification-item .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .notification-item .notification-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .notification-item .notification-time {
+            color: #6c757d;
+            font-size: 0.8rem;
+        }
+
+        .notification-item .notification-message {
+            color: #495057;
+            font-size: 0.9rem;
+        }
+
+        .priority-high {
+            border-left: 4px solid #dc3545;
+        }
+
+        .priority-normal {
+            border-left: 4px solid #17a2b8;
+        }
+
+        .priority-low {
+            border-left: 4px solid #28a745;
+        }
+
+        .controls-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .filter-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .filter-group select {
+            padding: 8px 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .activity-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls-section {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            
+            .filters {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Panel de Actividad en Tiempo Real</h1>
+            <div class="connection-status">
+                <div class="status-indicator" id="connectionStatus"></div>
+                <span id="connectionText">Conectando...</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Métricas del Dashboard -->
+            <div class="dashboard-grid">
+                <div class="metric-card pending">
+                    <div class="metric-number" id="pendingCount">0</div>
+                    <div class="metric-label">Solicitudes Pendientes</div>
+                </div>
+                <div class="metric-card processing">
+                    <div class="metric-number" id="processingCount">0</div>
+                    <div class="metric-label">En Proceso</div>
+                </div>
+                <div class="metric-card completed">
+                    <div class="metric-number" id="completedCount">0</div>
+                    <div class="metric-label">Completadas Hoy</div>
+                </div>
+                <div class="metric-card urgent">
+                    <div class="metric-number" id="urgentCount">0</div>
+                    <div class="metric-label">Urgentes</div>
+                </div>
+            </div>
+
+            <!-- Controles y Filtros -->
+            <div class="controls-section">
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="activityFilter">Filtrar:</label>
+                        <select id="activityFilter">
+                            <option value="">Todas las actividades</option>
+                            <option value="chp">Solicitudes CHP</option>
+                            <option value="data">Modificaciones de datos</option>
+                            <option value="payment">Pagos</option>
+                            <option value="death">Fallecimientos</option>
+                            <option value="withdrawal">Bajas</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="timeFilter">Período:</label>
+                        <select id="timeFilter">
+                            <option value="today">Hoy</option>
+                            <option value="week">Esta semana</option>
+                            <option value="month">Este mes</option>
+                            <option value="all">Todo</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="audio-controls">
+                    <label>Sonido:</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="audioToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <button class="btn btn-secondary" onclick="clearActivityFeed()">Limpiar</button>
+                    <button class="btn btn-primary" onclick="refreshData()">🔄 Actualizar</button>
+                </div>
+            </div>
+
+            <!-- Feed de Actividad y Notificaciones -->
+            <div class="activity-section">
+                <div class="activity-feed">
+                    <div class="header">
+                        🔄 Feed de Actividad en Tiempo Real
+                    </div>
+                    <div id="activityList">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            <div>Cargando actividad...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="notifications-panel">
+                    <div class="header">
+                        🔔 Notificaciones Recientes
+                    </div>
+                    <div id="notificationsList">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            <div>Cargando notificaciones...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles Inferiores -->
+            <div class="controls-section">
+                <div>
+                    <a href="/admin-dashboard" class="btn btn-secondary">← Dashboard Admin</a>
+                    <a href="/user-management" class="btn btn-secondary">👥 Gestión Usuarios</a>
+                </div>
+                <div>
+                    <a href="/portal" class="btn btn-secondary">🏠 Portal Principal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio para notificaciones -->
+    <audio id="notificationSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmQaBGyx5fO8cSwBK3nA9OCXQAmOqeLuymUZBy6Ew+2tSgkXh93rt11YEAoUbLvv565MGiJFndnj3nMUBCpp5+LmrnMuHi6k2fXVWg0WsP3oGOOvRQoXWa3t6bk5EwURebvv7bVPEQtdnvDTvHQjCC9/ze2oTzAYcJ/Q16tbDhUUYr3n8ckwEw==" type="audio/wav">
+    </audio>
+
+    <script>
+        // Variables globales
+        let socket = null;
+        let activityData = [];
+        let notificationsData = [];
+        let audioEnabled = true;
+
+        // Conectar WebSocket
+        function connectWebSocket() {
+            socket = io();
+
+            socket.on('connect', () => {
+                console.log('🔌 Conectado al servidor WebSocket');
+                updateConnectionStatus(true);
+                
+                // Autenticarse como admin
+                socket.emit('authenticate', {
+                    userType: 'admin',
+                    userId: 1, // Será dinámico en producción
+                    sessionToken: 'admin-session-token'
+                });
+            });
+
+            socket.on('disconnect', () => {
+                console.log('❌ Desconectado del servidor WebSocket');
+                updateConnectionStatus(false);
+                
+                // Reintentar conexión después de 3 segundos
+                setTimeout(connectWebSocket, 3000);
+            });
+
+            socket.on('authenticated', (data) => {
+                if (data.success) {
+                    console.log('✅ Autenticado como admin');
+                    loadInitialData();
+                }
+            });
+
+            socket.on('nueva_notificacion', (notificacion) => {
+                console.log('🔔 Nueva notificación:', notificacion);
+                addNewNotification(notificacion);
+                if (audioEnabled) playNotificationSound();
+                updateMetrics();
+            });
+
+            socket.on('notificaciones_pendientes', (data) => {
+                console.log('📋 Notificaciones pendientes:', data);
+                data.notificaciones.forEach(notificacion => {
+                    addNewNotification(notificacion, false);
+                });
+                updateMetrics();
+            });
+        }
+
+        // Actualizar estado de conexión
+        function updateConnectionStatus(connected) {
+            const indicator = document.getElementById('connectionStatus');
+            const text = document.getElementById('connectionText');
+            
+            if (connected) {
+                indicator.classList.add('connected');
+                text.textContent = 'Conectado en tiempo real';
+            } else {
+                indicator.classList.remove('connected');
+                text.textContent = 'Desconectado';
+            }
+        }
+
+        // Cargar datos iniciales
+        async function loadInitialData() {
+            try {
+                // Cargar actividad reciente
+                await loadActivity();
+                
+                // Cargar notificaciones
+                await loadNotifications();
+                
+                // Actualizar métricas
+                updateMetrics();
+                
+            } catch (error) {
+                console.error('Error cargando datos iniciales:', error);
+            }
+        }
+
+        // Cargar actividad
+        async function loadActivity() {
+            try {
+                const response = await fetch('/api/admin/activity-feed');
+                const data = await response.json();
+                
+                if (data.success) {
+                    activityData = data.activities || [];
+                    renderActivityFeed();
+                }
+            } catch (error) {
+                console.error('Error cargando actividad:', error);
+                document.getElementById('activityList').innerHTML = `
+                    <div style="padding: 20px; text-align: center; color: #dc3545;">
+                        ❌ Error cargando actividad
+                    </div>
+                `;
+            }
+        }
+
+        // Cargar notificaciones
+        async function loadNotifications() {
+            try {
+                const response = await fetch('/api/notificaciones');
+                const data = await response.json();
+                
+                if (data.success) {
+                    notificationsData = data.notificaciones || [];
+                    renderNotifications();
+                }
+            } catch (error) {
+                console.error('Error cargando notificaciones:', error);
+                document.getElementById('notificationsList').innerHTML = `
+                    <div style="padding: 20px; text-align: center; color: #dc3545;">
+                        ❌ Error cargando notificaciones
+                    </div>
+                `;
+            }
+        }
+
+        // Renderizar feed de actividad
+        function renderActivityFeed() {
+            const container = document.getElementById('activityList');
+            
+            if (activityData.length === 0) {
+                container.innerHTML = `
+                    <div style="padding: 40px; text-align: center; color: #6c757d;">
+                        📝 No hay actividad reciente
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = activityData.map(activity => `
+                <div class="activity-item" onclick="viewActivityDetail('${activity.id}')">
+                    <div class="activity-header">
+                        <div class="activity-title">${activity.titulo}</div>
+                        <div class="activity-time">${formatTime(activity.timestamp)}</div>
+                    </div>
+                    <div class="activity-description">${activity.descripcion}</div>
+                    <div class="activity-metadata">
+                        <span class="activity-type type-${activity.tipo}">${activity.tipo_display}</span>
+                        <span>Profesional: ${activity.profesional_nombre}</span>
+                        ${activity.matricula ? `<span>Mat: ${activity.matricula}</span>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Renderizar notificaciones
+        function renderNotifications() {
+            const container = document.getElementById('notificationsList');
+            
+            if (notificationsData.length === 0) {
+                container.innerHTML = `
+                    <div style="padding: 40px; text-align: center; color: #6c757d;">
+                        🔕 No hay notificaciones
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = notificationsData.slice(0, 20).map(notification => `
+                <div class="notification-item ${!notification.leida ? 'unread' : ''} priority-${notification.prioridad.toLowerCase()}" 
+                     onclick="markAsRead('${notification.id}')">
+                    <div class="notification-header">
+                        <div class="notification-title">${notification.titulo}</div>
+                        <div class="notification-time">${formatTime(notification.created_at)}</div>
+                    </div>
+                    <div class="notification-message">${notification.mensaje}</div>
+                </div>
+            `).join('');
+        }
+
+        // Agregar nueva notificación
+        function addNewNotification(notificacion, isNew = true) {
+            notificationsData.unshift(notificacion);
+            
+            if (isNew) {
+                // Agregar también al feed de actividad si es relevante
+                const activityItem = {
+                    id: notificacion.id,
+                    titulo: notificacion.titulo,
+                    descripcion: notificacion.mensaje,
+                    timestamp: notificacion.created_at,
+                    tipo: notificacion.tipo_notificacion.toLowerCase(),
+                    tipo_display: notificacion.tipo_notificacion,
+                    profesional_nombre: 'Sistema',
+                    isNew: true
+                };
+                
+                activityData.unshift(activityItem);
+                renderActivityFeed();
+                
+                // Highlight del nuevo item
+                setTimeout(() => {
+                    const newItems = document.querySelectorAll('.activity-item');
+                    if (newItems.length > 0) {
+                        newItems[0].classList.add('new-item');
+                    }
+                }, 100);
+            }
+            
+            renderNotifications();
+        }
+
+        // Actualizar métricas
+        function updateMetrics() {
+            let pending = 0, processing = 0, completed = 0, urgent = 0;
+            
+            notificationsData.forEach(notification => {
+                if (!notification.leida) {
+                    if (notification.prioridad === 'URGENTE') urgent++;
+                    else if (notification.tipo_notificacion.includes('PENDIENTE')) pending++;
+                    else if (notification.tipo_notificacion.includes('PROCESO')) processing++;
+                    else completed++;
+                }
+            });
+
+            document.getElementById('pendingCount').textContent = pending;
+            document.getElementById('processingCount').textContent = processing;
+            document.getElementById('completedCount').textContent = completed;
+            document.getElementById('urgentCount').textContent = urgent;
+        }
+
+        // Formatear tiempo
+        function formatTime(timestamp) {
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diff = now - date;
+            
+            if (diff < 60000) return 'Hace un momento';
+            if (diff < 3600000) return `Hace ${Math.floor(diff / 60000)}m`;
+            if (diff < 86400000) return `Hace ${Math.floor(diff / 3600000)}h`;
+            
+            return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        }
+
+        // Marcar notificación como leída
+        async function markAsRead(notificationId) {
+            try {
+                await fetch(`/api/notificaciones/${notificationId}/marcar-leida`, {
+                    method: 'POST'
+                });
+                
+                const notification = notificationsData.find(n => n.id == notificationId);
+                if (notification) {
+                    notification.leida = true;
+                    renderNotifications();
+                    updateMetrics();
+                }
+            } catch (error) {
+                console.error('Error marcando notificación como leída:', error);
+            }
+        }
+
+        // Ver detalle de actividad
+        function viewActivityDetail(activityId) {
+            // Implementar modal o navegación de detalle
+            console.log('Ver detalle de actividad:', activityId);
+        }
+
+        // Reproducir sonido de notificación
+        function playNotificationSound() {
+            const audio = document.getElementById('notificationSound');
+            audio.play().catch(e => console.log('No se pudo reproducir el sonido:', e));
+        }
+
+        // Limpiar feed de actividad
+        function clearActivityFeed() {
+            if (confirm('¿Está seguro que desea limpiar el feed de actividad?')) {
+                activityData = [];
+                renderActivityFeed();
+                updateMetrics();
+            }
+        }
+
+        // Actualizar datos
+        function refreshData() {
+            loadInitialData();
+        }
+
+        // Configurar controles
+        document.getElementById('audioToggle').addEventListener('change', function(e) {
+            audioEnabled = e.target.checked;
+        });
+
+        document.getElementById('activityFilter').addEventListener('change', function(e) {
+            // Implementar filtrado de actividad
+            console.log('Filtrar por:', e.target.value);
+        });
+
+        document.getElementById('timeFilter').addEventListener('change', function(e) {
+            // Implementar filtrado por tiempo
+            console.log('Filtrar tiempo:', e.target.value);
+        });
+
+        // Inicializar al cargar la página
+        window.addEventListener('load', function() {
+            console.log('📊 Panel de Actividad COPIG cargado');
+            connectWebSocket();
+        });
+
+        // Reconectar al recuperar el foco de la ventana
+        window.addEventListener('focus', function() {
+            if (!socket || !socket.connected) {
+                console.log('🔄 Reconectando WebSocket...');
+                connectWebSocket();
+            }
+        });
+    </script>
+</body>
+</html>

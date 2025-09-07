@@ -1,0 +1,8 @@
+REPORTNAME,CONTENTS,MODTYPE,NOTES
+cli_list,Client mailing list,clients,
+cardlist,Credit card info 1,credit,
+cardnums,Emergency numbers,credit,
+restaurs,Restaurant list,restaurs,
+fam_list,List... (X-mas card),family,
+notthere,Report not available,clients,
+act_info,Account Inforamtion,accnts,

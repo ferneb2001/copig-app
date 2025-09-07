@@ -1,0 +1,876 @@
+*       *********************************************************
+*       *                                                         
+*       * 14/04/97             SPPROF.SPR                16:40:54 
+*       *                                                         
+*       *********************************************************
+*       *                                                         
+*       * Nombre del autor                                        
+*       *                                                         
+*       * Copyright (c) 1997 Nombre de la empresa                 
+*       * Dirección                                               
+*       * Ciudad,     C.P.                                        
+*       * País                                              
+*       *                                                         
+*       * Description:                                            
+*       * Este programa lo ha generado automáticamente GENSCRN.    
+*       *                                                         
+*       *********************************************************
+
+
+*       *********************************************************
+*       *                                                         
+*       *   SPPROF/Windows Código de configuración - SECCION 1    
+*       *                                                         
+*       *********************************************************
+*
+
+#REGION 1
+PRIVATE wzfields,wztalk
+IF SET("TALK") = "ON"
+	SET TALK OFF
+	m.wztalk = "ON"
+ELSE
+	m.wztalk = "OFF"
+ENDIF
+m.wzfields=SET('FIELDS')
+SET FIELDS OFF
+IF m.wztalk = "ON"
+	SET TALK ON
+ENDIF
+
+
+
+#REGION 0
+REGIONAL m.currarea, m.talkstat, m.compstat
+
+IF SET("TALK") = "ON"
+	SET TALK OFF
+	m.talkstat = "ON"
+ELSE
+	m.talkstat = "OFF"
+ENDIF
+m.compstat = SET("COMPATIBLE")
+SET COMPATIBLE FOXPLUS
+
+m.rborder = SET("READBORDER")
+SET READBORDER ON
+
+m.currarea = SELECT()
+
+
+*       *********************************************************
+*       *                                                         
+*       *  S0052122/Windows Bases de datos, índices, relaciones   
+*       *                                                         
+*       *********************************************************
+*
+
+IF USED("spprof")
+	SELECT spprof
+	SET ORDER TO TAG "_rjr0yyayv"
+ELSE
+	SELECT 0
+	USE (LOCFILE("spprof.dbf","DBF","Buscar  spprof?"));
+		AGAIN ALIAS spprof ;
+		ORDER TAG "_rjr0yyayv"
+ENDIF
+
+
+*       *********************************************************
+*       *                                                         
+*       *             Windows Definiciones de ventana             
+*       *                                                         
+*       *********************************************************
+*
+
+IF NOT WEXIST("_rjr0zr4ii")
+	DEFINE WINDOW _rjr0zr4ii ;
+		AT  0.000, 0.000  ;
+		SIZE 26.077,83.333 ;
+		TITLE "Spprof" ;
+		FONT "MS Sans Serif", 8 ;
+		STYLE "B" ;
+		FLOAT ;
+		CLOSE ;
+		MINIMIZE ;
+		COLOR RGB(,,,192,192,192)
+	MOVE WINDOW _rjr0zr4ii CENTER
+ENDIF
+
+
+*       *********************************************************
+*       *                                                         
+*       *   SPPROF/Windows Código de configuración - SECCION 2    
+*       *                                                         
+*       *********************************************************
+*
+
+#REGION 1
+
+#DEFINE C_DBFEMPTY		'La base de datos está vacía. ¿Desea agregar algún registro?'
+#DEFINE C_EDITS			'Por favor, finalice su edición.'
+#DEFINE C_TOPFILE		'Principio de archivo.'
+#DEFINE C_ENDFILE		'Fin de archivo.'
+#DEFINE C_BRTITLE		'Encontrar registro'
+#DEFINE C_NOLOCK		'En este momento no se puede bloquear el registro, inténtelo más tarde.'
+#DEFINE C_ECANCEL		'Edición cancelada.'
+#DEFINE C_DELREC		'¿Eliminar registros seleccionados?'
+#DEFINE C_NOFEAT		'Característica no disponible ahora.'
+#DEFINE C_NOWIZ			'Asistente no disponible.'
+#DEFINE C_MAKEREPO		'Crear un informe con el Asistente para informes.'
+#DEFINE C_NOREPO		'No se puede crear el informe.'
+#DEFINE C_DELNOTE 		'Eliminando registros...'
+#DEFINE C_READONLY 		'La tabla es de sólo lectura: no se permite su edición.'
+#DEFINE C_NOTABLE 		'No hay ninguna tabla seleccionada. Abra una tabla o ejecute una consulta.'
+#DEFINE C_BADEXPR		'Expresión no válida.'
+#DEFINE C_LOCWIZ		'Buscar WIZARD.APP:'
+#DEFINE C_MULTITABLE	'Tiene tablas de relación multiple: no se permite agregar registros.'
+
+MOVE WINDOW '_rjr0zr4ii' CENTER
+PRIVATE isediting,isadding,wztblarr
+PRIVATE wzolddelete,wzolderror,wzoldesc
+PRIVATE wzalias, tempcurs,wzlastrec
+PRIVATE isreadonly,find_drop,is2table
+
+IF EMPTY(ALIAS())
+	WAIT WINDOW C_NOTABLE
+	RETURN
+ENDIF
+
+m.wztblarr= ''
+m.wzalias=SELECT()
+m.isediting=.F.
+m.isadding=.F.
+m.is2table = .F.
+m.wzolddelete=SET('DELETE')
+SET DELETED ON
+m.tempcurs=SYS(2015)  &&used if General field
+m.wzlastrec = 1
+m.wzolderror=ON('error')
+ON ERROR DO wizerrorhandler
+wzoldesc=ON('KEY','ESCAPE')
+ON KEY LABEL ESCAPE
+m.find_drop = IIF(_DOS,0,2)
+
+m.isreadonly=IIF(ISREAD(),.T.,.F.)
+IF m.isreadonly
+	WAIT WINDOW C_READONLY TIMEOUT 1
+ENDIF
+
+
+IF RECCOUNT()=0 AND !m.isreadonly AND fox_alert(C_DBFEMPTY)
+    APPEND BLANK
+ENDIF
+
+GOTO TOP
+SCATTER MEMVAR MEMO
+
+*       *********************************************************
+*       *                                                         
+*       *         SPPROF/Windows Distribución de pantalla         
+*       *                                                         
+*       *********************************************************
+*
+
+#REGION 1
+IF WVISIBLE("_rjr0zr4ii")
+	ACTIVATE WINDOW _rjr0zr4ii SAME
+ELSE
+	ACTIVATE WINDOW _rjr0zr4ii NOSHOW
+ENDIF
+@ 0.385,4.000 SAY "Spprof" ;
+	FONT "MS Sans Serif", 14 ;
+	STYLE "BT"
+@ 2.692,0.000 TO 2.692,83.333 ;
+	PEN 2, 8 ;
+	STYLE "1"
+@ 3.769,4.333 SAY "Dctipo:" ;
+	SIZE 1.000,11.333 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 3.769,18.500 GET m.dctipo ;
+	SIZE 1.000,1.400 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K 9" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 3.769,42.000 SAY "Dcnro:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 3.769,52.500 GET m.dcnro ;
+	SIZE 1.000,12.000 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K 99,999,999" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 5.615,4.500 SAY "Nombre:" ;
+	SIZE 1.000,11.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 5.615,18.500 GET m.nombre ;
+	SIZE 1.000,51.800 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 7.462,4.333 SAY "Domici:" ;
+	SIZE 1.000,11.333 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 7.462,18.500 GET m.domici ;
+	SIZE 1.000,57.200 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 9.308,4.333 SAY "Provin:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 9.308,14.833 GET m.provin ;
+	SIZE 1.000,3.600 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K 999" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 9.308,42.000 SAY "Dpto:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 9.308,52.500 GET m.dpto ;
+	SIZE 1.000,3.600 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K 999" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 11.154,4.333 SAY "Locali:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 11.154,14.833 GET m.locali ;
+	SIZE 1.000,3.600 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K 999" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 11.154,42.000 SAY "Nacio:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 11.154,52.500 GET m.nacio ;
+	SIZE 1.000,9.200 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 13.000,4.333 SAY "Cuit:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 13.000,14.833 GET m.cuit ;
+	SIZE 1.000,16.800 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K 99,999,999,999" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 13.000,42.000 SAY "Sexo:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 13.000,52.500 GET m.sexo ;
+	SIZE 1.000,2.200 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K X" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 14.846,4.333 SAY "Estciv:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 14.846,14.833 GET m.estciv ;
+	SIZE 1.000,2.200 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K X" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 14.846,42.000 SAY "Nacion:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 14.846,52.500 GET m.nacion ;
+	SIZE 1.000,2.200 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K X" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 16.692,4.333 SAY "Telef:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 16.692,14.833 GET m.telef ;
+	SIZE 1.000,19.200 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K XXXXXXXXXXXX" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 16.692,42.000 SAY "Tipo:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 16.692,52.500 GET m.tipo ;
+	SIZE 1.000,1.200 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K 9" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 18.538,4.333 SAY "Fallec:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 18.538,14.833 GET m.fallec ;
+	SIZE 1.000,9.200 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 18.538,42.000 SAY "Estado:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 18.538,52.500 GET m.estado ;
+	SIZE 1.000,2.200 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K X" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 20.385,4.333 SAY "Domleg:" ;
+	SIZE 1.000,7.833 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "BIT" ;
+	PICTURE "@J" ;
+	COLOR RGB(,,,255,255,255)
+@ 20.385,14.833 GET m.domleg ;
+	SIZE 1.000,2.200 ;
+	DEFAULT " " ;
+	FONT "MS Sans Serif", 8 ;
+	PICTURE "@K X" ;
+	WHEN isediting ;
+	COLOR ,RGB(0,0,0,255,255,255)
+@ 22.231,0.000 TO 22.231,83.333 ;
+	PEN 2, 8 ;
+	STYLE "1"
+@ 22.615,9.333 GET m.top_btn ;
+	PICTURE "@*HN \<Primero" ;
+	SIZE 1.615,10.500,0.667 ;
+	DEFAULT 1 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "B" ;
+	VALID btn_val('TOP') ;
+	MESSAGE 'Cambia al primer registro.'
+@ 22.615,22.667 GET m.prev_btn ;
+	PICTURE "@*HN An\<terior" ;
+	SIZE 1.615,10.500,0.667 ;
+	DEFAULT 1 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "B" ;
+	VALID btn_val('PREV') ;
+	MESSAGE 'Cambia al registro anterior.'
+@ 22.615,36.167 GET m.next_btn ;
+	PICTURE "@*HN \<Siguiente" ;
+	SIZE 1.615,10.500,0.667 ;
+	DEFAULT 1 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "B" ;
+	VALID btn_val('NEXT') ;
+	MESSAGE 'Cambia al registro siguiente.'
+@ 22.615,49.333 GET m.end_btn ;
+	PICTURE "@*HN Ú\<ltimo" ;
+	SIZE 1.615,10.500,0.667 ;
+	DEFAULT 1 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "B" ;
+	VALID btn_val('END') ;
+	MESSAGE 'Cambia al último registro.'
+@ 22.615,62.667 GET m.loc_btn ;
+	PICTURE "@*HN E\<ncontrar" ;
+	SIZE 1.615,10.500,0.667 ;
+	DEFAULT 1 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "B" ;
+	VALID btn_val('LOCATE') ;
+	MESSAGE 'Busca un registro.'
+@ 24.385,9.333 GET m.add_btn ;
+	PICTURE "@*HN \<Agregar" ;
+	SIZE 1.615,10.500,0.667 ;
+	DEFAULT 1 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "B" ;
+	VALID btn_val('ADD') ;
+	MESSAGE 'Agrega un registro nuevo.'
+@ 24.385,22.667 GET m.edit_btn ;
+	PICTURE "@*HN E\<ditar" ;
+	SIZE 1.615,10.500,0.667 ;
+	DEFAULT 1 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "B" ;
+	VALID btn_val('EDIT') ;
+	MESSAGE 'Edita el registro actual.'
+@ 24.385,36.167 GET m.del_btn ;
+	PICTURE "@*HN \<Eliminar" ;
+	SIZE 1.615,10.500,0.667 ;
+	DEFAULT 1 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "B" ;
+	VALID btn_val('DELETE') ;
+	MESSAGE 'Elimina el registro actual.'
+@ 24.385,49.333 GET m.prnt_btn ;
+	PICTURE "@*HN \<Imprimir" ;
+	SIZE 1.615,10.500,0.667 ;
+	DEFAULT 1 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "B" ;
+	VALID btn_val('PRINT') ;
+	MESSAGE 'Imprime un informe.'
+@ 24.385,62.667 GET m.exit_btn ;
+	PICTURE "@*HN \<Cerrar" ;
+	SIZE 1.615,10.500,0.667 ;
+	DEFAULT 1 ;
+	FONT "MS Sans Serif", 8 ;
+	STYLE "B" ;
+	VALID btn_val('EXIT') ;
+	MESSAGE 'Cierra la pantalla.'
+
+IF NOT WVISIBLE("_rjr0zr4ii")
+	ACTIVATE WINDOW _rjr0zr4ii
+ENDIF
+
+
+*       *********************************************************
+*       *                                                         
+*       *    WindowsREAD contiene cláusulas de SCREEN s0052122    
+*       *                                                         
+*       *********************************************************
+*
+
+READ CYCLE ;
+	ACTIVATE READACT() ;
+	DEACTIVATE READDEAC() ;
+	NOLOCK
+
+RELEASE WINDOW _rjr0zr4ii
+
+*       *********************************************************
+*       *                                                         
+*       *             Windows Cerrando bases de datos             
+*       *                                                         
+*       *********************************************************
+*
+
+IF USED("spprof")
+	SELECT spprof
+	USE
+ENDIF
+
+SELECT (m.currarea)
+
+
+#REGION 0
+
+SET READBORDER &rborder
+
+IF m.talkstat = "ON"
+	SET TALK ON
+ENDIF
+IF m.compstat = "ON"
+	SET COMPATIBLE ON
+ENDIF
+
+
+*       *********************************************************
+*       *                                                         
+*       *            SPPROF/Windows Código de limpieza            
+*       *                                                         
+*       *********************************************************
+*
+
+#REGION 1
+SET DELETED &wzolddelete
+SET FIELDS &wzfields
+ON ERROR &wzolderror
+ON KEY LABEL ESCAPE &wzoldesc
+DO CASE
+CASE _DOS AND SET('DISPLAY')='VGA25'
+	@24,0 CLEAR TO 24,79
+CASE _DOS AND SET('DISPLAY')='VGA50'
+	@49,0 CLEAR TO 49,79
+CASE _DOS
+	@24,0 CLEAR TO 24,79
+ENDCASE
+
+****Procedures****
+
+
+*       *********************************************************
+*       *                                                         
+*       *  SPPROF/Windows Procedimientos y funciones de soporte   
+*       *                                                         
+*       *********************************************************
+*
+
+#REGION 1
+PROCEDURE readdeac
+  IF isediting
+    ACTIVATE WINDOW '_rjr0zr4ii'
+    WAIT WINDOW C_EDITS NOWAIT
+  ENDIF
+  IF !WVISIBLE(WOUTPUT())
+    CLEAR READ
+    RETURN .T.
+  ENDIF
+RETURN .F.
+
+PROCEDURE readact
+  IF !isediting
+  	SELECT (m.wzalias)
+  	SHOW GETS
+  ENDIF
+  DO REFRESH
+RETURN
+
+PROCEDURE wizerrorhandler
+	* This very simple error handler is primarily intended
+	* to trap for General field OLE errors which may occur
+	* during editing from the MODIFY GENERAL window.
+	WAIT WINDOW message()
+RETURN
+
+
+PROCEDURE printrec
+	  PRIVATE sOldError,wizfname,saverec,savearea,tmpcurs,tmpstr
+	  PRIVATE prnt_btn,p_recs,p_output,pr_out,pr_record
+	  STORE 1 TO p_recs,p_output
+	  STORE 0 TO prnt_btn
+	  STORE RECNO() TO saverec
+	  m.sOldError=ON('error')
+	  DO pdialog
+	  IF m.prnt_btn = 2
+	    RETURN
+	  ENDIF
+	  IF !FILE(ALIAS()+'.FRX')
+	  	m.wizfname=SYS(2004)+'WIZARDS\'+'WIZARD.APP'
+	  	IF !FILE(m.wizfname)
+			ON ERROR *
+			m.wizfname=LOCFILE('WIZARD.APP','APP',C_LOCWIZ)
+			ON ERROR &sOldError
+			IF !'WIZARD.APP'$UPPER(m.wizfname)
+      			WAIT WINDOW C_NOWIZ
+      			RETURN
+			ENDIF
+	  	ENDIF
+     	WAIT WINDOW C_MAKEREPO NOWAIT
+		m.savearea=SELECT()
+		m.tmpcurs='_'+LEFT(SYS(3),7)
+		CREATE CURSOR (m.tmpcurs) (comment m)
+		m.tmpstr = '* LAYOUT = COLUMNAR'+CHR(13)+CHR(10)
+		INSERT INTO (m.tmpcurs) VALUES(m.tmpstr)
+		SELECT (m.savearea)
+	  	DO (m.wizfname) WITH '','WZ_QREPO','NOSCRN/CREATE',ALIAS(),m.tmpcurs
+		USE IN (m.tmpcurs)
+     	WAIT CLEAR
+	  	IF !FILE(ALIAS()+'.FRX')  &&wizard could not create report
+     		WAIT WINDOW C_NOREPO
+     		RETURN
+	  	ENDIF
+	  ENDIF
+	
+  	  m.pr_out=IIF(m.p_output=1,'TO PRINT NOCONSOLE','PREVIEW')
+	  m.pr_record=IIF(m.p_recs=1,'NEXT 1','ALL')
+  	  REPORT FORM (ALIAS()) &pr_out &pr_record
+	  GO m.saverec
+RETURN
+
+
+PROCEDURE BTN_VAL
+	PARAMETER m.btnname
+	DO CASE
+	CASE  m.btnname='TOP'
+		GO TOP
+		WAIT WINDOW C_TOPFILE NOWAIT
+	CASE  m.btnname='PREV'
+		IF !BOF()
+			SKIP -1
+	 	ENDIF
+	 	IF BOF()
+			WAIT WINDOW C_TOPFILE NOWAIT
+			GO TOP
+		ENDIF
+	CASE  m.btnname='NEXT'
+		IF !EOF()
+			SKIP 1
+		ENDIF
+		IF EOF()
+			WAIT WINDOW C_ENDFILE NOWAIT
+			GO BOTTOM
+		ENDIF
+	CASE  m.btnname='END'
+		GO BOTTOM
+		WAIT WINDOW C_ENDFILE NOWAIT
+	CASE  m.btnname='LOCATE'
+		DO loc_dlog
+	CASE  m.btnname='ADD'  AND !isediting &&add record
+		isediting=.T.
+		isadding=.T.
+		=edithand('ADD')
+		_curobj=1
+		DO refresh
+		SHOW GETS
+		RETURN
+	CASE  m.btnname='EDIT'  AND !isediting &&edit record
+		IF EOF() OR BOF()
+			WAIT WINDOW C_ENDFILE NOWAIT
+			RETURN
+		ENDIF
+		IF RLOCK()
+			isediting=.T.
+			_curobj=1
+			DO refresh
+			RETURN
+		ELSE
+			WAIT WINDOW C_NOLOCK
+		ENDIF
+	CASE m.btnname='EDIT'  AND isediting &&save record
+		IF isadding
+			=edithand('SAVE')
+		ELSE
+			GATHER MEMVAR MEMO
+		ENDIF
+		UNLOCK
+		isediting=.F.
+		isadding=.F.
+		DO refresh
+	CASE m.btnname='DELETE'  AND isediting 	&&cancel record
+		IF isadding
+			=edithand('CANCEL')
+		ENDIF
+		isediting=.F.
+		isadding=.F.
+		UNLOCK
+		WAIT WINDOW C_ECANCEL NOWAIT
+		DO refresh
+	CASE m.btnname='DELETE'
+		IF EOF() OR BOF()
+			WAIT WINDOW C_ENDFILE NOWAIT
+			RETURN
+		ENDIF
+		IF fox_alert(C_DELREC)
+			DELETE
+			IF !EOF() AND DELETED()
+				SKIP 1
+			ENDIF
+			IF EOF()
+				WAIT WINDOW C_ENDFILE NOWAIT
+				GO BOTTOM
+			ENDIF
+		ENDIF
+	CASE m.btnname='PRINT'
+		DO printrec
+		RETURN
+	CASE m.btnname='EXIT'
+		m.bailout=.T.	&&this is needed if used with FoxApp
+		CLEAR READ
+		RETURN
+	ENDCASE
+	SCATTER MEMVAR MEMO
+	SHOW GETS
+RETURN
+
+
+PROCEDURE REFRESH
+  DO CASE
+  CASE m.isreadonly AND RECCOUNT()=0
+	SHOW GETS DISABLE
+	SHOW GET exit_btn ENABLE
+  CASE m.isreadonly
+	SHOW GET add_btn DISABLE
+	SHOW GET del_btn DISABLE
+	SHOW GET edit_btn DISABLE
+  CASE (RECCOUNT()=0 OR EOF()) AND !m.isediting
+	SHOW GETS DISABLE
+	SHOW GET add_btn ENABLE
+	SHOW GET exit_btn ENABLE
+  CASE m.isediting
+    SHOW GET find_drop DISABLE
+	SHOW GET top_btn DISABLE
+	SHOW GET prev_btn DISABLE
+	SHOW GET loc_btn DISABLE
+	SHOW GET next_btn DISABLE
+	SHOW GET end_btn DISABLE
+	SHOW GET add_btn DISABLE
+	SHOW GET prnt_btn DISABLE
+	SHOW GET exit_btn DISABLE
+	SHOW GET edit_btn,1 PROMPT "\<Guardar"
+	SHOW GET del_btn,1 PROMPT "\<Cancelar"
+	ON KEY LABEL ESCAPE DO BTN_VAL WITH 'DELETE'
+	RETURN
+  OTHERWISE
+	SHOW GET edit_btn,1 PROMPT "E\<ditar"
+	SHOW GET del_btn,1 PROMPT "\<Eliminar"
+	SHOW GETS ENABLE
+  ENDCASE
+  IF m.is2table
+  	SHOW GET add_btn DISABLE
+  ENDIF
+  ON KEY LABEL ESCAPE
+RETURN
+
+
+PROCEDURE edithand
+	PARAMETER m.paction
+	* procedure handles edits
+	DO CASE
+	CASE m.paction = 'ADD'
+		SCATTER MEMVAR MEMO BLANK
+	CASE m.paction = 'SAVE'
+		INSERT INTO (ALIAS()) FROM MEMVAR
+	CASE m.paction = 'CANCEL'
+		* nothing here
+	ENDCASE
+RETURN
+
+PROCEDURE fox_alert
+    PARAMETER wzalrtmess
+    PRIVATE alrtbtn
+    m.alrtbtn=2
+	DEFINE WINDOW _qec1ij2t7 AT 0,0 SIZE 8,50 ;
+	  FONT "MS Sans Serif",10 STYLE 'B' ;
+	  FLOAT NOCLOSE NOMINIMIZE DOUBLE TITLE WTITLE()
+	MOVE WINDOW _qec1ij2t7 CENTER
+	ACTIVATE WINDOW _qec1ij2t7 NOSHOW
+	@ 2,(50-txtwidth(wzalrtmess))/2 SAY wzalrtmess;
+	  FONT "MS Sans Serif", 10 STYLE "B"
+	@ 6,18 GET m.alrtbtn ;
+	  PICTURE "@*HT \<Aceptar;\?\!\<Cancelar" ;
+	  SIZE 1.769,8.667,1.333 ;
+	  FONT "MS Sans Serif", 8 STYLE "B"
+	ACTIVATE WINDOW _qec1ij2t7
+	READ CYCLE MODAL
+	RELEASE WINDOW _qec1ij2t7
+RETURN m.alrtbtn=1
+
+
+PROCEDURE pdialog
+	DEFINE WINDOW _qjn12zbvh ;
+		AT  0.000, 0.000  ;
+		SIZE 13.231,54.800 ;
+		TITLE "Microsoft FoxPro" ;
+		FONT "MS Sans Serif", 8 ;
+		FLOAT NOCLOSE MINIMIZE SYSTEM
+	MOVE WINDOW _qjn12zbvh CENTER
+	ACTIVATE WINDOW _qjn12zbvh NOSHOW
+	@ 2.846,33.600 SAY "Salida:"  ;
+		FONT "MS Sans Serif", 8 ;
+		STYLE "BT"
+	@ 2.846,4.800 SAY "Imprimir:"  ;
+		FONT "MS Sans Serif", 8 ;
+		STYLE "BT"
+	@ 4.692,7.200 GET m.p_recs ;
+		PICTURE "@*RVN \<Registro actual;\<Todos los registros" ;
+		SIZE 1.308,18.500,0.308 ;
+		DEFAULT 1 ;
+		FONT "MS Sans Serif", 8 ;
+		STYLE "BT"
+	@ 4.692,36.000 GET m.p_output ;
+		PICTURE "@*RVN \<Impresora;\<Presentar" ;
+		SIZE 1.308,12.000,0.308 ;
+		DEFAULT 1 ;
+		FONT "MS Sans Serif", 8 ;
+		STYLE "BT"
+	@ 10.154,16.600 GET m.prnt_btn ;
+		PICTURE "@*HT I\<mprimir;\<Cancelar" ;
+		SIZE 1.769,8.667,0.667 ;
+		DEFAULT 1 ;
+		FONT "MS Sans Serif", 8 ;
+		STYLE "B"
+	ACTIVATE WINDOW _qjn12zbvh
+	READ CYCLE MODAL
+	RELEASE WINDOW _qjn12zbvh
+RETURN
+
+
+PROCEDURE loc_dlog
+	PRIVATE gfields,i
+	DEFINE WINDOW wzlocate FROM 1,1 TO 20,40;
+		SYSTEM GROW CLOSE ZOOM FLOAT FONT "MS Sans Serif",8
+	MOVE WINDOW wzlocate CENTER
+	m.gfields=SET('FIELDS',2)
+	IF !EMPTY(RELATION(1))
+		SET FIELDS ON
+		IF m.gfields # 'GLOBAL'
+			SET FIELDS GLOBAL
+		ENDIF
+		IF EMPTY(FLDLIST())
+			m.i=1
+			DO WHILE !EMPTY(OBJVAR(m.i))
+				IF ATC('M.',OBJVAR(m.i))=0
+					SET FIELDS TO (OBJVAR(m.i))
+				ENDIF
+				m.i = m.i + 1
+			ENDDO
+		ENDIF
+	ENDIF
+	BROWSE WINDOW wzlocate NOEDIT NODELETE ;
+		NOMENU TITLE C_BRTITLE
+	SET FIELDS &gfields
+	SET FIELDS OFF
+	RELEASE WINDOW wzlocate
+RETURN
+

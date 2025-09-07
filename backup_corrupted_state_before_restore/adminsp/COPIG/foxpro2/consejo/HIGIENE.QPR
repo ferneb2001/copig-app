@@ -1,0 +1,4 @@
+SELECT Sptlmu.numero, Sptlmu.catego, Sptlmu.dctipo, Sptlmu.dcnro,;
+  Sptlmu.nombre, Sptlmu.titulo;
+ FROM Sptlmu;
+ TO PRINTER NOCONSOLE

@@ -1,0 +1,64 @@
+<!-- SOLUCIÓN DEFINITIVA: Script que fuerza refresh después de cada actualización -->
+<script>
+// Override TODAS las funciones de actualización para forzar refresh
+(function() {
+    'use strict';
+    
+    console.log('🔧 APLICANDO FIX DEFINITIVO DE REFRESH...');
+    
+    // Interceptar TODOS los fetch requests a empresas
+    const originalFetch = window.fetch;
+    window.fetch = function(...args) {
+        const [url, options] = args;
+        
+        // Si es un PUT o POST a empresas, interceptar
+        if (url && url.includes('/api/empresas/') && options && (options.method === 'PUT' || options.method === 'POST')) {
+            console.log('🔍 INTERCEPTANDO REQUEST DE EMPRESA:', url, options.method);
+            
+            return originalFetch.apply(this, args).then(async (response) => {
+                console.log('📡 RESPUESTA INTERCEPTADA:', response.status, response.ok);
+                
+                if (response.ok) {
+                    console.log('✅ ACTUALIZACIÓN EXITOSA - FORZANDO REFRESH...');
+                    
+                    // Cerrar modal si existe
+                    const modal = document.getElementById('modalEmpresa');
+                    if (modal) {
+                        modal.style.display = 'none';
+                        console.log('✅ Modal cerrado');
+                    }
+                    
+                    // Esperar un poco para que se procese
+                    setTimeout(() => {
+                        console.log('🔄 RECARGANDO PÁGINA COMPLETA...');
+                        window.location.reload();
+                    }, 500);
+                    
+                    // Mostrar mensaje de éxito
+                    const responseClone = response.clone();
+                    try {
+                        const data = await responseClone.json();
+                        if (data.success) {
+                            // Mostrar alert solo si no hay error
+                            alert('Empresa actualizada exitosamente');
+                        }
+                    } catch (e) {
+                        alert('Empresa actualizada exitosamente');
+                    }
+                }
+                
+                return response;
+            });
+        }
+        
+        return originalFetch.apply(this, args);
+    };
+    
+    console.log('✅ FIX APLICADO - Todas las actualizaciones recargarán la página');
+})();
+</script>
+
+<!-- Incluir este script en la página -->
+<div style="position:fixed; top:10px; right:10px; background:green; color:white; padding:5px; z-index:9999; font-size:12px;">
+    FIX ACTIVO ✅
+</div>

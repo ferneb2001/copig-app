@@ -1,0 +1,4 @@
+FIELD_NAME,FIELD_TYPE,FIELD_LEN,FIELD_DEC
+asiento,N,6,0
+fecha,D,,
+orden,N,6,0

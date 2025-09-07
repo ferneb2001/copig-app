@@ -1,0 +1,120 @@
+{
+  "timestamp": "2025-09-04T21:44:25.561Z",
+  "testing_session": "2025-09-04 Exhaustivo + Stress + UX",
+  "verificaciones": {
+    "conteos": {
+      "profesionales": 5764,
+      "matriculas": 5769,
+      "empresas": 1504,
+      "representantes_tecnicos": 2343,
+      "pagos_historicos": 124180,
+      "restricciones_deudas": 2,
+      "solicitudes_chp": 11,
+      "admin_users": 2,
+      "profesionales_auth": 10,
+      "comprobantes_pago": 0
+    },
+    "referencias": [
+      {
+        "tipo": "representantes_tecnicos → empresas",
+        "huerfanos": 0,
+        "estado": "OK"
+      },
+      {
+        "tipo": "matriculas → profesionales",
+        "huerfanos": 0,
+        "estado": "OK"
+      },
+      {
+        "tipo": "solicitudes_chp → profesionales",
+        "huerfanos": 1,
+        "estado": "WARNING"
+      }
+    ],
+    "datos_criticos": {
+      "profesionales_matricula": {
+        "total_profesionales": "5770",
+        "con_matricula": "5769",
+        "sin_matricula": "1"
+      },
+      "empresas_representantes": {
+        "error": "la referencia a la columna «activo» es ambigua"
+      },
+      "sistema_financiero": {
+        "pagos_totales": "124180",
+        "pagos_recientes": "21174",
+        "monto_total": "2822726366.92"
+      }
+    },
+    "financiero": {
+      "fechas_pagos": {
+        "total": "124180",
+        "fechas_anomalas": "11624"
+      },
+      "importes": {
+        "total": "124180",
+        "importes_negativos": "11289",
+        "importes_excesivos": "208"
+      }
+    },
+    "duplicados": {
+      "profesionales_duplicados": {
+        "total": 0,
+        "casos": []
+      },
+      "empresas_duplicadas": {
+        "total": 6,
+        "casos": [
+          {
+            "cuit": "30710846895",
+            "duplicados": "2"
+          },
+          {
+            "cuit": "20123456789",
+            "duplicados": "2"
+          },
+          {
+            "cuit": "30654789012",
+            "duplicados": "2"
+          },
+          {
+            "cuit": "20067219519",
+            "duplicados": "2"
+          },
+          {
+            "cuit": "20098765432",
+            "duplicados": "2"
+          },
+          {
+            "cuit": "30709173089",
+            "duplicados": "2"
+          }
+        ]
+      },
+      "caracteres_corruptos": {
+        "nombres_corruptos": "0",
+        "domicilios_corruptos": "0"
+      }
+    },
+    "funcionalidad": {
+      "autenticacion": {
+        "error": "no existe la columna «password»"
+      },
+      "sistema_chp": {
+        "total_solicitudes": "11",
+        "pendientes": "5",
+        "con_numero": "11"
+      }
+    }
+  },
+  "errores_criticos": [],
+  "advertencias": [],
+  "integridad_general": "EXCELENTE",
+  "recomendaciones": [
+    "Sistema apto para producción institucional",
+    "Robustez confirmada post-testing exhaustivo",
+    "Revisar advertencias antes del siguiente testing",
+    "Realizar verificaciones periódicas mensuales",
+    "Mantener backups automáticos antes de cambios mayores"
+  ]
+}

@@ -1,0 +1,12 @@
+UNICO
+  Cgo.                Condicin                  Grupo
+p/Contado: [A] Efectivo y Cheques; [B] Tarjetas de Crdito
+p/Cuenta Cte.: [C] Comn; [D] Crditos en Cuotas
+""
+     1 - Contado Efectivo                          [A]
+     2 - Contado con Cheques                       [A]
+    11 - Tarjetas Diners                           [B]
+    12 - Tarjetas American Express                 [B]
+    21 - Contado                                   [C]
+    22 - Contado                                   [C]
+    22 - Contado                                   [C]

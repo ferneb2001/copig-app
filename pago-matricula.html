@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago de Matrícula 2025 - COPIG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .exit-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .exit-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .payment-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 0;
+            min-height: 600px;
+        }
+
+        .payment-form {
+            padding: 40px;
+        }
+
+        .payment-summary {
+            background: #f8f9fa;
+            padding: 40px;
+            border-left: 1px solid #dee2e6;
+        }
+
+        .step {
+            margin-bottom: 30px;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #667eea;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: 500;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .payment-method {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .payment-method:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+        }
+
+        .payment-method.active {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .payment-method .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .payment-method .name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .payment-method .type {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .installment-plans {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .installment-plans.show {
+            display: block;
+        }
+
+        .installment-plan {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .installment-plan:hover {
+            border-color: #667eea;
+        }
+
+        .installment-plan.active {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .plan-title {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .plan-detail {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .summary-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .summary-line {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+        }
+
+        .summary-line.total {
+            border-top: 2px solid #e9ecef;
+            margin-top: 15px;
+            padding-top: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+
+        .amount {
+            font-weight: 600;
+        }
+
+        .amount.positive {
+            color: #27ae60;
+        }
+
+        .amount.negative {
+            color: #e74c3c;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-large {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.1rem;
+        }
+
+        .professional-info {
+            background: #e8f4fd;
+            border: 1px solid #bee5eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .professional-info h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .professional-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .data-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .data-label {
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.9rem;
+        }
+
+        .data-value {
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+        }
+
+        .payment-details {
+            display: none;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .payment-details.show {
+            display: block;
+        }
+
+        .cbu-info {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .cbu-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .copy-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .payment-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-summary {
+                border-left: none;
+                border-top: 1px solid #dee2e6;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/portal" class="exit-button">
+                <span>🚪</span>
+                <span>Salir</span>
+            </a>
+            <h1>🏛️ COPIG - Pago de Matrícula 2025</h1>
+            <p>Sistema de Pago de Aranceles Anuales - Año 2025</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
+
+        <!-- Professional Information -->
+        <div class="professional-info" id="professionalInfo" style="display: none;">
+            <h3>Información del Profesional</h3>
+            <div class="professional-data">
+                <div class="data-item">
+                    <span class="data-label">Nombre Completo</span>
+                    <span class="data-value" id="profName">-</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Matrícula</span>
+                    <span class="data-value" id="profMatricula">-</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Categoría</span>
+                    <span class="data-value" id="profCategoria">-</span>
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Estado Arancel Anual 2025</span>
+                    <span class="data-value" id="profEstadoPago">-</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-container">
+            <!-- Payment Form -->
+            <div class="payment-form">
+                <!-- Step 1: Professional Login -->
+                <div class="step" id="step1">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Identificación del Profesional
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="matricula">Número de Matrícula</label>
+                        <input type="text" id="matricula" placeholder="Ej: 12345, FN-1969, ABC-123">
+                        <small style="color: #6c757d; font-size: 0.9rem; margin-top: 5px; display: block;">
+                            Acepta matrículas numéricas (12345) o personalizadas (FN-1969)
+                        </small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="documento">Número de Documento</label>
+                        <input type="text" id="documento" placeholder="DNI sin puntos">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" placeholder="Ingrese su contraseña" required>
+                        <small style="color: #6c757d; font-size: 0.9rem; margin-top: 5px; display: block;">
+                            Contraseña obligatoria para todos los usuarios
+                        </small>
+                    </div>
+
+                    
+                    <button class="btn btn-primary btn-large" onclick="verifyProfessional()">
+                        <span id="loginButtonText">Verificar Datos</span>
+                    </button>
+                </div>
+
+                <!-- Step 2: Payment Method Selection -->
+                <div class="step" id="step2" style="display: none;">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Seleccionar Método de Pago
+                    </div>
+                    
+                    <div class="payment-methods" id="paymentMethods">
+                        <!-- Payment methods will be loaded dynamically -->
+                    </div>
+                    
+                    <div class="installment-plans" id="installmentPlans">
+                        <!-- Installment plans will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Step 3: Payment Processing -->
+                <div class="step" id="step3" style="display: none;">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Pago Matrícula Anual 2025
+                    </div>
+                    
+                    <div class="payment-details" id="paymentDetails">
+                        <!-- Payment details will be loaded based on method -->
+                    </div>
+                    
+                    <button class="btn btn-primary btn-large" onclick="processPayment()" id="processBtn">
+                        Confirmar Pago
+                    </button>
+                </div>
+            </div>
+
+            <!-- Payment Summary -->
+            <div class="payment-summary">
+                <div class="summary-card">
+                    <div class="summary-title">Resumen - Arancel Anual Profesional 2025</div>
+                    
+                    <div class="summary-line">
+                        <span>Arancel Base:</span>
+                        <span class="amount" id="baseAmount">$0</span>
+                    </div>
+                    
+                    <div class="summary-line" id="discountLine" style="display: none;">
+                        <span>Descuento:</span>
+                        <span class="amount negative" id="discountAmount">-$0</span>
+                    </div>
+                    
+                    <div class="summary-line" id="surchargetLine" style="display: none;">
+                        <span>Recargo por cuotas:</span>
+                        <span class="amount" id="surchargeAmount">+$0</span>
+                    </div>
+                    
+                    <div class="summary-line total">
+                        <span>Total a Pagar:</span>
+                        <span class="amount positive" id="totalAmount">$0</span>
+                    </div>
+                    
+                    <div class="summary-line" id="installmentInfo" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px solid #e9ecef;">
+                        <span>Plan de cuotas:</span>
+                        <span id="installmentDetails">-</span>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-title">Información Importante</div>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px; color: #6c757d;">
+                            🏛️ Arancel oficial COPIG 2025
+                        </li>
+                        <li style="margin-bottom: 10px; color: #6c757d;">
+                            ⚖️ Habilitación profesional anual
+                        </li>
+                        <li style="margin-bottom: 10px; color: #6c757d;">
+                            📧 Comprobante oficial por email
+                        </li>
+                        <li style="margin-bottom: 10px; color: #6c757d;">
+                            💳 Múltiples opciones de pago
+                        </li>
+                        <li style="margin-bottom: 10px; color: #6c757d;">
+                            🏦 Transferencia sin costo adicional
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div style="font-size: 2rem; margin-bottom: 10px;">⏳</div>
+            <div>Procesando...</div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentProfessional = null;
+        let selectedMethod = null;
+        let selectedPlan = null;
+        let paymentMethods = [];
+        let currentCalculation = null;
+
+        // Initialize the payment system
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPaymentMethods();
+        });
+
+        async function loadPaymentMethods() {
+            try {
+                const response = await fetch('/api/pagos/metodos');
+                const data = await response.json();
+                
+                if (data.success) {
+                    paymentMethods = data.metodos;
+                    console.log('Payment methods loaded:', paymentMethods);
+                } else {
+                    throw new Error(data.error);
+                }
+            } catch (error) {
+                console.error('Error loading payment methods:', error);
+                showError('Error al cargar métodos de pago');
+            }
+        }
+
+        // Validación exhaustiva de datos del profesional
+        function validateProfessionalData(profesional) {
+            // Verificar campos obligatorios
+            if (!profesional.id || !profesional.nombre || !profesional.numero_documento || !profesional.matricula_numerica) {
+                console.error('Datos del profesional incompletos:', profesional);
+                return false;
+            }
+            
+            // Verificar que el ID sea numérico y mayor a 0
+            if (typeof profesional.id !== 'number' || profesional.id <= 0) {
+                console.error('ID de profesional inválido:', profesional.id);
+                return false;
+            }
+            
+            // Verificar que la matrícula numérica sea válida
+            if (typeof profesional.matricula_numerica !== 'number' || profesional.matricula_numerica <= 0) {
+                console.error('Matrícula numérica inválida:', profesional.matricula_numerica);
+                return false;
+            }
+            
+            // Verificar formato del documento (debe ser numérico)
+            const docStr = profesional.numero_documento.toString();
+            if (!/^\d{7,8}$/.test(docStr)) {
+                console.error('Formato de documento inválido:', profesional.numero_documento);
+                return false;
+            }
+            
+            // Verificar que el nombre no esté vacío y tenga formato válido
+            if (typeof profesional.nombre !== 'string' || profesional.nombre.trim().length < 3) {
+                console.error('Nombre de profesional inválido:', profesional.nombre);
+                return false;
+            }
+            
+            // Verificar categoría válida
+            const categoriasValidas = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+            if (!categoriasValidas.includes(profesional.categoria)) {
+                console.error('Categoría de profesional inválida:', profesional.categoria);
+                return false;
+            }
+            
+            // Validación adicional: verificar que no sea un profesional de prueba obvio
+            const nombreUpper = profesional.nombre.toUpperCase();
+            const testPatterns = [
+                'TEST', 'PRUEBA', 'DUMMY', 'FAKE', 'EJEMPLO', 
+                'SAMPLE', 'DEMO', 'TEMPORAL', 'PROVISIONAL'
+            ];
+            
+            const isTestPattern = testPatterns.some(pattern => nombreUpper.includes(pattern));
+            
+            // Permitir profesionales históricos pero no patrones de prueba obvios
+            if (isTestPattern && !nombreUpper.includes('HISTÓRICO')) {
+                console.warn('Posible profesional de prueba detectado:', profesional.nombre);
+                // No bloquear automáticamente, solo advertir
+            }
+            
+            return true;
+        }
+
+        async function verifyProfessional() {
+            const matricula = document.getElementById('matricula').value;
+            const documento = document.getElementById('documento').value;
+            const password = document.getElementById('password').value;
+
+            if (!matricula || !documento || !password) {
+                showError('Por favor complete matrícula, documento y contraseña');
+                return;
+            }
+
+            showLoading(true);
+            document.getElementById('loginButtonText').textContent = 'Verificando...';
+
+            try {
+                const requestBody = { matricula, documento, password };
+
+                const response = await fetch('/api/profesional/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ matricula, documento, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    currentProfessional = data.profesional;
+                    
+                    // Validaciones adicionales de seguridad
+                    if (!validateProfessionalData(data.profesional)) {
+                        showError('Error en la validación de datos del profesional. Contacte al administrador.');
+                        return;
+                    }
+                    
+                    // Continuar con el flujo normal
+                    displayProfessionalInfo();
+                    await checkPaymentStatus();
+                    displayPaymentMethods();
+                    showStep(2);
+                    
+                } else {
+                    showError(data.message || 'Datos incorrectos');
+                }
+            } catch (error) {
+                console.error('Error verifying professional:', error);
+                showError('Error de conexión. Intente nuevamente.');
+            } finally {
+                showLoading(false);
+                if (!currentProfessional) {
+                    document.getElementById('loginButtonText').textContent = 'Verificar Datos';
+                }
+            }
+        }
+
+
+        function displayProfessionalInfo() {
+            if (!currentProfessional) return;
+
+            document.getElementById('profName').textContent = currentProfessional.nombre;
+            document.getElementById('profMatricula').textContent = currentProfessional.matricula;
+            document.getElementById('profCategoria').textContent = currentProfessional.categoria;
+            document.getElementById('professionalInfo').style.display = 'block';
+        }
+
+        async function checkPaymentStatus() {
+            try {
+                const response = await fetch(`/api/pagos/estado/${currentProfessional.id}`);
+                const data = await response.json();
+
+                if (data.success && data.pagos.length > 0) {
+                    const ultimoPago = data.pagos[0];
+                    let estadoTexto = 'Pendiente de pago';
+                    
+                    switch(ultimoPago.estado) {
+                        case 'aprobado':
+                            estadoTexto = '✅ Pagado';
+                            break;
+                        case 'pendiente':
+                            estadoTexto = '⏳ Pago pendiente';
+                            break;
+                        case 'rechazado':
+                            estadoTexto = '❌ Pago rechazado';
+                            break;
+                    }
+                    
+                    document.getElementById('profEstadoPago').textContent = estadoTexto;
+                } else {
+                    document.getElementById('profEstadoPago').textContent = 'Sin pago registrado';
+                }
+            } catch (error) {
+                console.error('Error checking payment status:', error);
+                document.getElementById('profEstadoPago').textContent = 'Error al verificar';
+            }
+        }
+
+        function displayPaymentMethods() {
+            const container = document.getElementById('paymentMethods');
+            
+            const methodsByType = paymentMethods.reduce((acc, method) => {
+                if (!acc[method.tipo]) acc[method.tipo] = [];
+                acc[method.tipo].push(method);
+                return acc;
+            }, {});
+
+            const typeIcons = {
+                'transferencia': '🏦',
+                'tarjeta': '💳',
+                'virtual_wallet': '📱',
+                'banco_macro': '🏛️'
+            };
+
+            let html = '';
+            
+            Object.entries(methodsByType).forEach(([tipo, methods]) => {
+                methods.forEach(method => {
+                    html += `
+                        <div class="payment-method" onclick="selectPaymentMethod(${method.id})">
+                            <div class="icon">${typeIcons[tipo] || '💳'}</div>
+                            <div class="name">${method.nombre}</div>
+                            <div class="type">${method.tipo.replace('_', ' ')}</div>
+                        </div>
+                    `;
+                });
+            });
+
+            container.innerHTML = html;
+        }
+
+        function selectPaymentMethod(methodId) {
+            // Clear previous selection
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Select new method
+            event.target.closest('.payment-method').classList.add('active');
+            selectedMethod = paymentMethods.find(m => m.id === methodId);
+            selectedPlan = null;
+
+            // Show installment plans if available
+            if (selectedMethod.permite_cuotas && selectedMethod.planes_cuotas.length > 0) {
+                displayInstallmentPlans();
+            } else {
+                document.getElementById('installmentPlans').classList.remove('show');
+                calculateTotal();
+            }
+        }
+
+        function displayInstallmentPlans() {
+            const container = document.getElementById('installmentPlans');
+            let html = '<h4 style="margin-bottom: 15px;">Seleccione plan de cuotas:</h4>';
+
+            selectedMethod.planes_cuotas.forEach(plan => {
+                if (plan.id) {
+                    html += `
+                        <div class="installment-plan" onclick="selectInstallmentPlan(${plan.id})">
+                            <div class="plan-title">${plan.descripcion}</div>
+                            <div class="plan-detail">${plan.cantidad_cuotas} cuota${plan.cantidad_cuotas > 1 ? 's' : ''} - Coeficiente: ${plan.coeficiente}</div>
+                        </div>
+                    `;
+                }
+            });
+
+            container.innerHTML = html;
+            container.classList.add('show');
+        }
+
+        function selectInstallmentPlan(planId) {
+            // Clear previous selection
+            document.querySelectorAll('.installment-plan').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Select new plan
+            event.target.closest('.installment-plan').classList.add('active');
+            selectedPlan = selectedMethod.planes_cuotas.find(p => p.id === planId);
+            
+            calculateTotal();
+        }
+
+        async function calculateTotal() {
+            if (!currentProfessional || !selectedMethod) return;
+
+            try {
+                const response = await fetch('/api/pagos/calcular', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        categoria: currentProfessional.categoria,
+                        plan_cuotas_id: selectedPlan ? selectedPlan.id : null,
+                        pago_anual: selectedMethod.codigo === 'TRANSFER_BANK' || selectedMethod.codigo === 'CBU_DIRECT'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    currentCalculation = data.calculo;
+                    updateSummary();
+                    showStep(3);
+                    setupPaymentDetails();
+                } else {
+                    showError(data.error);
+                }
+            } catch (error) {
+                console.error('Error calculating total:', error);
+                showError('Error al calcular el total');
+            }
+        }
+
+        function updateSummary() {
+            if (!currentCalculation) return;
+
+            document.getElementById('baseAmount').textContent = `$${currentCalculation.monto_base.toLocaleString('es-AR')}`;
+            
+            if (currentCalculation.descuento_monto > 0) {
+                document.getElementById('discountLine').style.display = 'flex';
+                document.getElementById('discountAmount').textContent = `-$${currentCalculation.descuento_monto.toLocaleString('es-AR')}`;
+            } else {
+                document.getElementById('discountLine').style.display = 'none';
+            }
+
+            const surcharge = currentCalculation.monto_final - (currentCalculation.monto_base - currentCalculation.descuento_monto);
+            if (surcharge > 0) {
+                document.getElementById('surchargetLine').style.display = 'flex';
+                document.getElementById('surchargeAmount').textContent = `+$${surcharge.toLocaleString('es-AR')}`;
+            } else {
+                document.getElementById('surchargetLine').style.display = 'none';
+            }
+
+            document.getElementById('totalAmount').textContent = `$${currentCalculation.monto_final.toLocaleString('es-AR')}`;
+
+            if (selectedPlan && selectedPlan.cantidad_cuotas > 1) {
+                document.getElementById('installmentInfo').style.display = 'flex';
+                const montoCuota = Math.round((currentCalculation.monto_final / selectedPlan.cantidad_cuotas) * 100) / 100;
+                document.getElementById('installmentDetails').textContent = `${selectedPlan.cantidad_cuotas} cuotas de $${montoCuota.toLocaleString('es-AR')}`;
+            } else {
+                document.getElementById('installmentInfo').style.display = 'none';
+            }
+        }
+
+        function setupPaymentDetails() {
+            const container = document.getElementById('paymentDetails');
+            let html = '';
+
+            switch(selectedMethod.tipo) {
+                case 'transferencia':
+                    html = setupTransferDetails();
+                    break;
+                case 'tarjeta':
+                    html = setupCardDetails();
+                    break;
+                case 'virtual_wallet':
+                    html = setupWalletDetails();
+                    break;
+                case 'banco_macro':
+                    html = setupBancoMacroDetails();
+                    break;
+            }
+
+            container.innerHTML = html;
+            container.classList.add('show');
+        }
+
+        function setupTransferDetails() {
+            const config = selectedMethod.configuracion;
+            return `
+                <h4>Datos para Transferencia Bancaria</h4>
+                <div class="cbu-info">
+                    <div class="cbu-data">
+                        <div>
+                            <strong>CBU:</strong> ${config.cbu}
+                            <button class="copy-button" onclick="copyToClipboard('${config.cbu}')">Copiar</button>
+                        </div>
+                        <div>
+                            <strong>Alias:</strong> ${config.alias || 'COPIG.MATRICULA'}
+                            <button class="copy-button" onclick="copyToClipboard('${config.alias || 'COPIG.MATRICULA'}')">Copiar</button>
+                        </div>
+                        <div>
+                            <strong>Titular:</strong> ${config.titular || 'COPIG'}
+                        </div>
+                        <div>
+                            <strong>Banco:</strong> ${config.banco || 'Banco Macro'}
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; color: #6c757d;">
+                        Una vez realizada la transferencia, el sistema detectará automáticamente el pago en 24-48 horas.
+                        También puede subir el comprobante para acelerar el proceso.
+                    </p>
+                </div>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="comprobanteTransfer">Comprobante de Transferencia (Opcional)</label>
+                    <input type="file" id="comprobanteTransfer" accept=".pdf,.jpg,.jpeg,.png">
+                </div>
+            `;
+        }
+
+        function setupCardDetails() {
+            return `
+                <h4>Datos de Tarjeta de Crédito</h4>
+                <div class="form-group">
+                    <label for="cardNumber">Número de Tarjeta</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label for="cardExpiry">Vencimiento</label>
+                        <input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5">
+                    </div>
+                    <div class="form-group">
+                        <label for="cardCvc">CVC</label>
+                        <input type="text" id="cardCvc" placeholder="123" maxlength="4">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cardName">Nombre del Titular</label>
+                    <input type="text" id="cardName" placeholder="Como aparece en la tarjeta">
+                </div>
+            `;
+        }
+
+        function setupWalletDetails() {
+            return `
+                <h4>Pago con ${selectedMethod.nombre}</h4>
+                <p>Serás redirigido a ${selectedMethod.nombre} para completar el pago de manera segura.</p>
+                <div style="text-align: center; margin: 20px 0;">
+                    <div style="font-size: 4rem; margin-bottom: 15px;">📱</div>
+                    <p style="color: #6c757d;">
+                        Al confirmar, se abrirá una ventana segura de ${selectedMethod.nombre} donde podrás completar tu pago.
+                    </p>
+                </div>
+            `;
+        }
+
+        function setupBancoMacroDetails() {
+            return `
+                <h4>Pago con Banco Macro</h4>
+                <p>Serás redirigido al sitio seguro de Banco Macro para completar el pago.</p>
+                <div style="text-align: center; margin: 20px 0;">
+                    <div style="font-size: 4rem; margin-bottom: 15px;">🏛️</div>
+                    <p style="color: #6c757d;">
+                        Al confirmar, se abrirá una ventana segura de Banco Macro donde podrás pagar con tu cuenta online.
+                    </p>
+                </div>
+            `;
+        }
+
+        async function processPayment() {
+            if (!currentProfessional || !selectedMethod || !currentCalculation) {
+                showError('Faltan datos para procesar el pago');
+                return;
+            }
+            
+            // Validación final de seguridad antes del pago
+            if (!validateProfessionalData(currentProfessional)) {
+                showError('Error de validación. No se puede procesar el pago.');
+                return;
+            }
+            
+            // Verificar que el monto sea razonable (entre $1,000 y $500,000)
+            if (currentCalculation.monto_final < 1000 || currentCalculation.monto_final > 500000) {
+                showError('Monto de pago inválido. Contacte al administrador.');
+                return;
+            }
+
+            showLoading(true);
+
+            try {
+                const paymentData = {
+                    profesional_id: currentProfessional.id,
+                    matricula: currentProfessional.matricula,
+                    metodo_pago_id: selectedMethod.id,
+                    plan_cuotas_id: selectedPlan ? selectedPlan.id : null,
+                    categoria: currentProfessional.categoria,
+                    monto_final: currentCalculation.monto_final,
+                    datos_pago: {}
+                };
+
+                // Add method-specific data
+                if (selectedMethod.tipo === 'tarjeta') {
+                    paymentData.datos_pago = {
+                        numero_tarjeta: document.getElementById('cardNumber').value,
+                        vencimiento: document.getElementById('cardExpiry').value,
+                        titular: document.getElementById('cardName').value
+                    };
+                }
+
+                const response = await fetch('/api/pagos/iniciar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(paymentData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showSuccess(`Pago iniciado exitosamente. Número de transacción: ${result.pago.numero_transaccion}`);
+                    
+                    // Handle different payment methods
+                    if (selectedMethod.tipo === 'transferencia') {
+                        showSuccess('Realice la transferencia con los datos proporcionados. El pago se acreditará automáticamente.');
+                    } else {
+                        // For other methods, you would redirect to payment processor
+                        showSuccess('Pago procesado exitosamente');
+                    }
+                } else {
+                    showError(result.error);
+                }
+            } catch (error) {
+                console.error('Error processing payment:', error);
+                showError('Error al procesar el pago');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function showStep(stepNumber) {
+            // Hide all steps
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`step${i}`).style.display = 'none';
+            }
+            // Show selected step
+            document.getElementById(`step${stepNumber}`).style.display = 'block';
+        }
+
+        function showError(message) {
+            const errorEl = document.getElementById('errorMessage');
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+            setTimeout(() => {
+                errorEl.style.display = 'none';
+            }, 5000);
+        }
+
+        function showSuccess(message) {
+            const successEl = document.getElementById('successMessage');
+            successEl.textContent = message;
+            successEl.style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        function showLoading(show) {
+            document.getElementById('loading').style.display = show ? 'block' : 'none';
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                event.target.textContent = '✅ Copiado';
+                setTimeout(() => {
+                    event.target.textContent = 'Copiar';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

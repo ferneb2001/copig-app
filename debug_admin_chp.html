@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug CHP Admin</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .solicitud { border: 1px solid #ccc; margin: 10px; padding: 15px; border-radius: 5px; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Debug CHP Admin</h1>
+    
+    <button onclick="cargarSolicitudes()">Cargar Solicitudes</button>
+    <div id="debug"></div>
+    <div id="solicitudes"></div>
+
+    <script>
+        async function cargarSolicitudes() {
+            const debugDiv = document.getElementById('debug');
+            const solicitudesDiv = document.getElementById('solicitudes');
+            
+            debugDiv.innerHTML = '<div class="success">Cargando solicitudes...</div>';
+            
+            try {
+                const response = await fetch('/api/admin/solicitudes-chp');
+                debugDiv.innerHTML += '<div class="success">✅ Fetch exitoso</div>';
+                
+                const data = await response.json();
+                debugDiv.innerHTML += `<div class="success">✅ JSON parseado: ${data.success}</div>`;
+                
+                if (data.success) {
+                    const solicitudes = data.solicitudes || [];
+                    debugDiv.innerHTML += `<div class="success">✅ Total solicitudes: ${solicitudes.length}</div>`;
+                    
+                    let html = '';
+                    solicitudes.forEach((solicitud, index) => {
+                        html += `
+                            <div class="solicitud">
+                                <h3>Solicitud ${index + 1}</h3>
+                                <p><strong>Número:</strong> ${solicitud.numero_solicitud}</p>
+                                <p><strong>Comitente:</strong> "${solicitud.comitente}" (tipo: ${typeof solicitud.comitente})</p>
+                                <p><strong>Profesional:</strong> ${solicitud.profesional_nombre}</p>
+                                <p><strong>Estado:</strong> ${solicitud.estado}</p>
+                                <p><strong>Fecha:</strong> ${new Date(solicitud.fecha_solicitud).toLocaleDateString()}</p>
+                                <hr>
+                                <pre>${JSON.stringify(solicitud, null, 2)}</pre>
+                            </div>
+                        `;
+                    });
+                    
+                    solicitudesDiv.innerHTML = html;
+                } else {
+                    debugDiv.innerHTML += `<div class="error">❌ Error: ${data.message}</div>`;
+                }
+            } catch (error) {
+                debugDiv.innerHTML += `<div class="error">❌ Error de conexión: ${error.message}</div>`;
+                console.error('Error completo:', error);
+            }
+        }
+        
+        // Cargar automáticamente
+        document.addEventListener('DOMContentLoaded', cargarSolicitudes);
+    </script>
+</body>
+</html>

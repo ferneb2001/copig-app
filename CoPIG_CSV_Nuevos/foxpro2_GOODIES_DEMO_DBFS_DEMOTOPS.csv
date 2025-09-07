@@ -1,0 +1,12 @@
+CHECKBOX,PRGNAME,DISABLED
+Welcome to FoxPro,WELCOME.PRG,False
+Browse,BROWSE.PRG,False
+RQBE/SQL,RQBESQL.PRG,True
+Report Writer,REPOWRIT.PRG,False
+Screen Builder,SCREBUIL.PRG,True
+Menu Builder,MENUBUIL.PRG,True
+Project Management,PROJMANG.PRG,False
+Trace/Debug,TRACEDEB.PRG,True
+Text Editing,TEXTEDIT.PRG,False
+Distribution Kit,DISTRIBU.PRG,False
+API/Library Kit,LIBCONST.PRG,False
